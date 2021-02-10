@@ -1,27 +1,24 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-[RequireComponent(typeof(CharacterController))]
-public class CharacterBase : MonoBehaviour
+namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 {
-    private CharacterController _controller;
+    [RequireComponent(typeof(CharacterController))]
+    public abstract class CharacterBase : MonoBehaviour
+    {
+        private CharacterController _controller;
+
+        public enum EStates { Idle, Moving, Hiding }
+
+        public EStates State { get; protected set; }
 
 
-    private void Awake()
-    {
-        _controller = GetComponent<CharacterController>();
-    }
+        private void Awake()
+        {
+            _controller = GetComponent<CharacterController>();
+        }
 
-    void Start()
-    {
-        
-    }
-    
-    
-    void Update()
-    {
-        
+        protected abstract void Interact();
+
+        protected abstract void Action();
     }
 }
