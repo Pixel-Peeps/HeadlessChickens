@@ -14,12 +14,12 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         private bool _strafeActive;
         
         [Header("Movement")]
-        [SerializeField] private float moveSpeed;
-        [SerializeField] private float moveTime; 
+        [SerializeField] private float moveSpeed = 0;
+        [SerializeField] private float moveTime = 0; 
         
         [Header("Rotation")]
-        [SerializeField] private float rotationTime;
-        [SerializeField] private float rotationSpeed;
+        [SerializeField] private float rotationTime = 0;
+        [SerializeField] private float rotationSpeed = 0;
         [SerializeField] private Quaternion newRotation;
         
         
