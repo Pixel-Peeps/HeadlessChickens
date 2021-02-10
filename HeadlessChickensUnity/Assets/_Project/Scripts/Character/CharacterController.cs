@@ -74,11 +74,11 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, Time.deltaTime * rotationTime);
         }
         
-        /*#################################
-         *          INPUT CALLBACKS         *
+        /*##################################
+         *          INPUT CALLBACKS        *
          ##################################*/
         
-        #region INPUT BEHAVIOUR
+        #region INPUT CALLBACKS
         private void RotateCanceled(InputAction.CallbackContext obj)
         {
             _rotateDirection = 0;
