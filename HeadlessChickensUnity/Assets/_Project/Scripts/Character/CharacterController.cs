@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
-namespace _Project.Scripts.Character
+namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 {
     public class CharacterController : MonoBehaviour
     {
@@ -11,12 +10,18 @@ namespace _Project.Scripts.Character
         private Vector3 _newPosition;
         private Vector2 _movDirection;
         private float _rotateDirection;
+        
+        [Header("Movement")]
         [SerializeField] private float moveSpeed;
-        [SerializeField] private Quaternion newRotation;
+        [SerializeField] private float moveTime; 
+        
+        [Header("Rotation")]
         [SerializeField] private float rotationTime;
         [SerializeField] private float rotationSpeed;
-        [SerializeField] private float moveTime;
-
+        [SerializeField] private Quaternion newRotation;
+        
+        
+        
         private void Awake()
         {
             _controls = new InputControls();
@@ -27,7 +32,6 @@ namespace _Project.Scripts.Character
             _controls.Player.Rotate.started += RotateStarted;
             _controls.Player.Rotate.canceled += RotateCanceled;
         }
-
 
         private void Start()
         {
@@ -53,7 +57,12 @@ namespace _Project.Scripts.Character
             newRotation *= Quaternion.Euler(Vector3.up * (_movDirection.x * rotationSpeed));
             transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, Time.deltaTime * rotationTime);
         }
-
+        
+        /*#################################
+         *          INPUT CALLBACKS         *
+         ##################################*/
+        
+        #region INPUT BEHAVIOUR
         private void RotateCanceled(InputAction.CallbackContext obj)
         {
             _rotateDirection = 0;
@@ -74,6 +83,7 @@ namespace _Project.Scripts.Character
         {
             _movDirection = Vector2.zero;
         }
+#endregion
 
     }
 }
