@@ -13,6 +13,7 @@ public class CharacterController : MonoBehaviour
     private Vector2 _movDirection;
     [SerializeField] private float moveSpeed;
     [SerializeField] private Quaternion _newRotation;
+    [SerializeField] private float rotationTime;
     [SerializeField] private float rotationSpeed;
     [SerializeField] private float moveTime;
 
@@ -57,10 +58,10 @@ public class CharacterController : MonoBehaviour
         if (_movDirection.y != 0)
             _newPosition += transform.forward * (_movDirection.y * moveSpeed);
         if(_movDirection.x != 0)
-            _newRotation *= Quaternion.Euler(Vector3.up * _movDirection.x);
+            _newRotation *= Quaternion.Euler(Vector3.up * (_movDirection.x * rotationSpeed));
         
         transform.position = Vector3.Lerp(transform.position, _newPosition, Time.deltaTime * moveTime);
-        transform.rotation = Quaternion.Lerp(transform.rotation, _newRotation, Time.deltaTime * rotationSpeed);
+        transform.rotation = Quaternion.Lerp(transform.rotation, _newRotation, Time.deltaTime * rotationTime);
             
     }
 }
