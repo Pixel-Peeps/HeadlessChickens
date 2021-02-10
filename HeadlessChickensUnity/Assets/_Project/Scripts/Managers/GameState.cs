@@ -11,5 +11,6 @@
 
         public abstract void StateEnter();
         public abstract void StateExit();
+        public abstract void LoadScene(string scene);
     }
 }

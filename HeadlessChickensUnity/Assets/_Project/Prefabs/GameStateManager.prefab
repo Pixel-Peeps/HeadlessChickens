@@ -13,7 +13,7 @@ GameObject:
   m_Layer: 0
   m_Name: GameStateManager
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -45,6 +45,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   splashScreenCanvas: {fileID: 1865406546741337702, guid: a9546767baacd034dbb2c7857481a7d4, type: 3}
   mainMenuCanvas: {fileID: 483725998252695555, guid: b3c3d3e7e0842094fa46cd0d33886689, type: 3}
-  storeScreenCanvas: {fileID: 1865406546741337702, guid: a9546767baacd034dbb2c7857481a7d4, type: 3}
-  lobbyScreenCanvas: {fileID: 1865406546741337702, guid: a9546767baacd034dbb2c7857481a7d4, type: 3}
-  gameScreenCanvas: {fileID: 1865406546741337702, guid: a9546767baacd034dbb2c7857481a7d4, type: 3}
+  storeScreenCanvas: {fileID: 1865406546741337702, guid: c7049f82360c7f947aed208f8993c078, type: 3}
+  lobbyScreenCanvas: {fileID: 1865406546741337702, guid: f3dfc9e6eb4a6884394ae903d8818574, type: 3}
+  playScreenCanvas: {fileID: 1865406546741337702, guid: 2bd7ceabea91a884d9bc8b25f39d85ed, type: 3}
+  lobbyScene: LobbyScene
+  playScene: PlayScene

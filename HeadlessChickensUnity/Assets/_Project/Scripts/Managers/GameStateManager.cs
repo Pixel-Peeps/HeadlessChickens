@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace PixelPeeps.HeadlessChickens.Managers
 {
@@ -18,7 +19,12 @@ namespace PixelPeeps.HeadlessChickens.Managers
         public GameObject mainMenuCanvas;
         public GameObject storeScreenCanvas;
         public GameObject lobbyScreenCanvas;
-        public GameObject gameScreenCanvas;
+        public GameObject playScreenCanvas;
+
+        [Header("Game Scenes")] 
+        [HideInInspector] public string menuScene = "MenuScene";
+        [HideInInspector] public string lobbyScene = "LobbyScene";
+        [HideInInspector] public string playScene = "PlayScene";
 
         private void Awake()
         {
@@ -62,12 +68,6 @@ namespace PixelPeeps.HeadlessChickens.Managers
             
             storeScreenCanvas = Instantiate(storeScreenCanvas);
             storeScreenCanvas.SetActive(false);
-            
-            lobbyScreenCanvas = Instantiate(lobbyScreenCanvas);
-            lobbyScreenCanvas.SetActive(false);
-            
-            gameScreenCanvas = Instantiate(gameScreenCanvas);
-            gameScreenCanvas.SetActive(false);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace PixelPeeps.HeadlessChickens.Managers
 {
@@ -8,7 +9,7 @@ namespace PixelPeeps.HeadlessChickens.Managers
         
         public override void StateEnter()
         {
-            Debug.Log("<color=lime> Entered MainMenu state </color>");
+            Debug.Log("<color=green> Entered MainMenu state </color>");
             StateManager.mainMenuCanvas.SetActive(true);
         }
 
@@ -18,6 +19,9 @@ namespace PixelPeeps.HeadlessChickens.Managers
             StateManager.mainMenuCanvas.SetActive(false);
         }
 
-        
+        public override void LoadScene(string scene)
+        {
+            SceneManager.LoadSceneAsync(scene);
+        }
     }
 }

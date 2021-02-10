@@ -5,7 +5,7 @@
         SplashScreen,
         MainMenu,
         StoreScreen,
-        LobbyScreen,
-        GameScreen
+        LobbyScene,
+        PlayScene
     }
 }
