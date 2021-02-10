@@ -6,9 +6,10 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
     public class CharacterController : MonoBehaviour
     {
         private InputControls _controls;
+        private CharacterBase _character;
 
         private Vector3 _newPosition = Vector3.zero;
-        private Vector2 _movDirection = Vector2.zero;
+        [SerializeField] private Vector2 _movDirection = Vector2.zero;
         private float _rotateDirection;
         private bool _strafeActive;
         
@@ -25,6 +26,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         
         private void Awake()
         {
+            _character = GetComponent<CharacterBase>();
             
             /*####################################
              *           INPUT KEY ACTIONS       *
@@ -61,7 +63,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         {
             
             _newPosition += _strafeActive      
-                ? new Vector3(_movDirection.x, 0, _movDirection.y) * moveSpeed      // unlock side movement when strafe is active
+                ?  transform.forward * (_movDirection.y * moveSpeed) + transform.right * (_movDirection.x * moveSpeed)      // unlock side movement when strafe is active
                 : transform.forward * (_movDirection.y * moveSpeed);                    // only uses forward as rotation is handled in place of going sideways.
             transform.position = Vector3.Lerp(transform.position, _newPosition, Time.deltaTime * moveTime);
         }
@@ -92,11 +94,13 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         private void MoveStarted(InputAction.CallbackContext obj)
         {
             _movDirection = obj.ReadValue<Vector2>();
+            _character.SwitchState(CharacterBase.EStates.Moving);
         }
 
         private void MoveCanceled(InputAction.CallbackContext obj)
         {
             _movDirection = Vector2.zero;
+            _character.SwitchState(CharacterBase.EStates.Idle);
         }
 
         #endregion
