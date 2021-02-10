@@ -64,7 +64,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             
             _newPosition += _strafeActive      
                 ?  transform.forward * (_movDirection.y * moveSpeed) + transform.right * (_movDirection.x * moveSpeed)      // unlock side movement when strafe is active
-                : transform.forward * (_movDirection.y * moveSpeed);                    // only uses forward as rotation is handled in place of going sideways.
+                : transform.forward * (_movDirection.y * moveSpeed);                                                        // only uses forward as rotation is handled in place of going sideways.
             transform.position = Vector3.Lerp(transform.position, _newPosition, Time.deltaTime * moveTime);
         }
 
