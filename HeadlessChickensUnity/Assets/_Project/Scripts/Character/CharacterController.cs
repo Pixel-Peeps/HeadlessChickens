@@ -7,9 +7,10 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
     {
         private InputControls _controls;
 
-        private Vector3 _newPosition;
-        private Vector2 _movDirection;
+        private Vector3 _newPosition = Vector3.zero;
+        private Vector2 _movDirection = Vector2.zero;
         private float _rotateDirection;
+        private bool _strafeActive;
         
         [Header("Movement")]
         [SerializeField] private float moveSpeed;
@@ -27,11 +28,15 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             _controls = new InputControls();
             _controls.Enable();
 
-            _controls.Player.Move.started += MoveStarted;
+            _controls.Player.Move.performed += MoveStarted;
             _controls.Player.Move.canceled += MoveCanceled;
-            _controls.Player.Rotate.started += RotateStarted;
+            _controls.Player.Rotate.performed += RotateStarted;
             _controls.Player.Rotate.canceled += RotateCanceled;
+            _controls.Player.Strafe.performed += _ => _strafeActive = true;
+            _controls.Player.Strafe.canceled += _ => _strafeActive = false;
         }
+
+
 
         private void Start()
         {
@@ -47,12 +52,18 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         private void Move()
         { 
-            _newPosition += transform.forward * (_movDirection.y * moveSpeed);
+            if (_strafeActive)
+                _newPosition += new Vector3(_movDirection.x, 0, _movDirection.y) * moveSpeed;
+            
+            else
+                _newPosition += transform.forward * (_movDirection.y * moveSpeed);
+            Debug.Log(_movDirection);
             transform.position = Vector3.Lerp(transform.position, _newPosition, Time.deltaTime * moveTime);
         }
 
         private void Rotate()
         {
+            if(_strafeActive) return;
             newRotation *= Quaternion.Euler(Vector3.up * _rotateDirection);
             newRotation *= Quaternion.Euler(Vector3.up * (_movDirection.x * rotationSpeed));
             transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, Time.deltaTime * rotationTime);
@@ -83,7 +94,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         {
             _movDirection = Vector2.zero;
         }
-#endregion
+
+        #endregion
 
     }
 }
