@@ -25,6 +25,13 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         
         private void Awake()
         {
+            
+            /*####################################
+             *           INPUT KEY ACTIONS       *
+             * ##################################*/
+            
+            #region INPUT KEY ACTIONS
+            
             _controls = new InputControls();
             _controls.Enable();
 
@@ -34,10 +41,10 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             _controls.Player.Rotate.canceled += RotateCanceled;
             _controls.Player.Strafe.performed += _ => _strafeActive = true;
             _controls.Player.Strafe.canceled += _ => _strafeActive = false;
+            
+            #endregion
+            
         }
-
-
-
         private void Start()
         {
             newRotation = transform.rotation;
@@ -51,21 +58,19 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         }
 
         private void Move()
-        { 
-            if (_strafeActive)
-                _newPosition += new Vector3(_movDirection.x, 0, _movDirection.y) * moveSpeed;
+        {
             
-            else
-                _newPosition += transform.forward * (_movDirection.y * moveSpeed);
-            Debug.Log(_movDirection);
+            _newPosition += _strafeActive      
+                ? new Vector3(_movDirection.x, 0, _movDirection.y) * moveSpeed      // unlock side movement when strafe is active
+                : transform.forward * (_movDirection.y * moveSpeed);                    // only uses forward as rotation is handled in place of going sideways.
             transform.position = Vector3.Lerp(transform.position, _newPosition, Time.deltaTime * moveTime);
         }
 
         private void Rotate()
         {
-            if(_strafeActive) return;
-            newRotation *= Quaternion.Euler(Vector3.up * _rotateDirection);
-            newRotation *= Quaternion.Euler(Vector3.up * (_movDirection.x * rotationSpeed));
+            //NOTE: MAY NEED TO SWITCH LEFT/RIGHT IN REVERSE
+             if(_strafeActive) return;                                                  // lock rotation when in strafe mode
+            newRotation *= Quaternion.Euler(Vector3.up * (_rotateDirection * rotationSpeed));
             transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, Time.deltaTime * rotationTime);
         }
         
@@ -87,7 +92,6 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         private void MoveStarted(InputAction.CallbackContext obj)
         {
             _movDirection = obj.ReadValue<Vector2>();
-
         }
 
         private void MoveCanceled(InputAction.CallbackContext obj)
