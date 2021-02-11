@@ -1,0 +1,36 @@
+﻿using System;
+using PixelPeeps.HeadlessChickens.UI;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+namespace PixelPeeps.HeadlessChickens.GameState
+{
+    public class GameSceneState : GameState
+    {
+        public GameSceneState(GameStateManager stateManager) : base(stateManager){ }
+        
+        public override void StateEnter()
+        {
+            StateManager.LoadNextScene(StateManager.playScene);
+        }
+
+        public override void OnSceneLoad()
+        {
+            GameObject resultsScreenManager = GameObject.FindGameObjectWithTag("ResultsScreenManager");
+                
+            if (resultsScreenManager != null)
+            {
+                StateManager.resultsScreenManager = resultsScreenManager.GetComponent<ResultsScreenManager>();
+            }
+            
+            else
+            {
+                Debug.LogError("Object tagged EndManager was not found in scene. Make sure to add it!");
+            }
+        }
+
+        public override void StateExit()
+        {
+        }
+    }
+}

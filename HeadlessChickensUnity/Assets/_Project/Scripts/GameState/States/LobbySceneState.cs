@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace PixelPeeps.HeadlessChickens.Managers
+namespace PixelPeeps.HeadlessChickens.GameState
 {
     public class LobbySceneState : GameState
     {
@@ -11,18 +11,17 @@ namespace PixelPeeps.HeadlessChickens.Managers
         public override void StateEnter()
         {
             Debug.Log("<color=green> Entered LobbyScene state </color>");
-            LoadScene(StateManager.lobbyScene);
+            StateManager.LoadNextScene(StateManager.lobbyScene);
+        }
+
+        public override void OnSceneLoad()
+        {
+            throw new NotImplementedException();
         }
 
         public override void StateExit()
         {
             Debug.Log("<color=red> Exited LobbyScene state </color>");
-            StateManager.lobbyScreenCanvas.SetActive(false);
-        }
-
-        public override void LoadScene(string scene)
-        {
-            SceneManager.LoadSceneAsync(scene);
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace PixelPeeps.HeadlessChickens.Managers
+﻿using UnityEngine;
+
+namespace PixelPeeps.HeadlessChickens.GameState
 {
     public abstract class GameState
     {
@@ -10,7 +12,7 @@
         }
 
         public abstract void StateEnter();
+        public abstract void OnSceneLoad();
         public abstract void StateExit();
-        public abstract void LoadScene(string scene);
     }
 }

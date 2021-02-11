@@ -2,10 +2,12 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace PixelPeeps.HeadlessChickens.Managers
+namespace PixelPeeps.HeadlessChickens.GameState
 {
     public class GameStateChangeButton : MonoBehaviour
     {
+        // Mostly for testing changes between states, this will probably be changed as the point is to avoid enums 
+        
         public eGameStates stateToChangeTo;
         private GameState newState;
 
@@ -54,6 +56,22 @@ namespace PixelPeeps.HeadlessChickens.Managers
                 case eGameStates.PlayScene:
                     Debug.Log("Enter Switch on " + gameObject.name);
                     newState = new GameSceneState(GameStateManager.Instance);
+                    break;
+                
+                case eGameStates.ChickenWin:
+                    newState = new ChickenWinState(GameStateManager.Instance);
+                    break;
+                
+                case eGameStates.ChickenLoss:
+                    newState = new ChickenLossState(GameStateManager.Instance);
+                    break;
+                
+                case eGameStates.FoxWin:
+                    newState = new FoxWinState(GameStateManager.Instance);
+                    break;
+                
+                case eGameStates.FoxLoss:
+                    newState = new FoxLossState(GameStateManager.Instance);
                     break;
                 
                 default:
