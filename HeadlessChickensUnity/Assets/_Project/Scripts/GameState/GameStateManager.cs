@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace PixelPeeps.HeadlessChickens.Managers
+namespace PixelPeeps.HeadlessChickens.GameState
 {
     public class GameStateManager : MonoBehaviour
     {
@@ -12,15 +12,35 @@ namespace PixelPeeps.HeadlessChickens.Managers
             set => _instance = value;
         }
 
+        private bool initialised;
         private GameState currentState;
-        
-        [Header("GUI Elements")] 
+
+        #region GUI Elements
+
+        [Header("GUI Prefabs")] 
         public GameObject splashScreenCanvas;
         public GameObject mainMenuCanvas;
         public GameObject storeScreenCanvas;
         public GameObject lobbyScreenCanvas;
-        public GameObject playScreenCanvas;
+        public GameObject playSceneHUD;
+        public GameObject chickenLossCanvas;
+        public GameObject chickenWinCanvas;
+        public GameObject foxLossCanvas;
+        public GameObject foxWinCanvas;
+        
+        // [Header("GUI Instances")]
+        // public GameObject splashScreenCanvasInstance;
+        // public GameObject mainMenuCanvasInstance;
+        // public GameObject storeScreenCanvasInstance;
+        // public GameObject lobbyScreenCanvasInstance;
+        // public GameObject playSceneHUDInstance;
+        // public GameObject chickenLossCanvasInstance;
+        // public GameObject chickenWinCanvasInstance;
+        // public GameObject foxLossCanvasInstance;
+        // public GameObject foxWinCanvasInstance;
 
+        #endregion
+        
         [Header("Game Scenes")] 
         [HideInInspector] public string menuScene = "MenuScene";
         [HideInInspector] public string lobbyScene = "LobbyScene";
@@ -32,7 +52,7 @@ namespace PixelPeeps.HeadlessChickens.Managers
             
             if (_instance != null && _instance != this)    
             {
-                Destroy(this.gameObject);
+                Destroy(gameObject);
             }
             else
             {
@@ -44,8 +64,6 @@ namespace PixelPeeps.HeadlessChickens.Managers
 
         private void Initialise()
         {
-            LoadScreenGUI();
-            
             currentState = new SplashScreenState(this);
             currentState.StateEnter();
         }
@@ -68,6 +86,28 @@ namespace PixelPeeps.HeadlessChickens.Managers
             
             storeScreenCanvas = Instantiate(storeScreenCanvas);
             storeScreenCanvas.SetActive(false);
+        }
+
+        public GameObject InstantiateGUI(GameObject objectToInstantiate)
+        {
+            GameObject newInstance = Instantiate(objectToInstantiate);
+            return newInstance;
+        }
+
+        public void DestroyGUI(GameObject objectToDestroy)
+        {
+            Destroy(objectToDestroy);
+        }
+
+        public void LoadNextScene(string sceneName)
+        {
+            Scene activeScene = SceneManager.GetActiveScene();
+            
+            if (activeScene.name != sceneName)
+            {
+                SceneManager.LoadSceneAsync(sceneName);
+                //SceneManager.UnloadSceneAsync(activeScene);
+            }
         }
     }
 }

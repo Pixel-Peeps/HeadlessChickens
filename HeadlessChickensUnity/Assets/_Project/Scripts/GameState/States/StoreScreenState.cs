@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace PixelPeeps.HeadlessChickens.Managers
+namespace PixelPeeps.HeadlessChickens.GameState
 {
     public class StoreScreenState : GameState
     {
@@ -9,19 +9,13 @@ namespace PixelPeeps.HeadlessChickens.Managers
         
         public override void StateEnter()
         {
-            Debug.Log("<color=green> Entered StoreScreen state </color>");
+            StateManager.LoadNextScene(StateManager.menuScene);
             StateManager.storeScreenCanvas.SetActive(true);
         }
 
         public override void StateExit()
         {
-            Debug.Log("<color=red> Exited StoreScreen state </color>");
             StateManager.storeScreenCanvas.SetActive(false);
-        }
-
-        public override void LoadScene(string scene)
-        {
-            SceneManager.LoadSceneAsync(scene);
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace PixelPeeps.HeadlessChickens.Managers
+namespace PixelPeeps.HeadlessChickens.GameState
 {
     public class SplashScreenState : GameState
     {
@@ -9,8 +9,8 @@ namespace PixelPeeps.HeadlessChickens.Managers
         
         public override void StateEnter()
         {
-            Debug.Log("<color=green> Entered SplashScreen state </color>");
-           
+            StateManager.LoadNextScene(StateManager.menuScene);
+                        
             if (StateManager.splashScreenCanvas != null)
             {
                 StateManager.splashScreenCanvas.SetActive(true);
@@ -19,13 +19,7 @@ namespace PixelPeeps.HeadlessChickens.Managers
 
         public override void StateExit()
         {
-            Debug.Log("<color=red> Exited SplashScreen state </color>");
             StateManager.splashScreenCanvas.SetActive(false);
-        }
-        
-        public override void LoadScene(string scene)
-        {
-            SceneManager.LoadSceneAsync(scene);
         }
     }
 }
