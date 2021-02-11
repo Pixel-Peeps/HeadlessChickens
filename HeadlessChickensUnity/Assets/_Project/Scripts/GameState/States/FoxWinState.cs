@@ -13,6 +13,11 @@ namespace PixelPeeps.HeadlessChickens.GameState
             StateManager.foxWinCanvas.SetActive(true);
         }
 
+        public override void OnSceneLoad()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public override void StateExit()
         {
             StateManager.foxWinCanvas.SetActive(false);

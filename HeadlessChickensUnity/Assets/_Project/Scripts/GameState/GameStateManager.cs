@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using PixelPeeps.HeadlessChickens.UI;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace PixelPeeps.HeadlessChickens.GameState
@@ -17,28 +19,13 @@ namespace PixelPeeps.HeadlessChickens.GameState
 
         #region GUI Elements
 
-        [Header("GUI Prefabs")] 
-        public GameObject splashScreenCanvas;
-        public GameObject mainMenuCanvas;
-        public GameObject storeScreenCanvas;
-        public GameObject lobbyScreenCanvas;
-        public GameObject playSceneHUD;
+        [Header("GUI")] 
+        [HideInInspector] public MenuManager menuManager;
+
         public GameObject chickenLossCanvas;
         public GameObject chickenWinCanvas;
         public GameObject foxLossCanvas;
         public GameObject foxWinCanvas;
-        
-        // [Header("GUI Instances")]
-        // public GameObject splashScreenCanvasInstance;
-        // public GameObject mainMenuCanvasInstance;
-        // public GameObject storeScreenCanvasInstance;
-        // public GameObject lobbyScreenCanvasInstance;
-        // public GameObject playSceneHUDInstance;
-        // public GameObject chickenLossCanvasInstance;
-        // public GameObject chickenWinCanvasInstance;
-        // public GameObject foxLossCanvasInstance;
-        // public GameObject foxWinCanvasInstance;
-
         #endregion
         
         [Header("Game Scenes")] 
@@ -64,6 +51,8 @@ namespace PixelPeeps.HeadlessChickens.GameState
 
         private void Initialise()
         {
+            menuManager = FindObjectOfType<MenuManager>();
+            
             currentState = new SplashScreenState(this);
             currentState.StateEnter();
         }
@@ -74,18 +63,6 @@ namespace PixelPeeps.HeadlessChickens.GameState
 
             currentState = newState;
             currentState.StateEnter();
-        }
-
-        public void LoadScreenGUI()
-        {
-            splashScreenCanvas = Instantiate(splashScreenCanvas);
-            splashScreenCanvas.SetActive(false);
-            
-            mainMenuCanvas = Instantiate(mainMenuCanvas);
-            mainMenuCanvas.SetActive(false);
-            
-            storeScreenCanvas = Instantiate(storeScreenCanvas);
-            storeScreenCanvas.SetActive(false);
         }
 
         public GameObject InstantiateGUI(GameObject objectToInstantiate)
@@ -105,9 +82,43 @@ namespace PixelPeeps.HeadlessChickens.GameState
             
             if (activeScene.name != sceneName)
             {
-                SceneManager.LoadSceneAsync(sceneName);
+                StartCoroutine(AsyncSceneLoadCoroutine(sceneName));
                 //SceneManager.UnloadSceneAsync(activeScene);
             }
+        }
+
+        private IEnumerator AsyncSceneLoadCoroutine(string sceneName)
+        {
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
+
+            while (!asyncLoad.isDone)
+            {
+                yield return new WaitForSecondsRealtime(0.2f);
+                Debug.Log("Waiting for async load...");
+            }
+            
+            Debug.Log("Async load complete!");
+            
+            GameObject menuManagerObj = GameObject.FindGameObjectWithTag("MenuManager");
+
+            if (menuManagerObj != null)
+            {
+                Debug.Log("MenuManager object was found. Getting component..");
+                menuManager = menuManagerObj.GetComponent<MenuManager>();
+
+                if (menuManager != null)
+                {
+                    Debug.Log("MenuManager component was found! Executing state OnSceneLoad function");
+                    currentState.OnSceneLoad();
+                }
+            }
+            
+            yield return null;
+        }
+
+        public void OnSceneLoad()
+        {
+            
         }
     }
 }

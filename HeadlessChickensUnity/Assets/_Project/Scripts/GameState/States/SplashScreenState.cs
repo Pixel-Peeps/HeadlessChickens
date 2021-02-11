@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using PixelPeeps.HeadlessChickens.UI;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace PixelPeeps.HeadlessChickens.GameState
@@ -10,16 +11,23 @@ namespace PixelPeeps.HeadlessChickens.GameState
         public override void StateEnter()
         {
             StateManager.LoadNextScene(StateManager.menuScene);
-                        
-            if (StateManager.splashScreenCanvas != null)
+        }
+
+        public override void OnSceneLoad()
+        {
+            if (StateManager.menuManager != null)
             {
-                StateManager.splashScreenCanvas.SetActive(true);
+                StateManager.menuManager.splashScreenCanvas.SetActive(true);
+            }
+            else
+            {
+                Debug.LogError("No menu manager found in scene");
             }
         }
 
         public override void StateExit()
         {
-            StateManager.splashScreenCanvas.SetActive(false);
+            StateManager.menuManager.splashScreenCanvas.SetActive(false);
         }
     }
 }

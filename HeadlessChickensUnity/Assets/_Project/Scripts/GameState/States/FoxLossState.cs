@@ -13,6 +13,11 @@ namespace PixelPeeps.HeadlessChickens.GameState
             StateManager.foxLossCanvas = StateManager.InstantiateGUI(StateManager.foxLossCanvas);
         }
 
+        public override void OnSceneLoad()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public override void StateExit()
         {
             StateManager.DestroyGUI(StateManager.foxLossCanvas);

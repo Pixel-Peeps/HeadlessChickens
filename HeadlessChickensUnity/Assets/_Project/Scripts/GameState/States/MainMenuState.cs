@@ -10,12 +10,17 @@ namespace PixelPeeps.HeadlessChickens.GameState
         public override void StateEnter()
         {
             StateManager.LoadNextScene(StateManager.menuScene);
-            StateManager.mainMenuCanvas.SetActive(true);
+            StateManager.menuManager.mainMenuCanvas.SetActive(true);
+        }
+
+        public override void OnSceneLoad()
+        {
+            throw new System.NotImplementedException();
         }
 
         public override void StateExit()
         {
-            StateManager.mainMenuCanvas.SetActive(false);
+            StateManager.menuManager.mainMenuCanvas.SetActive(false);
         }
     }
 }

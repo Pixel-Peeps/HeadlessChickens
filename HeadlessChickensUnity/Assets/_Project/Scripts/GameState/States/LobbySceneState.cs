@@ -14,6 +14,11 @@ namespace PixelPeeps.HeadlessChickens.GameState
             StateManager.LoadNextScene(StateManager.lobbyScene);
         }
 
+        public override void OnSceneLoad()
+        {
+            throw new NotImplementedException();
+        }
+
         public override void StateExit()
         {
             Debug.Log("<color=red> Exited LobbyScene state </color>");

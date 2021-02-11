@@ -13,6 +13,11 @@ namespace PixelPeeps.HeadlessChickens.GameState
             StateManager.LoadNextScene(StateManager.playScene);
         }
 
+        public override void OnSceneLoad()
+        {
+            throw new NotImplementedException();
+        }
+
         public override void StateExit()
         {
         }

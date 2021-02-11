@@ -12,6 +12,7 @@ namespace PixelPeeps.HeadlessChickens.GameState
         }
 
         public abstract void StateEnter();
+        public abstract void OnSceneLoad();
         public abstract void StateExit();
     }
 }
