@@ -9,8 +9,7 @@ namespace PixelPeeps.HeadlessChickens.GameState
         
         public override void StateEnter()
         {
-            StateManager.LoadNextScene(StateManager.playScene);
-            StateManager.foxLossCanvas = StateManager.InstantiateGUI(StateManager.foxLossCanvas);
+            StateManager.resultsScreenManager.foxLossCanvas.SetActive(true);
         }
 
         public override void OnSceneLoad()
@@ -20,7 +19,7 @@ namespace PixelPeeps.HeadlessChickens.GameState
 
         public override void StateExit()
         {
-            StateManager.DestroyGUI(StateManager.foxLossCanvas);
+            StateManager.resultsScreenManager.foxLossCanvas.SetActive(false);
         }
     }
 }

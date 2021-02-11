@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using PixelPeeps.HeadlessChickens.UI;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 namespace PixelPeeps.HeadlessChickens.GameState
@@ -21,11 +22,7 @@ namespace PixelPeeps.HeadlessChickens.GameState
 
         [Header("GUI")] 
         [HideInInspector] public MenuManager menuManager;
-
-        public GameObject chickenLossCanvas;
-        public GameObject chickenWinCanvas;
-        public GameObject foxLossCanvas;
-        public GameObject foxWinCanvas;
+        [HideInInspector] public ResultsScreenManager resultsScreenManager;
         #endregion
         
         [Header("Game Scenes")] 
@@ -101,11 +98,6 @@ namespace PixelPeeps.HeadlessChickens.GameState
             currentState.OnSceneLoad();
             
             yield return null;
-        }
-
-        public void OnSceneLoad()
-        {
-            
         }
     }
 }

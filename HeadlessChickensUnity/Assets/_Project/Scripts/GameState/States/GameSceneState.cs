@@ -1,4 +1,5 @@
 ﻿using System;
+using PixelPeeps.HeadlessChickens.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,7 +16,17 @@ namespace PixelPeeps.HeadlessChickens.GameState
 
         public override void OnSceneLoad()
         {
-            throw new NotImplementedException();
+            GameObject resultsScreenManager = GameObject.FindGameObjectWithTag("ResultsScreenManager");
+                
+            if (resultsScreenManager != null)
+            {
+                StateManager.resultsScreenManager = resultsScreenManager.GetComponent<ResultsScreenManager>();
+            }
+            
+            else
+            {
+                Debug.LogError("Object tagged EndManager was not found in scene. Make sure to add it!");
+            }
         }
 
         public override void StateExit()

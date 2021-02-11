@@ -9,8 +9,7 @@ namespace PixelPeeps.HeadlessChickens.GameState
         
         public override void StateEnter()
         {
-            StateManager.LoadNextScene(StateManager.playScene);
-            StateManager.chickenWinCanvas.SetActive(true);
+            StateManager.resultsScreenManager.chickenWinCanvas.SetActive(true);
         }
 
         public override void OnSceneLoad()
@@ -20,7 +19,7 @@ namespace PixelPeeps.HeadlessChickens.GameState
 
         public override void StateExit()
         {
-            StateManager.chickenWinCanvas.SetActive(false);
+            StateManager.resultsScreenManager.chickenWinCanvas.SetActive(false);
         }
     }
 }
