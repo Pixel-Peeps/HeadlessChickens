@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
+using Cinemachine;
 
 namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 {
@@ -7,6 +8,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
     {
         private InputControls _controls;
         private CharacterBase _character;
+        [SerializeField] CinemachineFreeLook camera;
+        private Transform camTransform;
 
         private Vector3 _newPosition = Vector3.zero;
         [SerializeField] private Vector2 _movDirection = Vector2.zero;
@@ -28,6 +31,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         {
             _character = GetComponent<CharacterBase>();
             
+
             /*####################################
              *           INPUT KEY ACTIONS       *
              * ##################################*/
@@ -39,8 +43,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
             _controls.Player.Move.performed += MoveStarted;
             _controls.Player.Move.canceled += MoveCanceled;
-            _controls.Player.Rotate.performed += RotateStarted;
-            _controls.Player.Rotate.canceled += RotateCanceled;
+            //_controls.Player.Rotate.performed += RotateStarted;
+            //_controls.Player.Rotate.canceled += RotateCanceled;
             _controls.Player.Strafe.performed += _ => _strafeActive = true;
             _controls.Player.Strafe.canceled += _ => _strafeActive = false;
             
@@ -55,26 +59,29 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         private void FixedUpdate()
         {
+            camTransform = camera.transform;
             Move();
-            Rotate();
+            // Rotate();
         }
 
         private void Move()
         {
-            
-            _newPosition += _strafeActive      
-                ?  transform.forward * (_movDirection.y * moveSpeed) + transform.right * (_movDirection.x * moveSpeed)      // unlock side movement when strafe is active
-                : transform.forward * (_movDirection.y * moveSpeed);                                                        // only uses forward as rotation is handled in place of going sideways.
+
+            _newPosition +=
+                 camTransform.forward * (_movDirection.y * moveSpeed) + camTransform.right * (_movDirection.x * moveSpeed);   // new Vector3(_movDirection.x, 0, _movDirection.y) * moveSpeed;
+            if (!_strafeActive) transform.LookAt(_newPosition);
+
+
             transform.position = Vector3.Lerp(transform.position, _newPosition, Time.deltaTime * moveTime);
         }
 
-        private void Rotate()
-        {
-            //NOTE: MAY NEED TO SWITCH LEFT/RIGHT IN REVERSE
-             if(_strafeActive) return;                                                  // lock rotation when in strafe mode
-            newRotation *= Quaternion.Euler(Vector3.up * (_rotateDirection * rotationSpeed));
-            transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, Time.deltaTime * rotationTime);
-        }
+        //private void Rotate()
+        //{
+        //    //NOTE: MAY NEED TO SWITCH LEFT/RIGHT IN REVERSE
+        //     if(_strafeActive) return;                                                  // lock rotation when in strafe mode
+        //    newRotation *= Quaternion.Euler(Vector3.up * (_rotateDirection * rotationSpeed));
+        //    transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, Time.deltaTime * rotationTime);
+        //}
         
         /*##################################
          *          INPUT CALLBACKS        *

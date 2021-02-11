@@ -326,10 +326,10 @@ public class @InputControls : IInputActionCollection, IDisposable
             ""id"": ""a55f9a2f-3f89-4d9b-bb20-ca1df5dcfd1d"",
             ""actions"": [
                 {
-                    ""name"": ""replacethis"",
-                    ""type"": ""Button"",
+                    ""name"": ""CameraMove"",
+                    ""type"": ""Value"",
                     ""id"": ""d8828bc7-d3bb-46e2-a34f-1770df4c5dd2"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -337,12 +337,23 @@ public class @InputControls : IInputActionCollection, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""4ec9e41a-2e19-40bc-ac82-3068afb54c79"",
-                    ""path"": ""<Keyboard>/g"",
+                    ""id"": ""8bd5802b-ad43-48b9-9eb0-14398008254b"",
+                    ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard & Mouse"",
-                    ""action"": ""replacethis"",
+                    ""action"": ""CameraMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6cdfd8f7-6d3b-45a5-8b07-fd7cd37e5edb"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GamePad"",
+                    ""action"": ""CameraMove"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -413,7 +424,7 @@ public class @InputControls : IInputActionCollection, IDisposable
         m_Player_Strafe = m_Player.FindAction("Strafe", throwIfNotFound: true);
         // Camera
         m_Camera = asset.FindActionMap("Camera", throwIfNotFound: true);
-        m_Camera_replacethis = m_Camera.FindAction("replacethis", throwIfNotFound: true);
+        m_Camera_CameraMove = m_Camera.FindAction("CameraMove", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_replacethis = m_UI.FindAction("replacethis", throwIfNotFound: true);
@@ -515,12 +526,12 @@ public class @InputControls : IInputActionCollection, IDisposable
     // Camera
     private readonly InputActionMap m_Camera;
     private ICameraActions m_CameraActionsCallbackInterface;
-    private readonly InputAction m_Camera_replacethis;
+    private readonly InputAction m_Camera_CameraMove;
     public struct CameraActions
     {
         private @InputControls m_Wrapper;
         public CameraActions(@InputControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @replacethis => m_Wrapper.m_Camera_replacethis;
+        public InputAction @CameraMove => m_Wrapper.m_Camera_CameraMove;
         public InputActionMap Get() { return m_Wrapper.m_Camera; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -530,16 +541,16 @@ public class @InputControls : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_CameraActionsCallbackInterface != null)
             {
-                @replacethis.started -= m_Wrapper.m_CameraActionsCallbackInterface.OnReplacethis;
-                @replacethis.performed -= m_Wrapper.m_CameraActionsCallbackInterface.OnReplacethis;
-                @replacethis.canceled -= m_Wrapper.m_CameraActionsCallbackInterface.OnReplacethis;
+                @CameraMove.started -= m_Wrapper.m_CameraActionsCallbackInterface.OnCameraMove;
+                @CameraMove.performed -= m_Wrapper.m_CameraActionsCallbackInterface.OnCameraMove;
+                @CameraMove.canceled -= m_Wrapper.m_CameraActionsCallbackInterface.OnCameraMove;
             }
             m_Wrapper.m_CameraActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @replacethis.started += instance.OnReplacethis;
-                @replacethis.performed += instance.OnReplacethis;
-                @replacethis.canceled += instance.OnReplacethis;
+                @CameraMove.started += instance.OnCameraMove;
+                @CameraMove.performed += instance.OnCameraMove;
+                @CameraMove.canceled += instance.OnCameraMove;
             }
         }
     }
@@ -603,7 +614,7 @@ public class @InputControls : IInputActionCollection, IDisposable
     }
     public interface ICameraActions
     {
-        void OnReplacethis(InputAction.CallbackContext context);
+        void OnCameraMove(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
