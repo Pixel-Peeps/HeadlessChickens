@@ -97,21 +97,8 @@ namespace PixelPeeps.HeadlessChickens.GameState
                 Debug.Log("Waiting for async load...");
             }
             
-            Debug.Log("Async load complete!");
-            
-            GameObject menuManagerObj = GameObject.FindGameObjectWithTag("MenuManager");
-
-            if (menuManagerObj != null)
-            {
-                Debug.Log("MenuManager object was found. Getting component..");
-                menuManager = menuManagerObj.GetComponent<MenuManager>();
-
-                if (menuManager != null)
-                {
-                    Debug.Log("MenuManager component was found! Executing state OnSceneLoad function");
-                    currentState.OnSceneLoad();
-                }
-            }
+            Debug.Log("Async load complete! Running state OnSceneLoad()");
+            currentState.OnSceneLoad();
             
             yield return null;
         }

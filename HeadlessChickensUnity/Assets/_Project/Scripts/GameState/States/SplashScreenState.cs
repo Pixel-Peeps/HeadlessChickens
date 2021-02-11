@@ -15,14 +15,10 @@ namespace PixelPeeps.HeadlessChickens.GameState
 
         public override void OnSceneLoad()
         {
-            if (StateManager.menuManager != null)
-            {
-                StateManager.menuManager.splashScreenCanvas.SetActive(true);
-            }
-            else
-            {
-                Debug.LogError("No menu manager found in scene");
-            }
+            GameObject menuManagerObj = GameObject.FindGameObjectWithTag("MenuManager");
+            StateManager.menuManager = menuManagerObj.GetComponent<MenuManager>();
+            
+            StateManager.menuManager.splashScreenCanvas.SetActive(true);
         }
 
         public override void StateExit()
