@@ -8,7 +8,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
     {
         private InputControls _controls;
         private CharacterBase _character;
-        [SerializeField] CinemachineFreeLook camera;
+        [SerializeField] GameObject camera;
         private Transform camTransform;
 
         private Vector3 _newPosition = Vector3.zero;
@@ -66,12 +66,10 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         private void Move()
         {
-
-            _newPosition +=
-                 camTransform.forward * (_movDirection.y * moveSpeed) + camTransform.right * (_movDirection.x * moveSpeed);   // new Vector3(_movDirection.x, 0, _movDirection.y) * moveSpeed;
+            Vector3 tempForward = new Vector3(camTransform.forward.x, 0, camTransform.forward.z);
+            Vector3 tempRight = new Vector3(camTransform.right.x, 0, camTransform.right.z);
+            _newPosition += tempForward * (_movDirection.y * moveSpeed) + tempRight * (_movDirection.x * moveSpeed);   // new Vector3(_movDirection.x, 0, _movDirection.y) * moveSpeed;
             if (!_strafeActive) transform.LookAt(_newPosition);
-
-
             transform.position = Vector3.Lerp(transform.position, _newPosition, Time.deltaTime * moveTime);
         }
 
