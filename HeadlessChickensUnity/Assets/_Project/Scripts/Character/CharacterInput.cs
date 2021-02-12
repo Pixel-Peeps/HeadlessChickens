@@ -14,7 +14,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         private Rigidbody rigidbody;
         private Transform camTransform;
 
-        private Vector3 _newPosition = Vector3.zero;
+        [SerializeField] private Vector3 _newPosition = Vector3.zero;
         [SerializeField] private Vector2 _movDirection = Vector2.zero;
         private float _rotateDirection;
         private bool _strafeActive;
@@ -65,9 +65,9 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         {
             if (!_isGrounded) return;
             //_newPosition.y += jumpForce;
-            Vector3 jumpMove = transform.forward + new Vector3(_movDirection.x, 1, _movDirection.y);
-            rigidbody.AddForce(jumpMove * jumpForce, ForceMode.Impulse);
-           // _newPosition.y = 0;
+            Vector3 jumpMove = transform.forward + new Vector3(_movDirection.x, 1, _movDirection.y).normalized;
+            rigidbody.velocity = (transform.forward + Vector3.up) * jumpForce;
+            
             _isGrounded = false;
         }
 
@@ -112,6 +112,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
          {
              if (other.gameObject.CompareTag("Ground"))
              {
+                 _newPosition = transform.position;
                  _isGrounded = true;
                  // rigidbody.isKinematic = true;
              }
