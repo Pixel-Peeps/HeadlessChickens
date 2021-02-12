@@ -5,14 +5,13 @@ using System;
 
 namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 {
-[RequireComponent(typeof(CharacterController))]
     public class CharacterInput : MonoBehaviour
     {
         private InputControls _controls;
         private CharacterBase _character;
         private CharacterController _controller;
         [SerializeField] GameObject camera;
-       // private Rigidbody rigidbody;
+        private Rigidbody rigidbody;
         private Transform camTransform;
 
         private Vector3 _newPosition = Vector3.zero;
@@ -39,7 +38,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         {
             _character = GetComponent<CharacterBase>();
             _controller = GetComponent<CharacterController>();
-            // rigidbody = GetComponent<Rigidbody>();
+             rigidbody = GetComponent<Rigidbody>();
             // rigidbody.detectCollisions = false;
 
             /*####################################
@@ -68,9 +67,13 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             if (!_isGrounded) return;
             //rigidbody.isKinematic = false;
             //rigidbody.AddForce(Vector3.up * jumpForce);
-            _characterVelocity.y = Mathf.Sqrt(jumpForce * -3.0f * _gravity);
-            _characterVelocity.y += _gravity * Time.deltaTime;
-            _controller.Move(_characterVelocity * Time.deltaTime);
+            // _characterVelocity.y = Mathf.Sqrt(jumpForce * -3.0f * _gravity);
+            // _characterVelocity.y += _gravity * Time.deltaTime;
+            // _controller.Move(_characterVelocity * Time.deltaTime);
+            _newPosition.y += jumpForce;
+            rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            //transform.position = Vector3.Lerp(transform.position, _newPosition, Time.deltaTime * moveTime);
+            _newPosition.y = 0;
             _isGrounded = false;
         }
 
