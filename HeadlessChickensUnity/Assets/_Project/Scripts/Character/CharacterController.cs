@@ -20,7 +20,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         [SerializeField] private float moveSpeed = 0;
         [SerializeField] private float moveTime = 0; 
 
-        public float stopDistance = 1f;
+        public float stopDistance = 0.1f;
         
         [Header("Rotation")]
         [SerializeField] private float rotationTime = 0;
