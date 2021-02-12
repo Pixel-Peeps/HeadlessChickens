@@ -5,12 +5,14 @@ using System;
 
 namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 {
+[RequireComponent(typeof(CharacterController))]
     public class CharacterInput : MonoBehaviour
     {
         private InputControls _controls;
         private CharacterBase _character;
+        private CharacterController _controller;
         [SerializeField] GameObject camera;
-        private Rigidbody rigidbody;
+       // private Rigidbody rigidbody;
         private Transform camTransform;
 
         private Vector3 _newPosition = Vector3.zero;
@@ -28,12 +30,15 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         [Header("Jump")]
         public bool _isGrounded = true;
         public float jumpForce = 1f;
+        private float _gravity = -9.8f;
+        private Vector3 _characterVelocity;
 
 
 
         private void Awake()
         {
             _character = GetComponent<CharacterBase>();
+            _controller = GetComponent<CharacterController>();
             // rigidbody = GetComponent<Rigidbody>();
             // rigidbody.detectCollisions = false;
 
@@ -60,13 +65,13 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         private void Jump()
         {
-            if (_isGrounded)
-            {
-                //rigidbody.isKinematic = false;
-                //rigidbody.AddForce(Vector3.up * jumpForce);
-
-                _isGrounded = false;
-            }
+            if (!_isGrounded) return;
+            //rigidbody.isKinematic = false;
+            //rigidbody.AddForce(Vector3.up * jumpForce);
+            _characterVelocity.y = Mathf.Sqrt(jumpForce * -3.0f * _gravity);
+            _characterVelocity.y += _gravity * Time.deltaTime;
+            _controller.Move(_characterVelocity * Time.deltaTime);
+            _isGrounded = false;
         }
 
         private void Start()
@@ -77,9 +82,10 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         private void FixedUpdate()
         {
             camTransform = camera.transform;
+            //_isGrounded = _controller.isGrounded;
 
 
-            
+
             // Rotate();
         }
 
@@ -88,13 +94,11 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             Vector3 tempForward = new Vector3(camTransform.forward.x, 0, camTransform.forward.z);
             Vector3 tempRight = new Vector3(camTransform.right.x, 0, camTransform.right.z);
             _newPosition += tempForward * (_movDirection.y * moveSpeed) + tempRight * (_movDirection.x * moveSpeed);   // new Vector3(_movDirection.x, 0, _movDirection.y) * moveSpeed;
-
             float distanceToDestination = Vector3.Distance(transform.position, _newPosition);
             if ( distanceToDestination < stopDistance)
             {
                 _character.SwitchState(CharacterBase.EStates.Idle);
             }
-
             if (!_strafeActive) transform.LookAt(new Vector3(_newPosition.x, transform.position.y, _newPosition.z));
             transform.position = Vector3.Lerp(transform.position, _newPosition, Time.deltaTime * moveTime);
         }
@@ -107,14 +111,14 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         //    transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, Time.deltaTime * rotationTime);
         //}
 
-        private void OnTriggerStay(Collider other)
-        {
-            if (other.gameObject.CompareTag("Ground"))
-            {
-                _isGrounded = true;
-                // rigidbody.isKinematic = true;
-            }
-        }
+         private void OnTriggerEnter(Collider other)
+         {
+             if (other.gameObject.CompareTag("Ground"))
+             {
+                 _isGrounded = true;
+                 // rigidbody.isKinematic = true;
+             }
+         }
 
 
 
