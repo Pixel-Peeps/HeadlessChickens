@@ -21,7 +21,7 @@ namespace PixelPeeps.HeadlessChickens.GameState
                 
                 if (manager == null)
                 {
-                    Debug.Log("Found NO manager on " + gameObject.name); 
+                    Debug.LogError("Found NO GameStateManager on " + gameObject.name + ". Make sure you load the scenes starting from MenuScene in order to have a GameStateManager in scene"); 
                 }
             }
             
