@@ -1,38 +1,41 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 using Cinemachine;
+using System;
 
 namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 {
-    public class CharacterController : MonoBehaviour
+    public class CharacterInput : MonoBehaviour
     {
         private InputControls _controls;
         private CharacterBase _character;
         [SerializeField] GameObject camera;
+        private Rigidbody rigidbody;
         private Transform camTransform;
 
         private Vector3 _newPosition = Vector3.zero;
         [SerializeField] private Vector2 _movDirection = Vector2.zero;
         private float _rotateDirection;
         private bool _strafeActive;
+
         
         [Header("Movement")]
         [SerializeField] private float moveSpeed = 0;
-        [SerializeField] private float moveTime = 0; 
-
+        [SerializeField] private float moveTime = 0;
         public float stopDistance = 0.1f;
-        
-        [Header("Rotation")]
-        [SerializeField] private float rotationTime = 0;
-        [SerializeField] private float rotationSpeed = 0;
-        [SerializeField] private Quaternion newRotation;
-        
-        
-        
+
+
+        [Header("Jump")]
+        public bool _isGrounded = true;
+        public float jumpForce = 1f;
+
+
+
         private void Awake()
         {
             _character = GetComponent<CharacterBase>();
-            
+            // rigidbody = GetComponent<Rigidbody>();
+            // rigidbody.detectCollisions = false;
 
             /*####################################
              *           INPUT KEY ACTIONS       *
@@ -45,17 +48,29 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
             _controls.Player.Move.performed += MoveStarted;
             _controls.Player.Move.canceled += MoveCanceled;
-            //_controls.Player.Rotate.performed += RotateStarted;
-            //_controls.Player.Rotate.canceled += RotateCanceled;
+
+            _controls.Player.Jump.performed += _ => Jump();
+
             _controls.Player.Strafe.performed += _ => _strafeActive = true;
             _controls.Player.Strafe.canceled += _ => _strafeActive = false;
             
             #endregion
             
         }
+
+        private void Jump()
+        {
+            if (_isGrounded)
+            {
+                //rigidbody.isKinematic = false;
+                //rigidbody.AddForce(Vector3.up * jumpForce);
+
+                _isGrounded = false;
+            }
+        }
+
         private void Start()
         {
-            newRotation = transform.rotation;
             _newPosition = transform.position;
         }
 
@@ -80,7 +95,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 _character.SwitchState(CharacterBase.EStates.Idle);
             }
 
-            if (!_strafeActive) transform.LookAt(_newPosition);
+            if (!_strafeActive) transform.LookAt(new Vector3(_newPosition.x, transform.position.y, _newPosition.z));
             transform.position = Vector3.Lerp(transform.position, _newPosition, Time.deltaTime * moveTime);
         }
 
@@ -91,11 +106,23 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         //    newRotation *= Quaternion.Euler(Vector3.up * (_rotateDirection * rotationSpeed));
         //    transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, Time.deltaTime * rotationTime);
         //}
-        
+
+        private void OnTriggerStay(Collider other)
+        {
+            if (other.gameObject.CompareTag("Ground"))
+            {
+                _isGrounded = true;
+                // rigidbody.isKinematic = true;
+            }
+        }
+
+
+
+
         /*##################################
          *          INPUT CALLBACKS        *
          ##################################*/
-        
+
         #region INPUT CALLBACKS
         private void RotateCanceled(InputAction.CallbackContext obj)
         {

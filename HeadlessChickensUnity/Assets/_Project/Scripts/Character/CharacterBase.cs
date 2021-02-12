@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 {
-    [RequireComponent(typeof(CharacterController))]
+    [RequireComponent(typeof(CharacterInput))]
     public class CharacterBase : MonoBehaviour
     {
-        private CharacterController _controller;
+        private CharacterInput _controller;
 
         public enum EStates
         {
@@ -29,7 +29,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         }
         private void Awake()
         {
-            _controller = GetComponent<CharacterController>();
+            _controller = GetComponent<CharacterInput>();
         }
 
         private void FixedUpdate()

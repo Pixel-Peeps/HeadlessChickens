@@ -28,6 +28,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "85ee3fce-be80-4a94-b236-c11333097e34",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -175,7 +183,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "left",
+                    "name": "right",
                     "id": "dfa5d0b2-1c34-4e36-93e8-89ffad3493c4",
                     "path": "<Gamepad>/leftStick/right",
                     "interactions": "",
@@ -186,7 +194,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "right",
+                    "name": "left",
                     "id": "49b09655-225f-4604-84b2-78468938a081",
                     "path": "<Gamepad>/leftStick/left",
                     "interactions": "",
@@ -303,6 +311,28 @@
                     "processors": "",
                     "groups": "Keyboard & Mouse",
                     "action": "Strafe",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "325b3796-77d8-4e1b-9bf2-131344d9fe76",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e6a9aa8b-bb20-4146-af70-71ec1e3acc2f",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
