@@ -38,12 +38,11 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         {
             _character = GetComponent<CharacterBase>();
             _controller = GetComponent<CharacterController>();
-             rigidbody = GetComponent<Rigidbody>();
-            // rigidbody.detectCollisions = false;
+            rigidbody = GetComponent<Rigidbody>();
 
-            /*####################################
-             *           INPUT KEY ACTIONS       *
-             * ##################################*/
+             /*####################################
+              *           INPUT KEY ACTIONS       *
+              * ##################################*/
             
             #region INPUT KEY ACTIONS
             
@@ -65,15 +64,10 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         private void Jump()
         {
             if (!_isGrounded) return;
-            //rigidbody.isKinematic = false;
-            //rigidbody.AddForce(Vector3.up * jumpForce);
-            // _characterVelocity.y = Mathf.Sqrt(jumpForce * -3.0f * _gravity);
-            // _characterVelocity.y += _gravity * Time.deltaTime;
-            // _controller.Move(_characterVelocity * Time.deltaTime);
-            _newPosition.y += jumpForce;
-            rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            //transform.position = Vector3.Lerp(transform.position, _newPosition, Time.deltaTime * moveTime);
-            _newPosition.y = 0;
+            //_newPosition.y += jumpForce;
+            Vector3 jumpMove = transform.forward + new Vector3(_movDirection.x, 1, _movDirection.y);
+            rigidbody.AddForce(jumpMove * jumpForce, ForceMode.Impulse);
+           // _newPosition.y = 0;
             _isGrounded = false;
         }
 
@@ -114,7 +108,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         //    transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, Time.deltaTime * rotationTime);
         //}
 
-         private void OnTriggerEnter(Collider other)
+         private void OnTriggerStay(Collider other)
          {
              if (other.gameObject.CompareTag("Ground"))
              {
@@ -123,10 +117,13 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
              }
          }
 
+         private void OnTriggerExit(Collider other)
+         {
+             _isGrounded = false;
+         }
 
 
-
-        /*##################################
+         /*##################################
          *          INPUT CALLBACKS        *
          ##################################*/
 
