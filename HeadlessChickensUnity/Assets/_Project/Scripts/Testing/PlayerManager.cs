@@ -11,6 +11,8 @@ namespace com.pixelpeeps.headlesschickens
     public class PlayerManager : MonoBehaviourPunCallbacks
     {
 
+        public Camera _camera; 
+
         [Tooltip("The current Health of our player")]
         public float Health = 10f;
 
@@ -59,7 +61,26 @@ namespace com.pixelpeeps.headlesschickens
             // Unity 5.4 has a new scene management. register a method to call CalledOnLevelWasLoaded.
             UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
             #endif
-        }
+
+            //Camera _camera = Camera.main;
+            //Camera _camera = gameObject.GetComponent<Camera>();
+
+
+            //if (_camera != null)
+            //{
+                if (photonView.IsMine)
+                {
+                    _camera.gameObject.SetActive(true);
+                    //_camera.gameObject.transform.SetParent(this.transform);
+                    //_camera.gameObject.transform.position = new Vector3(-0.43f,1.8f,-4.4f);
+                    //_camera.gameObject.transform.rotation = new Quaternion(14.6f, 0, 0,0);
+                }
+            }
+           // else
+           // {
+          //      Debug.LogError("<Color=Red><a>Missing</a></Color> CameraWork Component on playerPrefab.", this);
+          //  }
+       // }
         
         #if UNITY_5_4_OR_NEWER
         void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode loadingMode)
