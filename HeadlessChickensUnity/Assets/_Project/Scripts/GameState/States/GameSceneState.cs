@@ -25,7 +25,7 @@ namespace PixelPeeps.HeadlessChickens.GameState
             
             else
             {
-                Debug.LogError("Object tagged EndManager was not found in scene. Make sure to add it!");
+                Debug.LogError("Object tagged ResultsScreenManager was not found in scene. Make sure to add it!");
             }
         }
 

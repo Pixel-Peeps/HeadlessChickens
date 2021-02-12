@@ -80,7 +80,6 @@ namespace PixelPeeps.HeadlessChickens.GameState
             if (activeScene.name != sceneName)
             {
                 StartCoroutine(AsyncSceneLoadCoroutine(sceneName));
-                //SceneManager.UnloadSceneAsync(activeScene);
             }
         }
 
@@ -91,10 +90,8 @@ namespace PixelPeeps.HeadlessChickens.GameState
             while (!asyncLoad.isDone)
             {
                 yield return new WaitForSecondsRealtime(0.2f);
-                Debug.Log("Waiting for async load...");
             }
             
-            Debug.Log("Async load complete! Running state OnSceneLoad()");
             currentState.OnSceneLoad();
             
             yield return null;

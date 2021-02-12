@@ -43,10 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7229d22a336d33b44a787aa47222a15b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  splashScreenCanvas: {fileID: 1865406546741337702, guid: a9546767baacd034dbb2c7857481a7d4, type: 3}
-  mainMenuCanvas: {fileID: 483725998252695555, guid: b3c3d3e7e0842094fa46cd0d33886689, type: 3}
-  storeScreenCanvas: {fileID: 1865406546741337702, guid: c7049f82360c7f947aed208f8993c078, type: 3}
-  lobbyScreenCanvas: {fileID: 1865406546741337702, guid: f3dfc9e6eb4a6884394ae903d8818574, type: 3}
-  playScreenCanvas: {fileID: 1865406546741337702, guid: 2bd7ceabea91a884d9bc8b25f39d85ed, type: 3}
+  menuManager: {fileID: 0}
+  resultsScreenManager: {fileID: 0}
+  menuScene: MenuScene
   lobbyScene: LobbyScene
   playScene: PlayScene
