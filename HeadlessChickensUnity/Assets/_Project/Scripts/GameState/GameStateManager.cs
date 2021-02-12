@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Photon.Pun;
 using PixelPeeps.HeadlessChickens.UI;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -6,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 namespace PixelPeeps.HeadlessChickens.GameState
 {
-    public class GameStateManager : MonoBehaviour
+    public class GameStateManager : MonoBehaviourPunCallbacks
     {
         private static GameStateManager _instance;
         public static GameStateManager Instance
@@ -75,6 +76,9 @@ namespace PixelPeeps.HeadlessChickens.GameState
 
         public void LoadNextScene(string sceneName)
         {
+            // Pass to Launcher.cs on lobby / play scene load
+            // Launcher will connect the player to the room, and load the lobby / play scene, synced for every player
+            
             Scene activeScene = SceneManager.GetActiveScene();
             
             if (activeScene.name != sceneName)
@@ -85,8 +89,10 @@ namespace PixelPeeps.HeadlessChickens.GameState
 
         private IEnumerator AsyncSceneLoadCoroutine(string sceneName)
         {
-            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
-
+            // AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
+            PhotonNetwork.LoadLevel(sceneName);
+            AsyncOperation asyncLoad = PhotonNetwork._AsyncLevelLoadingOperation;
+            
             while (!asyncLoad.isDone)
             {
                 yield return new WaitForSecondsRealtime(0.2f);
