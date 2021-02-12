@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using PixelPeeps.HeadlessChickens.UI;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace PixelPeeps.HeadlessChickens.GameState
@@ -10,12 +11,25 @@ namespace PixelPeeps.HeadlessChickens.GameState
         public override void StateEnter()
         {
             StateManager.LoadNextScene(StateManager.menuScene);
-            StateManager.menuManager.storeScreenCanvas.SetActive(true);
+            
+            if (StateManager.menuManager.storeScreenCanvas != null)
+            {
+                StateManager.menuManager.storeScreenCanvas.SetActive(true);
+                
+                GameObject firstSelectedButton = StateManager.menuManager.storeScreenFirstSelected;
+                StateManager.menuManager.SetEventSystemCurrentSelection(firstSelectedButton);
+            }
         }
 
         public override void OnSceneLoad()
         {
-            throw new System.NotImplementedException();
+            GameObject menuManagerObj = GameObject.FindGameObjectWithTag("MenuManager");
+            StateManager.menuManager = menuManagerObj.GetComponent<MenuManager>();
+
+            StateManager.menuManager.storeScreenCanvas.SetActive(true);
+            
+            GameObject firstSelectedButton = StateManager.menuManager.storeScreenFirstSelected;
+            StateManager.menuManager.SetEventSystemCurrentSelection(firstSelectedButton);
         }
 
         public override void StateExit()

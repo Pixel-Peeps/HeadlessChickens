@@ -10,7 +10,6 @@ namespace PixelPeeps.HeadlessChickens.GameState
         
         public override void StateEnter()
         {
-            Debug.Log("<color=green> Entered LobbyScene state </color>");
             StateManager.LoadNextScene(StateManager.lobbyScene);
         }
 
@@ -21,7 +20,6 @@ namespace PixelPeeps.HeadlessChickens.GameState
 
         public override void StateExit()
         {
-            Debug.Log("<color=red> Exited LobbyScene state </color>");
         }
     }
 }

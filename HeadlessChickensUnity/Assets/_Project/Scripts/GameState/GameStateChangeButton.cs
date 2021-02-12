@@ -18,23 +18,18 @@ namespace PixelPeeps.HeadlessChickens.GameState
             if (manager == null)
             {
                 manager = FindObjectOfType<GameStateManager>();
+                
                 if (manager == null)
                 {
                     Debug.Log("Found NO manager on " + gameObject.name); 
                 }
-                else
-                {
-                    Debug.Log("Found manager: " + manager.name + " on " + gameObject.name); 
-                }
             }
             
             gameObject.GetComponent<Button>().onClick.AddListener(OnButtonClick);
-            //Debug.Log("Added OnButtonClick listener on " + gameObject.name);
         }
 
         public void OnButtonClick()
         {
-            Debug.Log("OnButtonClick on " + gameObject.name);
             switch (stateToChangeTo)
             {
                 case eGameStates.SplashScreen:
@@ -54,7 +49,6 @@ namespace PixelPeeps.HeadlessChickens.GameState
                     break;
                 
                 case eGameStates.PlayScene:
-                    Debug.Log("Enter Switch on " + gameObject.name);
                     newState = new GameSceneState(GameStateManager.Instance);
                     break;
                 

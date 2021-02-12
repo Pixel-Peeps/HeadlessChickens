@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7501125784343262428}
   m_Layer: 0
   m_Name: MenuManager
-  m_TagString: Untagged
+  m_TagString: MenuManager
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,5 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   splashScreenCanvas: {fileID: 0}
+  splashScreenFirstSelected: {fileID: 0}
   mainMenuCanvas: {fileID: 0}
+  mainMenuFirstSelected: {fileID: 0}
   storeScreenCanvas: {fileID: 0}
+  storeScreenFirstSelected: {fileID: 0}
