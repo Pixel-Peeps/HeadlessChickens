@@ -32,6 +32,14 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             _controller = GetComponent<CharacterController>();
         }
 
+        private void FixedUpdate()
+        {
+            if(State == EStates.Moving)
+            {
+                _controller.Move();
+            }
+        }
+
         public void SwitchState(EStates change)
         {
             State = change;

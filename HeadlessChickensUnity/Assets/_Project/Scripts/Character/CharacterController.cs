@@ -19,6 +19,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         [Header("Movement")]
         [SerializeField] private float moveSpeed = 0;
         [SerializeField] private float moveTime = 0; 
+
+        public float stopDistance = 1f;
         
         [Header("Rotation")]
         [SerializeField] private float rotationTime = 0;
@@ -60,15 +62,24 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         private void FixedUpdate()
         {
             camTransform = camera.transform;
-            Move();
+
+
+            
             // Rotate();
         }
 
-        private void Move()
+        public void Move()
         {
             Vector3 tempForward = new Vector3(camTransform.forward.x, 0, camTransform.forward.z);
             Vector3 tempRight = new Vector3(camTransform.right.x, 0, camTransform.right.z);
             _newPosition += tempForward * (_movDirection.y * moveSpeed) + tempRight * (_movDirection.x * moveSpeed);   // new Vector3(_movDirection.x, 0, _movDirection.y) * moveSpeed;
+
+            float distanceToDestination = Vector3.Distance(transform.position, _newPosition);
+            if ( distanceToDestination < stopDistance)
+            {
+                _character.SwitchState(CharacterBase.EStates.Idle);
+            }
+
             if (!_strafeActive) transform.LookAt(_newPosition);
             transform.position = Vector3.Lerp(transform.position, _newPosition, Time.deltaTime * moveTime);
         }
@@ -105,7 +116,6 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         private void MoveCanceled(InputAction.CallbackContext obj)
         {
             _movDirection = Vector2.zero;
-            _character.SwitchState(CharacterBase.EStates.Idle);
         }
 
         #endregion
