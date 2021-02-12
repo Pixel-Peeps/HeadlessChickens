@@ -34,7 +34,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         private void FixedUpdate()
         {
-            if(State == EStates.Moving && _controller._isGrounded == true)
+            if(State == EStates.Moving && _controller.isGrounded == true)
             {
                 _controller.Move();
             }

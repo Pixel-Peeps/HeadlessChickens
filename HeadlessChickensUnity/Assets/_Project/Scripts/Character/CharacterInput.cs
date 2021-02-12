@@ -2,34 +2,31 @@
 using UnityEngine.InputSystem;
 using Cinemachine;
 using System;
+using UnityEngine.Serialization;
 
 namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 {
+    [RequireComponent(typeof(Rigidbody))]
     public class CharacterInput : MonoBehaviour
     {
+        [Header("Required Components/Objects")]
         private InputControls _controls;
         private CharacterBase _character;
-        private CharacterController _controller;
-        [SerializeField] GameObject camera;
-        private Rigidbody rigidbody;
-        private Transform camTransform;
-
-        [SerializeField] private Vector3 _newPosition = Vector3.zero;
-        [SerializeField] private Vector2 _movDirection = Vector2.zero;
-        private float _rotateDirection;
-        private bool _strafeActive;
-
+        [SerializeField] private new GameObject camera;
+        private Rigidbody _rigidbody;
+        private Transform _camTransform;
         
         [Header("Movement")]
-        [SerializeField] private float moveSpeed = 0;
-        [SerializeField] private float moveTime = 0;
+        [SerializeField] private float moveSpeed;
+        [SerializeField] private float moveTime;
         public float stopDistance = 0.1f;
-
+        private Vector3 _newPosition = Vector3.zero;
+        private Vector2 _movDirection = Vector2.zero;
+        private bool _strafeActive;
 
         [Header("Jump")]
-        public bool _isGrounded = true;
+        public bool isGrounded = true;
         public float jumpForce = 1f;
-        private float _gravity = -9.8f;
         private Vector3 _characterVelocity;
 
 
@@ -37,8 +34,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         private void Awake()
         {
             _character = GetComponent<CharacterBase>();
-            _controller = GetComponent<CharacterController>();
-            rigidbody = GetComponent<Rigidbody>();
+            _rigidbody = GetComponent<Rigidbody>();
 
              /*####################################
               *           INPUT KEY ACTIONS       *
@@ -51,9 +47,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
             _controls.Player.Move.performed += MoveStarted;
             _controls.Player.Move.canceled += MoveCanceled;
-
             _controls.Player.Jump.performed += _ => Jump();
-
             _controls.Player.Strafe.performed += _ => _strafeActive = true;
             _controls.Player.Strafe.canceled += _ => _strafeActive = false;
             
@@ -63,12 +57,11 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         private void Jump()
         {
-            if (!_isGrounded) return;
-            //_newPosition.y += jumpForce;
-            Vector3 jumpMove = transform.forward + new Vector3(_movDirection.x, 1, _movDirection.y).normalized;
-            rigidbody.velocity = (transform.forward + Vector3.up) * jumpForce;
-            
-            _isGrounded = false;
+            // lock jump if grounded, set jump direction based on forward direction
+            // If character is not moving jump up, if is moving jump based on forward facing direction
+            if (!isGrounded) return;
+            _rigidbody.velocity = _movDirection != Vector2.zero ? (transform.forward + Vector3.up) * jumpForce : Vector3.up * jumpForce;
+            isGrounded = false;
         }
 
         private void Start()
@@ -78,67 +71,57 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         private void FixedUpdate()
         {
-            camTransform = camera.transform;
-            //_isGrounded = _controller.isGrounded;
-
-
-
-            // Rotate();
+            _camTransform = camera.transform;
         }
 
         public void Move()
         {
-            Vector3 tempForward = new Vector3(camTransform.forward.x, 0, camTransform.forward.z);
-            Vector3 tempRight = new Vector3(camTransform.right.x, 0, camTransform.right.z);
-            _newPosition += tempForward * (_movDirection.y * moveSpeed) + tempRight * (_movDirection.x * moveSpeed);   // new Vector3(_movDirection.x, 0, _movDirection.y) * moveSpeed;
+            // Check Camera facing direction
+            var forward = _camTransform.forward;
+            Vector3 tempForward = new Vector3(forward.x, 0, forward.z);
+            var right = _camTransform.right;
+            Vector3 tempRight = new Vector3(right.x, 0, right.z);
+            
+            // Set movement target based on cameras direction
+            _newPosition += tempForward * (_movDirection.y * moveSpeed) + tempRight * (_movDirection.x * moveSpeed);
+            
+            // check distance to target position
             float distanceToDestination = Vector3.Distance(transform.position, _newPosition);
-            if ( distanceToDestination < stopDistance)
-            {
-                _character.SwitchState(CharacterBase.EStates.Idle);
-            }
+            if ( distanceToDestination < stopDistance) _character.SwitchState(CharacterBase.EStates.Idle);
+            
+            // lock look at when in strafe mode
             if (!_strafeActive) transform.LookAt(new Vector3(_newPosition.x, transform.position.y, _newPosition.z));
+            
+            // move to position
             transform.position = Vector3.Lerp(transform.position, _newPosition, Time.deltaTime * moveTime);
         }
 
-        //private void Rotate()
-        //{
-        //    //NOTE: MAY NEED TO SWITCH LEFT/RIGHT IN REVERSE
-        //     if(_strafeActive) return;                                                  // lock rotation when in strafe mode
-        //    newRotation *= Quaternion.Euler(Vector3.up * (_rotateDirection * rotationSpeed));
-        //    transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, Time.deltaTime * rotationTime);
-        //}
 
-         private void OnTriggerStay(Collider other)
+        /*##################################
+         *            COLLIDERS            *
+         ##################################*/
+        
+        #region COLLIDERS
+        private void OnTriggerStay(Collider other)
          {
              if (other.gameObject.CompareTag("Ground"))
              {
                  _newPosition = transform.position;
-                 _isGrounded = true;
-                 // rigidbody.isKinematic = true;
+                 isGrounded = true;
              }
          }
 
          private void OnTriggerExit(Collider other)
          {
-             _isGrounded = false;
+             isGrounded = false;
          }
-
+#endregion
 
          /*##################################
          *          INPUT CALLBACKS        *
          ##################################*/
 
         #region INPUT CALLBACKS
-        private void RotateCanceled(InputAction.CallbackContext obj)
-        {
-            _rotateDirection = 0;
-        }
-
-        private void RotateStarted(InputAction.CallbackContext obj)
-        {
-            _rotateDirection = obj.ReadValue<float>();
-        }
-
         private void MoveStarted(InputAction.CallbackContext obj)
         {
             _movDirection = obj.ReadValue<Vector2>();
