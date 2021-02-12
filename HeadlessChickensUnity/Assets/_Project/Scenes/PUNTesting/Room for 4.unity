@@ -309,7 +309,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &431519545
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1037,6 +1037,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6619688798292813461, guid: 96459eb110bb84161998e6ce38719f82, type: 3}
+      propertyPath: playerPrefab
+      value: 
+      objectReference: {fileID: 7091701261021725693, guid: 0ad27c970ad6c4a7db0cd3725043cafa, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96459eb110bb84161998e6ce38719f82, type: 3}
 --- !u!114 &3413917925002589191 stripped

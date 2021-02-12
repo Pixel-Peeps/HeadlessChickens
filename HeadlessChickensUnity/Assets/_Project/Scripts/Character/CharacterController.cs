@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿using Photon.Pun;
+using UnityEngine;
 using UnityEngine.InputSystem;
+using Photon.Pun;
 
 namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 {
-    public class CharacterController : MonoBehaviour
+    public class CharacterController : MonoBehaviourPunCallbacks
     {
         private InputControls _controls;
         private CharacterBase _character;
@@ -26,6 +28,10 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         
         private void Awake()
         {
+            if (photonView.IsMine == false && PhotonNetwork.IsConnected == true)
+            {
+                return;
+            }
             _character = GetComponent<CharacterBase>();
             
             /*####################################

@@ -317,11 +317,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2744518cfd27dc4cb3380a56d774f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _movDirection: {x: 0, y: 0}
   moveSpeed: 0.5
-  _newRotation: {x: 0, y: 0, z: 0, w: 0}
+  moveTime: 5
   rotationTime: 5
   rotationSpeed: 8
-  moveTime: 5
+  newRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &1698191771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -334,6 +335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 451f74720277e2747923f7cc0d8bd817, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  states: 0
 --- !u!1 &1866409759
 GameObject:
   m_ObjectHideFlags: 0
