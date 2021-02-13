@@ -1769,7 +1769,31 @@ PrefabInstance:
       objectReference: {fileID: 695275324}
     - target: {fileID: 3368987847830928837, guid: ecf924ecfaacdd4478067afb214b41d7, type: 3}
       propertyPath: turnSpeed
-      value: 10
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3368987847830928837, guid: ecf924ecfaacdd4478067afb214b41d7, type: 3}
+      propertyPath: gravity
+      value: 11.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 3368987847830928837, guid: ecf924ecfaacdd4478067afb214b41d7, type: 3}
+      propertyPath: lowJumpMultiplier
+      value: 1.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 3368987847830928837, guid: ecf924ecfaacdd4478067afb214b41d7, type: 3}
+      propertyPath: fallMultiplier
+      value: 1.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 3368987847830928837, guid: ecf924ecfaacdd4478067afb214b41d7, type: 3}
+      propertyPath: velocity.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3368987847830928837, guid: ecf924ecfaacdd4478067afb214b41d7, type: 3}
+      propertyPath: grounded
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3368987847830928837, guid: ecf924ecfaacdd4478067afb214b41d7, type: 3}
+      propertyPath: jumpPower
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3370745547208646332, guid: ecf924ecfaacdd4478067afb214b41d7, type: 3}
       propertyPath: m_Name
