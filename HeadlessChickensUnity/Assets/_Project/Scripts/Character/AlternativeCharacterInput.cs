@@ -181,7 +181,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             if (input.magnitude > 0)
             {
                 Quaternion rot = Quaternion.LookRotation(intent);
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, rot, turnSpeed * Time.deltaTime);
+                transform.rotation = Quaternion.Lerp(transform.rotation, rot, turnSpeed * Time.deltaTime);
             }
 
             velocityXZ = velocity;
