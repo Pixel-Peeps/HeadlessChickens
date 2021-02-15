@@ -4,12 +4,7 @@ namespace PixelPeeps.HeadlessChickens.GameState
 {
     public abstract class GameState
     {
-        protected GameStateManager StateManager;
-
-        public GameState(GameStateManager stateManager)
-        {
-            StateManager = stateManager;
-        }
+        protected GameStateManager StateManager = GameStateManager.Instance;
 
         public abstract void StateEnter();
         public abstract void OnSceneLoad();

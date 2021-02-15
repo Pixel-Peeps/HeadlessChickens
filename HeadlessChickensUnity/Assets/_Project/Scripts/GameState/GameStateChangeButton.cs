@@ -33,41 +33,21 @@ namespace PixelPeeps.HeadlessChickens.GameState
             switch (stateToChangeTo)
             {
                 case eGameStates.SplashScreen:
-                    newState = new SplashScreenState(GameStateManager.Instance);
+                    newState = new SplashScreenState();
                     break;
                 
                 case eGameStates.MainMenu:
-                    newState = new MainMenuState(GameStateManager.Instance);
+                    newState = new MainMenuState();
                     break;
                 
-                case eGameStates.StoreScreen:
-                    newState = new StoreScreenState(GameStateManager.Instance);
-                    break;
-                
-                case eGameStates.LobbyScene:
-                    newState = new LobbySceneState(GameStateManager.Instance);
+                case eGameStates.WaitingRoom:
+                    newState = new WaitingRoomState();
                     break;
                 
                 case eGameStates.PlayScene:
-                    newState = new GameSceneState(GameStateManager.Instance);
+                    newState = new GameSceneState();
                     break;
-                
-                case eGameStates.ChickenWin:
-                    newState = new ChickenWinState(GameStateManager.Instance);
-                    break;
-                
-                case eGameStates.ChickenLoss:
-                    newState = new ChickenLossState(GameStateManager.Instance);
-                    break;
-                
-                case eGameStates.FoxWin:
-                    newState = new FoxWinState(GameStateManager.Instance);
-                    break;
-                
-                case eGameStates.FoxLoss:
-                    newState = new FoxLossState(GameStateManager.Instance);
-                    break;
-                
+
                 default:
                     throw new ArgumentOutOfRangeException();
             }

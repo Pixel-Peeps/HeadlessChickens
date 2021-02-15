@@ -1,40 +1,37 @@
 ﻿using PixelPeeps.HeadlessChickens.UI;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace PixelPeeps.HeadlessChickens.GameState
 {
     public class MainMenuState : GameState
-    {
-        public MainMenuState(GameStateManager stateManager) : base(stateManager){ }
-        
+    {        
         public override void StateEnter()
         {
             StateManager.LoadNextScene(StateManager.menuScene);
             
-            if (StateManager.menuManager.mainMenuCanvas != null)
+            if (StateManager.uiManager != null)
             {
-                StateManager.menuManager.mainMenuCanvas.SetActive(true);
+                GameObject canvasObject = StateManager.uiManager.mainMenuCanvas;
+                GameObject firstSelectedButton = StateManager.uiManager.mainMenuFirstSelected;
                 
-                GameObject firstSelectedButton = StateManager.menuManager.mainMenuFirstSelected;
-                StateManager.menuManager.SetEventSystemCurrentSelection(firstSelectedButton);
+                StateManager.uiManager.ActivateCanvas(canvasObject, firstSelectedButton);
             }
         }
 
         public override void OnSceneLoad()
         {
             GameObject menuManagerObj = GameObject.FindGameObjectWithTag("MenuManager");
-            StateManager.menuManager = menuManagerObj.GetComponent<MenuManager>();
-
-            StateManager.menuManager.mainMenuCanvas.SetActive(true);
+            StateManager.uiManager = menuManagerObj.GetComponent<UIManager>();
             
-            GameObject firstSelectedButton = StateManager.menuManager.mainMenuFirstSelected;
-            StateManager.menuManager.SetEventSystemCurrentSelection(firstSelectedButton);
+            GameObject canvasObject = StateManager.uiManager.mainMenuCanvas;
+            GameObject firstSelectedButton = StateManager.uiManager.mainMenuFirstSelected;
+            
+            StateManager.uiManager.ActivateCanvas(canvasObject, firstSelectedButton);
         }
 
         public override void StateExit()
         {
-            StateManager.menuManager.mainMenuCanvas.SetActive(false);
+            StateManager.uiManager.mainMenuCanvas.SetActive(false);
         }
     }
 }

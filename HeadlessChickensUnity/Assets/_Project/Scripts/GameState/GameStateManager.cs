@@ -2,7 +2,6 @@
 using Photon.Pun;
 using PixelPeeps.HeadlessChickens.UI;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 namespace PixelPeeps.HeadlessChickens.GameState
@@ -22,7 +21,7 @@ namespace PixelPeeps.HeadlessChickens.GameState
         #region GUI Elements
 
         [Header("GUI")] 
-        [HideInInspector] public MenuManager menuManager;
+        [HideInInspector] public UIManager uiManager;
         [HideInInspector] public ResultsScreenManager resultsScreenManager;
         #endregion
         
@@ -49,9 +48,9 @@ namespace PixelPeeps.HeadlessChickens.GameState
 
         private void Initialise()
         {
-            menuManager = FindObjectOfType<MenuManager>();
+            uiManager = FindObjectOfType<UIManager>();
             
-            currentState = new SplashScreenState(this);
+            currentState = new SplashScreenState();
             currentState.StateEnter();
         }
 
