@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
+using Cinemachine;
 
 namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 {
@@ -21,6 +22,9 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         private Vector2 _movDirection = Vector2.zero;
         private bool _strafeActive;
         public float sprintMultiplier = 1.5f;
+        [SerializeField] float turnSpeed = 50f;
+        [SerializeField] float turnSpeedLow = 5f;
+        [SerializeField] float turnSpeedHigh = 50f;
 
         [Header("Jump")]
         public bool isGrounded = true;
@@ -30,7 +34,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public float lowJumpMultiplier = 2f;
         public bool jumpButtonPressed;
 
-
+        private CinemachineVirtualCamera virtualCam;
 
         private void Awake()
         {
@@ -58,6 +62,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
             #endregion
 
+            virtualCam = camera.GetComponent<CinemachineVirtualCamera>();
         }
         
         private void Start()
@@ -74,6 +79,15 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             else if (_rigidbody.velocity.y > 0 && !jumpButtonPressed)
             {
                 _rigidbody.velocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+            }
+
+            if (_strafeActive)
+            {
+                // other camera on
+            }
+            else
+            {
+                // normal camera on
             }
         }
 
@@ -92,16 +106,35 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             
             // Set movement target based on cameras direction
             _newPosition += tempForward * (_movDirection.y * moveSpeed) + tempRight * (_movDirection.x * moveSpeed);
-            
+            Vector3 facingDirectrion = tempForward * _movDirection.y + tempRight * _movDirection.x;
+
             // check distance to target position
             float distanceToDestination = Vector3.Distance(transform.position, _newPosition);
             if ( distanceToDestination < stopDistance) _character.SwitchState(CharacterBase.EStates.Idle);
             
             // lock look at when in strafe mode
-            if (!_strafeActive) transform.LookAt(new Vector3(_newPosition.x, transform.position.y, _newPosition.z));
-            
+            // if (!_strafeActive) transform.LookAt(new Vector3(_newPosition.x, transform.position.y, _newPosition.z));
+
+            float tS = _rigidbody.velocity.magnitude / moveSpeed;
+            turnSpeed = Mathf.Lerp(turnSpeedHigh, turnSpeedLow, tS);
+            if (_movDirection.magnitude > 0)
+            {
+                Quaternion rot = Quaternion.LookRotation(facingDirectrion);
+                transform.rotation = Quaternion.Lerp(transform.rotation, rot, turnSpeed * Time.deltaTime);
+            }
+            turnSpeedHigh = 10f;
+
+
+            // Quick-turn to rotate on spot
+            if (_movDirection.magnitude < 0.15)
+            {
+                _rigidbody.velocity = new Vector3(0, _rigidbody.velocity.y, 0);
+                turnSpeedHigh = 40f;
+            }
+
             // move to position
             transform.position = Vector3.Lerp(transform.position, _newPosition, Time.deltaTime * moveTime);
+            // _rigidbody.MovePosition(_newPosition * Time.fixedDeltaTime * moveTime);
         }
 
         private void Jump()

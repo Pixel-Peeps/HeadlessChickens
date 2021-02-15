@@ -791,8 +791,15 @@ MonoBehaviour:
   moveSpeed: 0.5
   moveTime: 5
   stopDistance: 0.1
+  sprintMultiplier: 1.5
+  turnSpeed: 50
+  turnSpeedLow: 5
+  turnSpeedHigh: 50
   isGrounded: 1
   jumpForce: 1
+  fallMultiplier: 2.5
+  lowJumpMultiplier: 2
+  jumpButtonPressed: 0
 --- !u!143 &978879538
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1442,8 +1449,15 @@ MonoBehaviour:
   moveSpeed: 0.5
   moveTime: 5
   stopDistance: 0.1
+  sprintMultiplier: 1.5
+  turnSpeed: 50
+  turnSpeedLow: 5
+  turnSpeedHigh: 50
   isGrounded: 1
   jumpForce: 1
+  fallMultiplier: 2.5
+  lowJumpMultiplier: 2
+  jumpButtonPressed: 0
 --- !u!114 &1698191771
 MonoBehaviour:
   m_ObjectHideFlags: 0

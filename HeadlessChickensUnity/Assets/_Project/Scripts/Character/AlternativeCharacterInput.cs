@@ -29,6 +29,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         [SerializeField] float turnSpeed = 50f;
         [SerializeField] float turnSpeedLow = 5f;
         [SerializeField] float turnSpeedHigh = 50f;
+        [SerializeField] float sprintMultiplier = 2;
 
         // GRAVITY
         public float raycastDistance = 0.12f;
@@ -71,6 +72,9 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             _controls.Player.Jump.performed += _ => DoJump();
             _controls.Player.Jump.started += ctx => jumpButtonPressed = true;
             _controls.Player.Jump.canceled += ctx => jumpButtonPressed = false;
+
+            _controls.Player.Run.performed += RunStarted;
+            _controls.Player.Run.canceled += RunCancelled;
 
             #endregion
         }
@@ -177,7 +181,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             if (input.magnitude > 0)
             {
                 Quaternion rot = Quaternion.LookRotation(intent);
-                transform.rotation = Quaternion.Lerp(transform.rotation, rot, turnSpeed * Time.deltaTime);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, rot, turnSpeed * Time.deltaTime);
             }
 
             velocityXZ = velocity;
@@ -207,7 +211,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             {
                 velocity.y -= gravity * Time.deltaTime;
             }
-            // velocity.y = Mathf.Clamp(velocity.y, -2, 2);
+            velocity.y = Mathf.Clamp(velocity.y, -jumpPower, jumpPower);
         }
 
         private void DoJump()
@@ -219,6 +223,16 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             }
         }
 
+
+        private void RunStarted(InputAction.CallbackContext obj)
+        {
+            walkingSpeed *= sprintMultiplier;
+        }
+
+        private void RunCancelled(InputAction.CallbackContext obj)
+        {
+            walkingSpeed /= sprintMultiplier;
+        }
 
         public void PlayerHalt()
         {

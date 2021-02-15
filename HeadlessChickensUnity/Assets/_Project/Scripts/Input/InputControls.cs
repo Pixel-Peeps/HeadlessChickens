@@ -327,7 +327,7 @@ public class @InputControls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""f56e15f3-7fc6-4e99-84c6-72f76fd45d8a"",
-                    ""path"": ""<Keyboard>/shift"",
+                    ""path"": ""<Keyboard>/ctrl"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard & Mouse"",
@@ -360,7 +360,7 @@ public class @InputControls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""9c880054-3f6f-4afb-a92f-c9d3b57b5554"",
-                    ""path"": ""<Keyboard>/ctrl"",
+                    ""path"": ""<Keyboard>/shift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard & Mouse"",
