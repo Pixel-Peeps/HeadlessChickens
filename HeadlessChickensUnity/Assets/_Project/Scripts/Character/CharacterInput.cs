@@ -45,6 +45,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             _controls.Player.Move.performed += MoveStarted;
             _controls.Player.Move.canceled += MoveCanceled;
             _controls.Player.Jump.performed += _ => Jump();
+            _controls.Player.Run.performed += RunStarted;
+            _controls.Player.Run.canceled += RunCancelled;
             _controls.Player.Strafe.performed += _ => _strafeActive = true;
             _controls.Player.Strafe.canceled += _ => _strafeActive = false;
             
@@ -52,24 +54,10 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             
         }
 
-        private void Jump()
-        {
-            // lock jump if not grounded, set jump direction based on forward direction
-            // If character is not moving jump up, if is moving jump based on forward facing direction
-            if (!isGrounded) return;
-            Vector3 jumpDirection = transform.forward;
-            
-            // if strafe is active set jump direction to the moving direction
-            if (_strafeActive)
-            {
-                if (_movDirection.x < 0) jumpDirection = -transform.right;
-                if (_movDirection.x > 0) jumpDirection = transform.right;
-                if (_movDirection.y < 0) jumpDirection = -transform.forward;
-            }
-            
-            _rigidbody.velocity = _movDirection != Vector2.zero ? (jumpDirection + Vector3.up) * jumpForce : Vector3.up * jumpForce;
-            isGrounded = false;
-        }
+ 
+
+   
+
 
         private void Start()
         {
@@ -103,6 +91,31 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             transform.position = Vector3.Lerp(transform.position, _newPosition, Time.deltaTime * moveTime);
         }
 
+        private void Jump()
+        {
+            // lock jump if not grounded, set jump direction based on forward direction
+            // If character is not moving jump up, if is moving jump based on forward facing direction
+            if (!isGrounded) return;
+            Vector3 jumpDirection = transform.forward;
+
+            // if strafe is active set jump direction to the moving direction
+            if (_strafeActive)
+            {
+                if (_movDirection.x < 0) jumpDirection = -transform.right;
+                if (_movDirection.x > 0) jumpDirection = transform.right;
+                if (_movDirection.y < 0) jumpDirection = -transform.forward;
+            }
+
+            _rigidbody.velocity = _movDirection != Vector2.zero
+                ? (jumpDirection + Vector3.up) * jumpForce
+                : Vector3.up * jumpForce;
+            isGrounded = false;
+        }
+
+        private void Sprint()
+        {
+            
+        }
 
         /*##################################
          *            COLLIDERS            *
@@ -138,6 +151,16 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             _movDirection = Vector2.zero;
         }
 
+        private void RunStarted(InputAction.CallbackContext obj)
+        {
+            moveSpeed += 2;
+        }
+
+        private void RunCancelled(InputAction.CallbackContext obj)
+        {
+            moveSpeed -= 2;
+        }
+        
         #endregion
 
     }
