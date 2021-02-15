@@ -1,8 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
-using Cinemachine;
-using System;
-using UnityEngine.Serialization;
 
 namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 {
@@ -57,10 +54,20 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         private void Jump()
         {
-            // lock jump if grounded, set jump direction based on forward direction
+            // lock jump if not grounded, set jump direction based on forward direction
             // If character is not moving jump up, if is moving jump based on forward facing direction
             if (!isGrounded) return;
-            _rigidbody.velocity = _movDirection != Vector2.zero ? (transform.forward + Vector3.up) * jumpForce : Vector3.up * jumpForce;
+            Vector3 jumpDirection = transform.forward;
+            
+            // if strafe is active set jump direction to the moving direction
+            if (_strafeActive)
+            {
+                if (_movDirection.x < 0) jumpDirection = -transform.right;
+                if (_movDirection.x > 0) jumpDirection = transform.right;
+                if (_movDirection.y < 0) jumpDirection = -transform.forward;
+            }
+            
+            _rigidbody.velocity = _movDirection != Vector2.zero ? (jumpDirection + Vector3.up) * jumpForce : Vector3.up * jumpForce;
             isGrounded = false;
         }
 
@@ -103,13 +110,11 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         
         #region COLLIDERS
         private void OnTriggerStay(Collider other)
-         {
-             if (other.gameObject.CompareTag("Ground"))
-             {
-                 _newPosition = transform.position;
-                 isGrounded = true;
-             }
-         }
+        {
+            if (!other.gameObject.CompareTag("Ground")) return;
+            _newPosition = transform.position;
+            isGrounded = true;
+        }
 
          private void OnTriggerExit(Collider other)
          {
