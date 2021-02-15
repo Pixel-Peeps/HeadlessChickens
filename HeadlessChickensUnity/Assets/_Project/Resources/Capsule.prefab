@@ -293,6 +293,7 @@ GameObject:
   - component: {fileID: 7508109914177921177}
   - component: {fileID: 8601883933617439326}
   - component: {fileID: 3774125682500111713}
+  - component: {fileID: 6076753257997293165}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Player
@@ -442,7 +443,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7091701261021725693}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
   m_Name: 
@@ -498,6 +499,22 @@ MonoBehaviour:
   rotationTime: 2
   rotationSpeed: 2
   newRotation: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &6076753257997293165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7091701261021725693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizeVelocity: 1
+  m_SynchronizeAngularVelocity: 0
+  m_TeleportEnabled: 0
+  m_TeleportIfDistanceGreaterThan: 3
 --- !u!1 &7985696511541170773
 GameObject:
   m_ObjectHideFlags: 0
