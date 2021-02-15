@@ -286,13 +286,13 @@ GameObject:
   - component: {fileID: 7091701261021725680}
   - component: {fileID: 7091701261021725695}
   - component: {fileID: 7091701261021725694}
-  - component: {fileID: 7091701261021725683}
-  - component: {fileID: 7091701261021725682}
   - component: {fileID: 2467585925130652195}
   - component: {fileID: 3901339654449097020}
   - component: {fileID: 3901339654449097019}
   - component: {fileID: 4692299789124328237}
   - component: {fileID: 7508109914177921177}
+  - component: {fileID: 8601883933617439326}
+  - component: {fileID: 3774125682500111713}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Player
@@ -380,37 +380,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7091701261021725683
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7091701261021725693}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 451f74720277e2747923f7cc0d8bd817, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  states: 0
---- !u!114 &7091701261021725682
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7091701261021725693}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2744518cfd27dc4cb3380a56d774f42, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _movDirection: {x: 0, y: 0}
-  moveSpeed: 0.5
-  moveTime: 5
-  rotationTime: 5
-  rotationSpeed: 8
-  newRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &2467585925130652195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -441,7 +410,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &3901339654449097019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -498,6 +467,37 @@ MonoBehaviour:
   ShowParameterInspector: 1
   m_SynchronizeParameters: []
   m_SynchronizeLayers: []
+--- !u!114 &8601883933617439326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7091701261021725693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a9a53e3c027d47949d0ca6d28f3c9b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  states: 0
+--- !u!114 &3774125682500111713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7091701261021725693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ac648400922b47fe8f22b52b3eb6821, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _movDirection: {x: 0, y: 0}
+  moveSpeed: 0.5
+  moveTime: 3
+  rotationTime: 2
+  rotationSpeed: 2
+  newRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &7985696511541170773
 GameObject:
   m_ObjectHideFlags: 0
