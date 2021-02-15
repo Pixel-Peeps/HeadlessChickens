@@ -53,12 +53,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             #endregion
             
         }
-
- 
-
-   
-
-
+        
         private void Start()
         {
             _newPosition = transform.position;
