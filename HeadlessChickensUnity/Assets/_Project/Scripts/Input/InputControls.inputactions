@@ -28,6 +28,22 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "85ee3fce-be80-4a94-b236-c11333097e34",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Run",
+                    "type": "Button",
+                    "id": "b4518e2c-800a-4ec1-8378-8a0a252d5ca0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -175,7 +191,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "left",
+                    "name": "right",
                     "id": "dfa5d0b2-1c34-4e36-93e8-89ffad3493c4",
                     "path": "<Gamepad>/leftStick/right",
                     "interactions": "",
@@ -186,7 +202,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "right",
+                    "name": "left",
                     "id": "49b09655-225f-4604-84b2-78468938a081",
                     "path": "<Gamepad>/leftStick/left",
                     "interactions": "",
@@ -298,11 +314,55 @@
                 {
                     "name": "",
                     "id": "f56e15f3-7fc6-4e99-84c6-72f76fd45d8a",
-                    "path": "<Keyboard>/shift",
+                    "path": "<Keyboard>/ctrl",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard & Mouse",
                     "action": "Strafe",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "325b3796-77d8-4e1b-9bf2-131344d9fe76",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e6a9aa8b-bb20-4146-af70-71ec1e3acc2f",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9c880054-3f6f-4afb-a92f-c9d3b57b5554",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "Run",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c084e3a2-1e1b-4799-b2cd-a06cb9899686",
+                    "path": "<Gamepad>/leftStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "Run",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -313,10 +373,10 @@
             "id": "a55f9a2f-3f89-4d9b-bb20-ca1df5dcfd1d",
             "actions": [
                 {
-                    "name": "replacethis",
-                    "type": "Button",
+                    "name": "CameraMove",
+                    "type": "Value",
                     "id": "d8828bc7-d3bb-46e2-a34f-1770df4c5dd2",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
                 }
@@ -324,12 +384,23 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "4ec9e41a-2e19-40bc-ac82-3068afb54c79",
-                    "path": "<Keyboard>/g",
+                    "id": "8bd5802b-ad43-48b9-9eb0-14398008254b",
+                    "path": "<Mouse>/delta",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard & Mouse",
-                    "action": "replacethis",
+                    "action": "CameraMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6cdfd8f7-6d3b-45a5-8b07-fd7cd37e5edb",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "CameraMove",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
