@@ -3,7 +3,9 @@ using System.Collections.Generic;
 
 using UnityEngine;
 using Photon.Pun;
+using PixelPeeps.HeadlessChickens._Project.Scripts.Character;
 using UnityEngine.UI;
+using UnityEngine.VFX;
 
 
 namespace com.pixelpeeps.headlesschickens
@@ -13,12 +15,13 @@ namespace com.pixelpeeps.headlesschickens
 
         public Camera _camera;
         //private Rigidbody rB;
-        private nCharacterController charController;
+        private AlternativeCharacterInput charController;
+        public GameObject vCam;
 
         [Tooltip("The current Health of our player")]
         public float Health = 10f;
 
-        public Text healthDisplay;
+        //public Text healthDisplay;
         
         [Tooltip("The local player instance. Use this to know if the local player is represented in the Scene")]
         public static GameObject LocalPlayerInstance;
@@ -33,7 +36,8 @@ namespace com.pixelpeeps.headlesschickens
                 PlayerManager.LocalPlayerInstance = this.gameObject;
             }
 
-            charController = gameObject.GetComponent<nCharacterController>();
+            charController = gameObject.GetComponent<AlternativeCharacterInput>();
+            _camera = Camera.main;
            // rB = gameObject.GetComponent<Rigidbody>();
             // #Critical
             // we flag as don't destroy on load so that instance survives level synchronization, thus giving a seamless experience when levels load.
@@ -57,7 +61,7 @@ namespace com.pixelpeeps.headlesschickens
                 }
             }
 
-            healthDisplay.text = Health.ToString();
+           // healthDisplay.text = Health.ToString();
         }
 
         void Start()
@@ -75,10 +79,12 @@ namespace com.pixelpeeps.headlesschickens
             //{
                 if (photonView.IsMine)
                 {
-                    _camera.gameObject.SetActive(true);
-                   Rigidbody rB = gameObject.AddComponent<Rigidbody>();
-                   rB.useGravity = false;
+                    
+                    //_camera.gameObject.SetActive(true);
+                   //Rigidbody rB = gameObject.AddComponent<Rigidbody>();
+                   //rB.useGravity = false;
                    charController.enabled = true;
+                   vCam.SetActive(true);
 
 
                    //_camera.gameObject.transform.SetParent(this.transform);
