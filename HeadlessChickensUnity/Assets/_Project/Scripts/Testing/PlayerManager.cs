@@ -11,7 +11,9 @@ namespace com.pixelpeeps.headlesschickens
     public class PlayerManager : MonoBehaviourPunCallbacks
     {
 
-        public Camera _camera; 
+        public Camera _camera;
+        //private Rigidbody rB;
+        private nCharacterController charController;
 
         [Tooltip("The current Health of our player")]
         public float Health = 10f;
@@ -30,6 +32,9 @@ namespace com.pixelpeeps.headlesschickens
             {
                 PlayerManager.LocalPlayerInstance = this.gameObject;
             }
+
+            charController = gameObject.GetComponent<nCharacterController>();
+           // rB = gameObject.GetComponent<Rigidbody>();
             // #Critical
             // we flag as don't destroy on load so that instance survives level synchronization, thus giving a seamless experience when levels load.
             DontDestroyOnLoad(this.gameObject);
@@ -71,9 +76,14 @@ namespace com.pixelpeeps.headlesschickens
                 if (photonView.IsMine)
                 {
                     _camera.gameObject.SetActive(true);
-                    //_camera.gameObject.transform.SetParent(this.transform);
-                    //_camera.gameObject.transform.position = new Vector3(-0.43f,1.8f,-4.4f);
-                    //_camera.gameObject.transform.rotation = new Quaternion(14.6f, 0, 0,0);
+                   Rigidbody rB = gameObject.AddComponent<Rigidbody>();
+                   rB.useGravity = false;
+                   charController.enabled = true;
+
+
+                   //_camera.gameObject.transform.SetParent(this.transform);
+                   //_camera.gameObject.transform.position = new Vector3(-0.43f,1.8f,-4.4f);
+                   //_camera.gameObject.transform.rotation = new Quaternion(14.6f, 0, 0,0);
                 }
             }
            // else

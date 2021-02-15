@@ -9,6 +9,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
     {
         private InputControls _controls;
         private CharacterBase _character;
+        
 
         private Vector3 _newPosition = Vector3.zero;
         [SerializeField] private Vector2 _movDirection = Vector2.zero;
