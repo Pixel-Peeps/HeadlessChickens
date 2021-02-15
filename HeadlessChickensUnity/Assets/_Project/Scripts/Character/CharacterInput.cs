@@ -20,11 +20,15 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         private Vector3 _newPosition = Vector3.zero;
         private Vector2 _movDirection = Vector2.zero;
         private bool _strafeActive;
+        public float sprintMultiplier = 1.5f;
 
         [Header("Jump")]
         public bool isGrounded = true;
         public float jumpForce = 1f;
         private Vector3 _characterVelocity;
+        public float fallMultiplier = 2.5f;
+        public float lowJumpMultiplier = 2f;
+        public bool jumpButtonPressed;
 
 
 
@@ -49,14 +53,28 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             _controls.Player.Run.canceled += RunCancelled;
             _controls.Player.Strafe.performed += _ => _strafeActive = true;
             _controls.Player.Strafe.canceled += _ => _strafeActive = false;
-            
+            _controls.Player.Jump.started += ctx => jumpButtonPressed = true;
+            _controls.Player.Jump.canceled += ctx => jumpButtonPressed = false;
+
             #endregion
-            
+
         }
         
         private void Start()
         {
             _newPosition = transform.position;
+        }
+
+        private void Update()
+        {
+            if (_rigidbody.velocity.y < 0)
+            {
+                _rigidbody.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+            }
+            else if (_rigidbody.velocity.y > 0 && !jumpButtonPressed)
+            {
+                _rigidbody.velocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+            }
         }
 
         private void FixedUpdate()
@@ -105,6 +123,9 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 ? (jumpDirection + Vector3.up) * jumpForce
                 : Vector3.up * jumpForce;
             isGrounded = false;
+
+
+
         }
 
         private void Sprint()
@@ -148,12 +169,12 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         private void RunStarted(InputAction.CallbackContext obj)
         {
-            moveSpeed += 2;
+            moveSpeed *= sprintMultiplier;
         }
 
         private void RunCancelled(InputAction.CallbackContext obj)
         {
-            moveSpeed -= 2;
+            moveSpeed /= sprintMultiplier;
         }
         
         #endregion
