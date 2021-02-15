@@ -207,7 +207,7 @@ namespace Photon.Pun
 
 
         // for asynchronous network synched loading.
-        private static AsyncOperation _AsyncLevelLoadingOperation;
+        public static AsyncOperation _AsyncLevelLoadingOperation;
 
         private static float _levelLoadingProgress = 0f;
 

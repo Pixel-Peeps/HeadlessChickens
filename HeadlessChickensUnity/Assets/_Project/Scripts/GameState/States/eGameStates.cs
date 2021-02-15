@@ -4,12 +4,11 @@
     {
         SplashScreen,
         MainMenu,
-        StoreScreen,
-        LobbyScene,
+        RoomSearch,
+        CreateRoom,
+        WaitingRoom,
+        Loading,
+        Connecting,
         PlayScene,
-        ChickenLoss,
-        ChickenWin,
-        FoxLoss,
-        FoxWin
     }
 }
