@@ -3,13 +3,12 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Photon.Pun;
 
-namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
+namespace com.pixelpeeps.headlesschickens
 {
-    public class CharacterController : MonoBehaviourPunCallbacks
+    public class nCharacterController : MonoBehaviourPunCallbacks
     {
         private InputControls _controls;
-        private CharacterBase _character;
-        
+        private nCharacterBase _character;
 
         private Vector3 _newPosition = Vector3.zero;
         [SerializeField] private Vector2 _movDirection = Vector2.zero;
@@ -33,7 +32,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             {
                 return;
             }
-            _character = GetComponent<CharacterBase>();
+            _character = GetComponent<nCharacterBase>();
             
             /*####################################
              *           INPUT KEY ACTIONS       *
@@ -101,13 +100,13 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         private void MoveStarted(InputAction.CallbackContext obj)
         {
             _movDirection = obj.ReadValue<Vector2>();
-            _character.SwitchState(CharacterBase.EStates.Moving);
+            _character.SwitchState(nCharacterBase.EStates.Moving);
         }
 
         private void MoveCanceled(InputAction.CallbackContext obj)
         {
             _movDirection = Vector2.zero;
-            _character.SwitchState(CharacterBase.EStates.Idle);
+            _character.SwitchState(nCharacterBase.EStates.Idle);
         }
 
         #endregion
