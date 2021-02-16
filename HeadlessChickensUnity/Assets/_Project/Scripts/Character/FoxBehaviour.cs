@@ -10,7 +10,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             throw new System.NotImplementedException();
         }
 
-        public override void HidingSpot()
+        public override void HidingInteraction(HidingSpot hidingSpot)
         {
             Debug.Log("I am searching");
         }

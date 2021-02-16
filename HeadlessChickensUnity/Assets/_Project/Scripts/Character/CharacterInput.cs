@@ -148,7 +148,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         {
             // lock jump if not grounded, set jump direction based on forward direction
             // If character is not moving jump up, if is moving jump based on forward facing direction
-            if (!isGrounded) return;
+            if (!isGrounded || _character.State == CharacterBase.EStates.Hiding) return;
             Vector3 jumpDirection = transform.forward;
 
             // if strafe is active set jump direction to the moving direction
@@ -198,6 +198,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         #region INPUT CALLBACKS
         private void MoveStarted(InputAction.CallbackContext obj)
         {
+            if (_character.State == CharacterBase.EStates.Hiding) return;
+
             _movDirection = obj.ReadValue<Vector2>();
             _character.SwitchState(CharacterBase.EStates.Moving);
         }

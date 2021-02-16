@@ -5,11 +5,11 @@ using PixelPeeps.HeadlessChickens._Project.Scripts.Character;
 
 public class HidingSpot : MonoBehaviour, IInteractable
 {
-    public bool occupied = false;
+    public ChickenBehaviour chickenInSpot;
 
-    public void Interact(CharacterBase characterBase)
+    public void Interact(CharacterBase character)
     {
-        characterBase.HidingSpot();
+        character.HidingInteraction(this);
     }
 
     public void InteractionFocus(bool focussed)

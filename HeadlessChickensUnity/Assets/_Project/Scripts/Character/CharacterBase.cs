@@ -20,7 +20,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         
 
         [SerializeField] private EStates states = EStates.Idle;
-        private EStates State
+        public EStates State
         {
             get => states;
             set
@@ -51,7 +51,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         private void FixedUpdate()
         {
-            if(State == EStates.Moving && _controller.isGrounded == true)
+            if (State == EStates.Moving && _controller.isGrounded == true)
             {
                 _controller.Move();
             }
@@ -65,6 +65,6 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         protected virtual void Action(){}
 
-        public virtual void HidingSpot(){}
+        public virtual void HidingInteraction(HidingSpot hidingSpot){}
     }
 }
