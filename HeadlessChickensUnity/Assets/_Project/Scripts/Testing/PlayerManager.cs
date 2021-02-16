@@ -12,7 +12,6 @@ namespace com.pixelpeeps.headlesschickens
 {
     public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     {
-
         public Camera _camera;
         //private Rigidbody rB;
         private AlternativeCharacterInput charController;
@@ -90,10 +89,8 @@ namespace com.pixelpeeps.headlesschickens
             this.CalledOnLevelWasLoaded(scene.buildIndex);
         }
 #endif
-        
         #region IPunObservable implementation
-
-
+        
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         {
             if (stream.IsWriting)
@@ -110,10 +107,7 @@ namespace com.pixelpeeps.headlesschickens
                 this.Health = (float)stream.ReceiveNext();
                 healthDisplay.text = this.Health.ToString("0");
             }
-            
         }
-        
-        
 
         #endregion
         
@@ -124,8 +118,7 @@ namespace com.pixelpeeps.headlesschickens
              this.CalledOnLevelWasLoaded(level);
         }
 #endif
-
-
+        
         void CalledOnLevelWasLoaded(int level)
         {
             // check if we are outside the Arena and if it's the case, spawn around the center of the arena in a safe zone

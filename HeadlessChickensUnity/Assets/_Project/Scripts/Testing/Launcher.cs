@@ -14,7 +14,7 @@ namespace com.pixelpeeps.headlesschickens
         /// </summary>
         [Tooltip("The maximum number of players per room. When a room is full, it can't be joined by new players, and so new room will be created")]
         [SerializeField]
-        private byte maxPlayersPerRoom = 4;
+        private byte maxPlayersPerRoom = 6;
         
         [Tooltip("The UI Panel to let the user enter name, connect and play")]
         [SerializeField]
@@ -133,7 +133,6 @@ namespace com.pixelpeeps.headlesschickens
         if (PhotonNetwork.CurrentRoom.PlayerCount == 1)
         {
             Debug.Log("We load the 'Room for 1' ");
-
 
             // #Critical
             // Load the Room Level.s
