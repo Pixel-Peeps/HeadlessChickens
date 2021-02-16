@@ -11,7 +11,6 @@ namespace PixelPeeps.HeadlessChickens.UI
         RoomInfo info;
     
         public TextMeshProUGUI nameText;
-        public Button thisButton;
 
         public void SetUp(RoomInfo _info)
         {

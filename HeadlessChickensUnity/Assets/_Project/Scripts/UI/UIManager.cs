@@ -81,12 +81,11 @@ namespace PixelPeeps.HeadlessChickens.UI
                 {
                     Destroy(item);
                 }
-            
-                currentRoomList.Clear();
             }
 
             foreach (RoomInfo t in roomList)
             {
+                print("RoomList 0: " + roomList[0] + "RoomList 1: " + roomList[1]);
                 GameObject newRoomItem = Instantiate(roomListItemPrefab, roomListParent.transform);
                 currentRoomList.Add(newRoomItem);
                 RoomListItem roomScript = newRoomItem.GetComponent<RoomListItem>();

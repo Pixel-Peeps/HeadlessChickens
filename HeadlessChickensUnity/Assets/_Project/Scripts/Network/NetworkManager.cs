@@ -162,6 +162,15 @@ namespace PixelPeeps.HeadlessChickens.Network
             uiManager.UpdatePlayerList(newPlayer);
         }
 
+        public override void OnPlayerLeftRoom(Player otherPlayer)
+        {
+            if (PhotonNetwork.CurrentRoom.PlayerCount <= 0)
+            {
+                PhotonNetwork.CurrentRoom.IsOpen = false;
+                PhotonNetwork.CurrentRoom.IsVisible = false;
+            }
+        }
+
         public void StartGame()
         {
             GameStateManager.Instance.SwitchGameState(new GameSceneState());
