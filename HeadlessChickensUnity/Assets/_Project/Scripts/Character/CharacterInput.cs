@@ -222,21 +222,21 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             var interacted = _character.interactor.TryInteract();
             int interactTypeNumber = _character.interactor.GetInteractType();
 
-            if (interacted)
-            {
-                if(interactTypeNumber == 0)
-                {
-                    Debug.Log("Lever pulled");
-                }
-                if(interactTypeNumber == 1)
-                {
-                    Debug.Log("Hiding");
-                }
-                if(interactTypeNumber == 2)
-                {
-                    Debug.Log("You'll never catch me copper!");
-                }
-            }
+            //if (interacted)
+            //{
+            //    //if (interactTypeNumber == 0)
+            //    //{
+            //    //    Debug.Log("Lever pulled");
+            //    //}
+            //    //if (interactTypeNumber == 1)
+            //    //{
+            //    //    Debug.Log("Hiding");
+            //    //}
+            //    //if (interactTypeNumber == 2)
+            //    //{
+            //    //    Debug.Log("You'll never catch me copper!");
+            //    //}
+            //}
         }
 
         #endregion

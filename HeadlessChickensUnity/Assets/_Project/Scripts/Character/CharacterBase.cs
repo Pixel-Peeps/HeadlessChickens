@@ -5,6 +5,7 @@ using UnityEngine;
 namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 {
     [RequireComponent(typeof(CharacterInput))]
+    [RequireComponent(typeof(Interactor))]
     public class CharacterBase : MonoBehaviour
     {
         private CharacterInput _controller;
@@ -16,6 +17,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             Moving,
             Hiding
         }
+        
 
         [SerializeField] private EStates states = EStates.Idle;
         private EStates State
@@ -59,9 +61,10 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         {
             State = change;
         }
-
-        protected virtual void Interact(){}
+        
 
         protected virtual void Action(){}
+
+        public virtual void HidingSpot(){}
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using PixelPeeps.HeadlessChickens._Project.Scripts.Character;
 
 /// <summary>
 /// Interacts with objects that implement the IInteractable interface
@@ -18,16 +19,26 @@ public class Interactor : MonoBehaviour
         " 1 = exactly in front. -1 is exactly behind")]
     [SerializeField] private float requiredDot = 0;
 
+    public enum eCharacterType { Fox, Chick }
+    [SerializeField] private eCharacterType characterType;
+
+    CharacterBase characterBase;
+
     // All interactable objects the interactor is currently within range of
     private List<Interactable> interactableObjects = new List<Interactable>();
 
     public Interactable activeInteractable { get; private set; }
 
+    private void Awake()
+    {
+        characterBase = GetComponent<CharacterBase>();
+    }
+
     public bool TryInteract()
     {
         if (activeInteractable != null && activeInteractable.interactAllowed)
         {
-            activeInteractable.Interact();
+            activeInteractable.Interact(characterBase);
             return true;
         }
         else
@@ -40,7 +51,7 @@ public class Interactor : MonoBehaviour
     {
         if (activeInteractable == null || !activeInteractable.interactAllowed) return -1;
 
-        return activeInteractable.InteractionType();
+        return activeInteractable.GetInteractionType();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -49,6 +60,9 @@ public class Interactor : MonoBehaviour
         {
             var go = other.gameObject;
             var interactable = go.GetComponent<Interactable>();
+
+            if (characterType == eCharacterType.Fox &&
+                 (interactable.GetInteractionType() == 0 || interactable.GetInteractionType() == 2)) return;
 
             if (interactable != null)
             {
@@ -65,6 +79,8 @@ public class Interactor : MonoBehaviour
             var go = other.gameObject;
             var interactable = go.GetComponent<Interactable>();
 
+            if (characterType == eCharacterType.Fox &&
+                (interactable.GetInteractionType() == 0 || interactable.GetInteractionType() == 2)) return;
 
             if (interactable != null)
             {

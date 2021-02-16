@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using PixelPeeps.HeadlessChickens._Project.Scripts.Character;
 
 /// <summary>
 /// Gathers all IInteractable interfaces and relays notifications
@@ -18,7 +19,7 @@ public class Interactable : MonoBehaviour
         GetComponents<IInteractable>(interfaces);
     }
 
-    public int InteractionType()
+    public int GetInteractionType()
     {
         return (int)_interactionType;
     }
@@ -36,7 +37,7 @@ public class Interactable : MonoBehaviour
         }
     }
 
-    public void Interact()
+    public void Interact(CharacterBase character)
     {
         for (int i = interfaces.Count - 1; i >= 0; i--)
         {
@@ -45,7 +46,7 @@ public class Interactable : MonoBehaviour
                 interfaces.RemoveAt(i);
             }
 
-            interfaces[i].Interact();
+            interfaces[i].Interact(character);
         }
     }
 }

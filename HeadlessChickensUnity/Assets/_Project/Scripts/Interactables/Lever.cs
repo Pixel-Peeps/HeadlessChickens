@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PixelPeeps.HeadlessChickens._Project.Scripts.Character;
 
 public class Lever : MonoBehaviour, IInteractable
 {
@@ -12,7 +13,7 @@ public class Lever : MonoBehaviour, IInteractable
         interactable = GetComponent<Interactable>();
     }
 
-    public void Interact()
+    public void Interact(CharacterBase characterBase)
     {
         leverManager.IncrementLeverCount();
         interactable.interactAllowed = false;

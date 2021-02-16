@@ -1,5 +1,7 @@
-﻿public interface IInteractable
+﻿using PixelPeeps.HeadlessChickens._Project.Scripts.Character;
+
+public interface IInteractable
 {
-    void Interact();
+    void Interact(CharacterBase characterBase);
     void InteractionFocus(bool focussed);
 }
