@@ -4,21 +4,24 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RoomListItem : MonoBehaviour
+namespace PixelPeeps.HeadlessChickens.UI
 {
-    RoomInfo info;
+    public class RoomListItem : MonoBehaviour
+    {
+        RoomInfo info;
     
-    public TextMeshProUGUI nameText;
-    public Button thisButton;
+        public TextMeshProUGUI nameText;
+        public Button thisButton;
 
-    public void SetUp(RoomInfo _info)
-    {
-        info = _info;
-        nameText.text = info.Name;
-    }
+        public void SetUp(RoomInfo _info)
+        {
+            info = _info;
+            nameText.text = info.Name;
+        }
 
-    public void OnClick()
-    {
-        NetworkManager.Instance.JoinRoom(info);
+        public void OnClick()
+        {
+            NetworkManager.Instance.JoinRoom(info);
+        }
     }
 }

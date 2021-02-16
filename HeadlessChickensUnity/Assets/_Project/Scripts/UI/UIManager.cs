@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 namespace PixelPeeps.HeadlessChickens.UI
 {
@@ -25,6 +25,7 @@ namespace PixelPeeps.HeadlessChickens.UI
         [Header("Room Search")] 
         public GameObject roomSearchCanvas;
         public GameObject roomSearchCanvasFirstSelected;
+        public GameObject enterNamePrompt;
         public TMP_InputField joiningPlayerNameInputField;
         
         [Header("Room List")]
@@ -43,10 +44,12 @@ namespace PixelPeeps.HeadlessChickens.UI
         public GameObject waitingRoomFirstSelected;
         public GameObject startGameButton;
         public TextMeshProUGUI roomNameText;
+        public TextMeshProUGUI roomPlayerCount;
         
         [Header("Player List")]
         public GameObject playerListParent;
-        public TextMeshProUGUI[] playerListNames = new TextMeshProUGUI[6];
+        public GameObject playerListItemPrefab;
+        [HideInInspector] public List<GameObject> currentPlayerList = new List<GameObject>();
 
         [Header("Play Scene HUD")] 
         public GameObject playSceneHUDCanvas;
@@ -89,9 +92,13 @@ namespace PixelPeeps.HeadlessChickens.UI
             }
         }
 
-        public void GeneratePlayerList()
+        public void UpdatePlayerList(Player newPlayer)
         {
+            Debug.Log("UpdatePlayerList");
             
+            GameObject newPlayerListItem = Instantiate(playerListItemPrefab, playerListParent.transform);
+            PlayerListItem itemScript = newPlayerListItem.GetComponent<PlayerListItem>();
+            itemScript.SetUp(newPlayer);
         }
         
         public void ShowLoadingScreen()

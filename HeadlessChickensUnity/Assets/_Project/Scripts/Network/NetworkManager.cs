@@ -42,17 +42,21 @@ namespace PixelPeeps.HeadlessChickens.Network
         {
             uiManager = GameObject.FindGameObjectWithTag("MenuManager").GetComponent<UIManager>();
             PhotonNetwork.ConnectUsingSettings();
+            uiManager.ShowConnectionScreen();
         }
 
         public override void OnConnectedToMaster()
         {
+            uiManager.HideConnectionScreen();
             Debug.Log("Connected to master");
             PhotonNetwork.JoinLobby();
+            uiManager.ShowConnectionScreen();
             PhotonNetwork.AutomaticallySyncScene = true;
         }
 
         public override void OnJoinedLobby()
         {
+            uiManager.HideConnectionScreen();
             Debug.Log("Joined lobby");
             GameStateManager.Instance.SwitchGameState(new MainMenuState());
         }
@@ -65,6 +69,8 @@ namespace PixelPeeps.HeadlessChickens.Network
             {
                 return;
             }
+            
+            PhotonNetwork.NickName = uiManager.hostPlayerNameInputField.text;
 
             currentRoomName = roomName;
             PhotonNetwork.CreateRoom(roomName);
@@ -91,8 +97,19 @@ namespace PixelPeeps.HeadlessChickens.Network
 
         public void JoinRoom(RoomInfo info)
         {
-            PhotonNetwork.JoinRoom(info.Name);
-            uiManager.ShowConnectionScreen();
+            if (uiManager.joiningPlayerNameInputField.text == String.Empty)
+            {
+                uiManager.enterNamePrompt.SetActive(true);
+            }
+            
+            else
+            {
+                PhotonNetwork.JoinRoom(info.Name);
+
+                PhotonNetwork.NickName = uiManager.joiningPlayerNameInputField.text;
+
+                uiManager.ShowConnectionScreen();
+            }
         }
 
         public override void OnJoinedRoom()
@@ -102,6 +119,15 @@ namespace PixelPeeps.HeadlessChickens.Network
 
             uiManager.roomNameText.text = currentRoomName;
             uiManager.startGameButton.SetActive(PhotonNetwork.IsMasterClient); // Sets button active only for the host
+
+            uiManager.roomPlayerCount.text = string.Format("In Room: {0} / 6", PhotonNetwork.CurrentRoom.PlayerCount);
+            
+            Player[] players = PhotonNetwork.PlayerList;
+
+            foreach (Player t in players)
+            {
+                uiManager.UpdatePlayerList(t);
+            }
             
             Debug.Log("Joined room: " + currentRoomName);
         }
@@ -114,6 +140,12 @@ namespace PixelPeeps.HeadlessChickens.Network
             }
             
             uiManager.GenerateRoomList(roomList);
+        }
+
+        public override void OnPlayerEnteredRoom(Player newPlayer)
+        {
+            Debug.Log("OnPlayerEnteredRoom");
+            uiManager.UpdatePlayerList(newPlayer);
         }
 
         public void StartGame()
