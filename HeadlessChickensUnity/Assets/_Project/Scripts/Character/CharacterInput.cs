@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 using Cinemachine;
+using System;
 
 namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 {
@@ -59,12 +60,15 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             _controls.Player.Strafe.canceled += _ => _strafeActive = false;
             _controls.Player.Jump.started += ctx => jumpButtonPressed = true;
             _controls.Player.Jump.canceled += ctx => jumpButtonPressed = false;
+            _controls.Player.Interact.performed += InteractPressed;
 
             #endregion
 
             virtualCam = camera.GetComponent<CinemachineVirtualCamera>();
         }
-        
+
+
+
         private void Start()
         {
             _newPosition = transform.position;
@@ -111,30 +115,33 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             // check distance to target position
             float distanceToDestination = Vector3.Distance(transform.position, _newPosition);
             if ( distanceToDestination < stopDistance) _character.SwitchState(CharacterBase.EStates.Idle);
-            
+
             // lock look at when in strafe mode
             // if (!_strafeActive) transform.LookAt(new Vector3(_newPosition.x, transform.position.y, _newPosition.z));
 
-            float tS = _rigidbody.velocity.magnitude / moveSpeed;
-            turnSpeed = Mathf.Lerp(turnSpeedHigh, turnSpeedLow, tS);
-            if (_movDirection.magnitude > 0)
+            if (!_strafeActive)
             {
-                Quaternion rot = Quaternion.LookRotation(facingDirectrion);
-                transform.rotation = Quaternion.Lerp(transform.rotation, rot, turnSpeed * Time.deltaTime);
-            }
-            turnSpeedHigh = 10f;
+                float tS = _rigidbody.velocity.magnitude / moveSpeed;
+                turnSpeed = Mathf.Lerp(turnSpeedHigh, turnSpeedLow, tS);
+                if (_movDirection.magnitude > 0)
+                {
+                    Quaternion rot = Quaternion.LookRotation(facingDirectrion);
+                    transform.rotation = Quaternion.Lerp(transform.rotation, rot, turnSpeed * Time.deltaTime);
+                }
+                turnSpeedHigh = 10f;
 
 
-            // Quick-turn to rotate on spot
-            if (_movDirection.magnitude < 0.15)
-            {
-                _rigidbody.velocity = new Vector3(0, _rigidbody.velocity.y, 0);
-                turnSpeedHigh = 40f;
+                // Quick-turn to rotate on spot
+                if (_movDirection.magnitude < 0.15)
+                {
+                    _rigidbody.velocity = new Vector3(0, _rigidbody.velocity.y, 0);
+                    turnSpeedHigh = 40f;
+                }
             }
+
 
             // move to position
             transform.position = Vector3.Lerp(transform.position, _newPosition, Time.deltaTime * moveTime);
-            // _rigidbody.MovePosition(_newPosition * Time.fixedDeltaTime * moveTime);
         }
 
         private void Jump()
@@ -153,7 +160,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             }
 
             _rigidbody.velocity = _movDirection != Vector2.zero
-                ? (jumpDirection + Vector3.up) * jumpForce
+                ? (jumpDirection + Vector3.up) * jumpForce * moveSpeed
                 : Vector3.up * jumpForce;
             isGrounded = false;
 
@@ -209,7 +216,21 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         {
             moveSpeed /= sprintMultiplier;
         }
-        
+
+        private void InteractPressed(InputAction.CallbackContext obj)
+        {
+            var interacted = _character.interactor.TryInteract();
+            int typeNumber = _character.interactor.GetInteractType();
+
+            if (interacted)
+            {
+                if(typeNumber == 0)
+                {
+                    Debug.Log($"Interaction success!");
+                }
+            }
+        }
+
         #endregion
 
     }

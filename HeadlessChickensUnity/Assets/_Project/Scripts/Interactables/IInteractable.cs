@@ -1,9 +1,5 @@
-﻿using UnityEngine;
-
-namespace PixelPeeps.HeadlessChickens.Interactables
+﻿public interface IInteractable
 {
-    public interface IInteractable
-    {
-        void Interact();
-    }
+    void Interact();
+    void InteractionFocus(bool focussed);
 }

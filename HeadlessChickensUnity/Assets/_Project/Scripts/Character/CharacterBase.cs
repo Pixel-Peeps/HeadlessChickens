@@ -8,6 +8,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
     public class CharacterBase : MonoBehaviour
     {
         private CharacterInput _controller;
+        public Interactor interactor;
 
         public enum EStates
         {
@@ -30,6 +31,20 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         private void Awake()
         {
             _controller = GetComponent<CharacterInput>();
+
+            interactor.OnCanInteract += OnCanInteract;
+        }
+
+        private void OnCanInteract(Interactable obj)
+        {
+            if (obj != null)
+            {
+                Debug.Log($"We can interact with {obj}");
+            }
+            else
+            {
+                Debug.Log("We can no longer interact");
+            }
         }
 
         private void FixedUpdate()
