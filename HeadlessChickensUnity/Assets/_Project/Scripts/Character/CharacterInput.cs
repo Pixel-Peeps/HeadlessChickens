@@ -160,7 +160,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             }
 
             _rigidbody.velocity = _movDirection != Vector2.zero
-                ? (jumpDirection + Vector3.up) * jumpForce * moveSpeed
+                ? (jumpDirection + (Vector3.up * 0.62f)) * jumpForce  * (moveSpeed * 0.8f)
                 : Vector3.up * jumpForce;
             isGrounded = false;
 
