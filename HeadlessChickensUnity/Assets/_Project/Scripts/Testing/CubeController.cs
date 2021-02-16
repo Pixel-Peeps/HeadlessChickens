@@ -22,7 +22,7 @@ namespace com.pixelpeeps.headlesschickens
 
         private void OnTriggerEnter(Collider other)
         {
-            if (cubeMaterialIndex < cubeMaterials.Count)
+            if (cubeMaterialIndex < cubeMaterials.Count-1)
             {
                 cubeMaterialIndex++; 
                 gameObject.GetComponent<MeshRenderer>().material = cubeMaterials[cubeMaterialIndex];
@@ -47,7 +47,7 @@ namespace com.pixelpeeps.headlesschickens
             {
                 // Network player, receive data
                 Debug.Log("running on remote (health)");
-                cubeMaterialIndex = (int)stream.ReceiveNext();
+                this.cubeMaterialIndex = (int)stream.ReceiveNext();
                 gameObject.GetComponent<MeshRenderer>().material = cubeMaterials[cubeMaterialIndex];
             }
         }
