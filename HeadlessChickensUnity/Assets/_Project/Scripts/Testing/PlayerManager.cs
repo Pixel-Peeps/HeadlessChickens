@@ -57,6 +57,7 @@ namespace com.pixelpeeps.headlesschickens
                 vCam.SetActive(true);
 
                 photonView.RPC("RPC_ChangeHealth", RpcTarget.All);
+                healthDisplay.text = this.Health.ToString("0");
             }
         }
         
