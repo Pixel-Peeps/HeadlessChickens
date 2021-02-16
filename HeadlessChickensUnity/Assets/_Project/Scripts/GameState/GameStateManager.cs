@@ -22,7 +22,6 @@ namespace PixelPeeps.HeadlessChickens.GameState
 
         [Header("GUI")] 
         [HideInInspector] public UIManager uiManager;
-        [HideInInspector] public ResultsScreenManager resultsScreenManager;
         #endregion
         
         [Header("Game Scenes")] 

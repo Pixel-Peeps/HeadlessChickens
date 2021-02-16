@@ -1,16 +1,19 @@
 ﻿using PixelPeeps.HeadlessChickens.UI;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace PixelPeeps.HeadlessChickens.GameState
 {
-    public class MainMenuState : GameState
+    public class CreateRoomState : GameState
     {
-        private readonly GameObject canvasObject = StateManager.uiManager.mainMenuCanvas;
-        private readonly GameObject firstSelectedButton = StateManager.uiManager.mainMenuFirstSelected;
+        private readonly GameObject 
+            canvasObject = StateManager.uiManager.createRoomCanvas;
 
-        private readonly string sceneName = StateManager.menuScene;
-        
+        private readonly GameObject
+            firstSelectedButton = StateManager.uiManager.createRoomCanvasFirstSelected;
+
+        private readonly string 
+            sceneName = StateManager.menuScene;
+
         public override void StateEnter()
         {
             StateManager.LoadNextScene(sceneName);
@@ -21,7 +24,7 @@ namespace PixelPeeps.HeadlessChickens.GameState
         {
             menuManagerObj = GameObject.FindGameObjectWithTag("MenuManager");
             StateManager.uiManager = menuManagerObj.GetComponent<UIManager>();
-            
+
             ActivateCanvas(canvasObject, firstSelectedButton);
         }
 

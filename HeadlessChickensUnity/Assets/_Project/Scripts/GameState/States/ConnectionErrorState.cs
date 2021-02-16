@@ -1,15 +1,26 @@
 ﻿using PixelPeeps.HeadlessChickens.UI;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace PixelPeeps.HeadlessChickens.GameState
 {
-    public class MainMenuState : GameState
+    public class ConnectionErrorState : GameState
     {
-        private readonly GameObject canvasObject = StateManager.uiManager.mainMenuCanvas;
-        private readonly GameObject firstSelectedButton = StateManager.uiManager.mainMenuFirstSelected;
+        private readonly GameObject 
+            canvasObject = StateManager.uiManager.connectionErrorCanvas;
+        
+        private readonly GameObject
+            firstSelectedButton = StateManager.uiManager.connectionErrorFirstSelected;
 
-        private readonly string sceneName = StateManager.menuScene;
+        private readonly string 
+            sceneName = StateManager.menuScene;
+
+        private readonly string
+            errorMessage;
+
+        public ConnectionErrorState(string errorString)
+        {
+            errorMessage = errorString;
+        }
         
         public override void StateEnter()
         {
@@ -21,7 +32,7 @@ namespace PixelPeeps.HeadlessChickens.GameState
         {
             menuManagerObj = GameObject.FindGameObjectWithTag("MenuManager");
             StateManager.uiManager = menuManagerObj.GetComponent<UIManager>();
-            
+
             ActivateCanvas(canvasObject, firstSelectedButton);
         }
 

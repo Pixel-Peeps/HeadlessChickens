@@ -28,7 +28,7 @@ namespace PixelPeeps.HeadlessChickens.GameState
             gameObject.GetComponent<Button>().onClick.AddListener(OnButtonClick);
         }
 
-        public void OnButtonClick()
+        private void OnButtonClick()
         {
             switch (stateToChangeTo)
             {
@@ -45,12 +45,15 @@ namespace PixelPeeps.HeadlessChickens.GameState
                     break;
 
                 case eGameStates.RoomSearch:
+                    newState = new RoomSearchState();
                     break;
                 
                 case eGameStates.CreateRoom:
+                    newState = new CreateRoomState();
                     break;
                 
                 case eGameStates.ConnectionError:
+                    newState = new ConnectionErrorState("Called from button");
                     break;
             }
             
