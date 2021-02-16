@@ -36,6 +36,8 @@ namespace PixelPeeps.HeadlessChickens.UI
         [Header("Room Creation")]
         public GameObject createRoomCanvas;
         public GameObject createRoomCanvasFirstSelected;
+        public GameObject createRoomEnterNicknamePrompt;
+        public GameObject createRoomEnterRoomNamePrompt;
         public TMP_InputField roomNameInputField;
         public TMP_InputField hostPlayerNameInputField;
         

@@ -64,17 +64,29 @@ namespace PixelPeeps.HeadlessChickens.Network
         public void CreateRoom()
         {
             string roomName = uiManager.roomNameInputField.text;
+            string nickName = uiManager.hostPlayerNameInputField.text;
+            
+            uiManager.createRoomEnterRoomNamePrompt.SetActive(false);
+            uiManager.createRoomEnterNicknamePrompt.SetActive(false);
+            
+            PhotonNetwork.NickName = nickName;
+            currentRoomName = roomName;
+
+            if (!string.IsNullOrEmpty(nickName) && !string.IsNullOrEmpty(roomName))
+            {
+                PhotonNetwork.CreateRoom(roomName);
+                uiManager.ShowConnectionScreen();
+            }
+            
+            if (string.IsNullOrEmpty(nickName))
+            {
+                uiManager.createRoomEnterNicknamePrompt.SetActive(true);
+            }
             
             if (string.IsNullOrEmpty(roomName))
             {
-                return;
+                uiManager.createRoomEnterRoomNamePrompt.SetActive(true);
             }
-            
-            PhotonNetwork.NickName = uiManager.hostPlayerNameInputField.text;
-
-            currentRoomName = roomName;
-            PhotonNetwork.CreateRoom(roomName);
-            uiManager.ShowConnectionScreen();
         }
 
         public override void OnCreateRoomFailed(short returnCode, string message)
@@ -97,19 +109,21 @@ namespace PixelPeeps.HeadlessChickens.Network
 
         public void JoinRoom(RoomInfo info)
         {
-            if (uiManager.joiningPlayerNameInputField.text == String.Empty)
+            string nickname = uiManager.joiningPlayerNameInputField.text;
+
+            if (string.IsNullOrEmpty(nickname))
             {
                 uiManager.enterNamePrompt.SetActive(true);
+                return;
             }
+
+            uiManager.enterNamePrompt.SetActive(false);
             
-            else
-            {
-                PhotonNetwork.JoinRoom(info.Name);
+            PhotonNetwork.JoinRoom(info.Name);
 
-                PhotonNetwork.NickName = uiManager.joiningPlayerNameInputField.text;
+            PhotonNetwork.NickName = uiManager.joiningPlayerNameInputField.text;
 
-                uiManager.ShowConnectionScreen();
-            }
+            uiManager.ShowConnectionScreen();
         }
 
         public override void OnJoinedRoom()

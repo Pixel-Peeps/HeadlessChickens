@@ -356,6 +356,10 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 710418650666665168, guid: 41d52b5684bf2c84fbf957882a7768a4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2092708784806677549, guid: 41d52b5684bf2c84fbf957882a7768a4, type: 3}
       propertyPath: m_AnchorMin.y
       value: 1
@@ -446,6 +450,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41d52b5684bf2c84fbf957882a7768a4, type: 3}
+--- !u!1 &554374429 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 710418650666665168, guid: 41d52b5684bf2c84fbf957882a7768a4, type: 3}
+  m_PrefabInstance: {fileID: 554374428}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &588809143
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -946,6 +955,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CreateRoomCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 483725998252695555, guid: 2cb8780cfe3b57d4984bb945a1f9ff02, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 483725998252695559, guid: 2cb8780cfe3b57d4984bb945a1f9ff02, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1030,6 +1043,14 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2509793326702000952, guid: 2cb8780cfe3b57d4984bb945a1f9ff02, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8454160096341767154, guid: 2cb8780cfe3b57d4984bb945a1f9ff02, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cb8780cfe3b57d4984bb945a1f9ff02, type: 3}
 --- !u!224 &1285936304 stripped
@@ -1045,6 +1066,16 @@ GameObject:
 --- !u!1 &1285936306 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 483725998252695555, guid: 2cb8780cfe3b57d4984bb945a1f9ff02, type: 3}
+  m_PrefabInstance: {fileID: 1285936303}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1285936307 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2509793326702000952, guid: 2cb8780cfe3b57d4984bb945a1f9ff02, type: 3}
+  m_PrefabInstance: {fileID: 1285936303}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1285936308 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8454160096341767154, guid: 2cb8780cfe3b57d4984bb945a1f9ff02, type: 3}
   m_PrefabInstance: {fileID: 1285936303}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1289530125
@@ -1909,6 +1940,18 @@ PrefabInstance:
       propertyPath: roomPlayerCount
       value: 
       objectReference: {fileID: 1306433331}
+    - target: {fileID: 7501125784343262428, guid: 2d49a1878a8e4de4d9c342e06ad7da66, type: 3}
+      propertyPath: enterNamePrompt
+      value: 
+      objectReference: {fileID: 554374429}
+    - target: {fileID: 7501125784343262428, guid: 2d49a1878a8e4de4d9c342e06ad7da66, type: 3}
+      propertyPath: createRoomEnterNicknamePrompt
+      value: 
+      objectReference: {fileID: 1285936308}
+    - target: {fileID: 7501125784343262428, guid: 2d49a1878a8e4de4d9c342e06ad7da66, type: 3}
+      propertyPath: createRoomEnterRoomNamePrompt
+      value: 
+      objectReference: {fileID: 1285936307}
     - target: {fileID: 7501125784343262429, guid: 2d49a1878a8e4de4d9c342e06ad7da66, type: 3}
       propertyPath: m_Name
       value: MenuManager
