@@ -8,11 +8,10 @@ namespace PixelPeeps.HeadlessChickens.UI
     // Handles all the different canvas that are present in a scene. Interfaced with by the GameStates    
     public class UIManager : MonoBehaviour
     {
-        [Header("General Screens")] 
+        [Header("Loading and Connecting Screens")] 
         public GameObject loadingScreenCanvas;
         public GameObject connectingScreenCanvas;
         public GameObject connectionErrorCanvas;
-        
         
         [Header("Main Menu")]
         public GameObject splashScreenCanvas;
@@ -24,11 +23,11 @@ namespace PixelPeeps.HeadlessChickens.UI
         [Header("Rooms")] 
         public GameObject roomSearchCanvas;
         public GameObject roomSearchCanvasFirstSelected;
-        public InputField playerNameInputField;
+        public TMP_InputField playerNameInputField;
 
         public GameObject createRoomCanvas;
         public GameObject createRoomCanvasFirstSelected;
-        public InputField createRoomInputField;
+        public TMP_InputField roomNameInputField;
         
         public GameObject waitingRoomCanvas;
         public GameObject waitingRoomFirstSelected;

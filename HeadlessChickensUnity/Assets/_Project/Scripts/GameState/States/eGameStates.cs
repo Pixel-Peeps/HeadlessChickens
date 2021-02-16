@@ -2,13 +2,11 @@
 {
     public enum eGameStates
     {
-        SplashScreen,
         MainMenu,
         RoomSearch,
         CreateRoom,
         WaitingRoom,
-        Loading,
-        Connecting,
+        ConnectionError,
         PlayScene,
     }
 }

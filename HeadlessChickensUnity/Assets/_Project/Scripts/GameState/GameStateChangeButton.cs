@@ -32,10 +32,6 @@ namespace PixelPeeps.HeadlessChickens.GameState
         {
             switch (stateToChangeTo)
             {
-                case eGameStates.SplashScreen:
-                    newState = new SplashScreenState();
-                    break;
-                
                 case eGameStates.MainMenu:
                     newState = new MainMenuState();
                     break;
@@ -48,8 +44,14 @@ namespace PixelPeeps.HeadlessChickens.GameState
                     newState = new GameSceneState();
                     break;
 
-                default:
-                    throw new ArgumentOutOfRangeException();
+                case eGameStates.RoomSearch:
+                    break;
+                
+                case eGameStates.CreateRoom:
+                    break;
+                
+                case eGameStates.ConnectionError:
+                    break;
             }
             
             GameStateManager.Instance.SwitchGameState(newState);

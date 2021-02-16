@@ -50,7 +50,7 @@ namespace PixelPeeps.HeadlessChickens.GameState
         {
             uiManager = FindObjectOfType<UIManager>();
             
-            currentState = new SplashScreenState();
+            currentState = new MainMenuState();
             currentState.StateEnter();
         }
 
