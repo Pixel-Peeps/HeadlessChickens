@@ -24,13 +24,13 @@ namespace com.pixelpeeps.headlesschickens
         {
             if (cubeMaterialIndex < cubeMaterials.Count)
             {
-                cubeMaterialIndex++;
-               // gameObject.GetComponent<MeshRenderer>().material = cubeMaterials[cubeMaterialIndex];
+                cubeMaterialIndex++; 
+                gameObject.GetComponent<MeshRenderer>().material = cubeMaterials[cubeMaterialIndex];
             }
             else
             {
                 cubeMaterialIndex = 0;
-                //gameObject.GetComponent<MeshRenderer>().material = cubeMaterials[cubeMaterialIndex];
+                gameObject.GetComponent<MeshRenderer>().material = cubeMaterials[cubeMaterialIndex];
             }
         }
 
