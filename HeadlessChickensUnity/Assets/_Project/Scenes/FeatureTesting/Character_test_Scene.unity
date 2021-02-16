@@ -130,9 +130,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 483434958, guid: a0a6eb8fbbfb6a347bd574e78d6166ab, type: 3}
+      propertyPath: _interactionType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1664495383705939187, guid: a0a6eb8fbbfb6a347bd574e78d6166ab, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16.77
+      value: 14.16
       objectReference: {fileID: 0}
     - target: {fileID: 1664495383705939187, guid: a0a6eb8fbbfb6a347bd574e78d6166ab, type: 3}
       propertyPath: m_LocalPosition.y
@@ -140,7 +144,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1664495383705939187, guid: a0a6eb8fbbfb6a347bd574e78d6166ab, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.44
+      value: -2.02
       objectReference: {fileID: 0}
     - target: {fileID: 1664495383705939187, guid: a0a6eb8fbbfb6a347bd574e78d6166ab, type: 3}
       propertyPath: m_LocalRotation.x
@@ -178,6 +182,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3864278940422369177, guid: a0a6eb8fbbfb6a347bd574e78d6166ab, type: 3}
+      propertyPath: leverManager
+      value: 
+      objectReference: {fileID: 1737994622}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0a6eb8fbbfb6a347bd574e78d6166ab, type: 3}
 --- !u!1001 &154177130
@@ -187,6 +195,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 483434958, guid: a0a6eb8fbbfb6a347bd574e78d6166ab, type: 3}
+      propertyPath: _interactionType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1664495383705939187, guid: a0a6eb8fbbfb6a347bd574e78d6166ab, type: 3}
       propertyPath: m_LocalPosition.x
       value: 20.22
@@ -235,6 +247,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 3864278940422369177, guid: a0a6eb8fbbfb6a347bd574e78d6166ab, type: 3}
+      propertyPath: leverManager
+      value: 
+      objectReference: {fileID: 1737994622}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0a6eb8fbbfb6a347bd574e78d6166ab, type: 3}
 --- !u!1001 &264739826
@@ -292,6 +308,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 3864278940422369177, guid: a0a6eb8fbbfb6a347bd574e78d6166ab, type: 3}
+      propertyPath: leverManager
+      value: 
+      objectReference: {fileID: 1737994622}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0a6eb8fbbfb6a347bd574e78d6166ab, type: 3}
 --- !u!1001 &404375586
@@ -349,6 +369,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 3864278940422369177, guid: a0a6eb8fbbfb6a347bd574e78d6166ab, type: 3}
+      propertyPath: leverManager
+      value: 
+      objectReference: {fileID: 1737994622}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0a6eb8fbbfb6a347bd574e78d6166ab, type: 3}
 --- !u!1 &695275322
@@ -489,6 +513,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3864278940422369177, guid: a0a6eb8fbbfb6a347bd574e78d6166ab, type: 3}
+      propertyPath: leverManager
+      value: 
+      objectReference: {fileID: 1737994622}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0a6eb8fbbfb6a347bd574e78d6166ab, type: 3}
 --- !u!1 &978879534 stripped
@@ -772,6 +800,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 483434958, guid: a0a6eb8fbbfb6a347bd574e78d6166ab, type: 3}
+      propertyPath: _interactionType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1664495383705939187, guid: a0a6eb8fbbfb6a347bd574e78d6166ab, type: 3}
       propertyPath: m_LocalPosition.x
       value: 18.97
@@ -820,6 +852,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3864278940422369177, guid: a0a6eb8fbbfb6a347bd574e78d6166ab, type: 3}
+      propertyPath: leverManager
+      value: 
+      objectReference: {fileID: 1737994622}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0a6eb8fbbfb6a347bd574e78d6166ab, type: 3}
 --- !u!1 &1611317687
@@ -1094,6 +1130,51 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!1 &1737994621
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1737994623}
+  - component: {fileID: 1737994622}
+  m_Layer: 0
+  m_Name: LeverManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1737994622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737994621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c505522afb11b747b6e7dd35e0974be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leversPulled: 0
+  allLeversPulled: 0
+--- !u!4 &1737994623
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737994621}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.940948, y: -0.11439824, z: 3.2861009}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1825896410
 GameObject:
   m_ObjectHideFlags: 3
@@ -1319,6 +1400,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 483434958, guid: a0a6eb8fbbfb6a347bd574e78d6166ab, type: 3}
+      propertyPath: _interactionType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1664495383705939187, guid: a0a6eb8fbbfb6a347bd574e78d6166ab, type: 3}
       propertyPath: m_LocalPosition.x
       value: 21.29
@@ -1367,6 +1452,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 3864278940422369177, guid: a0a6eb8fbbfb6a347bd574e78d6166ab, type: 3}
+      propertyPath: leverManager
+      value: 
+      objectReference: {fileID: 1737994622}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0a6eb8fbbfb6a347bd574e78d6166ab, type: 3}
 --- !u!1 &2017813688
@@ -1452,6 +1541,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 483434958, guid: a0a6eb8fbbfb6a347bd574e78d6166ab, type: 3}
+      propertyPath: _interactionType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1664495383705939187, guid: a0a6eb8fbbfb6a347bd574e78d6166ab, type: 3}
       propertyPath: m_LocalPosition.x
       value: 14.16
@@ -1500,6 +1593,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 3864278940422369177, guid: a0a6eb8fbbfb6a347bd574e78d6166ab, type: 3}
+      propertyPath: leverManager
+      value: 
+      objectReference: {fileID: 1737994622}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0a6eb8fbbfb6a347bd574e78d6166ab, type: 3}
 --- !u!1001 &1664495384969022266
@@ -1509,6 +1606,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 483434958, guid: a0a6eb8fbbfb6a347bd574e78d6166ab, type: 3}
+      propertyPath: _interactionType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1664495383705939187, guid: a0a6eb8fbbfb6a347bd574e78d6166ab, type: 3}
       propertyPath: m_LocalPosition.x
       value: 11.633448
@@ -1557,5 +1658,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube
       objectReference: {fileID: 0}
+    - target: {fileID: 3864278940422369177, guid: a0a6eb8fbbfb6a347bd574e78d6166ab, type: 3}
+      propertyPath: leverManager
+      value: 
+      objectReference: {fileID: 1737994622}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0a6eb8fbbfb6a347bd574e78d6166ab, type: 3}

@@ -4,17 +4,23 @@ using UnityEngine;
 
 public class Lever : MonoBehaviour, IInteractable
 {
-    
-    
+    public LeverManager leverManager;
+    Interactable interactable;
+
+    private void Awake()
+    {
+        interactable = GetComponent<Interactable>();
+    }
 
     public void Interact()
     {
-        Debug.Log("Interact() called");
+        leverManager.IncrementLeverCount();
+        interactable.interactAllowed = false;
     }
 
     public void InteractionFocus(bool focussed)
     {
-        if (focussed)
+        if (focussed && interactable.interactAllowed)
         {
             Debug.Log("InteractionFocus() true");
         }

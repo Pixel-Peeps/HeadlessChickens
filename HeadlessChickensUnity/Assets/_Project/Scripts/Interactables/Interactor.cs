@@ -25,7 +25,7 @@ public class Interactor : MonoBehaviour
 
     public bool TryInteract()
     {
-        if (activeInteractable != null)
+        if (activeInteractable != null && activeInteractable.interactAllowed)
         {
             activeInteractable.Interact();
             return true;
@@ -38,7 +38,7 @@ public class Interactor : MonoBehaviour
 
     public int GetInteractType()
     {
-        if (activeInteractable == null) return -1;
+        if (activeInteractable == null || !activeInteractable.interactAllowed) return -1;
 
         return activeInteractable.InteractionType();
     }

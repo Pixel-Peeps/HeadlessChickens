@@ -37,14 +37,14 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         private void OnCanInteract(Interactable obj)
         {
-            if (obj != null)
-            {
-                Debug.Log($"We can interact with {obj}");
-            }
-            else
-            {
-                Debug.Log("We can no longer interact");
-            }
+            //if (obj != null)
+            //{
+
+            //}
+            //else
+            //{
+
+            //}
         }
 
         private void FixedUpdate()

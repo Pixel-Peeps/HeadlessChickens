@@ -220,13 +220,21 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         private void InteractPressed(InputAction.CallbackContext obj)
         {
             var interacted = _character.interactor.TryInteract();
-            int typeNumber = _character.interactor.GetInteractType();
+            int interactTypeNumber = _character.interactor.GetInteractType();
 
             if (interacted)
             {
-                if(typeNumber == 0)
+                if(interactTypeNumber == 0)
                 {
-                    Debug.Log($"Interaction success!");
+                    Debug.Log("Lever pulled");
+                }
+                if(interactTypeNumber == 1)
+                {
+                    Debug.Log("Hiding");
+                }
+                if(interactTypeNumber == 2)
+                {
+                    Debug.Log("You'll never catch me copper!");
                 }
             }
         }

@@ -11,7 +11,7 @@ public class Interactable : MonoBehaviour
     public enum eInteractType { Lever, Hide, Shortcut }
     [SerializeField] private eInteractType _interactionType;
 
-
+    public bool interactAllowed = true;
 
     private void Awake()
     {
