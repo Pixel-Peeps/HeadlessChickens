@@ -50,9 +50,8 @@ namespace com.pixelpeeps.headlesschickens
                 {
                     Debug.LogFormat("Ignoring scene load for {0}", SceneManagerHelper.ActiveSceneName);
                 }
-
-                PhotonNetwork.InstantiateRoomObject("Cube", new Vector3(0f, 1f, 0f), Quaternion.identity, 0);
             }
+            PhotonNetwork.InstantiateRoomObject("Cube", new Vector3(3f, 1f, 0f), Quaternion.identity, 0);
         }
         
         /// <summary>
