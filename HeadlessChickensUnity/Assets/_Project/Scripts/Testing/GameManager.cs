@@ -19,6 +19,8 @@ namespace com.pixelpeeps.headlesschickens
         
         [Tooltip("The prefab to use for representing the player")]
         public GameObject playerPrefab;
+
+        public GameObject cube;
         
         
         #region Photon Callbacks
@@ -49,6 +51,8 @@ namespace com.pixelpeeps.headlesschickens
                     Debug.LogFormat("Ignoring scene load for {0}", SceneManagerHelper.ActiveSceneName);
                 }
             }
+            PhotonNetwork.InstantiateRoomObject("Cube", new Vector3(3f, 1f, 0f), Quaternion.identity, 0);
+            PhotonNetwork.InstantiateRoomObject("RPCCube", new Vector3(3f, 1f, 4f), Quaternion.identity, 0);
         }
         
         /// <summary>
@@ -111,7 +115,7 @@ namespace com.pixelpeeps.headlesschickens
                 Debug.LogError("PhotonNetwork : Trying to Load a level but we are not the master Client");
             }
             Debug.LogFormat("PhotonNetwork : Loading Level : {0}", PhotonNetwork.CurrentRoom.PlayerCount);
-            PhotonNetwork.LoadLevel("Room for " + PhotonNetwork.CurrentRoom.PlayerCount);
+            //PhotonNetwork.LoadLevel("Room for " + PhotonNetwork.CurrentRoom.PlayerCount);
         }
 
 
