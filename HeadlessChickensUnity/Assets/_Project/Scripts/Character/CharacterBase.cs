@@ -1,13 +1,21 @@
 ﻿using System;
+using System.Collections;
 using System.ComponentModel;
 using UnityEngine;
 
 namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 {
     [RequireComponent(typeof(CharacterInput))]
+    [RequireComponent(typeof(Interactor))]
     public class CharacterBase : MonoBehaviour
     {
         private CharacterInput _controller;
+        public Interactor interactor;
+        public Rigidbody _rigidbody;
+        public Collider _collider;
+
+        public HidingSpot currentHidingSpot;
+        public bool cooldownRunning = false;
 
         public enum EStates
         {
@@ -15,9 +23,10 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             Moving,
             Hiding
         }
+        
 
         [SerializeField] private EStates states = EStates.Idle;
-        private EStates State
+        public EStates State
         {
             get => states;
             set
@@ -30,11 +39,27 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         private void Awake()
         {
             _controller = GetComponent<CharacterInput>();
+            _rigidbody = GetComponent<Rigidbody>();
+            _collider = GetComponent<Collider>();
+
+            interactor.OnCanInteract += OnCanInteract;
+        }
+
+        private void OnCanInteract(Interactable obj)
+        {
+            //if (obj != null)
+            //{
+
+            //}
+            //else
+            //{
+
+            //}
         }
 
         private void FixedUpdate()
         {
-            if(State == EStates.Moving && _controller.isGrounded == true)
+            if (State == EStates.Moving && _controller.isGrounded == true)
             {
                 _controller.Move();
             }
@@ -45,8 +70,15 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             State = change;
         }
 
-        protected virtual void Interact(){}
+        public virtual IEnumerator CooldownTimer(float time)
+        {
+            cooldownRunning = true;
+            yield return new WaitForSeconds(time);
+            cooldownRunning = false;
+        }
 
         protected virtual void Action(){}
+
+        public virtual void HidingInteraction(HidingSpot hidingSpot){}
     }
 }

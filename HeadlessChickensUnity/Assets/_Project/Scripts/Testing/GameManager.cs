@@ -72,7 +72,7 @@ namespace com.pixelpeeps.headlesschickens
                 LoadArena();
             }
         }
-        
+
         public override void OnPlayerLeftRoom(Player other)
         {
             Debug.LogFormat("OnPlayerLeftRoom() {0}", other.NickName); // seen when other disconnects
