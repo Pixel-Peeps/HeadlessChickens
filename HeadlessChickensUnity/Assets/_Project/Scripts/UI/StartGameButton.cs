@@ -19,11 +19,7 @@ namespace PixelPeeps.HeadlessChickens.UI
         private void OnClick()
         {
             Player[] allPlayersInRoom = PhotonNetwork.PlayerList;
-            
-            foreach (Player player in allPlayersInRoom)
-            {
-                
-            }
+
             PhotonNetwork.LoadLevel("PlayScene");
         }
     }
