@@ -547,11 +547,11 @@ GameObject:
   - component: {fileID: 682641240311220080}
   m_Layer: 0
   m_Name: RickyChicky
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4734016008921192831
 Transform:
   m_ObjectHideFlags: 0
@@ -561,7 +561,7 @@ Transform:
   m_GameObject: {fileID: 4736487094571944351}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.67, y: 0.118, z: 6.7539673}
-  m_LocalScale: {x: 6.0885286, y: 6.0885286, z: 6.0885286}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 4732254436824099557}
   - {fileID: 4734123863947353195}
@@ -645,13 +645,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4736487094571944351}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a2744518cfd27dc4cb3380a56d774f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 4736984459812827375}
-  moveSpeed: 2
+  moveSpeed: 1.2
   moveTime: 5
   stopDistance: 0.1
   sprintMultiplier: 1.5
@@ -715,7 +715,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 1436168677081998845}
   - {fileID: 682641240311220080}
-  viewIdField: 0
+  viewIdField: 1
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &682641240311220080
@@ -885,7 +885,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 5
-  m_FollowOffset: {x: 0, y: 4.2, z: -8.52}
+  m_FollowOffset: {x: 0, y: 1.29, z: -2.2}
   m_XDamping: 1
   m_YDamping: 0
   m_ZDamping: 1
@@ -970,7 +970,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4736984459812827369
 Transform:
   m_ObjectHideFlags: 0
@@ -978,8 +978,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4736984459812827375}
-  m_LocalRotation: {x: 0.15619531, y: -0.5979293, z: 0.12020735, w: 0.7769388}
-  m_LocalPosition: {x: 1.3526992, y: 0.68982184, z: -0.35832047}
+  m_LocalRotation: {x: 0.11507905, y: -0.6034284, z: 0.08856448, w: 0.7840837}
+  m_LocalPosition: {x: 0.7088845, y: 0.43, z: -0.18777809}
   m_LocalScale: {x: 0.1642433, y: 0.1642433, z: 0.1642433}
   m_Children:
   - {fileID: 4736984458779265038}
