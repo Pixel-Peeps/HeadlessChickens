@@ -1,5 +1,6 @@
 ﻿using Photon.Pun;
 using Photon.Realtime;
+using PixelPeeps.HeadlessChickens.Network;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,8 +19,8 @@ namespace PixelPeeps.HeadlessChickens.UI
         
         private void OnClick()
         {
-            Player[] allPlayersInRoom = PhotonNetwork.PlayerList;
-
+            PlayerAssignment.Instance.AssignPlayerRoles(PhotonNetwork.PlayerList);
+            
             PhotonNetwork.LoadLevel("PlayScene");
         }
     }

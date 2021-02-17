@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections;
-
-
+﻿using com.pixelpeeps.headlesschickens;
+using Photon.Pun;
+using Photon.Realtime;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
-using Photon.Pun;
-using Photon.Realtime;
-
-
-namespace com.pixelpeeps.headlesschickens
+namespace PixelPeeps.HeadlessChickens.Network
 {
     public class GameManager : MonoBehaviourPunCallbacks
     {
@@ -19,9 +13,8 @@ namespace com.pixelpeeps.headlesschickens
         
         [Tooltip("The prefab to use for representing the player")]
         public GameObject playerPrefab;
-
-        public GameObject cube;
         
+        public GameObject cube;
         
         #region Photon Callbacks
 

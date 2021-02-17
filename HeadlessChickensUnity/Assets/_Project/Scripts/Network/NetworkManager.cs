@@ -4,6 +4,7 @@ using Photon.Realtime;
 using PixelPeeps.HeadlessChickens.GameState;
 using PixelPeeps.HeadlessChickens.UI;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace PixelPeeps.HeadlessChickens.Network
 {
@@ -17,6 +18,8 @@ namespace PixelPeeps.HeadlessChickens.Network
         }
 
         private UIManager uiManager;
+
+        private const int minPlayersPerRoom = 0;
 
         private string currentRoomName;
 
@@ -142,7 +145,15 @@ namespace PixelPeeps.HeadlessChickens.Network
             GameStateManager.Instance.SwitchGameState(new WaitingRoomState());
 
             uiManager.roomNameText.text = room.Name;
+            
             uiManager.startGameButton.SetActive(PhotonNetwork.IsMasterClient); // Sets button active only for the host
+            
+            uiManager.startGameButton.GetComponent<Button>().interactable = false;
+            
+            if (PhotonNetwork.CurrentRoom.PlayerCount >= minPlayersPerRoom)
+            {
+                uiManager.startGameButton.GetComponent<Button>().interactable = true;
+            }
 
             uiManager.roomPlayerCount.text = string.Format("In Room: {0} / {1}", PhotonNetwork.CurrentRoom.PlayerCount, PhotonNetwork.CurrentRoom.MaxPlayers);
             
@@ -165,14 +176,27 @@ namespace PixelPeeps.HeadlessChickens.Network
         {
             uiManager.roomPlayerCount.text = string.Format("In Room: {0} / {1}", PhotonNetwork.CurrentRoom.PlayerCount, PhotonNetwork.CurrentRoom.MaxPlayers);
             Debug.Log("OnPlayerEnteredRoom");
+            
             uiManager.startGameButton.SetActive(PhotonNetwork.IsMasterClient); // Sets button active only for the host
+            
+            if (PhotonNetwork.CurrentRoom.PlayerCount >= minPlayersPerRoom)
+            {
+                uiManager.startGameButton.GetComponent<Button>().interactable = true;
+            }
+            
             uiManager.UpdatePlayerList(newPlayer);
         }
 
         public override void OnPlayerLeftRoom(Player otherPlayer)
         {
             uiManager.roomPlayerCount.text = string.Format("In Room: {0} / {1}", PhotonNetwork.CurrentRoom.PlayerCount, PhotonNetwork.CurrentRoom.MaxPlayers);
+            
             uiManager.startGameButton.SetActive(PhotonNetwork.IsMasterClient); // Sets button active only for the host
+            
+            if (PhotonNetwork.CurrentRoom.PlayerCount < minPlayersPerRoom)
+            {
+                uiManager.startGameButton.GetComponent<Button>().interactable = false;
+            }
         }
 
         public void StartGame()
