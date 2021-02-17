@@ -32,6 +32,8 @@ namespace PixelPeeps.HeadlessChickens.Network
             {    
                 _instance = this;
             }
+            
+            PhotonNetwork.AutomaticallySyncScene = true;
         }
 
         private void Start()
