@@ -19,6 +19,8 @@ namespace com.pixelpeeps.headlesschickens
         
         [Tooltip("The prefab to use for representing the player")]
         public GameObject playerPrefab;
+
+        public GameObject cube;
         
         
         #region Photon Callbacks
@@ -48,6 +50,8 @@ namespace com.pixelpeeps.headlesschickens
                 {
                     Debug.LogFormat("Ignoring scene load for {0}", SceneManagerHelper.ActiveSceneName);
                 }
+
+                PhotonNetwork.InstantiateRoomObject("Cube", new Vector3(0f, 1f, 0f), Quaternion.identity, 0);
             }
         }
         
