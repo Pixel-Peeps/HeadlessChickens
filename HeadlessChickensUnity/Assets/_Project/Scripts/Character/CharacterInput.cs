@@ -41,7 +41,9 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         {
             _character = GetComponent<CharacterBase>();
             _rigidbody = GetComponent<Rigidbody>();
-
+            virtualCam = camera.GetComponent<CinemachineVirtualCamera>();
+            
+            
              /*####################################
               *           INPUT KEY ACTIONS       *
               * ##################################*/
@@ -64,7 +66,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
             #endregion
 
-            virtualCam = camera.GetComponent<CinemachineVirtualCamera>();
+            
         }
 
 
@@ -76,13 +78,14 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         private void Update()
         {
+            // calculate how fast the character will fall && how how the player will jump based on how long button is pressed
             if (_rigidbody.velocity.y < 0)
             {
-                _rigidbody.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+                _rigidbody.velocity += Vector3.up * (Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime);
             }
             else if (_rigidbody.velocity.y > 0 && !jumpButtonPressed)
             {
-                _rigidbody.velocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+                _rigidbody.velocity += Vector3.up * (Physics.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime);
             }
 
             if (_strafeActive)
@@ -117,8 +120,6 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             if ( distanceToDestination < stopDistance) _character.SwitchState(CharacterBase.EStates.Idle);
 
             // lock look at when in strafe mode
-            // if (!_strafeActive) transform.LookAt(new Vector3(_newPosition.x, transform.position.y, _newPosition.z));
-
             if (!_strafeActive)
             {
                 float tS = _rigidbody.velocity.magnitude / moveSpeed;
@@ -138,8 +139,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                     turnSpeedHigh = 40f;
                 }
             }
-
-
+            
             // move to position
             transform.position = Vector3.Lerp(transform.position, _newPosition, Time.deltaTime * moveTime);
         }
@@ -158,7 +158,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 if (_movDirection.x > 0) jumpDirection = transform.right;
                 if (_movDirection.y < 0) jumpDirection = -transform.forward;
             }
-
+            
             _rigidbody.velocity = _movDirection != Vector2.zero
                 ? (jumpDirection + (Vector3.up * 0.62f)) * jumpForce  * (moveSpeed * 0.8f)
                 : Vector3.up * jumpForce;
@@ -166,11 +166,6 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
 
 
-        }
-
-        private void Sprint()
-        {
-            
         }
 
         /*##################################
@@ -221,6 +216,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         private void InteractPressed(InputAction.CallbackContext obj)
         {
+            // if character is hiding, leave hiding spot
             if (_character.State == CharacterBase.EStates.Hiding)
             {
                 _character.HidingInteraction(_character.currentHidingSpot);
@@ -228,23 +224,6 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
             var interacted = _character.interactor.TryInteract();
             int interactTypeNumber = _character.interactor.GetInteractType();
-
-
-            //if (interacted)
-            //{
-            //    //if (interactTypeNumber == 0)
-            //    //{
-            //    //    Debug.Log("Lever pulled");
-            //    //}
-            //    //if (interactTypeNumber == 1)
-            //    //{
-            //    //    Debug.Log("Hiding");
-            //    //}
-            //    //if (interactTypeNumber == 2)
-            //    //{
-            //    //    Debug.Log("You'll never catch me copper!");
-            //    //}
-            //}
         }
 
         #endregion

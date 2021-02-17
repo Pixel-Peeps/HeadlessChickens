@@ -47,6 +47,7 @@ public class Interactor : MonoBehaviour
         }
     }
 
+    // check what type the interaction is to ensure the character is allowed to interact with this object/item
     public int GetInteractType()
     {
         if (activeInteractable == null || !activeInteractable.interactAllowed) return -1;
@@ -61,6 +62,7 @@ public class Interactor : MonoBehaviour
             var go = other.gameObject;
             var interactable = go.GetComponent<Interactable>();
 
+            // lock the interactables from a specific character
             if (characterType == eCharacterType.Fox &&
                  (interactable.GetInteractionType() == 0 || interactable.GetInteractionType() == 2)) return;
 
@@ -79,6 +81,7 @@ public class Interactor : MonoBehaviour
             var go = other.gameObject;
             var interactable = go.GetComponent<Interactable>();
 
+            // lock the interactables from a specific character
             if (characterType == eCharacterType.Fox &&
                 (interactable.GetInteractionType() == 0 || interactable.GetInteractionType() == 2)) return;
 
