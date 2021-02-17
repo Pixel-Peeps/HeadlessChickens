@@ -52,6 +52,7 @@ namespace com.pixelpeeps.headlesschickens
                 }
             }
             PhotonNetwork.InstantiateRoomObject("Cube", new Vector3(3f, 1f, 0f), Quaternion.identity, 0);
+            PhotonNetwork.InstantiateRoomObject("RPCCube", new Vector3(3f, 1f, 4f), Quaternion.identity, 0);
         }
         
         /// <summary>
