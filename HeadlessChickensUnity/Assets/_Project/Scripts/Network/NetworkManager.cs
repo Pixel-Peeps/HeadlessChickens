@@ -165,12 +165,14 @@ namespace PixelPeeps.HeadlessChickens.Network
         {
             uiManager.roomPlayerCount.text = string.Format("In Room: {0} / {1}", PhotonNetwork.CurrentRoom.PlayerCount, PhotonNetwork.CurrentRoom.MaxPlayers);
             Debug.Log("OnPlayerEnteredRoom");
+            uiManager.startGameButton.SetActive(PhotonNetwork.IsMasterClient); // Sets button active only for the host
             uiManager.UpdatePlayerList(newPlayer);
         }
 
         public override void OnPlayerLeftRoom(Player otherPlayer)
         {
             uiManager.roomPlayerCount.text = string.Format("In Room: {0} / {1}", PhotonNetwork.CurrentRoom.PlayerCount, PhotonNetwork.CurrentRoom.MaxPlayers);
+            uiManager.startGameButton.SetActive(PhotonNetwork.IsMasterClient); // Sets button active only for the host
         }
 
         public void StartGame()
