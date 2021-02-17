@@ -10,6 +10,10 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
     {
         private CharacterInput _controller;
         public Interactor interactor;
+        public Rigidbody _rigidbody;
+        public Collider _collider;
+
+        public HidingSpot currentHidingSpot;
 
         public enum EStates
         {
@@ -33,6 +37,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         private void Awake()
         {
             _controller = GetComponent<CharacterInput>();
+            _rigidbody = GetComponent<Rigidbody>();
+            _collider = GetComponent<Collider>();
 
             interactor.OnCanInteract += OnCanInteract;
         }

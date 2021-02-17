@@ -221,8 +221,14 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         private void InteractPressed(InputAction.CallbackContext obj)
         {
+            if (_character.State == CharacterBase.EStates.Hiding)
+            {
+                _character.HidingInteraction(_character.currentHidingSpot);
+            }
+
             var interacted = _character.interactor.TryInteract();
             int interactTypeNumber = _character.interactor.GetInteractType();
+
 
             //if (interacted)
             //{
