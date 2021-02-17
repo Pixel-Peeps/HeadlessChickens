@@ -4,10 +4,10 @@ using UnityEngine.SceneManagement;
 
 namespace PixelPeeps.HeadlessChickens.GameState
 {
-    public class MainMenuState : GameState
+    public class RoomSearchState : GameState
     {
-        private readonly GameObject canvasObject = StateManager.uiManager.mainMenuCanvas;
-        private readonly GameObject firstSelectedButton = StateManager.uiManager.mainMenuFirstSelected;
+        private readonly GameObject canvasObject = StateManager.uiManager.roomSearchCanvas;
+        private readonly GameObject firstSelectedButton = StateManager.uiManager.roomSearchCanvasFirstSelected;
 
         private readonly string sceneName = StateManager.menuScene;
         

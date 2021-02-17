@@ -28,14 +28,10 @@ namespace PixelPeeps.HeadlessChickens.GameState
             gameObject.GetComponent<Button>().onClick.AddListener(OnButtonClick);
         }
 
-        public void OnButtonClick()
+        private void OnButtonClick()
         {
             switch (stateToChangeTo)
             {
-                case eGameStates.SplashScreen:
-                    newState = new SplashScreenState();
-                    break;
-                
                 case eGameStates.MainMenu:
                     newState = new MainMenuState();
                     break;
@@ -48,8 +44,17 @@ namespace PixelPeeps.HeadlessChickens.GameState
                     newState = new GameSceneState();
                     break;
 
-                default:
-                    throw new ArgumentOutOfRangeException();
+                case eGameStates.RoomSearch:
+                    newState = new RoomSearchState();
+                    break;
+                
+                case eGameStates.CreateRoom:
+                    newState = new CreateRoomState();
+                    break;
+                
+                case eGameStates.ConnectionError:
+                    newState = new ConnectionErrorState("Called from button");
+                    break;
             }
             
             GameStateManager.Instance.SwitchGameState(newState);

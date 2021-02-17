@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7501125784343262431}
   - component: {fileID: 7501125784343262428}
   m_Layer: 0
-  m_Name: MenuManager
+  m_Name: UIManager
   m_TagString: MenuManager
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -43,6 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5c589330422ca94bafb8b1d9692fdfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadingScreenCanvas: {fileID: 0}
+  connectingScreenCanvas: {fileID: 0}
+  connectionErrorCanvas: {fileID: 0}
   splashScreenCanvas: {fileID: 0}
   splashScreenFirstSelected: {fileID: 0}
   mainMenuCanvas: {fileID: 0}
@@ -52,7 +55,7 @@ MonoBehaviour:
   playerNameInputField: {fileID: 0}
   createRoomCanvas: {fileID: 0}
   createRoomCanvasFirstSelected: {fileID: 0}
-  createRoomInputField: {fileID: 0}
+  roomNameInputField: {fileID: 0}
   waitingRoomCanvas: {fileID: 0}
   waitingRoomFirstSelected: {fileID: 0}
   startGameButton: {fileID: 0}
