@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Photon.Pun;
 using Photon.Realtime;
 using PixelPeeps.HeadlessChickens.GameState;
 using PixelPeeps.HeadlessChickens.UI;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace PixelPeeps.HeadlessChickens.Network
 {
@@ -74,7 +71,14 @@ namespace PixelPeeps.HeadlessChickens.Network
 
             if (!string.IsNullOrEmpty(nickName) && !string.IsNullOrEmpty(roomName))
             {
-                PhotonNetwork.CreateRoom(roomName);
+                RoomOptions options = new RoomOptions
+                {
+                    MaxPlayers = 6, 
+                    EmptyRoomTtl = 0
+                };
+
+                PhotonNetwork.CreateRoom(roomName, options);
+                
                 uiManager.ShowConnectionScreen();
             }
             
@@ -128,13 +132,18 @@ namespace PixelPeeps.HeadlessChickens.Network
 
         public override void OnJoinedRoom()
         {
+            Room room = PhotonNetwork.CurrentRoom;
+            
+            Debug.Log("Room " + room.Name + " has been joined. It currently has " + room.PlayerCount + "/" + room.MaxPlayers + 
+                      " players, isVisible is set to: " + room.IsVisible + " and isOpen is set to: " + room.IsOpen);
+
             uiManager.HideConnectionScreen();
             GameStateManager.Instance.SwitchGameState(new WaitingRoomState());
 
-            uiManager.roomNameText.text = currentRoomName;
+            uiManager.roomNameText.text = room.Name;
             uiManager.startGameButton.SetActive(PhotonNetwork.IsMasterClient); // Sets button active only for the host
 
-            uiManager.roomPlayerCount.text = string.Format("In Room: {0} / 6", PhotonNetwork.CurrentRoom.PlayerCount);
+            uiManager.roomPlayerCount.text = string.Format("In Room: {0} / {1}", PhotonNetwork.CurrentRoom.PlayerCount, PhotonNetwork.CurrentRoom.MaxPlayers);
             
             Player[] players = PhotonNetwork.PlayerList;
 
@@ -148,27 +157,19 @@ namespace PixelPeeps.HeadlessChickens.Network
 
         public override void OnRoomListUpdate(List<RoomInfo> roomList)
         {
-            if (roomList.Any())
-            {
-                Debug.Log("New room created: " + roomList[0].Name);
-            }
-            
             uiManager.GenerateRoomList(roomList);
         }
 
         public override void OnPlayerEnteredRoom(Player newPlayer)
         {
+            uiManager.roomPlayerCount.text = string.Format("In Room: {0} / {1}", PhotonNetwork.CurrentRoom.PlayerCount, PhotonNetwork.CurrentRoom.MaxPlayers);
             Debug.Log("OnPlayerEnteredRoom");
             uiManager.UpdatePlayerList(newPlayer);
         }
 
         public override void OnPlayerLeftRoom(Player otherPlayer)
         {
-            if (PhotonNetwork.CurrentRoom.PlayerCount <= 0)
-            {
-                PhotonNetwork.CurrentRoom.IsOpen = false;
-                PhotonNetwork.CurrentRoom.IsVisible = false;
-            }
+            uiManager.roomPlayerCount.text = string.Format("In Room: {0} / {1}", PhotonNetwork.CurrentRoom.PlayerCount, PhotonNetwork.CurrentRoom.MaxPlayers);
         }
 
         public void StartGame()

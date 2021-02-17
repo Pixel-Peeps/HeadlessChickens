@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using Photon.Pun;
+using System.Security.Cryptography;
+using System.Threading;
+using ExitGames.Client.Photon.StructWrapping;
 using Photon.Realtime;
 using TMPro;
 using UnityEngine;
@@ -22,16 +23,16 @@ namespace PixelPeeps.HeadlessChickens.UI
         public GameObject mainMenuCanvas;
         public GameObject mainMenuFirstSelected;
 
-        [Header("Room Search")] 
+        [Header("Room Search")]
         public GameObject roomSearchCanvas;
         public GameObject roomSearchCanvasFirstSelected;
         public GameObject enterNamePrompt;
         public TMP_InputField joiningPlayerNameInputField;
         
         [Header("Room List")]
-        public GameObject roomListParent;
+        public Transform roomListParent;
         public GameObject roomListItemPrefab;
-        [HideInInspector] public List<GameObject> currentRoomList = new List<GameObject>();
+        [HideInInspector] public List<RoomListItem> currentRoomListings = new List<RoomListItem>();
 
         [Header("Room Creation")]
         public GameObject createRoomCanvas;
@@ -75,21 +76,37 @@ namespace PixelPeeps.HeadlessChickens.UI
 
         public void GenerateRoomList(List<RoomInfo> roomList)
         {
-            if (currentRoomList.Any())
-            {
-                foreach (GameObject item in currentRoomList)
-                {
-                    Destroy(item);
-                }
-            }
+            Debug.Log("<color=yellow> GenerateRoomList() called </color>");
 
-            foreach (RoomInfo t in roomList)
+            foreach (RoomInfo info in roomList)
             {
-                print("RoomList 0: " + roomList[0] + "RoomList 1: " + roomList[1]);
-                GameObject newRoomItem = Instantiate(roomListItemPrefab, roomListParent.transform);
-                currentRoomList.Add(newRoomItem);
-                RoomListItem roomScript = newRoomItem.GetComponent<RoomListItem>();
-                roomScript.SetUp(t);
+                if (info.RemovedFromList)
+                {
+                    // Find index of removed room and destroy the game object it is attached to
+                    int index = currentRoomListings.FindIndex(x => x.roomInfo.Name == info.Name);
+                    if (index != -1)
+                    {
+                        Destroy(currentRoomListings[index].gameObject);
+                        currentRoomListings.RemoveAt(index);
+                    }
+                }
+                
+                else
+                {
+                    int index = currentRoomListings.FindIndex(x => x.roomInfo.Name == info.Name);
+                    if (index != -1)
+                    {
+                        Destroy(currentRoomListings[index].gameObject);
+                        currentRoomListings.RemoveAt(index);
+                    }
+                    
+                    GameObject newRoomItem = Instantiate(roomListItemPrefab, roomListParent);
+                    newRoomItem.name = info.Name;
+                    RoomListItem roomScript = newRoomItem.GetComponent<RoomListItem>();
+                    roomScript.SetUp(info);
+                    currentRoomListings.Add(roomScript);
+                    Debug.Log("<color=green> Room generated: " + info.Name + "</color>");
+                }
             }
         }
 
@@ -101,7 +118,7 @@ namespace PixelPeeps.HeadlessChickens.UI
             PlayerListItem itemScript = newPlayerListItem.GetComponent<PlayerListItem>();
             itemScript.SetUp(newPlayer);
         }
-        
+
         public void ShowLoadingScreen()
         {
             loadingScreenCanvas.SetActive(true);

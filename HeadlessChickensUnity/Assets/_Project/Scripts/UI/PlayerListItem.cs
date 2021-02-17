@@ -1,10 +1,7 @@
-﻿using ExitGames.Client.Photon.Encryption;
-using Photon.Pun;
+﻿using Photon.Pun;
 using Photon.Realtime;
-using PixelPeeps.HeadlessChickens.Network;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace PixelPeeps.HeadlessChickens.UI
 {
@@ -32,12 +29,14 @@ namespace PixelPeeps.HeadlessChickens.UI
         {
             if (player == otherPlayer)
             {
+                Debug.Log("Player that left is equal to: " + otherPlayer.NickName);
                 Destroy(gameObject);
             }
         }
 
         public override void OnLeftRoom()
         {
+            Debug.Log("Player left. Destroy game objects");
             Destroy(gameObject);
         }
     }
