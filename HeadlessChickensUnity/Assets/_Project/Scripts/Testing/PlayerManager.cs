@@ -20,7 +20,7 @@ namespace com.pixelpeeps.headlesschickens
         [Tooltip("The current Health of our player")]
         public float Health = 10f;
 
-        public Text healthDisplay;
+        //public Text healthDisplay;
         
         [Tooltip("The local player instance. Use this to know if the local player is represented in the Scene")]
         public static GameObject LocalPlayerInstance;
@@ -58,7 +58,7 @@ namespace com.pixelpeeps.headlesschickens
                 vCam.SetActive(true);
 
                 photonView.RPC("RPC_ChangeHealth", RpcTarget.All);
-                healthDisplay.text = this.Health.ToString("0");
+               // healthDisplay.text = this.Health.ToString("0");
             }
         }
         
@@ -100,14 +100,14 @@ namespace com.pixelpeeps.headlesschickens
                 // We own this player: send the others our data
                 Debug.Log("running on local (health)");
                 stream.SendNext(Health);
-                healthDisplay.text = this.Health.ToString("0");
+                //healthDisplay.text = this.Health.ToString("0");
             }
             else
             {
                 // Network player, receive data
                 Debug.Log("running on remote (health)");
                 this.Health = (float)stream.ReceiveNext();
-                healthDisplay.text = this.Health.ToString("0");
+               // healthDisplay.text = this.Health.ToString("0");
             }
         }
 

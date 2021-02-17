@@ -136,7 +136,7 @@ namespace com.pixelpeeps.headlesschickens
 
             // #Critical
             // Load the Room Level.s
-            PhotonNetwork.LoadLevel("Room for 1");
+            PhotonNetwork.LoadLevel("PlayScene");
         }
     }
 
