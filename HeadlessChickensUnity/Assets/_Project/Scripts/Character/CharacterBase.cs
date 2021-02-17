@@ -29,7 +29,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public EStates State
         {
             get => states;
-            set
+            private set
             {
                 if (!Enum.IsDefined(typeof(EStates), value))
                     throw new InvalidEnumArgumentException(nameof(value), (int) value, typeof(EStates));
@@ -69,7 +69,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         {
             State = change;
         }
-
+        
+        // cooldown timer used by interactables
         public virtual IEnumerator CooldownTimer(float time)
         {
             cooldownRunning = true;
