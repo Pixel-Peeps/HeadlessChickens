@@ -960,6 +960,7 @@ GameObject:
   - component: {fileID: 1818226132}
   - component: {fileID: 1818226131}
   - component: {fileID: 1818226130}
+  - component: {fileID: 1818226134}
   m_Layer: 8
   m_Name: Floor
   m_TagString: Ground
@@ -975,7 +976,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1818226129}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -1047,6 +1048,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1818226134
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818226129}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &3413917925002589190
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1105,7 +1119,7 @@ PrefabInstance:
     - target: {fileID: 6619688798292813461, guid: 96459eb110bb84161998e6ce38719f82, type: 3}
       propertyPath: playerPrefab
       value: 
-      objectReference: {fileID: 3370745547208646332, guid: ecf924ecfaacdd4478067afb214b41d7, type: 3}
+      objectReference: {fileID: 4736487094571944351, guid: 4238311699e664348b8e40254d1ec715, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96459eb110bb84161998e6ce38719f82, type: 3}
 --- !u!114 &3413917925002589191 stripped

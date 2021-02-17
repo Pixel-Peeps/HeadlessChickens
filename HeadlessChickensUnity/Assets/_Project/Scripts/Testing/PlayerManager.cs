@@ -14,7 +14,7 @@ namespace com.pixelpeeps.headlesschickens
     {
         public Camera _camera;
         //private Rigidbody rB;
-        private AlternativeCharacterInput charController;
+        private CharacterInput charController;
         public GameObject vCam;
 
         [Tooltip("The current Health of our player")]
@@ -34,7 +34,7 @@ namespace com.pixelpeeps.headlesschickens
                 PlayerManager.LocalPlayerInstance = this.gameObject;
             }
 
-            charController = gameObject.GetComponent<AlternativeCharacterInput>();
+            charController = gameObject.GetComponent<CharacterInput>();
             
             // #Critical
             // we flag as don't destroy on load so that instance survives level synchronization, thus giving a seamless experience when levels load.
@@ -51,8 +51,9 @@ namespace com.pixelpeeps.headlesschickens
             if (photonView.IsMine)
             {
                 //inst a rigidbody, this may not be necessary but otherwise maybe later problems
-                Rigidbody rB = gameObject.AddComponent<Rigidbody>();
-                rB.useGravity = false;
+                //Rigidbody rB = gameObject.AddComponent<Rigidbody>();
+                //rB.useGravity = false;
+                
                 charController.enabled = true;
                 vCam.SetActive(true);
 
