@@ -36,13 +36,13 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public float lowJumpMultiplier = 2f;
         public bool jumpButtonPressed;
 
-        private CinemachineVirtualCamera virtualCam;
+        private CinemachineFreeLook virtualCam;
 
         private void Awake()
         {
             _character = GetComponent<CharacterBase>();
             _rigidbody = GetComponent<Rigidbody>();
-            virtualCam = camera.GetComponent<CinemachineVirtualCamera>();
+            virtualCam = camera.GetComponent<CinemachineFreeLook>();
             
             
              /*####################################
@@ -102,6 +102,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         private void FixedUpdate()
         {
             _camTransform = camera.transform;
+            _camTransform.LookAt(transform.position);
         }
 
         public void Move()
