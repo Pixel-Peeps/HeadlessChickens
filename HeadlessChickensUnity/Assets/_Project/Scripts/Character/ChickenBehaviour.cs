@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
@@ -6,6 +7,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
     public class ChickenBehaviour : CharacterBase
     {
         Vector3 positionBeforeHiding;
+        // public bool shortcutAllowed = true;
+
 
         protected override void Action()
         {

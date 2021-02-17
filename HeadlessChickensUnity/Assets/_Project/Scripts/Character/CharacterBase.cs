@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.ComponentModel;
 using UnityEngine;
 
@@ -14,6 +15,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public Collider _collider;
 
         public HidingSpot currentHidingSpot;
+        public bool cooldownRunning = false;
 
         public enum EStates
         {
@@ -67,7 +69,13 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         {
             State = change;
         }
-        
+
+        public virtual IEnumerator CooldownTimer(float time)
+        {
+            cooldownRunning = true;
+            yield return new WaitForSeconds(time);
+            cooldownRunning = false;
+        }
 
         protected virtual void Action(){}
 
