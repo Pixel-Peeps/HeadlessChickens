@@ -1046,13 +1046,13 @@ GameObject:
   - component: {fileID: 4734016008921192831}
   - component: {fileID: 4677378702688158665}
   - component: {fileID: 4736984460096568294}
-  - component: {fileID: 4736984460096568288}
   - component: {fileID: 4736984460096568293}
   - component: {fileID: 4736984460096568292}
   - component: {fileID: 4736984460096568289}
   - component: {fileID: 1436168677081998845}
   - component: {fileID: 6494154961691394510}
   - component: {fileID: 682641240311220080}
+  - component: {fileID: 5116204772530406828}
   m_Layer: 0
   m_Name: RickyChicky
   m_TagString: Player
@@ -1116,19 +1116,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!65 &4736984460096568288
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4736487094571944351}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.18981566, y: 0.2299046, z: 0.27582595}
-  m_Center: {x: -0.0031632946, y: 0.114520304, z: -0.010934075}
 --- !u!114 &4736984460096568293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1242,6 +1229,20 @@ MonoBehaviour:
   _camera: {fileID: 0}
   vCam: {fileID: 1784577074839257426}
   Health: 10
+--- !u!136 &5116204772530406828
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4736487094571944351}
+  m_Material: {fileID: 13400000, guid: 7f253989766ee70459a07e91b7bfb98a, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.104998745
+  m_Height: 0.27102432
+  m_Direction: 1
+  m_Center: {x: 0.0028538704, y: 0.12889144, z: 0.014373223}
 --- !u!1 &4736532021489605191
 GameObject:
   m_ObjectHideFlags: 0

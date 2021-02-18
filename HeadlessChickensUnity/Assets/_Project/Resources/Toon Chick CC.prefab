@@ -568,12 +568,12 @@ GameObject:
   - component: {fileID: 3372827405851135580}
   - component: {fileID: 3428728022138852586}
   - component: {fileID: 3368987847830928836}
-  - component: {fileID: 3368987847830928832}
   - component: {fileID: 3368987847830928837}
   - component: {fileID: 5019506531372537099}
   - component: {fileID: 3638812675528768657}
   - component: {fileID: 5075417341510609802}
   - component: {fileID: 5119198089448770521}
+  - component: {fileID: 7017466661280571533}
   m_Layer: 0
   m_Name: Toon Chick CC
   m_TagString: Player
@@ -639,19 +639,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.15, z: 0}
---- !u!65 &3368987847830928832
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3370745547208646332}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.035173867, y: 0.033784382, z: 0.050382435}
-  m_Center: {x: -0.00171609, y: 0.01008025, z: 0.009378248}
 --- !u!114 &3368987847830928837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -700,7 +687,6 @@ MonoBehaviour:
   _camera: {fileID: 0}
   vCam: {fileID: 3368987849488354892}
   Health: 31
-  healthDisplay: {fileID: 2292339110694880221}
 --- !u!114 &3638812675528768657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -772,6 +758,20 @@ MonoBehaviour:
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
+--- !u!136 &7017466661280571533
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3370745547208646332}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.3135864
+  m_Height: 0.6325422
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.18372892, z: -0.1864136}
 --- !u!1 &3370838883843542372
 GameObject:
   m_ObjectHideFlags: 0
