@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using Photon.Pun;
+using UnityEngine;
 using PixelPeeps.HeadlessChickens._Project.Scripts.Character;
 
-public class HidingSpot : MonoBehaviour, IInteractable
+public class HidingSpot : MonoBehaviourPunCallbacks, IInteractable
 {
     public ChickenBehaviour chickenInSpot;
 
@@ -15,4 +16,8 @@ public class HidingSpot : MonoBehaviour, IInteractable
 
     }
 
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+       
+    }
 }

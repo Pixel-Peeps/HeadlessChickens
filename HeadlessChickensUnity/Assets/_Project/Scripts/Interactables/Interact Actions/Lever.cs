@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 using PixelPeeps.HeadlessChickens._Project.Scripts.Character;
 
-public class Lever : MonoBehaviour, IInteractable
+public class Lever : MonoBehaviourPunCallbacks, IInteractable
 {
     public LeverManager leverManager;
     Interactable interactable;
@@ -16,7 +17,9 @@ public class Lever : MonoBehaviour, IInteractable
     public void Interact(CharacterBase characterBase)
     {
         leverManager.IncrementLeverCount();
-        interactable.interactAllowed = false;
+        
+        photonView.RPC("RPC_ToggleInteractAllowed", RpcTarget.AllBufferedViaServer);
+        //interactable.interactAllowed = false;
     }
 
     public void InteractionFocus(bool focussed)
@@ -29,6 +32,11 @@ public class Lever : MonoBehaviour, IInteractable
         {
             Debug.Log("InteractionFocus() false");
         }
+        
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
         
     }
 }

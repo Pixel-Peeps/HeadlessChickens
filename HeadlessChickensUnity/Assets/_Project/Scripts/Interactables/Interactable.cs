@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using PixelPeeps.HeadlessChickens._Project.Scripts.Character;
 
 /// <summary>
 /// Gathers all IInteractable interfaces and relays notifications
 /// </summary>
-public class Interactable : MonoBehaviour
+public class Interactable : MonoBehaviourPunCallbacks, IPunObservable
 {
     private List<IInteractable> interfaces = new List<IInteractable>();
     public enum eInteractType { Lever, Hide, Shortcut }
@@ -19,6 +20,13 @@ public class Interactable : MonoBehaviour
         GetComponents<IInteractable>(interfaces);
     }
 
+    [PunRPC]
+    public void RPC_ToggleInteractAllowed()
+    {
+        interactAllowed = !interactAllowed;
+        Debug.Log("Interact allowed: "+interactAllowed);
+    }
+    
     public int GetInteractionType()
     {
         return (int)_interactionType;
@@ -48,5 +56,10 @@ public class Interactable : MonoBehaviour
 
             interfaces[i].Interact(character);
         }
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        
     }
 }

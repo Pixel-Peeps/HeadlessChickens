@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3864278940422369177}
   - component: {fileID: 8928049327355461896}
   - component: {fileID: 483434958}
+  - component: {fileID: 5930666620710289874}
   m_Layer: 0
   m_Name: LeverPrototype
   m_TagString: Interactable
@@ -138,3 +139,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interactionType: 0
   interactAllowed: 1
+--- !u!114 &5930666620710289874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664495383705939199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  observableSearch: 2
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 3864278940422369177}
+  - {fileID: 483434958}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0

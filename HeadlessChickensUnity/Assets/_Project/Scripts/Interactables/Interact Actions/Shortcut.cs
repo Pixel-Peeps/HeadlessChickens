@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using PixelPeeps.HeadlessChickens._Project.Scripts.Character;
 using UnityEngine;
 
-public class Shortcut : MonoBehaviour, IInteractable
+public class Shortcut : MonoBehaviourPunCallbacks, IInteractable
 {
     [SerializeField] Shortcut otherEnd;
     public float shortcutCooldown = 2f;
@@ -23,4 +24,8 @@ public class Shortcut : MonoBehaviour, IInteractable
         
     }
 
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        
+    }
 }
