@@ -15,7 +15,31 @@ namespace PixelPeeps.HeadlessChickens.Network
         public GameObject playerPrefab;
         
         public GameObject cube;
-        
+         public int leversPulled = 0;
+    public bool allLeversPulled = false;
+    
+    
+    void Update()
+    {
+        // if all levels are active open the exit
+        if(leversPulled == 4)
+        {
+            photonView.RPC(" RPC_AllLeversPulled", RpcTarget.AllBufferedViaServer);
+        }
+    }
+
+    [PunRPC]
+    public void RPC_AllLeversPulled()
+    {
+        Debug.Log("all levers pulled!");
+        allLeversPulled = true;
+    }
+
+    public void IncrementLeverCount()
+    {
+        leversPulled++;
+    }
+
         #region Photon Callbacks
 
 

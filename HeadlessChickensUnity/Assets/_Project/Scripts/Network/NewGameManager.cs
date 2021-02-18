@@ -32,6 +32,32 @@ namespace PixelPeeps.HeadlessChickens.Network
         private GameObject playerPrefab; // The prefab this player uses. Assigned as fox or chick when roles are assigned
         private Transform spawnPos;
 
+        public int leversPulled = 0;
+        public bool allLeversPulled = false;
+    
+    
+        void Update()
+        {
+            // if all levels are active open the exit
+            if(leversPulled == 4)
+            {
+                photonView.RPC(" RPC_AllLeversPulled", RpcTarget.AllBufferedViaServer);
+            }
+        }
+
+        [PunRPC]
+        public void RPC_AllLeversPulled()
+        {
+            Debug.Log("all levers pulled!");
+            allLeversPulled = true;
+        }
+
+        [PunRPC]
+        public void RPC_IncrementLeverCount()
+        {
+            leversPulled++;
+        }
+
         void Awake()
         {
             if (_instance != null && _instance != this)    

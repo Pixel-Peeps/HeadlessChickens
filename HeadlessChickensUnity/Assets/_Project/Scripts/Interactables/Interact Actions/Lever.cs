@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
 using PixelPeeps.HeadlessChickens._Project.Scripts.Character;
+using PixelPeeps.HeadlessChickens.Network;
 
 public class Lever : MonoBehaviourPunCallbacks, IInteractable
 {
-    public LeverManager leverManager;
     Interactable interactable;
 
     private void Awake()
@@ -16,9 +16,10 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
 
     public void Interact(CharacterBase characterBase)
     {
-        leverManager.IncrementLeverCount();
-        
-        photonView.RPC("RPC_ToggleInteractAllowed", RpcTarget.AllBufferedViaServer);
+        PhotonView gameManagerPhotonView = NewGameManager.Instance.GetComponent<PhotonView>();
+       
+        gameManagerPhotonView.RPC("RPC_IncrementLeverCount", RpcTarget.AllBufferedViaServer);
+        gameManagerPhotonView.RPC("RPC_ToggleInteractAllowed", RpcTarget.AllBufferedViaServer);
         //interactable.interactAllowed = false;
     }
 
