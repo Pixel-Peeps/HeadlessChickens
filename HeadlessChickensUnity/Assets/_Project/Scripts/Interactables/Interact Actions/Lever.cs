@@ -13,12 +13,12 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
     private void Awake()
     {
         interactable = GetComponent<Interactable>();
-        leverManager = GameObject.FindObjectOfType<LeverManager>();
+        leverManager = FindObjectOfType<LeverManager>();
     }
 
     public void Interact(CharacterBase characterBase)
     {
-        PhotonView gameManagerPhotonView = NewGameManager.Instance.GetComponent<PhotonView>();
+       // PhotonView gameManagerPhotonView = NewGameManager.Instance.GetComponent<PhotonView>();
        
         leverManager.photonView.RPC("RPC_IncrementLeverCount", RpcTarget.AllBufferedViaServer);
         leverManager.photonView.RPC("RPC_ToggleInteractAllowed", RpcTarget.AllBufferedViaServer);
