@@ -13,12 +13,13 @@ GameObject:
   - component: {fileID: 3064983777134469300}
   - component: {fileID: 3064983777134469303}
   - component: {fileID: 3064983777134469302}
+  - component: {fileID: 5173330328088872229}
   m_Layer: 0
-  m_Name: PillowProxy
-  m_TagString: Untagged
+  m_Name: BedPillows
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &3064983777134469306
 Transform:
@@ -61,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 2100000, guid: 7cf24baf61929ff479e54f62f3c28a41, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2036,32 +2037,8 @@ MonoBehaviour:
   assetGuid: 
   m_IsSelectable: 1
   m_SelectedFaces: 
-  m_SelectedEdges:
-  - a: 206
-    b: 207
-  - a: 202
-    b: 203
-  - a: 11
-    b: 8
-  - a: 3
-    b: 0
-  - a: 217
-    b: 218
-  - a: 220
-    b: 221
-  - a: 121
-    b: 122
-  - a: 124
-    b: 125
-  - a: 16
-    b: 17
-  - a: 24
-    b: 25
-  - a: 110
-    b: 111
-  - a: 106
-    b: 107
-  m_SelectedVertices: ce000000cf000000ca000000cb0000000b000000080000000300000000000000d9000000da000000dc000000dd000000790000007a0000007c0000007d000000100000001100000018000000190000006e0000006f0000006a0000006b000000
+  m_SelectedEdges: []
+  m_SelectedVertices: 
 --- !u!64 &3064983777134469302
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2069,10 +2046,23 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3064983777134469297}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 7947a28db962b2d4f9ba8bd1dad9647e, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!65 &5173330328088872229
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3064983777134469297}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0900002, y: 0.22028565, z: 1.0900002}
+  m_Center: {x: 0.5, y: 0.11014283, z: -0.5}

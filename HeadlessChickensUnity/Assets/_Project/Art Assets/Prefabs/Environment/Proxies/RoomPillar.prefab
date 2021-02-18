@@ -15,10 +15,10 @@ GameObject:
   - component: {fileID: 7728750547457054044}
   m_Layer: 0
   m_Name: RoomPillar
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &5299972257169502400
 Transform:
@@ -775,81 +775,9 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_IsSelectable: 1
-  m_SelectedFaces: 000000000400000005000000140000001200000010000000030000001300000002000000
-  m_SelectedEdges:
-  - a: 0
-    b: 1
-  - a: 2
-    b: 0
-  - a: 1
-    b: 3
-  - a: 3
-    b: 2
-  - a: 16
-    b: 17
-  - a: 17
-    b: 18
-  - a: 18
-    b: 19
-  - a: 19
-    b: 16
-  - a: 20
-    b: 21
-  - a: 21
-    b: 22
-  - a: 22
-    b: 23
-  - a: 23
-    b: 20
-  - a: 80
-    b: 81
-  - a: 82
-    b: 80
-  - a: 81
-    b: 83
-  - a: 83
-    b: 82
-  - a: 72
-    b: 73
-  - a: 74
-    b: 72
-  - a: 73
-    b: 75
-  - a: 75
-    b: 74
-  - a: 64
-    b: 65
-  - a: 66
-    b: 64
-  - a: 65
-    b: 67
-  - a: 67
-    b: 66
-  - a: 15
-    b: 12
-  - a: 12
-    b: 13
-  - a: 14
-    b: 15
-  - a: 13
-    b: 14
-  - a: 76
-    b: 77
-  - a: 78
-    b: 76
-  - a: 77
-    b: 79
-  - a: 79
-    b: 78
-  - a: 11
-    b: 8
-  - a: 8
-    b: 9
-  - a: 10
-    b: 11
-  - a: 9
-    b: 10
-  m_SelectedVertices: 0000000001000000020000000300000012000000100000001100000013000000160000001400000015000000170000005000000051000000520000005300000048000000490000004a0000004b000000400000004100000042000000430000000f0000000c0000000d0000000e0000004c0000004d0000004e0000004f0000000b00000008000000090000000a000000
+  m_SelectedFaces: 
+  m_SelectedEdges: []
+  m_SelectedVertices: 
 --- !u!64 &7728750547457054044
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -857,7 +785,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1355497912659316911}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4

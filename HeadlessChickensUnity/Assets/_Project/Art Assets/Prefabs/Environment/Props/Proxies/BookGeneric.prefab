@@ -13,12 +13,13 @@ GameObject:
   - component: {fileID: 2863997739822457835}
   - component: {fileID: 2863997739822457832}
   - component: {fileID: 2863997739822457833}
+  - component: {fileID: 7996178736671495869}
   m_Layer: 0
   m_Name: BookGeneric
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2863997739822457837
 Transform:
@@ -776,16 +777,8 @@ MonoBehaviour:
   assetGuid: 
   m_IsSelectable: 1
   m_SelectedFaces: 
-  m_SelectedEdges:
-  - a: 35
-    b: 34
-  - a: 9
-    b: 11
-  - a: 84
-    b: 85
-  - a: 2
-    b: 0
-  m_SelectedVertices: 2300000022000000090000000b00000054000000550000000200000000000000
+  m_SelectedEdges: []
+  m_SelectedVertices: 
 --- !u!64 &2863997739822457833
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -793,10 +786,23 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2863997739822457846}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 7947a28db962b2d4f9ba8bd1dad9647e, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!65 &7996178736671495869
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2863997739822457846}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.42, y: 0.10788319, z: 0.5401356}
+  m_Center: {x: 0.21, y: 0.050563145, z: -0.26556307}

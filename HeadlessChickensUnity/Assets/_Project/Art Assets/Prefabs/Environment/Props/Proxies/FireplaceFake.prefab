@@ -14,11 +14,11 @@ GameObject:
   - component: {fileID: 3437175815726321009}
   - component: {fileID: 3437175815726321008}
   m_Layer: 0
-  m_Name: Fireplace
-  m_TagString: Untagged
+  m_Name: FireplaceFake
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &3437175815726321012
 Transform:
@@ -785,7 +785,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3437175815726321011}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4

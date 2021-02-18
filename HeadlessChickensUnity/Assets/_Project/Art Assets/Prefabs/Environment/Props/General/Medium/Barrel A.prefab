@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 8332955623332002054}
   - component: {fileID: 3716171935522016954}
   - component: {fileID: 6556783850653351188}
+  - component: {fileID: 3208469006186760776}
   m_Layer: 0
   m_Name: barrel_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8332955623332002054
 Transform:
@@ -82,6 +83,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3208469006186760776
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7756855286700271204}
+  m_Material: {fileID: 13400000, guid: 7947a28db962b2d4f9ba8bd1dad9647e, type: 2}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0094765, y: 1.0149465, z: 0.99982774}
+  m_Center: {x: 0.000005185604, y: 0.49051684, z: -0.0026094764}
 --- !u!1 &8847121614066920980
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,10 +107,10 @@ GameObject:
   - component: {fileID: 8182084598395827374}
   m_Layer: 0
   m_Name: Barrel A
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8182084598395827374
 Transform:
