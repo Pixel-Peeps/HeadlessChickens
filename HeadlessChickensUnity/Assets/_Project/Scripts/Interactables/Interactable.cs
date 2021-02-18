@@ -23,7 +23,7 @@ public class Interactable : MonoBehaviourPunCallbacks
     [PunRPC]
     public void RPC_ToggleInteractAllowed()
     {
-        interactAllowed = !interactAllowed;
+        interactAllowed = false;
         Debug.Log("Interact allowed: "+interactAllowed);
     }
     

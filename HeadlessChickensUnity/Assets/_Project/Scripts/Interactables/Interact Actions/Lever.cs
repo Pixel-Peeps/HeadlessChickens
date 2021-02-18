@@ -22,7 +22,7 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
        // PhotonView gameManagerPhotonView = NewGameManager.Instance.GetComponent<PhotonView>();
        
         leverManager.photonView.RPC("RPC_IncrementLeverCount", RpcTarget.AllBufferedViaServer);
-        leverManager.photonView.RPC("RPC_ToggleInteractAllowed", RpcTarget.AllBufferedViaServer);
+        interactable.photonView.RPC("RPC_ToggleInteractAllowed", RpcTarget.AllBufferedViaServer);
         //interactable.interactAllowed = false;
     }
 
