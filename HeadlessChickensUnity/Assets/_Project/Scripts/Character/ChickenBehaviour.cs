@@ -25,6 +25,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         }
 
         
+        [PunRPC]
         public override void RPC_HidingInteraction(HidingSpot hidingSpot)
         {
             if(hidingSpot.chickenInSpot == null)

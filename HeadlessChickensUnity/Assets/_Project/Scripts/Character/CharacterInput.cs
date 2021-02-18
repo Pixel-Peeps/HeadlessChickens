@@ -228,6 +228,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             // if character is hiding, leave hiding spot
             if (_character.State == CharacterBase.EStates.Hiding)
             {
+                
                 _character.photonView.RPC("RPC_HidingInteraction", RpcTarget.AllBufferedViaServer, _character.currentHidingSpot);
             }
 
