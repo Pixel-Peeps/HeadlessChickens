@@ -8,7 +8,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 {
     [RequireComponent(typeof(CharacterInput))]
     [RequireComponent(typeof(Interactor))]
-    public class CharacterBase : MonoBehaviourPunCallbacks
+    public class CharacterBase : MonoBehaviourPunCallbacks, IPunObservable
     {
         private CharacterInput _controller;
         public Interactor interactor;
@@ -85,5 +85,9 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         protected virtual void Action(){}
 
         public virtual void HidingInteraction(HidingSpot hidingSpot){}
+        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        {
+           // throw new NotImplementedException();
+        }
     }
 }
