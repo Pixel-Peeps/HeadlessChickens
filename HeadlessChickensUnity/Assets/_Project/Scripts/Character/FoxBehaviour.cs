@@ -12,7 +12,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             throw new System.NotImplementedException();
         }
 
-        public override void RPC_HidingInteraction(HidingSpot hidingSpot)
+        public override void RPC_HidingInteraction()
         {
             Debug.Log("<color=magenta>I am searching</color>");
         }
