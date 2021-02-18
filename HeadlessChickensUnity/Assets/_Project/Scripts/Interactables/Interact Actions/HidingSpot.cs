@@ -15,9 +15,4 @@ public class HidingSpot : MonoBehaviourPunCallbacks, IInteractable
     {
 
     }
-
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-       
-    }
 }
