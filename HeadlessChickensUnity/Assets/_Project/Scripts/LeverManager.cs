@@ -1,7 +1,7 @@
 ﻿using Photon.Pun;
 using UnityEngine;
 
-public class LeverManager : MonoBehaviourPunCallbacks, IPunObservable
+public class LeverManager : MonoBehaviourPunCallbacks
 {
     public int leversPulled = 0;
     public bool allLeversPulled = false;
@@ -27,10 +27,5 @@ public class LeverManager : MonoBehaviourPunCallbacks, IPunObservable
     public void RPC_IncrementLeverCount()
     {
         leversPulled++;
-    }
-
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        
     }
 }

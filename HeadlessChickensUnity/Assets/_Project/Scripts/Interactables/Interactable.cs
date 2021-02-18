@@ -7,7 +7,7 @@ using PixelPeeps.HeadlessChickens._Project.Scripts.Character;
 /// <summary>
 /// Gathers all IInteractable interfaces and relays notifications
 /// </summary>
-public class Interactable : MonoBehaviourPunCallbacks, IPunObservable
+public class Interactable : MonoBehaviourPunCallbacks
 {
     private List<IInteractable> interfaces = new List<IInteractable>();
     public enum eInteractType { Lever, Hide, Shortcut }
@@ -56,10 +56,5 @@ public class Interactable : MonoBehaviourPunCallbacks, IPunObservable
 
             interfaces[i].Interact(character);
         }
-    }
-
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        
     }
 }
