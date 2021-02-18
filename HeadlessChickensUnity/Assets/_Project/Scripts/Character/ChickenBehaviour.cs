@@ -8,7 +8,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
     public class ChickenBehaviour : CharacterBase
     {
         Vector3 positionBeforeHiding;
-
+        
         [SerializeField] GameObject chickenMesh;
         [SerializeField] Material caughtMat;
 
@@ -16,7 +16,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public void ChickenCaptured()
         {
             this.hasBeenCaught = true;
-                this.chickenMesh.GetComponent<Renderer>().sharedMaterial = caughtMat;
+            this.chickenMesh.GetComponent<Renderer>().sharedMaterial = caughtMat;
         }
 
         protected override void Action()
@@ -45,16 +45,16 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 _collider.enabled = false;
                 _rigidbody.isKinematic = true;
 
-                transform.position = hidingSpot.transform.position;
+                transform.position = currentlyInteractingHidingSpot.transform.position;
 
                 // lock the hiding spot while in use
-                hidingSpot.chickenInSpot = this;
-                currentHidingSpot = hidingSpot;
+                currentlyInteractingHidingSpot.chickenInSpot = this;
+                currentHidingSpot = currentlyInteractingHidingSpot;
                 SwitchState(EStates.Hiding);
             }
             
             // if the chicken hiding is the current chicken, leave the hiding spot.
-            else if(hidingSpot.chickenInSpot ==  this)
+            else if(currentlyInteractingHidingSpot.chickenInSpot ==  this)
             {
                 transform.position = positionBeforeHiding;
 
@@ -63,7 +63,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 _rigidbody.isKinematic = false;
 
                 // unlock the hiding spot for other chickens
-                hidingSpot.chickenInSpot = null;
+                currentlyInteractingHidingSpot.chickenInSpot = null;
                 currentHidingSpot = null;
                 SwitchState(EStates.Moving);
             }
