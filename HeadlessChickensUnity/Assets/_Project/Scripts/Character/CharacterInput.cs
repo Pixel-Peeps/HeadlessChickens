@@ -222,6 +222,9 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         private void InteractPressed(InputAction.CallbackContext obj)
         {
+            // if caught, don't do anything
+            if (_character.hasBeenCaught) return;
+            
             // if character is hiding, leave hiding spot
             if (_character.State == CharacterBase.EStates.Hiding)
             {

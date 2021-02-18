@@ -16,12 +16,13 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         public HidingSpot currentHidingSpot;
         public bool cooldownRunning = false;
+        public bool hasBeenCaught = false;
 
         public enum EStates
         {
             Idle,
             Moving,
-            Hiding
+            Hiding,
         }
         
 

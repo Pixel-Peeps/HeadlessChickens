@@ -14,5 +14,16 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         {
             Debug.Log("<color=magenta>I am searching</color>");
         }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.CompareTag("Player"))
+            {
+                if (other.GetComponent<ChickenBehaviour>() != null)
+                {
+                    other.GetComponent<ChickenBehaviour>().ChickenCaptured();
+                }
+            }
+        }
     }
 }
