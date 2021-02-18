@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 2133907126609362821}
   - component: {fileID: 2284190089987818916}
   m_Layer: 0
-  m_Name: CM_ThidPerson
+  m_Name: CM_ChickCam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1133,7 +1133,10 @@ MonoBehaviour:
   _collider: {fileID: 0}
   currentHidingSpot: {fileID: 0}
   cooldownRunning: 0
+  hasBeenCaught: 0
   states: 0
+  chickenMesh: {fileID: 4735656888883141993}
+  caughtMat: {fileID: 2100000, guid: e317540f30635e64c9aa47e222c6e247, type: 2}
 --- !u!114 &4736984460096568292
 MonoBehaviour:
   m_ObjectHideFlags: 0

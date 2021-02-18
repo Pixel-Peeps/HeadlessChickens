@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections;
 using System.ComponentModel;
+using Photon.Pun;
 using UnityEngine;
 
 namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 {
     [RequireComponent(typeof(CharacterInput))]
     [RequireComponent(typeof(Interactor))]
-    public class CharacterBase : MonoBehaviour
+    public class CharacterBase : MonoBehaviourPunCallbacks
     {
         private CharacterInput _controller;
         public Interactor interactor;
@@ -16,12 +17,13 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         public HidingSpot currentHidingSpot;
         public bool cooldownRunning = false;
+        public bool hasBeenCaught = false;
 
         public enum EStates
         {
             Idle,
             Moving,
-            Hiding
+            Hiding,
         }
         
 
