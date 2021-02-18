@@ -16,6 +16,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public Rigidbody _rigidbody;
         public Collider _collider;
 
+        public bool isHiding;
         public HidingSpot currentHidingSpot;
         public bool cooldownRunning = false;
         public bool hasBeenCaught = false;

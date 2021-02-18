@@ -28,7 +28,10 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         [PunRPC]
         public override void RPC_HidingInteraction(HidingSpot hidingSpot)
         {
-            if(hidingSpot.chickenInSpot == null)
+            if (isHiding) {transform.position = positionBeforeHiding; SwitchState(EStates.Moving);}
+            if (!isHiding) EnterHiding();
+            
+            /*if(hidingSpot.chickenInSpot == null)
             {
                 // log position before entering hiding as a return position when leaving
                 positionBeforeHiding = transform.position;
@@ -62,7 +65,24 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             else
             {
                 Debug.Log("<color=cyan> A chicken is already in there!</color>");
-            }
+            }*/
+        }
+
+        private void EnterHiding()
+        {
+            // log position before entering hiding as a return position when leaving
+            positionBeforeHiding = transform.position;
+
+            // lock physics on entering hiding
+            _collider.enabled = false;
+            _rigidbody.isKinematic = true;
+
+            if(currentHidingSpot != null)
+                transform.position = currentHidingSpot.transform.position;
+
+            // lock the hiding spot while in use
+            isHiding = true;
+            SwitchState(EStates.Hiding);
         }
     }
 }

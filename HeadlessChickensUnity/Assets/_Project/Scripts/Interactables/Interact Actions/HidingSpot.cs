@@ -4,11 +4,13 @@ using PixelPeeps.HeadlessChickens._Project.Scripts.Character;
 
 public class HidingSpot : MonoBehaviourPunCallbacks, IInteractable
 {
-    public ChickenBehaviour chickenInSpot;
+    //public ChickenBehaviour chickenInSpot;
+    public bool inUse;
 
     public void Interact(CharacterBase character)
     {
         character.photonView.RPC("RPC_HidingInteraction", RpcTarget.AllViaServer, this);
+        inUse = true;
     }
 
     public void InteractionFocus(bool focussed)
