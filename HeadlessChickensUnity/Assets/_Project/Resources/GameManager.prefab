@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5173365763610788296}
   - component: {fileID: 2382090305524964847}
+  - component: {fileID: 849949290}
+  - component: {fileID: 849949289}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -38,10 +40,54 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6425314097948912326}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80752e867027f46f092febd7555e54d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 4736487094571944351, guid: 4238311699e664348b8e40254d1ec715, type: 3}
   cube: {fileID: 0}
+--- !u!114 &849949290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6425314097948912326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bea2ddbccf014f64aa414fc02d6a88ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foxPrefab: {fileID: 5162064196285339575, guid: 8c896e5392bca47c599e590a482ff563, type: 3}
+  foxSpawnPoint: {fileID: 0}
+  chickPrefab: {fileID: 4736487094571944351, guid: 4238311699e664348b8e40254d1ec715, type: 3}
+  chickSpawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &849949289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6425314097948912326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  observableSearch: 2
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
