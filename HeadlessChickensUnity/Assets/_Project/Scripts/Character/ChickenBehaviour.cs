@@ -24,7 +24,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             throw new System.NotImplementedException();
         }
 
-        public override void HidingInteraction(HidingSpot hidingSpot)
+        
+        public override void RPC_HidingInteraction(HidingSpot hidingSpot)
         {
             if(hidingSpot.chickenInSpot == null)
             {

@@ -84,7 +84,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         protected virtual void Action(){}
 
-        public virtual void HidingInteraction(HidingSpot hidingSpot){}
+        [PunRPC] 
+        public virtual void RPC_HidingInteraction(HidingSpot hidingSpot){}
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         {
            // throw new NotImplementedException();

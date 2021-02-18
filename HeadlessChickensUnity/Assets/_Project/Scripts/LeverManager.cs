@@ -23,7 +23,8 @@ public class LeverManager : MonoBehaviourPunCallbacks, IPunObservable
         allLeversPulled = true;
     }
 
-    public void IncrementLeverCount()
+    [PunRPC]
+    public void RPC_IncrementLeverCount()
     {
         leversPulled++;
     }
