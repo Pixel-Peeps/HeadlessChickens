@@ -43,7 +43,7 @@ namespace PixelPeeps.HeadlessChickens.Network
         {
             uiManager = GameObject.FindGameObjectWithTag("MenuManager").GetComponent<UIManager>();
             PhotonNetwork.ConnectUsingSettings();
-            uiManager.ShowConnectionScreen();
+            GameStateManager.Instance.ShowConnectingScreen();
         }
 
         public override void OnConnectedToMaster()
@@ -51,13 +51,13 @@ namespace PixelPeeps.HeadlessChickens.Network
             uiManager.HideConnectionScreen();
             Debug.Log("Connected to master");
             PhotonNetwork.JoinLobby();
-            uiManager.ShowConnectionScreen();
+            GameStateManager.Instance.ShowConnectingScreen();
             PhotonNetwork.AutomaticallySyncScene = true;
         }
 
         public override void OnJoinedLobby()
         {
-            uiManager.HideConnectionScreen();
+            GameStateManager.Instance.HideConnectingScreen();
             Debug.Log("Joined lobby");
             GameStateManager.Instance.SwitchGameState(new MainMenuState());
         }
@@ -105,13 +105,13 @@ namespace PixelPeeps.HeadlessChickens.Network
         public void LeaveRoom()
         {
             PhotonNetwork.LeaveRoom();
-            uiManager.ShowLoadingScreen();
+            GameStateManager.Instance.ShowLoadingScreen();
         }
 
         public override void OnLeftRoom()
         {
             Debug.Log("Left room: " + currentRoomName);
-            uiManager.HideLoadingScreen();
+            GameStateManager.Instance.HideLoadingScreen();
             GameStateManager.Instance.SwitchGameState(new MainMenuState());
         }
 
@@ -131,7 +131,7 @@ namespace PixelPeeps.HeadlessChickens.Network
 
             PhotonNetwork.NickName = uiManager.joiningPlayerNameInputField.text;
 
-            uiManager.ShowConnectionScreen();
+            GameStateManager.Instance.ShowConnectingScreen();
         }
 
         public override void OnJoinedRoom()
@@ -141,7 +141,7 @@ namespace PixelPeeps.HeadlessChickens.Network
             Debug.Log("Room " + room.Name + " has been joined. It currently has " + room.PlayerCount + "/" + room.MaxPlayers + 
                       " players, isVisible is set to: " + room.IsVisible + " and isOpen is set to: " + room.IsOpen);
 
-            uiManager.HideConnectionScreen();
+            GameStateManager.Instance.HideConnectingScreen();
             GameStateManager.Instance.SwitchGameState(new WaitingRoomState());
 
             uiManager.roomNameText.text = room.Name;
@@ -169,6 +169,7 @@ namespace PixelPeeps.HeadlessChickens.Network
 
         public override void OnRoomListUpdate(List<RoomInfo> roomList)
         {
+            Debug.Log("RoomListUpdate");
             uiManager.GenerateRoomList(roomList);
         }
 
@@ -199,7 +200,15 @@ namespace PixelPeeps.HeadlessChickens.Network
             }
         }
 
-        public void StartGame()
+        public void StartGameOnMaster()
+        {
+            GameStateManager.Instance.SwitchGameState(new GameSceneState());
+            PlayerAssignmentRPC.Instance.AssignPlayerRoles();
+            photonView.RPC("StartGameForOthers", RpcTarget.Others);
+        }
+        
+        [PunRPC]
+        public void StartGameForOthers()
         {
             GameStateManager.Instance.SwitchGameState(new GameSceneState());
         }

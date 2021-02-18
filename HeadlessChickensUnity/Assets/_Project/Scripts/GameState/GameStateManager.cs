@@ -22,6 +22,11 @@ namespace PixelPeeps.HeadlessChickens.GameState
 
         [Header("GUI")] 
         [HideInInspector] public UIManager uiManager;
+
+        [Header("Loading / Connecting")] 
+        public GameObject loadingScreen;
+        public GameObject connectingScreen;
+        public GameObject connectionErrorScreen;
         #endregion
         
         [Header("Game Scenes")] 
@@ -74,9 +79,6 @@ namespace PixelPeeps.HeadlessChickens.GameState
 
         public void LoadNextScene(string sceneName)
         {
-            // Pass to Launcher.cs on lobby / play scene load
-            // Launcher will connect the player to the room, and load the lobby / play scene, synced for every player
-            
             Scene activeScene = SceneManager.GetActiveScene();
             
             if (activeScene.name != sceneName)
@@ -93,12 +95,35 @@ namespace PixelPeeps.HeadlessChickens.GameState
             
             while (!asyncLoad.isDone)
             {
+                ShowLoadingScreen();
                 yield return new WaitForSecondsRealtime(0.2f);
             }
             
+            HideLoadingScreen();
+            uiManager = FindObjectOfType<UIManager>();
             currentState.OnSceneLoad();
             
             yield return null;
+        }
+
+        public void ShowLoadingScreen()
+        {
+            loadingScreen.SetActive(true);
+        }
+        
+        public void ShowConnectingScreen()
+        {
+            connectingScreen.SetActive(true);
+        }
+        
+        public void HideLoadingScreen()
+        {
+            loadingScreen.SetActive(false);
+        }
+        
+        public void HideConnectingScreen()
+        {
+            connectingScreen.SetActive(false);
         }
     }
 }

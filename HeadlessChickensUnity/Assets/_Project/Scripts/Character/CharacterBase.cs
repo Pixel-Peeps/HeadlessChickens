@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.ComponentModel;
+using Photon.Pun;
 using UnityEngine;
 
 namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
@@ -11,6 +12,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
     {
         private CharacterInput _controller;
         public Interactor interactor;
+        public PhotonView photonView;
         public Rigidbody _rigidbody;
         public Collider _collider;
 
@@ -41,6 +43,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             _controller = GetComponent<CharacterInput>();
             _rigidbody = GetComponent<Rigidbody>();
             _collider = GetComponent<Collider>();
+            photonView = GetComponent<PhotonView>();
 
             interactor.OnCanInteract += OnCanInteract;
         }
@@ -59,7 +62,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         private void FixedUpdate()
         {
-            if (State == EStates.Moving && _controller.isGrounded == true)
+            if (State == EStates.Moving && _controller.isGrounded == true && photonView.IsMine)
             {
                 _controller.Move();
             }

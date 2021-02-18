@@ -41,7 +41,7 @@ namespace PixelPeeps.HeadlessChickens.Network
                 _instance = this;
             }
         }
-        void Start()
+        public void Initialise()
         {
             if (playerPrefab == null)
             {
@@ -53,7 +53,7 @@ namespace PixelPeeps.HeadlessChickens.Network
                 if (PlayerManager.LocalPlayerInstance == null)
                 {
                     Debug.LogFormat("We are Instantiating LocalPlayer from {0}", SceneManagerHelper.ActiveSceneName);
-                    PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
+                    PhotonNetwork.Instantiate(playerPrefab.name, spawnPos.position, Quaternion.identity, 0);
                 }
                 else
                 {
@@ -64,7 +64,19 @@ namespace PixelPeeps.HeadlessChickens.Network
 
         public void DeterminePlayerRole()
         {
-            if (PlayerAssignment.Instance.foxPlayer == PhotonNetwork.LocalPlayer)
+            Debug.Log("DeterminePlayerRole");
+            Player localPlayer = PhotonNetwork.LocalPlayer;
+            PlayerAssignmentRPC assignmentRPC = PlayerAssignmentRPC.Instance;
+            List<Player> chickenPlayersList = new List<Player>();
+            
+            // Turning array to list
+            foreach (int i in assignmentRPC.chickenPlayersActorNumbers)
+            {
+                Player thisPlayer = PhotonNetwork.CurrentRoom.GetPlayer(i);
+                chickenPlayersList.Add(thisPlayer);
+            }
+            
+            if (Equals(assignmentRPC.foxPlayer, localPlayer))
             {
                 playerPrefab = foxPrefab;
                 spawnPos = foxSpawnPoint;
@@ -72,7 +84,11 @@ namespace PixelPeeps.HeadlessChickens.Network
             else
             {
                 playerPrefab = chickPrefab;
-                spawnPos = chickSpawnPoints[PhotonNetwork.LocalPlayer.ActorNumber];
+                
+                // Find index of this player 
+                int indexInChickenList = chickenPlayersList.FindIndex(x => x.NickName == localPlayer.NickName);
+                Debug.Log("index: " + indexInChickenList);
+                spawnPos = chickSpawnPoints[indexInChickenList];
             }
         }
         

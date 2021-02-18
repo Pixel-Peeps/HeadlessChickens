@@ -1,7 +1,6 @@
-﻿using System;
-using PixelPeeps.HeadlessChickens.UI;
+﻿using Photon.Pun;
+using PixelPeeps.HeadlessChickens.Network;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace PixelPeeps.HeadlessChickens.GameState
 {
@@ -14,17 +13,7 @@ namespace PixelPeeps.HeadlessChickens.GameState
 
         public override void OnSceneLoad()
         {
-            // GameObject resultsScreenManager = GameObject.FindGameObjectWithTag("ResultsScreenManager");
-            //     
-            // if (resultsScreenManager != null)
-            // {
-            //     StateManager.resultsScreenManager = resultsScreenManager.GetComponent<ResultsScreenManager>();
-            // }
-            //
-            // else
-            // {
-            //     Debug.LogError("Object tagged ResultsScreenManager was not found in scene. Make sure to add it!");
-            // }
+            Debug.Log("OnSceneLoad");
         }
 
         public override void StateExit()
