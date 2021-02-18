@@ -27,7 +27,10 @@ namespace PixelPeeps.HeadlessChickens.GameState
 
         public override void StateExit()
         {
-            canvasObject.SetActive(false);
+            if (canvasObject != null)
+            {
+                canvasObject.SetActive(false);
+            }
         }
     }
 }

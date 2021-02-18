@@ -86,7 +86,7 @@ namespace PixelPeeps.HeadlessChickens.Network
                 playerPrefab = chickPrefab;
                 
                 // Find index of this player 
-                int indexInChickenList = chickenPlayersList.FindIndex(x => x.NickName == localPlayer.NickName);
+                int indexInChickenList = chickenPlayersList.FindIndex(x => x.ActorNumber == localPlayer.ActorNumber);
                 Debug.Log("index: " + indexInChickenList);
                 spawnPos = chickSpawnPoints[indexInChickenList];
             }
