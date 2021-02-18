@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8928049327355461896}
   - component: {fileID: 483434958}
   m_Layer: 0
-  m_Name: InteractableCube
+  m_Name: LeverPrototype
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 1664495383705939199}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 11.633448, y: 0.45, z: 3.18}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3816, y: 1.3816, z: 1.3816}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -110,6 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a39272ade3784c0da1a76f6210bed05e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leverManager: {fileID: 0}
 --- !u!135 &8928049327355461896
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -135,3 +136,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77ae72e399ba328449be237c09ad1d21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _interactionType: 0
+  interactAllowed: 1
