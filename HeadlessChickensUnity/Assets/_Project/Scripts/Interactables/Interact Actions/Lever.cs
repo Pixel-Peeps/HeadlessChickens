@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
@@ -10,10 +11,10 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
     Interactable interactable;
     public LeverManager leverManager;
 
-    private void Awake()
+    private void Start()
     {
         interactable = GetComponent<Interactable>();
-        leverManager = FindObjectOfType<LeverManager>();
+        leverManager = GameObject.FindWithTag("LeverManager").GetComponent<LeverManager>();
     }
 
     public void Interact(CharacterBase characterBase)

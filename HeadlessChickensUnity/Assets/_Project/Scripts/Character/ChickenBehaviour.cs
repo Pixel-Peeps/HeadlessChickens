@@ -23,14 +23,19 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         {
             throw new System.NotImplementedException();
         }
-
         
-        [PunRPC]
-        public override void RPC_HidingInteraction(HidingSpot hidingSpot)
+        public override void HidingInteraction()
         {
-            if (isHiding) {transform.position = positionBeforeHiding; SwitchState(EStates.Moving);}
-            if (!isHiding) EnterHiding();
-            
+            switch (isHiding)
+            {
+                case true:
+                    photonView.RPC("RPC_LeaveHiding", RpcTarget.AllViaServer, positionBeforeHiding);
+                    break;
+                case false:
+                    photonView.RPC("RPC_EnterHiding", RpcTarget.AllViaServer, currentHidingSpot);
+                    break;
+            }
+
             /*if(hidingSpot.chickenInSpot == null)
             {
                 // log position before entering hiding as a return position when leaving
@@ -68,7 +73,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             }*/
         }
 
-        private void EnterHiding()
+        [PunRPC]
+        private void RPC_EnterHiding(Vector3 hidingPos)
         {
             // log position before entering hiding as a return position when leaving
             positionBeforeHiding = transform.position;
@@ -77,12 +83,26 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             _collider.enabled = false;
             _rigidbody.isKinematic = true;
 
-            if(currentHidingSpot != null)
-                transform.position = currentHidingSpot.transform.position;
+            transform.position = currentHidingSpot;
 
             // lock the hiding spot while in use
             isHiding = true;
             SwitchState(EStates.Hiding);
+        }
+
+        [PunRPC]
+        private void RPC_LeaveHiding(Vector3 leavePos)
+        {
+            transform.position = positionBeforeHiding; 
+            
+            // unlock physics on leaving
+            _collider.enabled = true;
+            _rigidbody.isKinematic = false;
+
+            isHiding = false;
+            
+            
+            SwitchState(EStates.Moving);
         }
     }
 }

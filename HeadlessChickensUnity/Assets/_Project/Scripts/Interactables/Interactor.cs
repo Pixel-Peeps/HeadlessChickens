@@ -65,7 +65,6 @@ public class Interactor : MonoBehaviour
             switch (characterType)
             {
                 case eCharacterType.Chick when interactable.GetInteractionType() == 2:
-                    characterBase.currentHidingSpot = interactable.GetComponent<HidingSpot>();
                     break;
                 // lock the interactables from a specific character
                 case eCharacterType.Fox when (interactable.GetInteractionType() == 0 || interactable.GetInteractionType() == 2):

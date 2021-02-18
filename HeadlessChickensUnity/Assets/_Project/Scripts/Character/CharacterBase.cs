@@ -17,7 +17,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public Collider _collider;
 
         public bool isHiding;
-        public HidingSpot currentHidingSpot;
+        public Vector3 currentHidingSpot;
         public bool cooldownRunning = false;
         public bool hasBeenCaught = false;
 
@@ -84,9 +84,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         }
 
         protected virtual void Action(){}
-
-        [PunRPC] 
-        public virtual void RPC_HidingInteraction(HidingSpot hidingSpot){}
+        
+        public virtual void HidingInteraction(){}
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         {
            // throw new NotImplementedException();
