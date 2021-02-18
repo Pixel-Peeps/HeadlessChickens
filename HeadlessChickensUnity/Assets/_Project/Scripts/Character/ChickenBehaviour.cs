@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using Photon.Pun;
 
 namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
@@ -11,10 +12,14 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         [SerializeField] GameObject chickenMesh;
         [SerializeField] Material caughtMat;
 
+        [PunRPC] 
         public void ChickenCaptured()
         {
-            hasBeenCaught = true;
-            chickenMesh.GetComponent<Renderer>().sharedMaterial = caughtMat;
+            if (photonView.IsMine)
+            {
+                hasBeenCaught = true;
+                chickenMesh.GetComponent<Renderer>().sharedMaterial = caughtMat;
+            }
         }
 
         protected override void Action()

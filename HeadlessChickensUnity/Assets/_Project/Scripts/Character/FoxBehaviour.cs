@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
 
 namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 {
@@ -21,7 +23,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             {
                 if (other.GetComponent<ChickenBehaviour>() != null)
                 {
-                    other.GetComponent<ChickenBehaviour>().ChickenCaptured();
+                    Debug.Log("calling chicken caught RPC");
+                    other.GetComponent<ChickenBehaviour>().photonView.RPC("ChickenCaptured", RpcTarget.AllBufferedViaServer);
                 }
             }
         }
