@@ -16,14 +16,14 @@ public class HidingSpot : MonoBehaviourPunCallbacks, IInteractable
             if (canAccessHiding)
             {
                 Debug.Log("Interact() method called, inUse false");
-                character.currentHidingSpot = transform;
-                character.HidingInteraction(canAccessHiding);
+                //character.photonView.GetComponent<CharacterBase>().currentHidingSpot = transform;
+                character.HidingInteraction(canAccessHiding, transform);
                 photonView.RPC("RPC_ToggleAccess", RpcTarget.AllViaServer);
             }
             else
             {
                 // character.currentHidingSpot.position = null;
-                character.HidingInteraction(canAccessHiding);
+                character.HidingInteraction(canAccessHiding, transform);
             }
         }
     }
