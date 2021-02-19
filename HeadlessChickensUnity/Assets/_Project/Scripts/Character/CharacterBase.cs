@@ -16,7 +16,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public Rigidbody _rigidbody;
 
         public bool isHiding;
-        public Transform currentHidingSpot;
+        
         public bool cooldownRunning = false;
         public bool hasBeenCaught = false;
 
@@ -83,7 +83,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         protected virtual void Action(){}
         
-        public virtual void HidingInteraction(bool canAccessHiding){}
+        public virtual void HidingInteraction(bool canAccessHiding, Transform hideSpot){}
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         {
            // throw new NotImplementedException();

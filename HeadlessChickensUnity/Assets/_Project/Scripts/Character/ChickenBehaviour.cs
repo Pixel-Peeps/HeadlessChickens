@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using Photon.Pun;
 
@@ -7,10 +9,18 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 {
     public class ChickenBehaviour : CharacterBase
     {
-        Vector3 positionBeforeHiding;
+        public Vector3 positionBeforeHiding;
         
-        [SerializeField] GameObject chickenMesh;
+        [SerializeField] Renderer chickenMesh;
         [SerializeField] Material caughtMat;
+        public HidingSpot hidedSpot;
+        public Transform currentHidingSpot;
+
+        private void Start()
+        {
+            chickenMesh = GetComponentInChildren<Renderer>();
+            
+        }
 
         [PunRPC] 
         public void ChickenCaptured()
@@ -24,7 +34,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             throw new System.NotImplementedException();
         }
         
-        public override void HidingInteraction(bool canAccessHiding)
+        public override void HidingInteraction(bool canAccessHiding, Transform hideSpot)
         {
             if (photonView.IsMine)
             {
@@ -33,14 +43,19 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                     Debug.Log("Someone else is already in there!");
                     return;
                 }
-
+                
                 switch (isHiding)
                 {
                     case true:
                         photonView.RPC("RPC_LeaveHiding", RpcTarget.AllViaServer, positionBeforeHiding);
+                        photonView.RPC("RPC_SetParent", RpcTarget.AllViaServer);
+                        hidedSpot.photonView.RPC("RPC_ToggleAccess", RpcTarget.AllViaServer);
                         break;
                     case false:
+                        currentHidingSpot = hideSpot;
                         photonView.RPC("RPC_EnterHiding", RpcTarget.AllViaServer, currentHidingSpot.position);
+                        photonView.RPC("RPC_SetParent", RpcTarget.AllViaServer);
+                        
                         break;
                 }
             }
@@ -53,13 +68,13 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             positionBeforeHiding = transform.position;
 
             // Disable Mesh
-            // chickenMesh.GetComponent<Renderer>().enabled = false;
+            chickenMesh.enabled = false;
 
             // lock physics on entering hiding
             _rigidbody.isKinematic = true;
 
-            transform.SetParent(currentHidingSpot);
-            transform.position = currentHidingSpot.position;
+            //photonView.transform.SetParent(currentHidingSpot);
+            photonView.transform.position = currentHidingSpot.position;
 
             // lock the hiding spot while in use
             isHiding = true;
@@ -69,21 +84,37 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         [PunRPC]
         private void RPC_LeaveHiding(Vector3 leavePos)
         {
-            transform.GetComponentInParent<HidingSpot>().photonView.RPC("RPC_ToggleAccess", RpcTarget.AllViaServer);
+            
 
-            transform.SetParent(null);
-            transform.position = positionBeforeHiding; 
+            
+            //photonView.transform.SetParent(null);
+            photonView.transform.position = positionBeforeHiding; 
             
             // unlock physics on leaving
             _rigidbody.isKinematic = false;
 
             // Re-enable Mesh
-            // chickenMesh.GetComponent<Renderer>().enabled = true;
+            chickenMesh.enabled = true;
 
             isHiding = false;
             
             
             SwitchState(EStates.Moving);
+        }
+
+        [PunRPC]
+        private void RPC_SetParent()
+        {
+            switch (isHiding)
+            {
+                case true: 
+                    transform.SetParent(currentHidingSpot);
+                    hidedSpot = transform.GetComponentInParent<HidingSpot>();
+                    break;
+                case false:
+                    transform.SetParent(null);
+                    break;
+            }
         }
     }
 }
