@@ -234,7 +234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138d2834b1922d945966bac81e18b467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chickenInSpot: {fileID: 0}
+  inUse: 0
 --- !u!114 &6244429235538438718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,10 +252,8 @@ MonoBehaviour:
   prefixField: -1
   observableSearch: 2
   Synchronization: 3
-  OwnershipTransfer: 0
-  ObservedComponents:
-  - {fileID: 6447769526264971704}
-  - {fileID: 814704326378878804}
-  viewIdField: 0
+  OwnershipTransfer: 1
+  ObservedComponents: []
+  viewIdField: 10
   InstantiationId: 0
   isRuntimeInstantiated: 0

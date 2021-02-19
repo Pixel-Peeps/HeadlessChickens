@@ -224,18 +224,21 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         private void InteractPressed(InputAction.CallbackContext obj)
         {
-            // if caught, don't do anything
-            if (_character.hasBeenCaught) return;
-            
-            // if character is hiding, leave hiding spot
-            if (_character.State == CharacterBase.EStates.Hiding)
+            if (photonView.IsMine)
             {
-                
-               _character.HidingInteraction();
-            }
+                // if caught, don't do anything
+                if (_character.hasBeenCaught) return;
 
-            var interacted = _character.interactor.TryInteract();
-            int interactTypeNumber = _character.interactor.GetInteractType();
+                // if character is hiding, leave hiding spot
+                if (_character.State == CharacterBase.EStates.Hiding)
+                {
+
+                    _character.HidingInteraction();
+                }
+
+                var interacted = _character.interactor.TryInteract();
+                int interactTypeNumber = _character.interactor.GetInteractType();
+            }
         }
 
         #endregion
