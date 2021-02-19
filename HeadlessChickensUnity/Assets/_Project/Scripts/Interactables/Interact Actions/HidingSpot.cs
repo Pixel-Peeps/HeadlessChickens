@@ -1,4 +1,5 @@
 ﻿using Photon.Pun;
+using Photon.Realtime;
 using UnityEngine;
 using PixelPeeps.HeadlessChickens._Project.Scripts.Character;
 
@@ -13,6 +14,7 @@ public class HidingSpot : MonoBehaviourPunCallbacks, IInteractable
         {
             if (!inUse)
             {
+                photonView.TransferOwnership(photonView.Controller);
                 Debug.Log("Interact() method called, inUse false");
                 character.currentHidingSpot = transform;
                 character.HidingInteraction();
