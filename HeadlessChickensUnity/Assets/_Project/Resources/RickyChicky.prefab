@@ -1053,6 +1053,7 @@ GameObject:
   - component: {fileID: 6494154961691394510}
   - component: {fileID: 682641240311220080}
   - component: {fileID: 5116204772530406828}
+  - component: {fileID: 1245716088192190339}
   m_Layer: 0
   m_Name: RickyChicky
   m_TagString: Player
@@ -1132,7 +1133,8 @@ MonoBehaviour:
   photonView: {fileID: 0}
   _rigidbody: {fileID: 0}
   _collider: {fileID: 0}
-  currentHidingSpot: {fileID: 0}
+  isHiding: 0
+  currentHidingSpot: {x: 0, y: 0, z: 0}
   cooldownRunning: 0
   hasBeenCaught: 0
   states: 0
@@ -1216,7 +1218,7 @@ MonoBehaviour:
   - {fileID: 4736984460096568293}
   - {fileID: 1436168677081998845}
   - {fileID: 682641240311220080}
-  - {fileID: 0}
+  - {fileID: 1245716088192190339}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -1249,6 +1251,22 @@ CapsuleCollider:
   m_Height: 0.27102432
   m_Direction: 1
   m_Center: {x: 0.0028538704, y: 0.12889144, z: 0.014373223}
+--- !u!114 &1245716088192190339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4736487094571944351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizeVelocity: 0
+  m_SynchronizeAngularVelocity: 0
+  m_TeleportEnabled: 1
+  m_TeleportIfDistanceGreaterThan: 3
 --- !u!1 &4736532021489605191
 GameObject:
   m_ObjectHideFlags: 0
