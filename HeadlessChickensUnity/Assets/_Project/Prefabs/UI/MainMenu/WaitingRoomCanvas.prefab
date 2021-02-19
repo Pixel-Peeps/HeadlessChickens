@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &483725998252695559
 RectTransform:
   m_ObjectHideFlags: 0
@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 2095042458202927173}
   - component: {fileID: 6158260684124018254}
   - component: {fileID: 6508221058154299973}
-  - component: {fileID: 3220712397798586953}
+  - component: {fileID: 1651941168}
   m_Layer: 5
   m_Name: StartGameButton
   m_TagString: Untagged
@@ -357,7 +357,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &3220712397798586953
+--- !u!114 &1651941168
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -366,10 +366,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1988486186212478597}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c5deb4c63b64ef2ab0b65282d8cc9da, type: 3}
+  m_Script: {fileID: 11500000, guid: 8ca4f3d9a0990404b9360ad2c171b7e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateToChangeTo: 5
 --- !u!1 &2241444914619344040
 GameObject:
   m_ObjectHideFlags: 0
