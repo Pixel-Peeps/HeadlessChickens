@@ -45,7 +45,7 @@ namespace PixelPeeps.HeadlessChickens.Network
             
             int randomIndex = Random.Range(0, playersInRoom.Length);
 
-            for (int i = 0; i < playersInRoom.Length; i++)
+            for (int i = 0; i < playersInRoom.Length + 1; i++)
             {
                 if (i == randomIndex)
                 {
