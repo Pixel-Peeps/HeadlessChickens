@@ -25,7 +25,7 @@ public class Interactor : MonoBehaviour
     CharacterBase characterBase;
 
     // All interactable objects the interactor is currently within range of
-    private List<Interactable> interactableObjects = new List<Interactable>();
+    [SerializeField] private List<Interactable> interactableObjects = new List<Interactable>();
 
     public Interactable activeInteractable { get; private set; }
 
