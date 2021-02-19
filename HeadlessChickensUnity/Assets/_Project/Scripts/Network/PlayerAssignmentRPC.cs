@@ -54,7 +54,7 @@ namespace PixelPeeps.HeadlessChickens.Network
                 else
                 {
                     chickenPlayersActorNumbers[i] = playersInRoom[i].ActorNumber;
-                }
+                }    
             }
 
             // Send roles to every player in the room
