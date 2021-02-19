@@ -52,6 +52,9 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             // log position before entering hiding as a return position when leaving
             positionBeforeHiding = transform.position;
 
+            // Disable Mesh
+            chickenMesh.GetComponent<Renderer>().enabled = false;
+
             // lock physics on entering hiding
             _rigidbody.isKinematic = true;
 
@@ -74,7 +77,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             // unlock physics on leaving
             _rigidbody.isKinematic = false;
 
-
+            // Disable Mesh
+            chickenMesh.GetComponent<Renderer>().enabled = true;
 
             isHiding = false;
             

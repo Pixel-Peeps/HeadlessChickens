@@ -29,10 +29,12 @@ namespace PixelPeeps.HeadlessChickens.Network
         public GameObject chickPrefab;
         public List<Transform> chickSpawnPoints;
         
+        
         private GameObject playerPrefab; // The prefab this player uses. Assigned as fox or chick when roles are assigned
         private Transform spawnPos;
 
-        [Header("HidingSpot")] public GameObject hidingSpotSpawnPos;
+        [Header("HidingSpot")]
+        [SerializeField] public List<Transform> hidingSpotSpawnPos;
         public GameObject hidingSpotPrefab;
 
         public int leversPulled = 0;
@@ -92,8 +94,11 @@ namespace PixelPeeps.HeadlessChickens.Network
                 }
             }
 
-            PhotonNetwork.InstantiateRoomObject(hidingSpotPrefab.name, hidingSpotSpawnPos.transform.position,
-                Quaternion.identity, 0);
+            foreach (var hidingSpawnPos in hidingSpotSpawnPos)
+            {
+                PhotonNetwork.InstantiateRoomObject(hidingSpotPrefab.name, hidingSpawnPos.position,
+                    Quaternion.identity, 0);
+            }
         }
 
         public void DeterminePlayerRole()
