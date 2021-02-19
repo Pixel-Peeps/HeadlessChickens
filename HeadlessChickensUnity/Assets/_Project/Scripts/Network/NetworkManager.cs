@@ -77,7 +77,7 @@ namespace PixelPeeps.HeadlessChickens.Network
             {
                 RoomOptions options = new RoomOptions
                 {
-                    MaxPlayers = 6, 
+                    MaxPlayers = 5, 
                     EmptyRoomTtl = 0
                 };
 
