@@ -85,7 +85,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         protected virtual void Action(){}
         
-        public virtual void HidingInteraction(){}
+        public virtual void HidingInteraction(bool canAccessHiding){}
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         {
            // throw new NotImplementedException();

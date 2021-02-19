@@ -233,7 +233,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 if (_character.State == CharacterBase.EStates.Hiding)
                 {
 
-                    _character.HidingInteraction();
+                    _character.HidingInteraction(true);
                 }
 
                 var interacted = _character.interactor.TryInteract();

@@ -24,10 +24,16 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             throw new System.NotImplementedException();
         }
         
-        public override void HidingInteraction()
+        public override void HidingInteraction(bool canAccessHiding)
         {
             if (photonView.IsMine)
             {
+                if (!canAccessHiding)
+                {
+                    Debug.Log("Someone else is already in there!");
+                    return;
+                }
+
                 switch (isHiding)
                 {
                     case true:
@@ -97,6 +103,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         [PunRPC]
         private void RPC_LeaveHiding(Vector3 leavePos)
         {
+            transform.GetComponentInParent<HidingSpot>().photonView.RPC("RPC_ToggleAccess", RpcTarget.AllViaServer);
+
             transform.SetParent(null);
             transform.position = positionBeforeHiding; 
             
