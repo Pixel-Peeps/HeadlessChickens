@@ -2,11 +2,12 @@
 using UnityEngine.InputSystem;
 using Cinemachine;
 using System;
+using Photon.Pun;
 
 namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 {
     [RequireComponent(typeof(Rigidbody))]
-    public class CharacterInput : MonoBehaviour
+    public class CharacterInput : MonoBehaviourPunCallbacks
     {
         [Header("Required Components/Objects")]
         private InputControls _controls;
@@ -35,13 +36,13 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public float lowJumpMultiplier = 2f;
         public bool jumpButtonPressed;
 
-        private CinemachineVirtualCamera virtualCam;
+        private CinemachineFreeLook virtualCam;
 
         private void Awake()
         {
             _character = GetComponent<CharacterBase>();
             _rigidbody = GetComponent<Rigidbody>();
-            virtualCam = camera.GetComponent<CinemachineVirtualCamera>();
+            virtualCam = camera.GetComponent<CinemachineFreeLook>();
             
             
              /*####################################
@@ -101,47 +102,52 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         private void FixedUpdate()
         {
             _camTransform = camera.transform;
+            _camTransform.LookAt(transform.position);
         }
 
         public void Move()
         {
-            // Check Camera facing direction
-            var forward = _camTransform.forward;
-            Vector3 tempForward = new Vector3(forward.x, 0, forward.z);
-            var right = _camTransform.right;
-            Vector3 tempRight = new Vector3(right.x, 0, right.z);
-            
-            // Set movement target based on cameras direction
-            _newPosition += tempForward * (_movDirection.y * moveSpeed) + tempRight * (_movDirection.x * moveSpeed);
-            Vector3 facingDirectrion = tempForward * _movDirection.y + tempRight * _movDirection.x;
-
-            // check distance to target position
-            float distanceToDestination = Vector3.Distance(transform.position, _newPosition);
-            if ( distanceToDestination < stopDistance) _character.SwitchState(CharacterBase.EStates.Idle);
-
-            // lock look at when in strafe mode
-            if (!_strafeActive)
+            if (photonView.IsMine)
             {
-                float tS = _rigidbody.velocity.magnitude / moveSpeed;
-                turnSpeed = Mathf.Lerp(turnSpeedHigh, turnSpeedLow, tS);
-                if (_movDirection.magnitude > 0)
+                // Check Camera facing direction
+                var forward = _camTransform.forward;
+                Vector3 tempForward = new Vector3(forward.x, 0, forward.z);
+                var right = _camTransform.right;
+                Vector3 tempRight = new Vector3(right.x, 0, right.z);
+
+                // Set movement target based on cameras direction
+                _newPosition += tempForward * (_movDirection.y * moveSpeed) + tempRight * (_movDirection.x * moveSpeed);
+                Vector3 facingDirectrion = tempForward * _movDirection.y + tempRight * _movDirection.x;
+
+                // check distance to target position
+                float distanceToDestination = Vector3.Distance(transform.position, _newPosition);
+                if (distanceToDestination < stopDistance) _character.SwitchState(CharacterBase.EStates.Idle);
+
+                // lock look at when in strafe mode
+                if (!_strafeActive)
                 {
-                    Quaternion rot = Quaternion.LookRotation(facingDirectrion);
-                    transform.rotation = Quaternion.Lerp(transform.rotation, rot, turnSpeed * Time.deltaTime);
-                }
-                turnSpeedHigh = 10f;
+                    float tS = _rigidbody.velocity.magnitude / moveSpeed;
+                    turnSpeed = Mathf.Lerp(turnSpeedHigh, turnSpeedLow, tS);
+                    if (_movDirection.magnitude > 0)
+                    {
+                        Quaternion rot = Quaternion.LookRotation(facingDirectrion);
+                        transform.rotation = Quaternion.Lerp(transform.rotation, rot, turnSpeed * Time.deltaTime);
+                    }
+
+                    turnSpeedHigh = 10f;
 
 
-                // Quick-turn to rotate on spot
-                if (_movDirection.magnitude < 0.15)
-                {
-                    _rigidbody.velocity = new Vector3(0, _rigidbody.velocity.y, 0);
-                    turnSpeedHigh = 40f;
+                    // Quick-turn to rotate on spot
+                    if (_movDirection.magnitude < 0.15)
+                    {
+                        _rigidbody.velocity = new Vector3(0, _rigidbody.velocity.y, 0);
+                        turnSpeedHigh = 40f;
+                    }
                 }
+
+                // move to position
+                transform.position = Vector3.Lerp(transform.position, _newPosition, Time.deltaTime * moveTime);
             }
-            
-            // move to position
-            transform.position = Vector3.Lerp(transform.position, _newPosition, Time.deltaTime * moveTime);
         }
 
         private void Jump()
@@ -216,6 +222,9 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         private void InteractPressed(InputAction.CallbackContext obj)
         {
+            // if caught, don't do anything
+            if (_character.hasBeenCaught) return;
+            
             // if character is hiding, leave hiding spot
             if (_character.State == CharacterBase.EStates.Hiding)
             {

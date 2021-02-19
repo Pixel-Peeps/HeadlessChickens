@@ -1,5 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics.Contracts;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using com.pixelpeeps.headlesschickens;
 using Photon.Pun;
 using Photon.Realtime;
@@ -67,15 +68,11 @@ namespace PixelPeeps.HeadlessChickens.Network
             Debug.Log("DeterminePlayerRole");
             Player localPlayer = PhotonNetwork.LocalPlayer;
             PlayerAssignmentRPC assignmentRPC = PlayerAssignmentRPC.Instance;
-            List<Player> chickenPlayersList = new List<Player>();
             
-            // Turning array to list
-            foreach (int i in assignmentRPC.chickenPlayersActorNumbers)
-            {
-                Player thisPlayer = PhotonNetwork.CurrentRoom.GetPlayer(i);
-                chickenPlayersList.Add(thisPlayer);
-            }
-            
+            // Turning array to list with LINQ
+            List<Player> chickenPlayersList = 
+                assignmentRPC.chickenPlayersActorNumbers.Select(i => PhotonNetwork.CurrentRoom.GetPlayer(i)).ToList();
+
             if (Equals(assignmentRPC.foxPlayer, localPlayer))
             {
                 playerPrefab = foxPrefab;
@@ -84,9 +81,17 @@ namespace PixelPeeps.HeadlessChickens.Network
             else
             {
                 playerPrefab = chickPrefab;
-                
+                int indexInChickenList;
                 // Find index of this player 
-                int indexInChickenList = chickenPlayersList.FindIndex(x => x.NickName == localPlayer.NickName);
+                try
+                {
+                    indexInChickenList = chickenPlayersList.FindIndex(x => Equals(x, localPlayer));
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    throw;
+                }
                 Debug.Log("index: " + indexInChickenList);
                 spawnPos = chickSpawnPoints[indexInChickenList];
             }

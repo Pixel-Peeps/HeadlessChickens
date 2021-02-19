@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using Photon.Pun;
 
 namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
@@ -7,8 +8,19 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
     public class ChickenBehaviour : CharacterBase
     {
         Vector3 positionBeforeHiding;
-        // public bool shortcutAllowed = true;
 
+        [SerializeField] GameObject chickenMesh;
+        [SerializeField] Material caughtMat;
+
+        [PunRPC] 
+        public void ChickenCaptured()
+        {
+            if (photonView.IsMine)
+            {
+                hasBeenCaught = true;
+                chickenMesh.GetComponent<Renderer>().sharedMaterial = caughtMat;
+            }
+        }
 
         protected override void Action()
         {
