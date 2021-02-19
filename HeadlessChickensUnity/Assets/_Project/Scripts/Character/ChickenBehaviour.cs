@@ -28,7 +28,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         {
             if (photonView.IsMine)
             {
-                if (canAccessHiding)
+                if (!canAccessHiding && !isHiding)
                 {
                     Debug.Log("Someone else is already in there!");
                     return;

@@ -20,12 +20,11 @@ public class HidingSpot : MonoBehaviourPunCallbacks, IInteractable
                 character.HidingInteraction(canAccessHiding);
                 photonView.RPC("RPC_ToggleAccess", RpcTarget.AllViaServer);
             }
-            //else
-            //{
-            //    // character.currentHidingSpot.position = null;
-            //    character.HidingInteraction(canAccessHiding);
-            //    photonView.RPC("RPC_ToggleAccess", RpcTarget.AllViaServer);
-            //}
+            else
+            {
+                // character.currentHidingSpot.position = null;
+                character.HidingInteraction(canAccessHiding);
+            }
         }
     }
 
