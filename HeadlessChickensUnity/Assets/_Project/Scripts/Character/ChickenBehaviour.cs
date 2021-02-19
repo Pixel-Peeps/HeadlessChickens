@@ -34,7 +34,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                         photonView.RPC("RPC_LeaveHiding", RpcTarget.AllViaServer, positionBeforeHiding);
                         break;
                     case false:
-                        photonView.RPC("RPC_EnterHiding", RpcTarget.AllViaServer, currentHidingSpot);
+                        photonView.RPC("RPC_EnterHiding", RpcTarget.AllViaServer, currentHidingSpot.position);
                         break;
                 }
             }
