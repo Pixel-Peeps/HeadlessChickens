@@ -32,6 +32,9 @@ namespace PixelPeeps.HeadlessChickens.Network
         private GameObject playerPrefab; // The prefab this player uses. Assigned as fox or chick when roles are assigned
         private Transform spawnPos;
 
+        [Header("HidingSpot")] public GameObject hidingSpotSpawnPos;
+        public GameObject hidingSpotPrefab;
+
         public int leversPulled = 0;
         public bool allLeversPulled = false;
     
@@ -88,6 +91,9 @@ namespace PixelPeeps.HeadlessChickens.Network
                     Debug.LogFormat("Ignoring scene load for {0}", SceneManagerHelper.ActiveSceneName);
                 }
             }
+
+            PhotonNetwork.InstantiateRoomObject(hidingSpotPrefab.name, hidingSpotSpawnPos.transform.position,
+                Quaternion.identity, 0);
         }
 
         public void DeterminePlayerRole()
