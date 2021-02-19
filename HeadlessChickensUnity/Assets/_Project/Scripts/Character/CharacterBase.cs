@@ -17,7 +17,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public Collider _collider;
 
         public bool isHiding;
-        public Vector3 currentHidingSpot;
+        public Transform currentHidingSpot;
         public bool cooldownRunning = false;
         public bool hasBeenCaught = false;
 

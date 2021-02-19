@@ -86,7 +86,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             _collider.enabled = false;
             _rigidbody.isKinematic = true;
 
-            transform.position = currentHidingSpot;
+            transform.position = currentHidingSpot.position;
+            transform.SetParent(currentHidingSpot);
 
             // lock the hiding spot while in use
             isHiding = true;
@@ -101,6 +102,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             // unlock physics on leaving
             _collider.enabled = true;
             _rigidbody.isKinematic = false;
+
+            transform.SetParent(null);
 
             isHiding = false;
             

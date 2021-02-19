@@ -5,16 +5,24 @@ using PixelPeeps.HeadlessChickens._Project.Scripts.Character;
 public class HidingSpot : MonoBehaviourPunCallbacks, IInteractable
 {
     //public ChickenBehaviour chickenInSpot;
-    public bool inUse;
+    public bool inUse = false;
 
     public void Interact(CharacterBase character)
     {
         if (photonView.IsMine)
         {
-            //character.photonView.RPC("RPC_HidingInteraction", RpcTarget.AllViaServer, this);
-            character.currentHidingSpot = transform.position;
-            character.HidingInteraction();
-            inUse = true;
+            if (!inUse)
+            {
+                character.currentHidingSpot.position = transform.position;
+                character.HidingInteraction();
+                inUse = true;
+            }
+            else
+            {
+                // character.currentHidingSpot.position = null;
+                character.HidingInteraction();
+                inUse = false;
+            }
         }
     }
 
