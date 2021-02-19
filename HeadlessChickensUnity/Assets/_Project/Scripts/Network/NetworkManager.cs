@@ -202,6 +202,8 @@ namespace PixelPeeps.HeadlessChickens.Network
 
         public void StartGameOnMaster()
         {
+            PhotonNetwork.CurrentRoom.IsOpen = false;
+            PhotonNetwork.CurrentRoom.IsVisible = false;
             GameStateManager.Instance.SwitchGameState(new GameSceneState());
             PlayerAssignmentRPC.Instance.AssignPlayerRoles();
             photonView.RPC("StartGameForOthers", RpcTarget.Others);
