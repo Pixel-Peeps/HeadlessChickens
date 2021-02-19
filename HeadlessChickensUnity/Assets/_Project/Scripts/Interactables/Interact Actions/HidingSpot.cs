@@ -9,10 +9,13 @@ public class HidingSpot : MonoBehaviourPunCallbacks, IInteractable
 
     public void Interact(CharacterBase character)
     {
-        //character.photonView.RPC("RPC_HidingInteraction", RpcTarget.AllViaServer, this);
-        character.currentHidingSpot = transform.position;
-        character.HidingInteraction();
-        inUse = true;
+        if (photonView.IsMine)
+        {
+            //character.photonView.RPC("RPC_HidingInteraction", RpcTarget.AllViaServer, this);
+            character.currentHidingSpot = transform.position;
+            character.HidingInteraction();
+            inUse = true;
+        }
     }
 
     public void InteractionFocus(bool focussed)

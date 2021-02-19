@@ -26,14 +26,17 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         
         public override void HidingInteraction()
         {
-            switch (isHiding)
+            if (photonView.IsMine)
             {
-                case true:
-                    photonView.RPC("RPC_LeaveHiding", RpcTarget.AllViaServer, positionBeforeHiding);
-                    break;
-                case false:
-                    photonView.RPC("RPC_EnterHiding", RpcTarget.AllViaServer, currentHidingSpot);
-                    break;
+                switch (isHiding)
+                {
+                    case true:
+                        photonView.RPC("RPC_LeaveHiding", RpcTarget.AllViaServer, positionBeforeHiding);
+                        break;
+                    case false:
+                        photonView.RPC("RPC_EnterHiding", RpcTarget.AllViaServer, currentHidingSpot);
+                        break;
+                }
             }
 
             /*if(hidingSpot.chickenInSpot == null)

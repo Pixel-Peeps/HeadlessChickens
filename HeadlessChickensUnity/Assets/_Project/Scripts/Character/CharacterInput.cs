@@ -152,26 +152,28 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         private void Jump()
         {
-            // lock jump if not grounded, set jump direction based on forward direction
-            // If character is not moving jump up, if is moving jump based on forward facing direction
-            if (!isGrounded || _character.State == CharacterBase.EStates.Hiding) return;
-            Vector3 jumpDirection = transform.forward;
-
-            // if strafe is active set jump direction to the moving direction
-            if (_strafeActive)
+            if (photonView.IsMine)
             {
-                if (_movDirection.x < 0) jumpDirection = -transform.right;
-                if (_movDirection.x > 0) jumpDirection = transform.right;
-                if (_movDirection.y < 0) jumpDirection = -transform.forward;
+                // lock jump if not grounded, set jump direction based on forward direction
+                // If character is not moving jump up, if is moving jump based on forward facing direction
+                if (!isGrounded || _character.State == CharacterBase.EStates.Hiding) return;
+                Vector3 jumpDirection = transform.forward;
+
+                // if strafe is active set jump direction to the moving direction
+                if (_strafeActive)
+                {
+                    if (_movDirection.x < 0) jumpDirection = -transform.right;
+                    if (_movDirection.x > 0) jumpDirection = transform.right;
+                    if (_movDirection.y < 0) jumpDirection = -transform.forward;
+                }
+
+                _rigidbody.velocity = _movDirection != Vector2.zero
+                    ? (jumpDirection + (Vector3.up * 0.62f)) * jumpForce * (moveSpeed * 0.8f)
+                    : Vector3.up * jumpForce;
+                isGrounded = false;
+
+
             }
-            
-            _rigidbody.velocity = _movDirection != Vector2.zero
-                ? (jumpDirection + (Vector3.up * 0.62f)) * jumpForce  * (moveSpeed * 0.8f)
-                : Vector3.up * jumpForce;
-            isGrounded = false;
-
-
-
         }
 
         /*##################################
