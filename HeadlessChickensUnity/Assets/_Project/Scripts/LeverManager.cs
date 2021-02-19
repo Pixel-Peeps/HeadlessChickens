@@ -1,4 +1,5 @@
 ﻿using Photon.Pun;
+using PixelPeeps.HeadlessChickens.UI;
 using UnityEngine;
 
 public class LeverManager : MonoBehaviourPunCallbacks
@@ -27,5 +28,6 @@ public class LeverManager : MonoBehaviourPunCallbacks
     public void RPC_IncrementLeverCount()
     {
         leversPulled++;
+        HUDManager.Instance.UpdateLeverCount();
     }
 }
