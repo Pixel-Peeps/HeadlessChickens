@@ -14,7 +14,6 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public Interactor interactor;
         public PhotonView photonView;
         public Rigidbody _rigidbody;
-        public Collider _collider;
 
         public bool isHiding;
         public Transform currentHidingSpot;
@@ -44,7 +43,6 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         {
             _controller = GetComponent<CharacterInput>();
             _rigidbody = GetComponent<Rigidbody>();
-            _collider = GetComponent<Collider>();
             photonView = GetComponent<PhotonView>();
 
             interactor.OnCanInteract += OnCanInteract;
