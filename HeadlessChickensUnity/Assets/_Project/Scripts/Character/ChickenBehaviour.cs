@@ -37,10 +37,10 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 switch (isHiding)
                 {
                     case true:
-                        photonView.RPC("RPC_LeaveHiding", RpcTarget.AllViaServer, positionBeforeHiding, chickenMesh, transform.parent);
+                        photonView.RPC("RPC_LeaveHiding", RpcTarget.AllViaServer, positionBeforeHiding);
                         break;
                     case false:
-                        photonView.RPC("RPC_EnterHiding", RpcTarget.AllViaServer, currentHidingSpot.position, chickenMesh, transform.parent);
+                        photonView.RPC("RPC_EnterHiding", RpcTarget.AllViaServer, currentHidingSpot.position);
                         break;
                 }
             }
@@ -53,7 +53,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             positionBeforeHiding = transform.position;
 
             // Disable Mesh
-            chickenMesh.GetComponent<Renderer>().enabled = false;
+            // chickenMesh.GetComponent<Renderer>().enabled = false;
 
             // lock physics on entering hiding
             _rigidbody.isKinematic = true;
@@ -78,7 +78,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             _rigidbody.isKinematic = false;
 
             // Re-enable Mesh
-            chickenMesh.GetComponent<Renderer>().enabled = true;
+            // chickenMesh.GetComponent<Renderer>().enabled = true;
 
             isHiding = false;
             
