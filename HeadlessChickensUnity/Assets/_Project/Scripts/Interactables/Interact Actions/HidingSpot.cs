@@ -14,7 +14,7 @@ public class HidingSpot : MonoBehaviourPunCallbacks, IInteractable
         {
             if (!inUse)
             {
-                photonView.TransferOwnership(photonView.Controller);
+                photonView.TransferOwnership(character.photonView.Owner);
                 Debug.Log("Interact() method called, inUse false");
                 character.currentHidingSpot = transform;
                 character.HidingInteraction();
