@@ -13,6 +13,7 @@ public class HidingSpot : MonoBehaviourPunCallbacks, IInteractable
         {
             if (!inUse)
             {
+                Debug.Log("Interact() method called, inUse false");
                 character.currentHidingSpot.position = transform.position;
                 character.HidingInteraction();
                 inUse = true;
