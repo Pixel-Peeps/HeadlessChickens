@@ -38,25 +38,25 @@ namespace PixelPeeps.HeadlessChickens.Network
             
             Debug.Log("AssignPlayerRoles");
 
-             for (int i = 0; i < playersInRoom.Length; i++)
-             {
-                 chickenPlayersActorNumbers[i] = playersInRoom[i].ActorNumber;
-             }
+             //for (int i = 0; i < playersInRoom.Length; i++)
+             //{
+             //    chickenPlayersActorNumbers[i] = playersInRoom[i].ActorNumber;
+             //}
             
             int randomIndex = Random.Range(0, playersInRoom.Length);
-            
-            // for (int i = 0; i < playersInRoom.Length; i++)
-            // {
-            //     if (i == randomIndex)
-            //     {
-            //         foxPlayer = playersInRoom[i];
-            //     }
-            //     else
-            //     {
-            //         chickenPlayersActorNumbers[i] = playersInRoom[i].ActorNumber;
-            //     }
-            // }
-            
+
+            for (int i = 0; i < playersInRoom.Length; i++)
+            {
+                if (i == randomIndex)
+                {
+                    foxPlayer = playersInRoom[i];
+                }
+                else
+                {
+                    chickenPlayersActorNumbers[i] = playersInRoom[i].ActorNumber;
+                }
+            }
+
             // Send roles to every player in the room
             photonView.RPC("SendRolesToRoom", RpcTarget.AllBufferedViaServer, chickenPlayersActorNumbers, foxPlayer);
         }
