@@ -23,7 +23,7 @@ namespace PixelPeeps.HeadlessChickens.Network
             leversPulled++;
 
             // if all levels are active open the exit
-            if (leversPulled == NewGameManager.Instance.numberOfLevers)
+            if (leversPulled == NewGameManager.Instance.maxNumberOfLevers)
             {
                 photonView.RPC("RPC_AllLeversPulled", RpcTarget.AllBufferedViaServer);
             }

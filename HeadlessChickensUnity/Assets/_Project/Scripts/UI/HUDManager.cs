@@ -1,4 +1,6 @@
-﻿using TMPro;
+﻿using System;
+using PixelPeeps.HeadlessChickens.Network;
+using TMPro;
 using UnityEngine;
 
 namespace PixelPeeps.HeadlessChickens.UI
@@ -33,7 +35,8 @@ namespace PixelPeeps.HeadlessChickens.UI
 
         public void UpdateLeverCount(int newLeverCount)
         {
-            leverCounter.text = $"{newLeverCount} / 4";
+            int maximumLevers = NewGameManager.Instance.maxNumberOfLevers;
+            leverCounter.text = $"{newLeverCount} /{maximumLevers}";
         }
 
         public void UpdateTimeDisplay()

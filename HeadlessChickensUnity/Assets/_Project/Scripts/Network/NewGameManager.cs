@@ -5,6 +5,7 @@ using com.pixelpeeps.headlesschickens;
 using Photon.Pun;
 using Photon.Realtime;
 using PixelPeeps.HeadlessChickens.GameState;
+using PixelPeeps.HeadlessChickens.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -39,7 +40,7 @@ namespace PixelPeeps.HeadlessChickens.Network
         [Header("Rooms")]
         [SerializeField] public List<RoomTile> rooms;
         public GameObject leverSpotPrefab;
-        public int numberOfLevers;
+        public int maxNumberOfLevers;
 
         //public int leversPulled = 0;
         //public bool allLeversPulled = false;
@@ -105,9 +106,11 @@ namespace PixelPeeps.HeadlessChickens.Network
                     Quaternion.identity, 0);
             }
 
-            numberOfLevers = PhotonNetwork.CurrentRoom.PlayerCount;
+            maxNumberOfLevers = PhotonNetwork.CurrentRoom.PlayerCount;
+            HUDManager.Instance.UpdateLeverCount(0);
+            
             List<RoomTile> tempRooms = rooms;
-            for (int i = 0; i < numberOfLevers; i++)
+            for (int i = 0; i < maxNumberOfLevers; i++)
             {
                 // Get random room from list
                 int roomNumber = UnityEngine.Random.Range(0, tempRooms.Count);
