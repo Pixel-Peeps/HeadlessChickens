@@ -73,14 +73,17 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             // lock physics on entering hiding
             _rigidbody.isKinematic = true;
 
-            //photonView.transform.SetParent(currentHidingSpot);
-            gameObject.transform.position = currentHidingSpot.position;
-            Debug.Log("after gameObject.transform.position = currentHidingSpot.position");
+            
             // lock the hiding spot while in use
             isHiding = true;
             Debug.Log("after isHiding = true");
             SwitchState(EStates.Hiding);
             Debug.Log("after switch state to hiding, end of RPC");
+            
+            //photonView.transform.SetParent(currentHidingSpot);
+            gameObject.transform.position = currentHidingSpot.position;
+            Debug.Log("after gameObject.transform.position = currentHidingSpot.position");
+           
         }
 
         [PunRPC]
