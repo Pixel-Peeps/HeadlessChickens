@@ -73,12 +73,14 @@ GameObject:
   - component: {fileID: 4432786447838791644}
   - component: {fileID: 1532459160771946818}
   - component: {fileID: 601915301156519784}
+  - component: {fileID: 4362372210206171672}
+  - component: {fileID: 4185995859759336538}
   m_Layer: 0
   m_Name: cup_saucer
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4432786447838791644
 Transform:
@@ -143,6 +145,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4362372210206171672
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5179251141253945860}
+  m_Material: {fileID: 13400000, guid: 7947a28db962b2d4f9ba8bd1dad9647e, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8096386363571244242, guid: fec14f36bcc894c599a1c4bb0991f0e4, type: 3}
+--- !u!65 &4185995859759336538
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5179251141253945860}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.28303468, y: 0.03425481, z: 0.26918244}
+  m_Center: {x: -0.0000008866191, y: -0.021449119, z: -0.000000022351742}
 --- !u!1 &8215855338416946435
 GameObject:
   m_ObjectHideFlags: 0

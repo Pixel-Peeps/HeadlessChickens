@@ -73,12 +73,14 @@ GameObject:
   - component: {fileID: 8460663978179806103}
   - component: {fileID: 5107424899716476237}
   - component: {fileID: 9087264974016605832}
+  - component: {fileID: 62686702514529595}
+  - component: {fileID: 7218351173232809002}
   m_Layer: 0
   m_Name: Fireplace_B
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8460663978179806103
 Transform:
@@ -143,3 +145,30 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &62686702514529595
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7997311848721538951}
+  m_Material: {fileID: 13400000, guid: 7947a28db962b2d4f9ba8bd1dad9647e, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1591962103733279220, guid: 19062ce66b4dd42d2b959b02045dbdcc, type: 3}
+--- !u!65 &7218351173232809002
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7997311848721538951}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.1181946, y: 2.5781171, z: 2.146516}
+  m_Center: {x: 0.000000834465, y: 1.2881922, z: 0.121248126}

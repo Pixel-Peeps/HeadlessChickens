@@ -74,12 +74,13 @@ GameObject:
   - component: {fileID: 7946437749326907151}
   - component: {fileID: 2089028730447135752}
   - component: {fileID: 5560823859457319498}
+  - component: {fileID: 6830054615086110351}
   m_Layer: 0
   m_Name: vine
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7946437749326907151
 Transform:
@@ -144,6 +145,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6830054615086110351
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3383014512854144091}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7401802477925834948, guid: e417a3c06742244cb927d9ae43dd652f, type: 3}
 --- !u!1 &4595227594839993083
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,12 +170,13 @@ GameObject:
   - component: {fileID: 6830459659279381347}
   - component: {fileID: 5340874124841285075}
   - component: {fileID: 7983697417454517420}
+  - component: {fileID: 8806528432316357531}
   m_Layer: 0
   m_Name: grape_21
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &6830459659279381347
 Transform:
@@ -225,3 +241,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8806528432316357531
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4595227594839993083}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2914156946129995740, guid: e417a3c06742244cb927d9ae43dd652f, type: 3}

@@ -42,12 +42,13 @@ GameObject:
   - component: {fileID: 7410532201886519484}
   - component: {fileID: 9208380689806486829}
   - component: {fileID: 2975873065432090175}
+  - component: {fileID: 3940731478346980189}
   m_Layer: 0
   m_Name: carafe
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7410532201886519484
 Transform:
@@ -112,6 +113,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3940731478346980189
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7693618069566629801}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5454846126132625357, guid: 059bc9677f3c241d4a0b6bcab57cde90, type: 3}
 --- !u!1 &7944524183226727974
 GameObject:
   m_ObjectHideFlags: 0

@@ -73,12 +73,14 @@ GameObject:
   - component: {fileID: 4831978865449007293}
   - component: {fileID: 1616012572253251371}
   - component: {fileID: 5219629721048296268}
+  - component: {fileID: 1686264435478424313}
+  - component: {fileID: 7745431294859324923}
   m_Layer: 0
   m_Name: Baguet
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4831978865449007293
 Transform:
@@ -143,3 +145,30 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1686264435478424313
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7918011052489296669}
+  m_Material: {fileID: 13400000, guid: 7947a28db962b2d4f9ba8bd1dad9647e, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6125467152671604757, guid: 22ec6d6df77ea4da58e5fe78f15c34a2, type: 3}
+--- !u!65 &7745431294859324923
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7918011052489296669}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.78359467, y: 0.2047891, z: 0.22580329}
+  m_Center: {x: 0.11395702, y: 0.016071975, z: -0.00000008568168}

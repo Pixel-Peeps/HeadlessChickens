@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 29362005590973967}
   - component: {fileID: 3639784781542187843}
   - component: {fileID: 5253908645436845867}
+  - component: {fileID: 821658599797445801}
   m_Layer: 0
   m_Name: egg
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &29362005590973967
 Transform:
@@ -81,6 +82,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &821658599797445801
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4421370006516368222}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4591002169977161409, guid: 2144a0e5aad3841b28a95bf7b17ff1a8, type: 3}
 --- !u!1 &4445628617187642897
 GameObject:
   m_ObjectHideFlags: 0

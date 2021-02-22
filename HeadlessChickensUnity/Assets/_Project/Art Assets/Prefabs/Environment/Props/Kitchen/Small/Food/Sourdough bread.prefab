@@ -42,12 +42,14 @@ GameObject:
   - component: {fileID: 3387783392129161234}
   - component: {fileID: 4088306366447676704}
   - component: {fileID: 914639638309064986}
+  - component: {fileID: 1779321922140446644}
+  - component: {fileID: 8286475375719795567}
   m_Layer: 0
   m_Name: Sourbough_A
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &3387783392129161234
 Transform:
@@ -112,6 +114,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1779321922140446644
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707332514849421937}
+  m_Material: {fileID: 13400000, guid: 7947a28db962b2d4f9ba8bd1dad9647e, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3157684370048732082, guid: 27564507722dd4d75825cbd8ceccc0fa, type: 3}
+--- !u!65 &8286475375719795567
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707332514849421937}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.49960265, y: 0.24270877, z: 0.49869323}
+  m_Center: {x: 0.0009850711, y: -0.007601086, z: 0.00063073635}
 --- !u!1 &5037165447968312342
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 8730272425617120189}
   - component: {fileID: 1076196147686319942}
   - component: {fileID: 7165987020686993292}
+  - component: {fileID: 8245114015714242216}
   m_Layer: 0
   m_Name: cider_bottle
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8730272425617120189
 Transform:
@@ -81,6 +82,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8245114015714242216
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918650701995983199}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2273241725600863441, guid: 6dee2619c5e97421c90dc65eed52ec81, type: 3}
 --- !u!1 &1250749627585748618
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,12 +232,13 @@ GameObject:
   - component: {fileID: 1859613081950843526}
   - component: {fileID: 6430565341903719648}
   - component: {fileID: 4684252515290256844}
+  - component: {fileID: 2262900968905009031}
   m_Layer: 0
   m_Name: cider_inner
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1859613081950843526
 Transform:
@@ -287,6 +303,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2262900968905009031
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3839109132450436908}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8582053857182896930, guid: 6dee2619c5e97421c90dc65eed52ec81, type: 3}
 --- !u!1 &6787163292194508982
 GameObject:
   m_ObjectHideFlags: 0

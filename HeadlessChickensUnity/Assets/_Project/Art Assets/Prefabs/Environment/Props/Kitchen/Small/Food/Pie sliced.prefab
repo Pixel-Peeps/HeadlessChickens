@@ -42,12 +42,14 @@ GameObject:
   - component: {fileID: 7629551651049598427}
   - component: {fileID: 5740183980874882329}
   - component: {fileID: 3124795329688521892}
+  - component: {fileID: 5617224763429275496}
+  - component: {fileID: 2692512474469590202}
   m_Layer: 0
   m_Name: pie_cut
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7629551651049598427
 Transform:
@@ -112,6 +114,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5617224763429275496
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016766747561660499}
+  m_Material: {fileID: 13400000, guid: 7947a28db962b2d4f9ba8bd1dad9647e, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -9176241312731800396, guid: 4b7f21927750b4300a50e13066a2988d, type: 3}
+--- !u!65 &2692512474469590202
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016766747561660499}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.41737366, y: 0.1587339, z: 0.4173751}
+  m_Center: {x: -0.0000003427267, y: 0, z: 0}
 --- !u!1 &8243059909009057582
 GameObject:
   m_ObjectHideFlags: 0

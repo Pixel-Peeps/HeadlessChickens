@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1107794592368663725}
   m_Layer: 0
-  m_Name: Turnip
+  m_Name: Fish Cake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42,12 +42,14 @@ GameObject:
   - component: {fileID: 3568882722484732949}
   - component: {fileID: 8460158480106987133}
   - component: {fileID: 1635940338102623352}
+  - component: {fileID: 5982875023728503130}
+  - component: {fileID: 523632788319521881}
   m_Layer: 0
   m_Name: pCube37
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &3568882722484732949
 Transform:
@@ -112,6 +114,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5982875023728503130
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4592552763998226435}
+  m_Material: {fileID: 13400000, guid: 7947a28db962b2d4f9ba8bd1dad9647e, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4712477794023769951, guid: dec2524f8234a434995c6edd09a62b16, type: 3}
+--- !u!65 &523632788319521881
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4592552763998226435}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.20576414, y: 0.04859416, z: 0.0857325}
+  m_Center: {x: 0.013022106, y: -0.0027830247, z: 0.0036888942}
 --- !u!1 &4973335097205549454
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,12 +215,14 @@ GameObject:
   - component: {fileID: 2423915749644286035}
   - component: {fileID: 577699701356272804}
   - component: {fileID: 2769699223604467979}
+  - component: {fileID: 5543552407986448757}
+  - component: {fileID: 7071571817951864707}
   m_Layer: 0
   m_Name: pCylinder22
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2423915749644286035
 Transform:
@@ -256,3 +287,30 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5543552407986448757
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7610591284594510704}
+  m_Material: {fileID: 13400000, guid: 7947a28db962b2d4f9ba8bd1dad9647e, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7229859249278585488, guid: dec2524f8234a434995c6edd09a62b16, type: 3}
+--- !u!65 &7071571817951864707
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7610591284594510704}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.42329496, y: 0.15938854, z: 0.4232958}
+  m_Center: {x: -0.00000063329935, y: 0.028262014, z: 0.000000037252903}

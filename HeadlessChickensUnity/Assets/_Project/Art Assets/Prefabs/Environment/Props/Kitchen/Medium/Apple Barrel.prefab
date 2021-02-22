@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 9211558037224454606}
   m_Layer: 0
   m_Name: apple_pile
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &9211558037224454606
 Transform:
@@ -55,7 +55,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1651288660920595804
 Transform:
@@ -83,12 +83,14 @@ GameObject:
   - component: {fileID: 5922792895815794121}
   - component: {fileID: 8427753500965404717}
   - component: {fileID: 8773411774867235587}
+  - component: {fileID: 6384566289567165185}
+  - component: {fileID: 3145063843155201379}
   m_Layer: 0
   m_Name: apple2
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &5922792895815794121
 Transform:
@@ -153,6 +155,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6384566289567165185
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2211616178642545643}
+  m_Material: {fileID: 13400000, guid: 7947a28db962b2d4f9ba8bd1dad9647e, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4012799362771544726, guid: cc25c3db6ce984f46baf192c6c0e69b0, type: 3}
+--- !u!65 &3145063843155201379
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2211616178642545643}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.29574585, y: 0.341266, z: 0.28500456}
+  m_Center: {x: -0.008750163, y: 0.024377674, z: 0.00086898357}
 --- !u!1 &2442377454576973900
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,12 +193,14 @@ GameObject:
   - component: {fileID: 7559691431928745946}
   - component: {fileID: 6352870695388627462}
   - component: {fileID: 382764319863992892}
+  - component: {fileID: 309027613443640444}
+  - component: {fileID: 5068412222271777111}
   m_Layer: 0
   m_Name: apple8
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7559691431928745946
 Transform:
@@ -234,6 +265,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &309027613443640444
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2442377454576973900}
+  m_Material: {fileID: 13400000, guid: 7947a28db962b2d4f9ba8bd1dad9647e, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1252164666538752322, guid: cc25c3db6ce984f46baf192c6c0e69b0, type: 3}
+--- !u!65 &5068412222271777111
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2442377454576973900}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.2502905, y: 0.24988884, z: 0.24691558}
+  m_Center: {x: 0.008320831, y: 0.008108988, z: 0.006917283}
 --- !u!1 &2538359462520422852
 GameObject:
   m_ObjectHideFlags: 0
@@ -245,12 +303,13 @@ GameObject:
   - component: {fileID: 534434894558359956}
   - component: {fileID: 5321613639736956952}
   - component: {fileID: 1615806789444993366}
+  - component: {fileID: 5992756646235428390}
   m_Layer: 0
   m_Name: apple_barrel 1
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &534434894558359956
 Transform:
@@ -316,6 +375,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5992756646235428390
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2538359462520422852}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3248338727397878549, guid: cc25c3db6ce984f46baf192c6c0e69b0, type: 3}
 --- !u!1 &2711934037301514662
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,12 +400,14 @@ GameObject:
   - component: {fileID: 1092921722829630018}
   - component: {fileID: 782258085034712096}
   - component: {fileID: 7865186055346512537}
+  - component: {fileID: 2578177368568209695}
+  - component: {fileID: 6955956723801404180}
   m_Layer: 0
   m_Name: apple5
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1092921722829630018
 Transform:
@@ -397,6 +472,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2578177368568209695
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2711934037301514662}
+  m_Material: {fileID: 13400000, guid: 7947a28db962b2d4f9ba8bd1dad9647e, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -807042170363857460, guid: cc25c3db6ce984f46baf192c6c0e69b0, type: 3}
+--- !u!65 &6955956723801404180
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2711934037301514662}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.26148742, y: 0.25687614, z: 0.2629373}
+  m_Center: {x: 0.008816376, y: 0.006581355, z: -0.009231072}
 --- !u!1 &3224549581118505534
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,12 +510,14 @@ GameObject:
   - component: {fileID: 9098417639353047340}
   - component: {fileID: 1696015099065459705}
   - component: {fileID: 3293113542190564357}
+  - component: {fileID: 4399149350541905465}
+  - component: {fileID: 7701252445745719975}
   m_Layer: 0
   m_Name: apple10
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &9098417639353047340
 Transform:
@@ -478,6 +582,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4399149350541905465
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3224549581118505534}
+  m_Material: {fileID: 13400000, guid: 7947a28db962b2d4f9ba8bd1dad9647e, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8075348497133595272, guid: cc25c3db6ce984f46baf192c6c0e69b0, type: 3}
+--- !u!65 &7701252445745719975
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3224549581118505534}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.26965332, y: 0.3110987, z: 0.26214996}
+  m_Center: {x: -0.008451626, y: 0.022714622, z: 0.0028336346}
 --- !u!1 &3293586272898574865
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,12 +620,14 @@ GameObject:
   - component: {fileID: 1275566156591335219}
   - component: {fileID: 5894647991922238540}
   - component: {fileID: 4811846003432444460}
+  - component: {fileID: 2058012488062345040}
+  - component: {fileID: 3710924216008379785}
   m_Layer: 0
   m_Name: apple4
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1275566156591335219
 Transform:
@@ -559,6 +692,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2058012488062345040
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3293586272898574865}
+  m_Material: {fileID: 13400000, guid: 7947a28db962b2d4f9ba8bd1dad9647e, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6630149317952592309, guid: cc25c3db6ce984f46baf192c6c0e69b0, type: 3}
+--- !u!65 &3710924216008379785
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3293586272898574865}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.19997863, y: 0.21781418, z: 0.19491881}
+  m_Center: {x: 0.0054589063, y: 0.010992698, z: -0.004246015}
 --- !u!1 &3480029968985332889
 GameObject:
   m_ObjectHideFlags: 0
@@ -570,12 +730,14 @@ GameObject:
   - component: {fileID: 1768574652764641352}
   - component: {fileID: 3355790170744575178}
   - component: {fileID: 3382743450855583137}
+  - component: {fileID: 4246496442299066476}
+  - component: {fileID: 7529077623013137274}
   m_Layer: 0
   m_Name: apple1
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1768574652764641352
 Transform:
@@ -640,6 +802,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4246496442299066476
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3480029968985332889}
+  m_Material: {fileID: 13400000, guid: 7947a28db962b2d4f9ba8bd1dad9647e, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3974721700749591492, guid: cc25c3db6ce984f46baf192c6c0e69b0, type: 3}
+--- !u!65 &7529077623013137274
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3480029968985332889}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.24026, y: 0.29801932, z: 0.24158204}
+  m_Center: {x: -0.001332216, y: 0.028695296, z: -0.00000016018748}
 --- !u!1 &3628865982381881123
 GameObject:
   m_ObjectHideFlags: 0
@@ -651,10 +840,10 @@ GameObject:
   - component: {fileID: 430955598804785421}
   m_Layer: 0
   m_Name: apple_barrel
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &430955598804785421
 Transform:
@@ -683,12 +872,14 @@ GameObject:
   - component: {fileID: 1779469740703121182}
   - component: {fileID: 4261939526812580695}
   - component: {fileID: 6093456526219136537}
+  - component: {fileID: 2648398191769952449}
+  - component: {fileID: 53584986310207698}
   m_Layer: 0
   m_Name: apple6
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1779469740703121182
 Transform:
@@ -753,6 +944,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2648398191769952449
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4155371181441528785}
+  m_Material: {fileID: 13400000, guid: 7947a28db962b2d4f9ba8bd1dad9647e, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3785474746997039763, guid: cc25c3db6ce984f46baf192c6c0e69b0, type: 3}
+--- !u!65 &53584986310207698
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4155371181441528785}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.25763184, y: 0.2470552, z: 0.26324797}
+  m_Center: {x: -0.008895643, y: -0.008132204, z: 0.0081480555}
 --- !u!1 &5138048182127907251
 GameObject:
   m_ObjectHideFlags: 0
@@ -764,12 +982,14 @@ GameObject:
   - component: {fileID: 3746467108479952718}
   - component: {fileID: 59256901411092939}
   - component: {fileID: 7517164566073243104}
+  - component: {fileID: 4091160942053767444}
+  - component: {fileID: 494013448320256499}
   m_Layer: 0
   m_Name: apple11
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &3746467108479952718
 Transform:
@@ -834,6 +1054,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4091160942053767444
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5138048182127907251}
+  m_Material: {fileID: 13400000, guid: 7947a28db962b2d4f9ba8bd1dad9647e, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6793409405222926482, guid: cc25c3db6ce984f46baf192c6c0e69b0, type: 3}
+--- !u!65 &494013448320256499
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5138048182127907251}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.24967407, y: 0.30268484, z: 0.24703643}
+  m_Center: {x: 0.0041209236, y: 0.028154366, z: 0.00026542693}
 --- !u!1 &5828362385701469417
 GameObject:
   m_ObjectHideFlags: 0
@@ -845,12 +1092,14 @@ GameObject:
   - component: {fileID: 7126779140479511855}
   - component: {fileID: 7494193448167827956}
   - component: {fileID: 8565750632855767746}
+  - component: {fileID: 8556076779410966081}
+  - component: {fileID: 4752523788241579296}
   m_Layer: 0
   m_Name: apple7
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7126779140479511855
 Transform:
@@ -915,6 +1164,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8556076779410966081
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5828362385701469417}
+  m_Material: {fileID: 13400000, guid: 7947a28db962b2d4f9ba8bd1dad9647e, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3173688611120511889, guid: cc25c3db6ce984f46baf192c6c0e69b0, type: 3}
+--- !u!65 &4752523788241579296
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5828362385701469417}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.26356018, y: 0.3029225, z: 0.26846772}
+  m_Center: {x: -0.004027754, y: 0.018403374, z: 0.006146826}
 --- !u!1 &7061147086836028079
 GameObject:
   m_ObjectHideFlags: 0
@@ -926,12 +1202,14 @@ GameObject:
   - component: {fileID: 2635201458037979437}
   - component: {fileID: 8774124092263719824}
   - component: {fileID: 1979331176143590166}
+  - component: {fileID: 7201038697463629909}
+  - component: {fileID: 8006367713329862225}
   m_Layer: 0
   m_Name: apple3
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2635201458037979437
 Transform:
@@ -996,6 +1274,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7201038697463629909
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7061147086836028079}
+  m_Material: {fileID: 13400000, guid: 7947a28db962b2d4f9ba8bd1dad9647e, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1568526153969976718, guid: cc25c3db6ce984f46baf192c6c0e69b0, type: 3}
+--- !u!65 &8006367713329862225
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7061147086836028079}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.25401002, y: 0.25995705, z: 0.2662909}
+  m_Center: {x: -0.0065127388, y: 0.008791804, z: 0.008325074}
 --- !u!1 &8858962644485111113
 GameObject:
   m_ObjectHideFlags: 0
@@ -1007,12 +1312,14 @@ GameObject:
   - component: {fileID: 3329367703818440165}
   - component: {fileID: 1978587926510126523}
   - component: {fileID: 8324832151477081520}
+  - component: {fileID: 5211937896760101693}
+  - component: {fileID: 6745537692846208895}
   m_Layer: 0
   m_Name: apple9
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &3329367703818440165
 Transform:
@@ -1077,3 +1384,30 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5211937896760101693
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8858962644485111113}
+  m_Material: {fileID: 13400000, guid: 7947a28db962b2d4f9ba8bd1dad9647e, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4723840353547840689, guid: cc25c3db6ce984f46baf192c6c0e69b0, type: 3}
+--- !u!65 &6745537692846208895
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8858962644485111113}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.28174376, y: 0.28503317, z: 0.29684997}
+  m_Center: {x: -0.008782342, y: 0.0075854585, z: -0.009919122}

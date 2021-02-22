@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 5674411972476859413}
   - component: {fileID: 428295953011711637}
   - component: {fileID: 4777351189358332075}
+  - component: {fileID: 6096284264497160764}
   m_Layer: 0
   m_Name: pie_slice
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &5674411972476859413
 Transform:
@@ -81,6 +82,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6096284264497160764
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39034104883975083}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7197516555814336887, guid: 21a81708dca4a49f19b743e545d8f150, type: 3}
 --- !u!1 &2369564415629587189
 GameObject:
   m_ObjectHideFlags: 0

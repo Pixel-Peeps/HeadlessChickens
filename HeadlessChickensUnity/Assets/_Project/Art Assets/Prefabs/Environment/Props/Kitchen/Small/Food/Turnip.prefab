@@ -42,12 +42,13 @@ GameObject:
   - component: {fileID: 2622277004239708763}
   - component: {fileID: 2126830832967386963}
   - component: {fileID: 6508871055170665738}
+  - component: {fileID: 8778093907140793447}
   m_Layer: 0
   m_Name: turnip
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2622277004239708763
 Transform:
@@ -112,3 +113,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8778093907140793447
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8462106435621817857}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1185623635327682238, guid: 08b402883fd5d46afa0e11519b278b9c, type: 3}

@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 1970795280982453548}
   m_Layer: 0
   m_Name: veg
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1970795280982453548
 Transform:
@@ -50,12 +50,13 @@ GameObject:
   - component: {fileID: 8092138609470458272}
   - component: {fileID: 4197154169044710360}
   - component: {fileID: 2730988445044969824}
+  - component: {fileID: 5968403046123037885}
   m_Layer: 0
   m_Name: tomato2
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8092138609470458272
 Transform:
@@ -120,6 +121,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5968403046123037885
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 302036957954623274}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1339383515000914828, guid: d8bf09fc0a6dc4f4e8e787c2c569ecc9, type: 3}
 --- !u!1 &724468445113678472
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,12 +146,13 @@ GameObject:
   - component: {fileID: 4984819135265491756}
   - component: {fileID: 7022252668577905067}
   - component: {fileID: 6926080916358300403}
+  - component: {fileID: 5072918835712293633}
   m_Layer: 0
   m_Name: tomato3
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4984819135265491756
 Transform:
@@ -201,6 +217,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5072918835712293633
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724468445113678472}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2819037426398365446, guid: d8bf09fc0a6dc4f4e8e787c2c569ecc9, type: 3}
 --- !u!1 &1774111072938910858
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,12 +242,13 @@ GameObject:
   - component: {fileID: 6959690645388044687}
   - component: {fileID: 7907806970300284847}
   - component: {fileID: 9192504628961529963}
+  - component: {fileID: 7227957892241604559}
   m_Layer: 0
   m_Name: carrot3
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &6959690645388044687
 Transform:
@@ -282,6 +313,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7227957892241604559
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774111072938910858}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7432714450116051690, guid: d8bf09fc0a6dc4f4e8e787c2c569ecc9, type: 3}
 --- !u!1 &1963225850253605006
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,10 +338,10 @@ GameObject:
   - component: {fileID: 1185879566448239156}
   m_Layer: 0
   m_Name: Veg crate
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1185879566448239156
 Transform:
@@ -324,12 +369,13 @@ GameObject:
   - component: {fileID: 8665100506010114083}
   - component: {fileID: 3649820964526889676}
   - component: {fileID: 1659563405364490497}
+  - component: {fileID: 6064565491455886243}
   m_Layer: 0
   m_Name: corn2
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8665100506010114083
 Transform:
@@ -394,6 +440,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6064565491455886243
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2123245795859682338}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2913546702041791522, guid: d8bf09fc0a6dc4f4e8e787c2c569ecc9, type: 3}
 --- !u!1 &2297656360896246858
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,12 +465,13 @@ GameObject:
   - component: {fileID: 8567591224052537617}
   - component: {fileID: 7672188043887706315}
   - component: {fileID: 1358862251383722962}
+  - component: {fileID: 4520242031945008314}
   m_Layer: 0
   m_Name: carrot1
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8567591224052537617
 Transform:
@@ -475,6 +536,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4520242031945008314
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2297656360896246858}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2183622337549768087, guid: d8bf09fc0a6dc4f4e8e787c2c569ecc9, type: 3}
 --- !u!1 &3368661840256282557
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,12 +561,13 @@ GameObject:
   - component: {fileID: 3449268047744909837}
   - component: {fileID: 488285233719147690}
   - component: {fileID: 4420510379183793598}
+  - component: {fileID: 7094950221717326638}
   m_Layer: 0
   m_Name: corn3
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &3449268047744909837
 Transform:
@@ -556,6 +632,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7094950221717326638
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3368661840256282557}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7756986855015062155, guid: d8bf09fc0a6dc4f4e8e787c2c569ecc9, type: 3}
 --- !u!1 &4115855265029133326
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,10 +657,10 @@ GameObject:
   - component: {fileID: 7942602979046972616}
   m_Layer: 0
   m_Name: veg_crate
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7942602979046972616
 Transform:
@@ -599,12 +689,13 @@ GameObject:
   - component: {fileID: 7740718753683797824}
   - component: {fileID: 646637901615113098}
   - component: {fileID: 2248048330832015242}
+  - component: {fileID: 5290590240521563742}
   m_Layer: 0
   m_Name: tomato1
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7740718753683797824
 Transform:
@@ -669,6 +760,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5290590240521563742
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4284293401453093824}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6872404239899313273, guid: d8bf09fc0a6dc4f4e8e787c2c569ecc9, type: 3}
 --- !u!1 &6337508431005873785
 GameObject:
   m_ObjectHideFlags: 0
@@ -680,12 +785,13 @@ GameObject:
   - component: {fileID: 7969806692173253299}
   - component: {fileID: 1825146996682688327}
   - component: {fileID: 5904890472409698187}
+  - component: {fileID: 3996419966081642367}
   m_Layer: 0
   m_Name: carrot2
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7969806692173253299
 Transform:
@@ -750,6 +856,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3996419966081642367
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6337508431005873785}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7853072535068740838, guid: d8bf09fc0a6dc4f4e8e787c2c569ecc9, type: 3}
 --- !u!1 &8358559824315729591
 GameObject:
   m_ObjectHideFlags: 0
@@ -761,12 +881,13 @@ GameObject:
   - component: {fileID: 5828552633690058101}
   - component: {fileID: 3844369923430601986}
   - component: {fileID: 6855670630531738909}
+  - component: {fileID: 6695935918527646216}
   m_Layer: 0
   m_Name: corn1
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &5828552633690058101
 Transform:
@@ -831,6 +952,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6695935918527646216
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8358559824315729591}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8946507985825666991, guid: d8bf09fc0a6dc4f4e8e787c2c569ecc9, type: 3}
 --- !u!1 &8643415549243370455
 GameObject:
   m_ObjectHideFlags: 0
@@ -842,12 +977,13 @@ GameObject:
   - component: {fileID: 3864999262404845772}
   - component: {fileID: 9025588091762787000}
   - component: {fileID: 6461250174952266599}
+  - component: {fileID: 3889074112060054034}
   m_Layer: 0
   m_Name: crate
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &3864999262404845772
 Transform:
@@ -912,3 +1048,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3889074112060054034
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8643415549243370455}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1490014688594724021, guid: d8bf09fc0a6dc4f4e8e787c2c569ecc9, type: 3}

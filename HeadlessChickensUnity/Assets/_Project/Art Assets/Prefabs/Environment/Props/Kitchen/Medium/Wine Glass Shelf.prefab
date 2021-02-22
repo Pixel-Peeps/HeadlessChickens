@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 3651537504818037382}
   - component: {fileID: 3724509771508595680}
   - component: {fileID: 5660234562866107269}
+  - component: {fileID: 3207287980510744606}
   m_Layer: 0
   m_Name: base
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &3651537504818037382
 Transform:
@@ -81,6 +82,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3207287980510744606
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446200606044772268}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1388485733357891733, guid: 66ca052c707fd4d9caf39aa3d4621221, type: 3}
 --- !u!1 &1553848590768349842
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,10 +107,10 @@ GameObject:
   - component: {fileID: 7197321527133490650}
   m_Layer: 0
   m_Name: cups
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7197321527133490650
 Transform:
@@ -128,10 +143,10 @@ GameObject:
   - component: {fileID: 816843240637709253}
   m_Layer: 0
   m_Name: glass_shelf
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &816843240637709253
 Transform:
@@ -163,12 +178,13 @@ GameObject:
   - component: {fileID: 8904989748779629206}
   - component: {fileID: 1917509185426142460}
   - component: {fileID: 7249028661658282437}
+  - component: {fileID: 346409857859557279}
   m_Layer: 0
   m_Name: Cup_4
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8904989748779629206
 Transform:
@@ -233,6 +249,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &346409857859557279
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732230655204939043}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8268215874982787707, guid: 66ca052c707fd4d9caf39aa3d4621221, type: 3}
 --- !u!1 &1865253522640096598
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,10 +274,10 @@ GameObject:
   - component: {fileID: 3428518019637605716}
   m_Layer: 0
   m_Name: wine_shelf
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &3428518019637605716
 Transform:
@@ -275,12 +305,13 @@ GameObject:
   - component: {fileID: 1836080251801388882}
   - component: {fileID: 2616627436092356573}
   - component: {fileID: 6762813769945450580}
+  - component: {fileID: 4436962916522891152}
   m_Layer: 0
   m_Name: front
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1836080251801388882
 Transform:
@@ -345,6 +376,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4436962916522891152
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1952711338411661397}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -916581769993065996, guid: 66ca052c707fd4d9caf39aa3d4621221, type: 3}
 --- !u!1 &2344106449565967998
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,12 +401,13 @@ GameObject:
   - component: {fileID: 4560639424821393823}
   - component: {fileID: 8150715183671477594}
   - component: {fileID: 8651159352341934313}
+  - component: {fileID: 6883167235191360801}
   m_Layer: 0
   m_Name: Cup_6
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4560639424821393823
 Transform:
@@ -426,6 +472,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6883167235191360801
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2344106449565967998}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5671445725295144267, guid: 66ca052c707fd4d9caf39aa3d4621221, type: 3}
 --- !u!1 &2516878156707177943
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,12 +497,13 @@ GameObject:
   - component: {fileID: 6700729159400979}
   - component: {fileID: 3176978950020884997}
   - component: {fileID: 520795874813560850}
+  - component: {fileID: 5141261015465489201}
   m_Layer: 0
   m_Name: wine_bottle_basic29
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &6700729159400979
 Transform:
@@ -507,6 +568,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5141261015465489201
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2516878156707177943}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3299542576353205965, guid: 66ca052c707fd4d9caf39aa3d4621221, type: 3}
 --- !u!1 &2615480569523804475
 GameObject:
   m_ObjectHideFlags: 0
@@ -518,12 +593,13 @@ GameObject:
   - component: {fileID: 5916750881880676461}
   - component: {fileID: 8316722211742283834}
   - component: {fileID: 6745525169888029743}
+  - component: {fileID: 5925400762870795353}
   m_Layer: 0
   m_Name: wine_bottle_basic24
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &5916750881880676461
 Transform:
@@ -588,6 +664,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5925400762870795353
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2615480569523804475}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -428847396089863151, guid: 66ca052c707fd4d9caf39aa3d4621221, type: 3}
 --- !u!1 &3001355876178342678
 GameObject:
   m_ObjectHideFlags: 0
@@ -599,12 +689,13 @@ GameObject:
   - component: {fileID: 7967767682947190939}
   - component: {fileID: 2729553624874995584}
   - component: {fileID: 1363185894428743125}
+  - component: {fileID: 198482767911853664}
   m_Layer: 0
   m_Name: wine_bottle_basic25
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7967767682947190939
 Transform:
@@ -669,6 +760,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &198482767911853664
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3001355876178342678}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6562290577845297869, guid: 66ca052c707fd4d9caf39aa3d4621221, type: 3}
 --- !u!1 &3280430016261723287
 GameObject:
   m_ObjectHideFlags: 0
@@ -680,12 +785,13 @@ GameObject:
   - component: {fileID: 6262090952355997082}
   - component: {fileID: 4882186986331657762}
   - component: {fileID: 6067433967392856939}
+  - component: {fileID: 7963281432756342507}
   m_Layer: 0
   m_Name: wine_bottle_basic27
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &6262090952355997082
 Transform:
@@ -750,6 +856,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7963281432756342507
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3280430016261723287}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2345567957343446805, guid: 66ca052c707fd4d9caf39aa3d4621221, type: 3}
 --- !u!1 &3704813218080477053
 GameObject:
   m_ObjectHideFlags: 0
@@ -761,12 +881,13 @@ GameObject:
   - component: {fileID: 7891259894770729233}
   - component: {fileID: 5109039360299141079}
   - component: {fileID: 2701560583869563948}
+  - component: {fileID: 1430941937744060666}
   m_Layer: 0
   m_Name: wine_bottle_basic26
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7891259894770729233
 Transform:
@@ -831,6 +952,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1430941937744060666
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3704813218080477053}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 77840517621253247, guid: 66ca052c707fd4d9caf39aa3d4621221, type: 3}
 --- !u!1 &3788388359890089806
 GameObject:
   m_ObjectHideFlags: 0
@@ -842,10 +977,10 @@ GameObject:
   - component: {fileID: 5403778980623021790}
   m_Layer: 0
   m_Name: Kitchen_Mediums
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &5403778980623021790
 Transform:
@@ -873,12 +1008,13 @@ GameObject:
   - component: {fileID: 8733190625254763652}
   - component: {fileID: 5779817063239219389}
   - component: {fileID: 2270689151802421536}
+  - component: {fileID: 3429065936047808833}
   m_Layer: 0
   m_Name: Cup_2
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8733190625254763652
 Transform:
@@ -943,6 +1079,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3429065936047808833
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3946764249713922983}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7242052142297975823, guid: 66ca052c707fd4d9caf39aa3d4621221, type: 3}
 --- !u!1 &3997336458568790832
 GameObject:
   m_ObjectHideFlags: 0
@@ -954,12 +1104,13 @@ GameObject:
   - component: {fileID: 387394548915113586}
   - component: {fileID: 1547367733608516787}
   - component: {fileID: 7877446386112542719}
+  - component: {fileID: 5258375088631026995}
   m_Layer: 0
   m_Name: front_2
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &387394548915113586
 Transform:
@@ -1024,6 +1175,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5258375088631026995
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3997336458568790832}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6189538495101151102, guid: 66ca052c707fd4d9caf39aa3d4621221, type: 3}
 --- !u!1 &5374320511519972251
 GameObject:
   m_ObjectHideFlags: 0
@@ -1035,10 +1200,10 @@ GameObject:
   - component: {fileID: 4746438502010192161}
   m_Layer: 0
   m_Name: Wine Glass Shelf
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4746438502010192161
 Transform:
@@ -1066,12 +1231,13 @@ GameObject:
   - component: {fileID: 3759978400495197393}
   - component: {fileID: 481104434828504229}
   - component: {fileID: 907087640437423404}
+  - component: {fileID: 4623034342861797848}
   m_Layer: 0
   m_Name: Cup_5
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &3759978400495197393
 Transform:
@@ -1136,6 +1302,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4623034342861797848
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6226401773748109740}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5033935347160911865, guid: 66ca052c707fd4d9caf39aa3d4621221, type: 3}
 --- !u!1 &6627863674008985998
 GameObject:
   m_ObjectHideFlags: 0
@@ -1147,12 +1327,13 @@ GameObject:
   - component: {fileID: 2346748031913201532}
   - component: {fileID: 6637864591924139593}
   - component: {fileID: 1213001396201407653}
+  - component: {fileID: 3682790839461792691}
   m_Layer: 0
   m_Name: Cup_3
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2346748031913201532
 Transform:
@@ -1217,6 +1398,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3682790839461792691
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6627863674008985998}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 9194638948695328998, guid: 66ca052c707fd4d9caf39aa3d4621221, type: 3}
 --- !u!1 &6876573657356282963
 GameObject:
   m_ObjectHideFlags: 0
@@ -1228,10 +1423,10 @@ GameObject:
   - component: {fileID: 2487589165345472108}
   m_Layer: 0
   m_Name: wine_bottles
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2487589165345472108
 Transform:
@@ -1264,12 +1459,13 @@ GameObject:
   - component: {fileID: 2671694748101784950}
   - component: {fileID: 1360475566603778588}
   - component: {fileID: 1866439124532156448}
+  - component: {fileID: 6566966313829040383}
   m_Layer: 0
   m_Name: wine_bottle_basic28
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2671694748101784950
 Transform:
@@ -1334,6 +1530,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6566966313829040383
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7767483324046749680}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3584051814081425999, guid: 66ca052c707fd4d9caf39aa3d4621221, type: 3}
 --- !u!1 &8757522118617694188
 GameObject:
   m_ObjectHideFlags: 0
@@ -1345,12 +1555,13 @@ GameObject:
   - component: {fileID: 3186858240645284595}
   - component: {fileID: 1614176034449104873}
   - component: {fileID: 1162180801096805845}
+  - component: {fileID: 2491219980703991092}
   m_Layer: 0
   m_Name: Cup_1
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &3186858240645284595
 Transform:
@@ -1415,3 +1626,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2491219980703991092
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8757522118617694188}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4473261912763739324, guid: 66ca052c707fd4d9caf39aa3d4621221, type: 3}

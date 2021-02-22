@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 4035803249403662074}
   - component: {fileID: 4254725523296919496}
   - component: {fileID: 6700066088232592960}
+  - component: {fileID: 7208277254797880600}
   m_Layer: 0
   m_Name: apple
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4035803249403662074
 Transform:
@@ -81,6 +82,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7208277254797880600
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 29912816904461291}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3645058858012553506, guid: 143ab963cb88840e9a71774be570ca55, type: 3}
 --- !u!1 &471217870119930487
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 7179013734246237658}
   - component: {fileID: 8358100630037873519}
   - component: {fileID: 4998792992265230983}
+  - component: {fileID: 863828598778500474}
   m_Layer: 0
   m_Name: wine_bottle_detailed
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7179013734246237658
 Transform:
@@ -81,6 +82,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &863828598778500474
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195612720497091193}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8733635860942051727, guid: abed33e382c3a4c1490351cdf7a9a413, type: 3}
 --- !u!1 &1846082350953716952
 GameObject:
   m_ObjectHideFlags: 0
