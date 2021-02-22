@@ -37,6 +37,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             if(!alreadyEscaped && !hasBeenCaught)
             {
                 Debug.Log(gameObject.name + " has escaped");
+                alreadyEscaped = true;
             }
         }
 
