@@ -36,6 +36,7 @@ namespace PixelPeeps.HeadlessChickens.Network
         public IEnumerator ActivateExit()
         {
             exitActive = true;
+            Debug.Log(gameObject.name + " is active");
 
             yield return new WaitForSeconds(NewGameManager.Instance.exitTime);
 
