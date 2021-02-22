@@ -1,7 +1,5 @@
-﻿using System;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
-using PixelPeeps.HeadlessChickens.Network;
 
 namespace PixelPeeps.HeadlessChickens.UI
 {
@@ -15,11 +13,7 @@ namespace PixelPeeps.HeadlessChickens.UI
             get => _instance;
             set => _instance = value;
         }
-        
-        [Header("Managers")]
 
-        public LeverManager leverManager;
-        
         [Header("HUD Elements")]
         public TextMeshProUGUI leverCounter;
         public TextMeshProUGUI timerDisplay;
@@ -37,10 +31,9 @@ namespace PixelPeeps.HeadlessChickens.UI
             }
         }
 
-        public void UpdateLeverCount()
+        public void UpdateLeverCount(int newLeverCount)
         {
-            int currentLeversPulled = leverManager.leversPulled;
-            leverCounter.text = $"{currentLeversPulled} / 4";
+            leverCounter.text = $"{newLeverCount} / 4";
         }
 
         public void UpdateTimeDisplay()

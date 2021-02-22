@@ -28,7 +28,7 @@ namespace PixelPeeps.HeadlessChickens.Network
                 photonView.RPC("RPC_AllLeversPulled", RpcTarget.AllBufferedViaServer);
             }
 
-            HUDManager.Instance.UpdateLeverCount();
+            HUDManager.Instance.UpdateLeverCount(leversPulled);
 
         }
     }
