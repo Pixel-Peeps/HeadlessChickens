@@ -23,8 +23,6 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             {
                 if (other.GetComponent<ChickenBehaviour>() != null)
                 {
-                    
-                    Debug.Log("calling chicken caught RPC");
                     if (other.GetComponent<ChickenBehaviour>().isHiding == false)
                     {
                         other.GetComponent<ChickenBehaviour>().photonView

@@ -22,20 +22,11 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             
         }
 
-        [PunRPC] 
+        [PunRPC]
         public void ChickenCaptured()
         {
-            if (isHiding)
-            {
-                return;
-            }
-            if (!isHiding)
-            {
-                this.hasBeenCaught = true;
-                this.chickenMesh.GetComponent<Renderer>().sharedMaterial = caughtMat;
-            }
-
-           
+            this.hasBeenCaught = true;
+            this.chickenMesh.GetComponent<Renderer>().sharedMaterial = caughtMat;
         }
 
         protected override void Action()
