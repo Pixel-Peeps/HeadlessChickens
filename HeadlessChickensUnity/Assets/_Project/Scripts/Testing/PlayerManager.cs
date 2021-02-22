@@ -98,14 +98,14 @@ namespace com.pixelpeeps.headlesschickens
             if (stream.IsWriting)
             {
                 // We own this player: send the others our data
-                Debug.Log("running on local (health)");
+               //Debug.Log("running on local (health)");
                 stream.SendNext(Health);
                 //healthDisplay.text = this.Health.ToString("0");
             }
             else
             {
                 // Network player, receive data
-                Debug.Log("running on remote (health)");
+                //Debug.Log("running on remote (health)");
                 this.Health = (float)stream.ReceiveNext();
                // healthDisplay.text = this.Health.ToString("0");
             }
@@ -132,7 +132,7 @@ namespace com.pixelpeeps.headlesschickens
         
         void OnTriggerEnter(Collider other)
         {
-            Debug.Log("Trigger enter");
+            //Debug.Log("Trigger enter");
             if (!photonView.IsMine)
             {
                 return;
