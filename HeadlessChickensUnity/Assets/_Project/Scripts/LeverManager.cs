@@ -7,15 +7,6 @@ public class LeverManager : MonoBehaviourPunCallbacks
     public int leversPulled = 0;
     public bool allLeversPulled = false;
     
-    
-    void Update()
-    {
-        // if all levels are active open the exit
-        if(leversPulled == 4)
-        {
-            photonView.RPC(" RPC_AllLeversPulled", RpcTarget.AllBufferedViaServer);
-        }
-    }
 
     [PunRPC]
     public void RPC_AllLeversPulled()
@@ -29,5 +20,11 @@ public class LeverManager : MonoBehaviourPunCallbacks
     {
         leversPulled++;
         HUDManager.Instance.UpdateLeverCount();
+
+        // if all levels are active open the exit
+        if (leversPulled == 4)
+        {
+            photonView.RPC(" RPC_AllLeversPulled", RpcTarget.AllBufferedViaServer);
+        }
     }
 }
