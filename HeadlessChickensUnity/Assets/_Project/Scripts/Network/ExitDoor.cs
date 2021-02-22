@@ -24,7 +24,9 @@ namespace PixelPeeps.HeadlessChickens.Network
 
         [PunRPC] public void RPC_ActivateExit()
         {
+            Debug.Log("RPC_ActivateExit called");
             exitActive = true;
+            Debug.Log("RPC_ActivateExit finished. " + gameObject.name + " has been activated");
         }
 
         private void OnTriggerEnter(Collider other)
