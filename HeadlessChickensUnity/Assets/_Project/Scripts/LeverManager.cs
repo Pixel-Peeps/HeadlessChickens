@@ -2,32 +2,34 @@
 using PixelPeeps.HeadlessChickens.UI;
 using UnityEngine;
 
-public class LeverManager : MonoBehaviourPunCallbacks
+namespace PixelPeeps.HeadlessChickens.Network
 {
-    public int leversPulled = 0;
-    public bool allLeversPulled = false;
-
-
-    [PunRPC]
-    public void RPC_AllLeversPulled()
+    public class LeverManager : MonoBehaviourPunCallbacks
     {
-        Debug.Log("all levers pulled!");
-        allLeversPulled = true;
-    }
+        public int leversPulled = 0;
+        public bool allLeversPulled = false;
+        
 
-    [PunRPC]
-    public void RPC_IncrementLeverCount()
-    {
-        leversPulled++;
-
-        // if all levels are active open the exit
-        if (leversPulled == 3)
+        [PunRPC]
+        public void RPC_AllLeversPulled()
         {
-            photonView.RPC("RPC_AllLeversPulled", RpcTarget.AllBufferedViaServer);
+            Debug.Log("all levers pulled!");
+            allLeversPulled = true;
         }
 
-        HUDManager.Instance.UpdateLeverCount();
+        [PunRPC]
+        public void RPC_IncrementLeverCount()
+        {
+            leversPulled++;
 
+            // if all levels are active open the exit
+            if (leversPulled == NewGameManager.Instance.numberOfLevers)
+            {
+                photonView.RPC("RPC_AllLeversPulled", RpcTarget.AllBufferedViaServer);
+            }
 
+            HUDManager.Instance.UpdateLeverCount();
+
+        }
     }
 }

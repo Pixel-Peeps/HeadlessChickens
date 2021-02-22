@@ -1,6 +1,7 @@
 ﻿using System;
 using TMPro;
 using UnityEngine;
+using PixelPeeps.HeadlessChickens.Network;
 
 namespace PixelPeeps.HeadlessChickens.UI
 {

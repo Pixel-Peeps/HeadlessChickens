@@ -40,6 +40,7 @@ namespace PixelPeeps.HeadlessChickens.Network
         [Header("Rooms")]
         [SerializeField] public List<RoomTile> rooms;
         public GameObject leverSpotPrefab;
+        public int numberOfLevers;
 
         //public int leversPulled = 0;
         //public bool allLeversPulled = false;
@@ -105,8 +106,9 @@ namespace PixelPeeps.HeadlessChickens.Network
                     Quaternion.identity, 0);
             }
 
+            numberOfLevers = PhotonNetwork.CurrentRoom.PlayerCount;
             List<RoomTile> tempRooms = rooms;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < numberOfLevers; i++)
             {
                 // Get random room from list
                 int roomNumber = UnityEngine.Random.Range(0, tempRooms.Count);
