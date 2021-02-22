@@ -22,6 +22,11 @@ namespace PixelPeeps.HeadlessChickens.Network
 
         }
 
+        [PunRPC] public void RPC_ActivateExit()
+        {
+            exitActive = true;
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             if (exitActive && other.CompareTag("Player"))

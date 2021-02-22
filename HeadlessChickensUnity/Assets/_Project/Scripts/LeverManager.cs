@@ -26,7 +26,7 @@ namespace PixelPeeps.HeadlessChickens.Network
 
             if (PhotonNetwork.IsMasterClient)
             {
-                chosenExit.exitActive = true;
+                photonView.RPC("RPC_ActivateExit", RpcTarget.AllBufferedViaServer);
                 // chosenExit.StartCoroutine(chosenExit.ActivateExit());
             }
         }
