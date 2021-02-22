@@ -22,6 +22,13 @@ namespace PixelPeeps.HeadlessChickens.Network
 
         }
 
+        [PunRPC] public void RPC_ActivateExit()
+        {
+            Debug.Log("RPC_ActivateExit called");
+            exitActive = true;
+            Debug.Log("RPC_ActivateExit finished. " + gameObject.name + " has been activated");
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             if (exitActive && other.CompareTag("Player"))
@@ -36,6 +43,7 @@ namespace PixelPeeps.HeadlessChickens.Network
         public IEnumerator ActivateExit()
         {
             exitActive = true;
+            Debug.Log(gameObject.name + " is active");
 
             yield return new WaitForSeconds(NewGameManager.Instance.exitTime);
 

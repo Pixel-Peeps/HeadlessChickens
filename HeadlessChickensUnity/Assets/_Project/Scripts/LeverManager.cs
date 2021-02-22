@@ -9,17 +9,26 @@ namespace PixelPeeps.HeadlessChickens.Network
         public int leversPulled = 0;
         public bool allLeversPulled = false;
 
+        public int exitIndex;
+        public ExitDoor chosenExit;
+
+        public void Start()
+        {
+            exitIndex = Random.Range(0, NewGameManager.Instance.exits.Count);
+            chosenExit = NewGameManager.Instance.exits[exitIndex];
+        }
+
         [PunRPC]
         public void RPC_AllLeversPulled()
         {
             Debug.Log("all levers pulled!");
             allLeversPulled = true;
 
-            // select random exit & open it
-            int randomIndex = Random.Range(0, NewGameManager.Instance.exits.Count);
-            ExitDoor chosenExit = NewGameManager.Instance.exits[randomIndex];
-
-            chosenExit.StartCoroutine(chosenExit.ActivateExit());
+            if (PhotonNetwork.IsMasterClient)
+            {
+                photonView.RPC("RPC_ActivateExit", RpcTarget.AllBufferedViaServer);
+                // chosenExit.StartCoroutine(chosenExit.ActivateExit());
+            }
         }
 
         [PunRPC]
