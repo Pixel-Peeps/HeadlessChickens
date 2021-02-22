@@ -11,7 +11,7 @@ using UnityEngine.SceneManagement;
 
 namespace PixelPeeps.HeadlessChickens.Network
 {
-    public class NewGameManager : MonoBehaviourPunCallbacks
+    public class NewGameManager : MonoBehaviourPunCallbacks, IPunObservable
     {
         private static NewGameManager _instance;
         
@@ -49,11 +49,6 @@ namespace PixelPeeps.HeadlessChickens.Network
         [SerializeField] public List<ExitDoor> exits;
         public float exitTime;
         
-
-
-        //public int leversPulled = 0;
-        //public bool allLeversPulled = false;
-        
         void Awake()
         {
             if (_instance != null && _instance != this)
@@ -66,78 +61,8 @@ namespace PixelPeeps.HeadlessChickens.Network
             }
         }
 
-        void Update()
-        {
-            // if all levels are active open the exit
-            //if(leversPulled == 4)
-            //{
-            //    photonView.RPC(" RPC_AllLeversPulled", RpcTarget.AllBufferedViaServer);
-            //}
-        }
-
-        //[PunRPC]
-        //public void RPC_AllLeversPulled()
-        //{
-        //    Debug.Log("all levers pulled!");
-        //    allLeversPulled = true;
-        //}
-
-        //[PunRPC]
-        //public void RPC_IncrementLeverCount()
-        //{
-        //    leversPulled++;
-        //}
-
-
-        public void Initialise()
-        {
-            if (playerPrefab == null)
-            {
-                Debug.LogError("<Color=Red><a>Missing</a></Color> playerPrefab Reference. Please set it up in GameObject 'NewGameManager'",this);
-            }
-            else
-            {
-                Debug.LogFormat("We are Instantiating LocalPlayer from {0}", SceneManager.GetActiveScene());
-                if (PlayerManager.LocalPlayerInstance == null)
-                {
-                    Debug.LogFormat("We are Instantiating LocalPlayer from {0}", SceneManagerHelper.ActiveSceneName);
-                    PhotonNetwork.Instantiate(playerPrefab.name, spawnPos.position, Quaternion.identity, 0);
-                }
-                else
-                {
-                    Debug.LogFormat("Ignoring scene load for {0}", SceneManagerHelper.ActiveSceneName);
-                }
-            }
-
-            foreach (var hidingSpawnPos in hidingSpotSpawnPos)
-            {
-                PhotonNetwork.InstantiateRoomObject(hidingSpotPrefab.name, hidingSpawnPos.position,
-                    Quaternion.identity, 0);
-            }
-
-            maxNumberOfLevers = PhotonNetwork.CurrentRoom.PlayerCount;
-            HUDManager.Instance.UpdateLeverCount(0);
-            
-            List<RoomTile> tempRooms = rooms;
-            for (int i = 0; i < maxNumberOfLevers; i++)
-            {
-                // Get random room from list
-                int roomNumber = UnityEngine.Random.Range(0, tempRooms.Count);
-
-                RoomTile room = tempRooms[roomNumber];
-
-                // Get random lever from room
-                int leverNumber = UnityEngine.Random.Range(0, room.leverPositions.Count);
-                Transform lever = room.leverPositions[leverNumber];
-
-                PhotonNetwork.InstantiateRoomObject(leverSpotPrefab.name, lever.position,
-                    lever.rotation, 0);
-
-                tempRooms.RemoveAt(roomNumber);
-                
-            }
-        }
-
+        #region Initialisation 
+        
         public void DeterminePlayerRole()
         {
             Debug.Log("DeterminePlayerRole");
@@ -172,6 +97,112 @@ namespace PixelPeeps.HeadlessChickens.Network
             }
         }
         
+        public void Initialise()
+        {
+            // if (playerPrefab == null)
+            // {
+            //     Debug.LogError("<Color=Red><a>Missing</a></Color> playerPrefab Reference. Please set it up in GameObject 'NewGameManager'",this);
+            // }
+            // else
+            // {
+            //     Debug.LogFormat("We are Instantiating LocalPlayer from {0}", SceneManager.GetActiveScene());
+            //     if (PlayerManager.LocalPlayerInstance == null)
+            //     {
+            //         Debug.LogFormat("We are Instantiating LocalPlayer from {0}", SceneManagerHelper.ActiveSceneName);
+            //         PhotonNetwork.Instantiate(playerPrefab.name, spawnPos.position, Quaternion.identity, 0);
+            //     }
+            //     else
+            //     {
+            //         Debug.LogFormat("Ignoring scene load for {0}", SceneManagerHelper.ActiveSceneName);
+            //     }
+            // }
+            
+            SpawnPlayers();
+
+            // foreach (var hidingSpawnPos in hidingSpotSpawnPos)
+            // {
+            //     PhotonNetwork.InstantiateRoomObject(hidingSpotPrefab.name, hidingSpawnPos.position,
+            //         Quaternion.identity, 0);
+            // }
+            
+            SpawnHidingSpots();
+            
+            // maxNumberOfLevers = PhotonNetwork.CurrentRoom.PlayerCount;
+            // HUDManager.Instance.UpdateLeverCount(0);
+            //
+            // List<RoomTile> tempRooms = rooms;
+            // for (int i = 0; i < maxNumberOfLevers; i++)
+            // {
+            //     // Get random room from list
+            //     int roomNumber = UnityEngine.Random.Range(0, tempRooms.Count);
+            //
+            //     RoomTile room = tempRooms[roomNumber];
+            //
+            //     // Get random lever from room
+            //     int leverNumber = UnityEngine.Random.Range(0, room.leverPositions.Count);
+            //     Transform lever = room.leverPositions[leverNumber];
+            //
+            //     PhotonNetwork.InstantiateRoomObject(leverSpotPrefab.name, lever.position,
+            //         lever.rotation, 0);
+            //
+            //     tempRooms.RemoveAt(roomNumber);
+            //     
+            // }
+            
+            SpawnLevers();
+            
+            StartTimer();
+        }
+
+        private void SpawnPlayers()
+        {
+            if (playerPrefab == null)
+            {
+                Debug.LogError("<Color=Red><a>Missing</a></Color> playerPrefab Reference. Please set it up in GameObject 'NewGameManager'",this);
+            }
+            
+            else
+            {    
+                PhotonNetwork.Instantiate(playerPrefab.name, spawnPos.position, Quaternion.identity, 0);
+            }
+        }
+
+        private void SpawnHidingSpots()
+        {
+            foreach (var hidingSpawnPos in hidingSpotSpawnPos)
+            {
+                PhotonNetwork.InstantiateRoomObject(hidingSpotPrefab.name, hidingSpawnPos.position,
+                    Quaternion.identity, 0);
+            }
+        }
+
+        private void SpawnLevers()
+        {
+            maxNumberOfLevers = PhotonNetwork.CurrentRoom.PlayerCount;
+            HUDManager.Instance.UpdateLeverCount(0);
+
+            List<RoomTile> tempRooms = rooms;
+            for (int i = 0; i < maxNumberOfLevers; i++)
+            {
+                // Get random room from list
+                int roomNumber = UnityEngine.Random.Range(0, tempRooms.Count);
+
+                RoomTile room = tempRooms[roomNumber];
+
+                // Get random lever from room
+                int leverNumber = UnityEngine.Random.Range(0, room.leverPositions.Count);
+                Transform lever = room.leverPositions[leverNumber];
+
+                PhotonNetwork.InstantiateRoomObject(leverSpotPrefab.name, lever.position,
+                    lever.rotation, 0);
+
+                tempRooms.RemoveAt(roomNumber);
+
+            }
+        }
+
+        #endregion
+        
         public override void OnLeftRoom()
         {
             GameStateManager.Instance.SwitchGameState(new MainMenuState());
@@ -181,5 +212,55 @@ namespace PixelPeeps.HeadlessChickens.Network
         {
             PhotonNetwork.LeaveRoom();
         }
+
+        #region Timer
+
+        public float totalGameTime;
+        
+        private bool timerIsRunning;
+        private float timeRemaining;
+        
+        void StartTimer()
+        {
+            timeRemaining = totalGameTime;
+            timerIsRunning = true;
+        }
+        
+        void Update()
+        {
+            if (timerIsRunning)
+            {
+                if (timeRemaining > 0)
+                {
+                    timeRemaining -= Time.deltaTime;
+                    HUDManager.Instance.UpdateTimeDisplay(timeRemaining);
+                }
+
+                else
+                {
+                    timerIsRunning = false;
+                    timeRemaining = 0;
+                }
+            }
+        }
+        
+        #endregion
+
+        #region Data Streaming
+
+        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        {
+            if (stream.IsWriting && PhotonNetwork.IsMasterClient)
+            {
+                stream.SendNext(timeRemaining);
+            }
+            else if (stream.IsReading)
+            {
+                this.timeRemaining = (float) stream.ReceiveNext();
+                HUDManager.Instance.UpdateTimeDisplay(timeRemaining);
+            }
+        }
+
+        #endregion
     }
 }

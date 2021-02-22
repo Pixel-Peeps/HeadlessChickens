@@ -39,9 +39,14 @@ namespace PixelPeeps.HeadlessChickens.UI
             leverCounter.text = $"{newLeverCount} /{maximumLevers}";
         }
 
-        public void UpdateTimeDisplay()
+        public void UpdateTimeDisplay(float timeToDisplay)
         {
-            
+            timeToDisplay += 1;
+        
+            float minutes = Mathf.FloorToInt(timeToDisplay / 60); 
+            float seconds = Mathf.FloorToInt(timeToDisplay % 60);
+
+            timerDisplay.text = $"{minutes:00}:{seconds:00}";
         }
 
         public void UpdateChickenCount()

@@ -354,8 +354,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 06:35
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 79937d7dfd44005418a357d74024f5b6, type: 2}
-  m_sharedMaterial: {fileID: 6239404058228936866, guid: 79937d7dfd44005418a357d74024f5b6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b451ae240dfc7a347ae210bf279fd8f9, type: 2}
+  m_sharedMaterial: {fileID: 8962059600686366882, guid: b451ae240dfc7a347ae210bf279fd8f9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -379,8 +379,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 34.13
+  m_fontSizeBase: 34.13
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1068,8 +1068,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 21.210266, y: 0.000015258789}
-  m_SizeDelta: {x: 53.17981, y: 45.290062}
+  m_AnchoredPosition: {x: 24.48, y: 0.000015258789}
+  m_SizeDelta: {x: 69.929344, y: 45.290062}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8819079813512429487
 CanvasRenderer:
@@ -1101,8 +1101,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 3 / 4
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 79937d7dfd44005418a357d74024f5b6, type: 2}
-  m_sharedMaterial: {fileID: 6239404058228936866, guid: 79937d7dfd44005418a357d74024f5b6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b451ae240dfc7a347ae210bf279fd8f9, type: 2}
+  m_sharedMaterial: {fileID: 8962059600686366882, guid: b451ae240dfc7a347ae210bf279fd8f9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1126,8 +1126,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 31
+  m_fontSizeBase: 31
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1445,8 +1445,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 4
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 79937d7dfd44005418a357d74024f5b6, type: 2}
-  m_sharedMaterial: {fileID: 6239404058228936866, guid: 79937d7dfd44005418a357d74024f5b6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b451ae240dfc7a347ae210bf279fd8f9, type: 2}
+  m_sharedMaterial: {fileID: 8962059600686366882, guid: b451ae240dfc7a347ae210bf279fd8f9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1470,8 +1470,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 34.13
+  m_fontSizeBase: 34.13
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1638,7 +1638,6 @@ GameObject:
   - component: {fileID: 1094600331312622713}
   - component: {fileID: 1229957423198764509}
   - component: {fileID: 850584292980842188}
-  - component: {fileID: 535274803}
   m_Layer: 5
   m_Name: TimerPanel
   m_TagString: Untagged
@@ -1705,19 +1704,3 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 63.6
---- !u!114 &535274803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9117583586812284898}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d335bdbf5e64df64b908bf055f9d2097, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  totalTimeInSeconds: 10
-  timeRemaining: 0
-  timerIsRunning: 0
-  timerText: {fileID: 2524865176206814115}
