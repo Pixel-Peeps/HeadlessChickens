@@ -74,11 +74,13 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             _rigidbody.isKinematic = true;
 
             //photonView.transform.SetParent(currentHidingSpot);
-            photonView.transform.position = currentHidingSpot.position;
-
+            gameObject.transform.position = currentHidingSpot.position;
+            Debug.Log("after gameObject.transform.position = currentHidingSpot.position");
             // lock the hiding spot while in use
             isHiding = true;
+            Debug.Log("after isHiding = true");
             SwitchState(EStates.Hiding);
+            Debug.Log("after switch state to hiding, end of RPC");
         }
 
         [PunRPC]
