@@ -16,6 +16,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public HidingSpot hidedSpot;
         public Transform currentHidingSpot;
 
+        private bool alreadyEscaped = false;
+
         private void Start()
         {
             chickenMesh = GetComponentInChildren<Renderer>();
@@ -32,7 +34,10 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         [PunRPC]
         public void ChickenEscaped()
         {
-            Debug.Log(gameObject.name + " has escaped");
+            if(!alreadyEscaped && !hasBeenCaught)
+            {
+                Debug.Log(gameObject.name + " has escaped");
+            }
         }
 
         protected override void Action()
