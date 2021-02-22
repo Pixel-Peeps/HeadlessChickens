@@ -1,6 +1,4 @@
-﻿using PixelPeeps.HeadlessChickens.GameState;
-using PixelPeeps.HeadlessChickens.Network;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 namespace PixelPeeps.HeadlessChickens.Network

@@ -3,6 +3,7 @@
     public enum eGameStates
     {
         MainMenu,
+        HowToPlay,
         RoomSearch,
         CreateRoom,
         WaitingRoom,

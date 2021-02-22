@@ -5,32 +5,29 @@ namespace PixelPeeps.HeadlessChickens.GameState
 {
     public class CreateRoomState : GameState
     {
-        private readonly GameObject 
-            canvasObject = StateManager.uiManager.createRoomCanvas;
-
-        private readonly GameObject
-            firstSelectedButton = StateManager.uiManager.createRoomCanvasFirstSelected;
+        private readonly Menu 
+            menu = StateManager.uiManager.createRoom;
 
         private readonly string 
             sceneName = StateManager.menuScene;
-
+        
         public override void StateEnter()
         {
             StateManager.LoadNextScene(sceneName);
-            ActivateCanvas(canvasObject, firstSelectedButton);
+            ActivateMenu(menu);
         }
 
         public override void OnSceneLoad()
         {
             menuManagerObj = GameObject.FindGameObjectWithTag("MenuManager");
             StateManager.uiManager = menuManagerObj.GetComponent<UIManager>();
-
-            ActivateCanvas(canvasObject, firstSelectedButton);
+            
+            ActivateMenu(menu);
         }
 
         public override void StateExit()
         {
-            canvasObject.SetActive(false);
+            DeactivateMenu(menu);
         }
     }
 }

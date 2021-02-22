@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using PixelPeeps.HeadlessChickens.UI;
+using UnityEngine;
 
 namespace PixelPeeps.HeadlessChickens.GameState
 {
@@ -10,12 +11,27 @@ namespace PixelPeeps.HeadlessChickens.GameState
         public abstract void StateEnter();
         public abstract void OnSceneLoad();
         public abstract void StateExit();
-        public void ActivateCanvas(GameObject canvasObject, GameObject firstSelectedButton)
+
+        protected static void ActivateMenu(Menu menu)
         {
-            if (StateManager.uiManager != null)
+            if (StateManager.uiManager == null)
             {
-                StateManager.uiManager.ActivateCanvas(canvasObject, firstSelectedButton);
+                Debug.LogError("Cannot find Menu Manager in scene");
+                return;
             }
+            
+            StateManager.uiManager.ActivateMenu(menu);
+        }
+        
+        protected static void DeactivateMenu(Menu menu)
+        {
+            if (StateManager.uiManager == null)
+            {
+                Debug.LogError("Cannot find Menu Manager in scene");
+                return;
+            }
+            
+            StateManager.uiManager.DeactivateMenu(menu);
         }
     }
 }
