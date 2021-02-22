@@ -37,43 +37,48 @@ namespace PixelPeeps.HeadlessChickens.Network
         [SerializeField] public List<Transform> hidingSpotSpawnPos;
         public GameObject hidingSpotPrefab;
 
-        public int leversPulled = 0;
-        public bool allLeversPulled = false;
-    
-    
-        void Update()
-        {
-            // if all levels are active open the exit
-            if(leversPulled == 4)
-            {
-                photonView.RPC(" RPC_AllLeversPulled", RpcTarget.AllBufferedViaServer);
-            }
-        }
+        [Header("Rooms")]
+        [SerializeField] public List<RoomTile> rooms;
+        public GameObject leverSpotPrefab;
 
-        [PunRPC]
-        public void RPC_AllLeversPulled()
-        {
-            Debug.Log("all levers pulled!");
-            allLeversPulled = true;
-        }
-
-        [PunRPC]
-        public void RPC_IncrementLeverCount()
-        {
-            leversPulled++;
-        }
+        //public int leversPulled = 0;
+        //public bool allLeversPulled = false;
 
         void Awake()
         {
-            if (_instance != null && _instance != this)    
+            if (_instance != null && _instance != this)
             {
                 Destroy(gameObject);
             }
             else
-            {    
+            {
                 _instance = this;
             }
         }
+
+        void Update()
+        {
+            // if all levels are active open the exit
+            //if(leversPulled == 4)
+            //{
+            //    photonView.RPC(" RPC_AllLeversPulled", RpcTarget.AllBufferedViaServer);
+            //}
+        }
+
+        //[PunRPC]
+        //public void RPC_AllLeversPulled()
+        //{
+        //    Debug.Log("all levers pulled!");
+        //    allLeversPulled = true;
+        //}
+
+        //[PunRPC]
+        //public void RPC_IncrementLeverCount()
+        //{
+        //    leversPulled++;
+        //}
+
+
         public void Initialise()
         {
             if (playerPrefab == null)
@@ -98,6 +103,25 @@ namespace PixelPeeps.HeadlessChickens.Network
             {
                 PhotonNetwork.InstantiateRoomObject(hidingSpotPrefab.name, hidingSpawnPos.position,
                     Quaternion.identity, 0);
+            }
+
+            List<RoomTile> tempRooms = rooms;
+            for (int i = 0; i < 4; i++)
+            {
+                // Get random room from list
+                int roomNumber = UnityEngine.Random.Range(0, tempRooms.Count);
+
+                RoomTile room = tempRooms[roomNumber];
+
+                // Get random lever from room
+                int leverNumber = UnityEngine.Random.Range(0, room.leverPositions.Count);
+                Transform lever = room.leverPositions[leverNumber];
+
+                PhotonNetwork.InstantiateRoomObject(leverSpotPrefab.name, lever.position,
+                    lever.rotation, 0);
+
+                tempRooms.RemoveAt(roomNumber);
+                
             }
         }
 

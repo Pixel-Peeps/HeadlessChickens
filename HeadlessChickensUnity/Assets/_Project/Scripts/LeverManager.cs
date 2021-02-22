@@ -6,7 +6,7 @@ public class LeverManager : MonoBehaviourPunCallbacks
 {
     public int leversPulled = 0;
     public bool allLeversPulled = false;
-    
+
 
     [PunRPC]
     public void RPC_AllLeversPulled()
