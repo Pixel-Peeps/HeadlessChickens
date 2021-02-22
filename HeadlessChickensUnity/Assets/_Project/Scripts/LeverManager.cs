@@ -24,7 +24,7 @@ public class LeverManager : MonoBehaviourPunCallbacks
         // if all levels are active open the exit
         if (leversPulled == 3)
         {
-            photonView.RPC(" RPC_AllLeversPulled", RpcTarget.AllBufferedViaServer);
+            photonView.RPC("RPC_AllLeversPulled", RpcTarget.AllBufferedViaServer);
         }
     }
 }
