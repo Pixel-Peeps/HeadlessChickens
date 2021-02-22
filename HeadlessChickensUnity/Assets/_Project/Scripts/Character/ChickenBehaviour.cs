@@ -25,8 +25,17 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         [PunRPC] 
         public void ChickenCaptured()
         {
-            this.hasBeenCaught = true;
-            this.chickenMesh.GetComponent<Renderer>().sharedMaterial = caughtMat;
+            if (isHiding)
+            {
+                return;
+            }
+            if (!isHiding)
+            {
+                this.hasBeenCaught = true;
+                this.chickenMesh.GetComponent<Renderer>().sharedMaterial = caughtMat;
+            }
+
+           
         }
 
         protected override void Action()
