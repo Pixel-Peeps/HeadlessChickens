@@ -25,8 +25,17 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         [PunRPC] 
         public void ChickenCaptured()
         {
-            this.hasBeenCaught = true;
-            this.chickenMesh.GetComponent<Renderer>().sharedMaterial = caughtMat;
+            if (isHiding)
+            {
+                return;
+            }
+            if (!isHiding)
+            {
+                this.hasBeenCaught = true;
+                this.chickenMesh.GetComponent<Renderer>().sharedMaterial = caughtMat;
+            }
+
+           
         }
 
         protected override void Action()
@@ -53,7 +62,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                         break;
                     case false:
                         currentHidingSpot = hideSpot;
-                        photonView.RPC("RPC_EnterHiding", RpcTarget.AllViaServer, currentHidingSpot.position);
+                        photonView.RPC("RPC_EnterHiding", RpcTarget.AllViaServer, currentHidingSpot.GetComponent<PhotonView>().ViewID);
                         photonView.RPC("RPC_SetParent", RpcTarget.AllViaServer);
                         
                         break;
@@ -62,8 +71,9 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         }
 
         [PunRPC]
-        private void RPC_EnterHiding(Vector3 hidingPos)
+        private void RPC_EnterHiding(int hideViewID)
         {
+            Debug.Log("hiding spot view id:: "+hideViewID);
             // log position before entering hiding as a return position when leaving
             positionBeforeHiding = transform.position;
 
@@ -73,12 +83,20 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             // lock physics on entering hiding
             _rigidbody.isKinematic = true;
 
-            //photonView.transform.SetParent(currentHidingSpot);
-            photonView.transform.position = currentHidingSpot.position;
-
+            
             // lock the hiding spot while in use
             isHiding = true;
+            Debug.Log("after isHiding = true");
             SwitchState(EStates.Hiding);
+            Debug.Log("after switch state to hiding");
+            
+            currentHidingSpot = PhotonView.Find(hideViewID).gameObject.transform;
+            gameObject.transform.SetParent(PhotonView.Find(hideViewID).gameObject.transform);
+            Debug.Log("after set parent");
+            
+            gameObject.transform.position = PhotonView.Find(hideViewID).gameObject.transform.position;
+            Debug.Log("after gameObject.transform.position = currentHidingSpot.position");
+           
         }
 
         [PunRPC]
