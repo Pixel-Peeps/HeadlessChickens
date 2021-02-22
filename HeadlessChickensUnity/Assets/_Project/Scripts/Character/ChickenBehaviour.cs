@@ -78,10 +78,11 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             isHiding = true;
             Debug.Log("after isHiding = true");
             SwitchState(EStates.Hiding);
-            Debug.Log("after switch state to hiding, end of RPC");
+            Debug.Log("after switch state to hiding");
             
-            //photonView.transform.SetParent(currentHidingSpot);
-            gameObject.transform.position = currentHidingSpot.position;
+           gameObject.transform.SetParent(currentHidingSpot);
+           Debug.Log("after set parent");
+            gameObject.transform.position = hidingPos;
             Debug.Log("after gameObject.transform.position = currentHidingSpot.position");
            
         }
