@@ -2,7 +2,6 @@
 using PixelPeeps.HeadlessChickens.Network;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace PixelPeeps.HeadlessChickens.UI
 {

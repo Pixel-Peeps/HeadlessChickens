@@ -5,10 +5,8 @@ namespace PixelPeeps.HeadlessChickens.GameState
 {
     public class WaitingRoomState : GameState
     {
-        private readonly GameObject 
-            canvasObject = StateManager.uiManager.waitingRoomCanvas;
-        private readonly GameObject 
-            firstSelectedButton = StateManager.uiManager.waitingRoomFirstSelected;
+        private readonly Menu 
+            menu = StateManager.uiManager.waitingRoom;
 
         private readonly string 
             sceneName = StateManager.menuScene;
@@ -16,7 +14,7 @@ namespace PixelPeeps.HeadlessChickens.GameState
         public override void StateEnter()
         {
             StateManager.LoadNextScene(sceneName);
-            ActivateCanvas(canvasObject, firstSelectedButton);
+            ActivateMenu(menu);
         }
 
         public override void OnSceneLoad()
@@ -24,15 +22,12 @@ namespace PixelPeeps.HeadlessChickens.GameState
             menuManagerObj = GameObject.FindGameObjectWithTag("MenuManager");
             StateManager.uiManager = menuManagerObj.GetComponent<UIManager>();
             
-            ActivateCanvas(canvasObject, firstSelectedButton);
+            ActivateMenu(menu);
         }
 
         public override void StateExit()
         {
-            if (canvasObject != null)
-            {
-                canvasObject.SetActive(false);
-            }
+            DeactivateMenu(menu);
         }
     }
 }

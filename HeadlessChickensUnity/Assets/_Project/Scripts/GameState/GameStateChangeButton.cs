@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Photon.Pun;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using WebSocketSharp;
 
 namespace PixelPeeps.HeadlessChickens.GameState
 {
@@ -45,19 +47,59 @@ namespace PixelPeeps.HeadlessChickens.GameState
                     break;
 
                 case eGameStates.RoomSearch:
-                    newState = new RoomSearchState();
-                    break;
+                    if (CheckPlayerNameForNull())
+                    {
+                        break;
+                    }
+                    
+                    else
+                    {
+                        newState = new RoomSearchState();
+                        break;
+                    }
                 
                 case eGameStates.CreateRoom:
-                    newState = new CreateRoomState();
-                    break;
+                    if (CheckPlayerNameForNull())
+                    {
+                        break;
+                    }
+                    
+                    else
+                    {
+                        newState = new CreateRoomState();
+                        break;
+                    }
                 
                 case eGameStates.ConnectionError:
                     newState = new ConnectionErrorState("Called from button");
                     break;
+                
+                case eGameStates.HowToPlay:
+                    newState = new HowToPlayState();
+                    break;
             }
+
+            if (newState != null)
+            {
+                GameStateManager.Instance.SwitchGameState(newState);
+            }
+        }
+        
+        private bool CheckPlayerNameForNull()
+        {
+            string inputFieldText = manager.uiManager.mainMenu.GetInputFieldText();
             
-            GameStateManager.Instance.SwitchGameState(newState);
+            if (inputFieldText.IsNullOrEmpty())
+            {
+                manager.uiManager.mainMenu.DisplayErrorMessage();
+                return true;
+            }
+            else
+            {
+                manager.uiManager.mainMenu.HideErrorMessage();
+                PhotonNetwork.NickName = inputFieldText;
+                return false;
+            }
         }
     }
 }
