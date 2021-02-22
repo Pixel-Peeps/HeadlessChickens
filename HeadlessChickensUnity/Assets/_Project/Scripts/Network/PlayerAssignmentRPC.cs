@@ -35,7 +35,9 @@ namespace PixelPeeps.HeadlessChickens.Network
         public void AssignPlayerRoles()
         {
             Player[] playersInRoom = PhotonNetwork.PlayerList;
-            chickenPlayersActorNumbers = new int[PhotonNetwork.CurrentRoom.PlayerCount - 1];
+            chickenPlayersActorNumbers = new int[PhotonNetwork.CurrentRoom.PlayerCount];
+            print("chickenPlayers length: "  + chickenPlayersActorNumbers.Length);
+            print("PlayersInRoom length: " + playersInRoom.Length);
             
             Debug.Log("AssignPlayerRoles");
 

@@ -75,7 +75,7 @@ namespace PixelPeeps.HeadlessChickens.Network
             {
                 RoomOptions options = new RoomOptions
                 {
-                    MaxPlayers = 5, 
+                    MaxPlayers = 6, 
                     EmptyRoomTtl = 0
                 };
 
@@ -121,6 +121,8 @@ namespace PixelPeeps.HeadlessChickens.Network
         {
             Room room = PhotonNetwork.CurrentRoom;
             
+            PlayerAssignmentRPC.Instance.chickenPlayersActorNumbers = new int[room.PlayerCount - 1];
+            
             Debug.Log("Room " + room.Name + " has been joined. It currently has " + room.PlayerCount + "/" + room.MaxPlayers + 
                       " players, isVisible is set to: " + room.IsVisible + " and isOpen is set to: " + room.IsOpen);
 
@@ -142,6 +144,8 @@ namespace PixelPeeps.HeadlessChickens.Network
             
             Player[] players = PhotonNetwork.PlayerList;
 
+            uiManager.playerList.DestroyCurrentList();
+            
             foreach (Player t in players)
             {
                 uiManager.UpdatePlayerList(t);

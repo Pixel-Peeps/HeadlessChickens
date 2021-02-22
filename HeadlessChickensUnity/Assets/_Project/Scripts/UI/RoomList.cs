@@ -19,9 +19,20 @@ namespace PixelPeeps.HeadlessChickens.UI
                 if (info.RemovedFromList)
                 {
                     CheckToRemoveItem(info);
+                    // int index = currentItems.FindIndex(x => x.roomInfo.Name == info.Name);
+                    // if (index != -1)
+                    // {
+                    //     Destroy(currentItems[index].gameObject);
+                    //     currentItems.RemoveAt(index);
+                    // }
                 }
-                CheckToRemoveItem(info);
-                CheckToAddItem(info);
+                
+                else
+                {
+                    CheckToRemoveItem(info);
+                    
+                    CheckToAddItem(info);
+                }
             }
         }
 
@@ -43,6 +54,10 @@ namespace PixelPeeps.HeadlessChickens.UI
             {
                 Destroy(currentItems[index].gameObject);
                 currentItems.RemoveAt(index);
+            }
+            else
+            {
+                return;
             }
         }
     }

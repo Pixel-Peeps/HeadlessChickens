@@ -17,10 +17,10 @@ MonoBehaviour:
     - SceneName: LoadExample
       SceneAsset: {fileID: 102900000, guid: 511f544c1ae32b3448425de6b65acff2, type: 3}
       DisplayName: This Example Name
-      Description: Prompta noluisse verterem sed eu, mundi graece eum in. Vis ut alia
-        euismod tincidunt, per no ubique euismod. Indoctum qualisque vituperata an
-        his. Timeam feugait id mel, vis in iuvaret fabulas. Quis veri diceret vix
-        in, numquam praesent elaboraret eum ne.
+      Description: Prompta noluisse verterem sed eu, mundi graece eum in. Vis ut
+        alia euismod tincidunt, per no ubique euismod. Indoctum qualisque vituperata
+        an his. Timeam feugait id mel, vis in iuvaret fabulas. Quis veri diceret
+        vix in, numquam praesent elaboraret eum ne.
       SkipType: 0
       LoadingType: 1
       FakeLoadingTime: 7
@@ -31,6 +31,22 @@ MonoBehaviour:
     - SceneName: demo
       SceneAsset: {fileID: 102900000, guid: c34f5b9761f1c134c9b57f319ee6a287, type: 3}
       DisplayName: demo
+      Description: 
+      SkipType: 3
+      LoadingType: 0
+      FakeLoadingTime: 2
+      Backgrounds: []
+    - SceneName: MenuScene
+      SceneAsset: {fileID: 102900000, guid: 80143ac1c3ac31648be6294f58a5101d, type: 3}
+      DisplayName: MenuScene
+      Description: 
+      SkipType: 3
+      LoadingType: 0
+      FakeLoadingTime: 2
+      Backgrounds: []
+    - SceneName: PlayScene
+      SceneAsset: {fileID: 102900000, guid: 2bf439309d654404489e92d7ca789d80, type: 3}
+      DisplayName: PlayScene
       Description: 
       SkipType: 3
       LoadingType: 0

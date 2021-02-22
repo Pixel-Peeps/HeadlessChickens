@@ -21,16 +21,16 @@ namespace PixelPeeps.HeadlessChickens.UI
         public Menu waitingRoom;
         public Menu connectionError;
         
+        [Header("Waiting Room Info")]
+        public GameObject startGameButton;
+        public TextMeshProUGUI roomNameText;
+        public TextMeshProUGUI roomPlayerCount;
+        
         [Header("Player List")]
         public PlayerList playerList;
         
         [Header("Room List")]
         public RoomList roomList;
-        
-        [Header("Waiting Room Info")]
-        public GameObject startGameButton;
-        public TextMeshProUGUI roomNameText;
-        public TextMeshProUGUI roomPlayerCount;
 
         public void ActivateMenu(Menu menu)
         {
