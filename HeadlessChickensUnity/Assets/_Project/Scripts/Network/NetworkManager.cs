@@ -121,8 +121,6 @@ namespace PixelPeeps.HeadlessChickens.Network
         {
             Room room = PhotonNetwork.CurrentRoom;
             
-            PlayerAssignmentRPC.Instance.chickenPlayersActorNumbers = new int[room.PlayerCount - 1];
-            
             Debug.Log("Room " + room.Name + " has been joined. It currently has " + room.PlayerCount + "/" + room.MaxPlayers + 
                       " players, isVisible is set to: " + room.IsVisible + " and isOpen is set to: " + room.IsOpen);
 
