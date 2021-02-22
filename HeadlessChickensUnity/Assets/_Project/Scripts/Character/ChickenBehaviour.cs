@@ -29,6 +29,12 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             this.chickenMesh.GetComponent<Renderer>().sharedMaterial = caughtMat;
         }
 
+        [PunRPC]
+        public void ChickenEscaped()
+        {
+            Debug.Log(gameObject.name + " has escaped");
+        }
+
         protected override void Action()
         {
             throw new System.NotImplementedException();
@@ -93,9 +99,6 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         [PunRPC]
         private void RPC_LeaveHiding(Vector3 leavePos)
         {
-            
-
-            
             //photonView.transform.SetParent(null);
             photonView.transform.position = positionBeforeHiding; 
             
