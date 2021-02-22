@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Photon.Pun;
+﻿using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
 
@@ -13,12 +12,13 @@ namespace PixelPeeps.HeadlessChickens.Network
             get => _instance;
             set => _instance = value;
         }
-
-        public int[] chickenPlayersActorNumbers = new int[5];
+        
+        [HideInInspector]
+        public int[] chickenPlayersActorNumbers;
         public Player foxPlayer;
 
         public void Awake()
-        {
+        {            
             DontDestroyOnLoad(gameObject);
             
             if (_instance != null && _instance != this)    

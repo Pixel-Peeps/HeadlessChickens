@@ -1,12 +1,13 @@
 ﻿using PixelPeeps.HeadlessChickens.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace PixelPeeps.HeadlessChickens.GameState
 {
-    public class CreateRoomState : GameState
+    public class HowToPlayState : GameState
     {
         private readonly Menu 
-            menu = StateManager.uiManager.createRoom;
+            menu = StateManager.uiManager.howToPlay;
 
         private readonly string 
             sceneName = StateManager.menuScene;

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 483725998252695552}
   - component: {fileID: 483725998252695553}
   - component: {fileID: 483725998252695554}
+  - component: {fileID: 5560994386025043941}
   m_Layer: 5
   m_Name: HowToPlayCanvas
   m_TagString: Untagged
@@ -101,6 +102,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &5560994386025043941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483725998252695555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ddda1ed643c13479f4df28a01b9006, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 483725998252695555}
+  firstSelectedButton: {fileID: 3150447264259264236}
 --- !u!1 &555144175707582426
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,7 +351,7 @@ MonoBehaviour:
     m_NormalColor: {r: 0.8980392, g: 0.84705883, b: 0.23137255, a: 1}
     m_HighlightedColor: {r: 1, g: 0.972549, b: 0.627451, a: 1}
     m_PressedColor: {r: 1, g: 0.9725491, b: 0.627451, a: 1}
-    m_SelectedColor: {r: 1, g: 0.9725491, b: 0.627451, a: 1}
+    m_SelectedColor: {r: 0.8980392, g: 0.84705883, b: 0.23137255, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -403,8 +418,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 465.84, y: -128}
-  m_SizeDelta: {x: 988.318, y: 851.95}
+  m_AnchoredPosition: {x: 382.98, y: -128}
+  m_SizeDelta: {x: 1028.1318, y: 851.95}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &8104274293641617967
 CanvasRenderer:
@@ -443,7 +458,14 @@ MonoBehaviour:
     levers is their only way out of the dungeon.
 
 
-    As the fox, your challenge'
+    As the fox, your challenge
+    will be to catch the chickens before they manage to escape. Using your hunter
+    abilities, track down your feathery feasts before dinner flies the coop!
+
+
+    The
+    game ends when either the fox catches all the chickens or when the timer hits
+    zero. If at least one chicken escapes from the fox''s dungeon, the chickens win!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 609acdcd7c06f6840b735c22e9a97ca1, type: 2}
   m_sharedMaterial: {fileID: 5825011966941004361, guid: 609acdcd7c06f6840b735c22e9a97ca1, type: 2}
@@ -546,8 +568,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 465.84, y: 0}
-  m_SizeDelta: {x: 988.32214, y: 157.60822}
+  m_AnchoredPosition: {x: 383, y: 0}
+  m_SizeDelta: {x: 1028.167, y: 157.60822}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &5163889566696352379
 CanvasRenderer:

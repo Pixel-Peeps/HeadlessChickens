@@ -1,7 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Security.Cryptography;
-using System.Threading;
-using ExitGames.Client.Photon.StructWrapping;
 using Photon.Realtime;
 using TMPro;
 using UnityEngine;
@@ -12,60 +9,47 @@ namespace PixelPeeps.HeadlessChickens.UI
     // Handles all the different canvas that are present in a scene. Interfaced with by the GameStates    
     public class UIManager : MonoBehaviour
     {
-        [Header("Loading and Connecting Screens")] 
+        [Header("Loading / Connecting Screens")] 
         public GameObject loadingScreenCanvas;
         public GameObject connectingScreenCanvas;
-        
-        public GameObject connectionErrorCanvas;
-        public GameObject connectionErrorFirstSelected;
-        
-        [Header("Main Menu")]
-        public GameObject mainMenuCanvas;
-        public GameObject mainMenuFirstSelected;
 
-        [Header("Room Search")]
-        public GameObject roomSearchCanvas;
-        public GameObject roomSearchCanvasFirstSelected;
-        public GameObject enterNamePrompt;
-        public TMP_InputField joiningPlayerNameInputField;
+        [Header("Menus")] 
+        public Menu mainMenu;
+        public Menu howToPlay;
+        public Menu roomSearch;
+        public Menu createRoom;
+        public Menu waitingRoom;
+        public Menu connectionError;
+        
+        [Header("Player List")]
+        public PlayerList playerList;
         
         [Header("Room List")]
-        public Transform roomListParent;
-        public GameObject roomListItemPrefab;
-        [HideInInspector] public List<RoomListItem> currentRoomListings = new List<RoomListItem>();
-
-        [Header("Room Creation")]
-        public GameObject createRoomCanvas;
-        public GameObject createRoomCanvasFirstSelected;
-        public GameObject createRoomEnterNicknamePrompt;
-        public GameObject createRoomEnterRoomNamePrompt;
-        public TMP_InputField roomNameInputField;
-        public TMP_InputField hostPlayerNameInputField;
+        public RoomList roomList;
         
-        [Header("Waiting Room")]
-        public GameObject waitingRoomCanvas;
-        public GameObject waitingRoomFirstSelected;
+        [Header("Waiting Room Info")]
         public GameObject startGameButton;
         public TextMeshProUGUI roomNameText;
         public TextMeshProUGUI roomPlayerCount;
-        
-        [Header("Player List")]
-        public GameObject playerListParent;
-        public GameObject playerListItemPrefab;
-        [HideInInspector] public List<GameObject> currentPlayerList = new List<GameObject>();
 
-        [Header("Play Scene HUD")] 
-        public GameObject playSceneHUDCanvas;
-
-        public void ActivateCanvas(GameObject canvasObject, GameObject firstSelectedButton)
+        public void ActivateMenu(Menu menu)
         {
-            if (canvasObject == null)
+            if (menu == null)
             {
                 return;
             }
             
-            canvasObject.SetActive(true);
-            SetEventSystemCurrentSelection(firstSelectedButton);
+            menu.ActivateMenu();
+        }
+
+        public void DeactivateMenu(Menu menu)
+        {
+            if (menu == null)
+            {
+                return;
+            }
+            
+            menu.DeactivateMenu();
         }
 
         private void SetEventSystemCurrentSelection(GameObject firstSelected)
@@ -74,49 +58,15 @@ namespace PixelPeeps.HeadlessChickens.UI
             EventSystem.current.SetSelectedGameObject(firstSelected);
         }
 
-        public void GenerateRoomList(List<RoomInfo> roomList)
+        public void GenerateRoomList(List<RoomInfo> serverRoomList)
         {
             Debug.Log("<color=yellow> GenerateRoomList() called </color>");
-
-            foreach (RoomInfo info in roomList)
-            {
-                if (info.RemovedFromList)
-                {
-                    // Find index of removed room and destroy the game object it is attached to
-                    int index = currentRoomListings.FindIndex(x => x.roomInfo.Name == info.Name);
-                    if (index != -1)
-                    {
-                        Destroy(currentRoomListings[index].gameObject);
-                        currentRoomListings.RemoveAt(index);
-                    }
-                }
-                
-                else
-                {
-                    int index = currentRoomListings.FindIndex(x => x.roomInfo.Name == info.Name);
-                    if (index != -1)
-                    {
-                        Destroy(currentRoomListings[index].gameObject);
-                        currentRoomListings.RemoveAt(index);
-                    }
-                    
-                    GameObject newRoomItem = Instantiate(roomListItemPrefab, roomListParent);
-                    newRoomItem.name = info.Name;
-                    RoomListItem roomScript = newRoomItem.GetComponent<RoomListItem>();
-                    roomScript.SetUp(info);
-                    currentRoomListings.Add(roomScript);
-                    Debug.Log("<color=green> Room generated: " + info.Name + "</color>");
-                }
-            }
+            roomList.UpdateRoomList(serverRoomList);
         }
 
         public void UpdatePlayerList(Player newPlayer)
         {
-            Debug.Log("UpdatePlayerList");
-            
-            GameObject newPlayerListItem = Instantiate(playerListItemPrefab, playerListParent.transform);
-            PlayerListItem itemScript = newPlayerListItem.GetComponent<PlayerListItem>();
-            itemScript.SetUp(newPlayer);
+            playerList.GeneratePlayerList(newPlayer);
         }
 
         public void ShowLoadingScreen()

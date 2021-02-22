@@ -46,6 +46,7 @@ namespace PixelPeeps.HeadlessChickens.Network
             GameStateManager.Instance.ShowConnectingScreen();
         }
 
+        #region Photon Callback Methods
         public override void OnConnectedToMaster()
         {
             uiManager.HideConnectionScreen();
@@ -64,16 +65,13 @@ namespace PixelPeeps.HeadlessChickens.Network
 
         public void CreateRoom()
         {
-            string roomName = uiManager.roomNameInputField.text;
-            string nickName = uiManager.hostPlayerNameInputField.text;
+            string roomName = uiManager.createRoom.GetInputFieldText();
             
-            uiManager.createRoomEnterRoomNamePrompt.SetActive(false);
-            uiManager.createRoomEnterNicknamePrompt.SetActive(false);
+            uiManager.createRoom.HideErrorMessage();    
             
-            PhotonNetwork.NickName = nickName;
             currentRoomName = roomName;
 
-            if (!string.IsNullOrEmpty(nickName) && !string.IsNullOrEmpty(roomName))
+            if (!string.IsNullOrEmpty(roomName))
             {
                 RoomOptions options = new RoomOptions
                 {
@@ -86,14 +84,9 @@ namespace PixelPeeps.HeadlessChickens.Network
                 uiManager.ShowConnectionScreen();
             }
             
-            if (string.IsNullOrEmpty(nickName))
-            {
-                uiManager.createRoomEnterNicknamePrompt.SetActive(true);
-            }
-            
             if (string.IsNullOrEmpty(roomName))
             {
-                uiManager.createRoomEnterRoomNamePrompt.SetActive(true);
+                uiManager.createRoom.DisplayErrorMessage();
             }
         }
 
@@ -116,20 +109,10 @@ namespace PixelPeeps.HeadlessChickens.Network
         }
 
         public void JoinRoom(RoomInfo info)
-        {
-            string nickname = uiManager.joiningPlayerNameInputField.text;
-
-            if (string.IsNullOrEmpty(nickname))
-            {
-                uiManager.enterNamePrompt.SetActive(true);
-                return;
-            }
-
-            uiManager.enterNamePrompt.SetActive(false);
-            
+        {            
             PhotonNetwork.JoinRoom(info.Name);
 
-            PhotonNetwork.NickName = uiManager.joiningPlayerNameInputField.text;
+            PhotonNetwork.NickName = GetPlayerNickname();
 
             GameStateManager.Instance.ShowConnectingScreen();
         }
@@ -137,6 +120,8 @@ namespace PixelPeeps.HeadlessChickens.Network
         public override void OnJoinedRoom()
         {
             Room room = PhotonNetwork.CurrentRoom;
+            
+            PlayerAssignmentRPC.Instance.chickenPlayersActorNumbers = new int[room.PlayerCount - 1];
             
             Debug.Log("Room " + room.Name + " has been joined. It currently has " + room.PlayerCount + "/" + room.MaxPlayers + 
                       " players, isVisible is set to: " + room.IsVisible + " and isOpen is set to: " + room.IsOpen);
@@ -199,6 +184,8 @@ namespace PixelPeeps.HeadlessChickens.Network
                 uiManager.startGameButton.GetComponent<Button>().interactable = false;
             }
         }
+        
+        #endregion
 
         public void StartGameOnMaster()
         {
@@ -213,6 +200,11 @@ namespace PixelPeeps.HeadlessChickens.Network
         public void StartGameForOthers()
         {
             GameStateManager.Instance.SwitchGameState(new GameSceneState());
+        }
+
+        private string GetPlayerNickname()
+        {
+            return uiManager.mainMenu.GetInputFieldText();
         }
     }
 }

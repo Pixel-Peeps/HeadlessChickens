@@ -118,7 +118,10 @@ namespace PixelPeeps.HeadlessChickens.GameState
         
         public void HideLoadingScreen()
         {
-            loadingScreen.SetActive(false);
+            if (loadingScreen != null)
+            {
+                loadingScreen.SetActive(false);
+            }
         }
         
         public void HideConnectingScreen()

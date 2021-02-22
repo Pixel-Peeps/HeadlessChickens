@@ -1,6 +1,7 @@
 ﻿using PixelPeeps.HeadlessChickens.Network;
 using UnityEngine;
 using UnityEngine.UI;
+using WebSocketSharp;
 
 namespace PixelPeeps.HeadlessChickens.UI
 {
@@ -11,16 +12,27 @@ namespace PixelPeeps.HeadlessChickens.UI
 
         private void Start()
         {
-            uiManager = FindObjectOfType<UIManager>();
-            
+            uiManager = GameObject.FindGameObjectWithTag("MenuManager").GetComponent<UIManager>();
             thisButton = this.GetComponent<Button>();
             
             thisButton.onClick.AddListener(OnClick);
         }
 
-        public void OnClick()
+        private void OnClick()
         {
-            NetworkManager.Instance.CreateRoom();
+            Menu createRoomMenu = uiManager.createRoom;
+            bool roomNameEmpty = createRoomMenu.GetInputFieldText().IsNullOrEmpty();
+            
+            if (roomNameEmpty)
+            {
+                createRoomMenu.DisplayErrorMessage();
+                return;
+            }
+            else
+            {
+                createRoomMenu.HideErrorMessage();
+                NetworkManager.Instance.CreateRoom();
+            }
         }
     }
 }

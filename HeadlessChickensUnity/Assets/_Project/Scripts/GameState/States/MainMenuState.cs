@@ -6,15 +6,16 @@ namespace PixelPeeps.HeadlessChickens.GameState
 {
     public class MainMenuState : GameState
     {
-        private readonly GameObject canvasObject = StateManager.uiManager.mainMenuCanvas;
-        private readonly GameObject firstSelectedButton = StateManager.uiManager.mainMenuFirstSelected;
+        private readonly Menu 
+            menu = StateManager.uiManager.mainMenu;
 
-        private readonly string sceneName = StateManager.menuScene;
+        private readonly string 
+            sceneName = StateManager.menuScene;
         
         public override void StateEnter()
         {
             StateManager.LoadNextScene(sceneName);
-            ActivateCanvas(canvasObject, firstSelectedButton);
+            ActivateMenu(menu);
         }
 
         public override void OnSceneLoad()
@@ -22,12 +23,12 @@ namespace PixelPeeps.HeadlessChickens.GameState
             menuManagerObj = GameObject.FindGameObjectWithTag("MenuManager");
             StateManager.uiManager = menuManagerObj.GetComponent<UIManager>();
             
-            ActivateCanvas(canvasObject, firstSelectedButton);
+            ActivateMenu(menu);
         }
 
         public override void StateExit()
         {
-            canvasObject.SetActive(false);
+            DeactivateMenu(menu);
         }
     }
 }
