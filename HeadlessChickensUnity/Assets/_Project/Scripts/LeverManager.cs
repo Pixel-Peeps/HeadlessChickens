@@ -8,13 +8,18 @@ namespace PixelPeeps.HeadlessChickens.Network
     {
         public int leversPulled = 0;
         public bool allLeversPulled = false;
-        
 
         [PunRPC]
         public void RPC_AllLeversPulled()
         {
             Debug.Log("all levers pulled!");
             allLeversPulled = true;
+
+            // select random exit & open it
+            int randomIndex = Random.Range(0, NewGameManager.Instance.exits.Count);
+            ExitDoor chosenExit = NewGameManager.Instance.exits[randomIndex];
+
+            chosenExit.StartCoroutine(chosenExit.ActivateExit());
         }
 
         [PunRPC]
