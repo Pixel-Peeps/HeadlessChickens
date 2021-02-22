@@ -9,8 +9,6 @@ namespace PixelPeeps.HeadlessChickens.Network
         public int leversPulled = 0;
         public bool allLeversPulled = false;
 
-        [SerializeField] GameObject exits;
-
         [PunRPC]
         public void RPC_AllLeversPulled()
         {
@@ -18,8 +16,8 @@ namespace PixelPeeps.HeadlessChickens.Network
             allLeversPulled = true;
 
             // select random exit & open it
-            int randomIndex = Random.Range(0, transform.childCount);
-            ExitDoor chosenExit = exits.transform.GetChild(randomIndex).GetComponent<ExitDoor>();
+            int randomIndex = Random.Range(0, NewGameManager.Instance.exits.Count);
+            ExitDoor chosenExit = NewGameManager.Instance.exits[randomIndex];
 
             chosenExit.StartCoroutine(chosenExit.ActivateExit());
         }

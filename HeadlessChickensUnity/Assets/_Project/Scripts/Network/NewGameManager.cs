@@ -35,35 +35,25 @@ namespace PixelPeeps.HeadlessChickens.Network
 
         [Header("HidingSpot")]
         [SerializeField] public List<Transform> hidingSpotSpawnPos;
-<<<<<<< Updated upstream
+
         public GameObject hidingSpotPrefab;
 
         [Header("Rooms")]
         [SerializeField] public List<RoomTile> rooms;
+
+        [Header("Levers")]
         public GameObject leverSpotPrefab;
         public int maxNumberOfLevers;
 
-        //public int leversPulled = 0;
-        //public bool allLeversPulled = false;
-
-=======
-        public GameObject hidingSpotPrefab;
-
-        [Header("Rooms")]
-        [SerializeField] public List<RoomTile> rooms;
-        
-        [Header("Levers")]
-        public int numberOfLevers;
-        public GameObject leverSpotPrefab;
-
         [Header("Exits")]
+        [SerializeField] public List<ExitDoor> exits;
         public float exitTime;
+        
 
 
         //public int leversPulled = 0;
         //public bool allLeversPulled = false;
-
->>>>>>> Stashed changes
+        
         void Awake()
         {
             if (_instance != null && _instance != this)
