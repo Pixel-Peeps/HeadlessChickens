@@ -1,25 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using com.pixelpeeps.headlesschickens;
 using Photon.Pun;
 using Photon.Realtime;
 using PixelPeeps.HeadlessChickens.GameState;
 using PixelPeeps.HeadlessChickens.UI;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace PixelPeeps.HeadlessChickens.Network
 {
     public class NewGameManager : MonoBehaviourPunCallbacks, IPunObservable
     {
-        private static NewGameManager _instance;
-        
-        public static NewGameManager Instance
-        {
-            get => _instance;
-            set => _instance = value;
-        }
+        public static NewGameManager Instance { get; private set; }
 
         [Header("Fox")]
         public GameObject foxPrefab;
@@ -28,7 +20,6 @@ namespace PixelPeeps.HeadlessChickens.Network
         [Header("Chickens")]
         public GameObject chickPrefab;
         public List<Transform> chickSpawnPoints;
-        
         
         private GameObject playerPrefab; // The prefab this player uses. Assigned as fox or chick when roles are assigned
         private Transform spawnPos;
@@ -51,13 +42,13 @@ namespace PixelPeeps.HeadlessChickens.Network
         
         void Awake()
         {
-            if (_instance != null && _instance != this)
+            if (Instance != null && Instance != this)
             {
                 Destroy(gameObject);
             }
             else
             {
-                _instance = this;
+                Instance = this;
             }
         }
 
@@ -98,60 +89,16 @@ namespace PixelPeeps.HeadlessChickens.Network
         }
         
         public void Initialise()
-        {
-            // if (playerPrefab == null)
-            // {
-            //     Debug.LogError("<Color=Red><a>Missing</a></Color> playerPrefab Reference. Please set it up in GameObject 'NewGameManager'",this);
-            // }
-            // else
-            // {
-            //     Debug.LogFormat("We are Instantiating LocalPlayer from {0}", SceneManager.GetActiveScene());
-            //     if (PlayerManager.LocalPlayerInstance == null)
-            //     {
-            //         Debug.LogFormat("We are Instantiating LocalPlayer from {0}", SceneManagerHelper.ActiveSceneName);
-            //         PhotonNetwork.Instantiate(playerPrefab.name, spawnPos.position, Quaternion.identity, 0);
-            //     }
-            //     else
-            //     {
-            //         Debug.LogFormat("Ignoring scene load for {0}", SceneManagerHelper.ActiveSceneName);
-            //     }
-            // }
-            
+        {            
             SpawnPlayers();
-
-            // foreach (var hidingSpawnPos in hidingSpotSpawnPos)
-            // {
-            //     PhotonNetwork.InstantiateRoomObject(hidingSpotPrefab.name, hidingSpawnPos.position,
-            //         Quaternion.identity, 0);
-            // }
             
             SpawnHidingSpots();
-            
-            // maxNumberOfLevers = PhotonNetwork.CurrentRoom.PlayerCount;
-            // HUDManager.Instance.UpdateLeverCount(0);
-            //
-            // List<RoomTile> tempRooms = rooms;
-            // for (int i = 0; i < maxNumberOfLevers; i++)
-            // {
-            //     // Get random room from list
-            //     int roomNumber = UnityEngine.Random.Range(0, tempRooms.Count);
-            //
-            //     RoomTile room = tempRooms[roomNumber];
-            //
-            //     // Get random lever from room
-            //     int leverNumber = UnityEngine.Random.Range(0, room.leverPositions.Count);
-            //     Transform lever = room.leverPositions[leverNumber];
-            //
-            //     PhotonNetwork.InstantiateRoomObject(leverSpotPrefab.name, lever.position,
-            //         lever.rotation, 0);
-            //
-            //     tempRooms.RemoveAt(roomNumber);
-            //     
-            // }
             
             SpawnLevers();
             
             StartTimer();
+            
+            NetworkManager.Instance.GameSetupComplete();
         }
 
         private void SpawnPlayers()
@@ -163,16 +110,16 @@ namespace PixelPeeps.HeadlessChickens.Network
             
             else
             {    
-                PhotonNetwork.Instantiate(playerPrefab.name, spawnPos.position, Quaternion.identity, 0);
+                PhotonNetwork.Instantiate(playerPrefab.name, spawnPos.position, Quaternion.identity);
             }
         }
 
         private void SpawnHidingSpots()
         {
-            foreach (var hidingSpawnPos in hidingSpotSpawnPos)
+            foreach (Transform hidingSpawnPos in hidingSpotSpawnPos)
             {
                 PhotonNetwork.InstantiateRoomObject(hidingSpotPrefab.name, hidingSpawnPos.position,
-                    Quaternion.identity, 0);
+                    Quaternion.identity);
             }
         }
 
@@ -194,7 +141,7 @@ namespace PixelPeeps.HeadlessChickens.Network
                 Transform lever = room.leverPositions[leverNumber];
 
                 PhotonNetwork.InstantiateRoomObject(leverSpotPrefab.name, lever.position,
-                    lever.rotation, 0);
+                    lever.rotation);
 
                 tempRooms.RemoveAt(roomNumber);
 
@@ -215,18 +162,19 @@ namespace PixelPeeps.HeadlessChickens.Network
 
         #region Timer
 
+        [Header("Timer")]
         public float totalGameTime;
         
         private bool timerIsRunning;
         private float timeRemaining;
-        
-        void StartTimer()
+
+        private void StartTimer()
         {
             timeRemaining = totalGameTime;
             timerIsRunning = true;
         }
-        
-        void Update()
+
+        private void Update()
         {
             if (timerIsRunning)
             {
