@@ -15,6 +15,40 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public override void HidingInteraction(bool canAccessHiding, Transform hideSpot)
         {
             Debug.Log("<color=magenta>I am searching</color>");
+
+            if (photonView.IsMine)
+            {
+                switch (canAccessHiding)
+                {
+                    case true:
+
+                        Debug.Log("Nothing here");
+                        break;
+
+                    case false:
+
+                        foreach (Transform t in hideSpot)
+                        {
+                            if(t.gameObject.TryGetComponent(out ChickenBehaviour chickenComponent) == true)
+                            {
+                                ChickenBehaviour chicken = chickenComponent;
+
+                                chicken.photonView.RPC("RPC_LeaveHiding", RpcTarget.AllBufferedViaServer, chicken.positionBeforeHiding);
+
+                                hideSpot.GetComponent<HidingSpot>().photonView.RPC("RPC_ToggleAccess", RpcTarget.AllViaServer);
+
+                                chicken.photonView.RPC("ChickenCaptured", RpcTarget.AllBufferedViaServer);
+                            }
+                            else
+                            {
+                                Debug.Log("404 Chicken not found");
+                                continue;
+                            }
+                        }
+                    
+                        break;
+                }
+            }
         }
 
         private void OnTriggerEnter(Collider other)

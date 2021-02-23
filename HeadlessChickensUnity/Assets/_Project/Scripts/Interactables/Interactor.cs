@@ -20,7 +20,7 @@ public class Interactor : MonoBehaviour
     [SerializeField] private float requiredDot = 0;
 
     public enum eCharacterType { Fox, Chick }
-    [SerializeField] private eCharacterType characterType;
+    [SerializeField] public eCharacterType characterType;
 
     CharacterBase characterBase;
 
