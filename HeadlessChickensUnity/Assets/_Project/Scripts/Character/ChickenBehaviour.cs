@@ -105,6 +105,11 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         [PunRPC]
         public void RPC_LeaveHiding(Vector3 leavePos)
         {
+            isHiding = false;
+
+            // gameObject.transform.SetParent(null);
+            photonView.RPC("RPC_SetParent", RpcTarget.AllViaServer);
+
             //photonView.transform.SetParent(null);
             photonView.transform.position = positionBeforeHiding; 
             
@@ -114,7 +119,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             // Re-enable Mesh
             chickenMesh.enabled = true;
 
-            isHiding = false;
+            
             
             
             SwitchState(EStates.Moving);
