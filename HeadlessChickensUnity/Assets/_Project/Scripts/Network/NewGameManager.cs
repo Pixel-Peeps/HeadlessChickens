@@ -24,11 +24,6 @@ namespace PixelPeeps.HeadlessChickens.Network
         private GameObject playerPrefab; // The prefab this player uses. Assigned as fox or chick when roles are assigned
         private Transform spawnPos;
 
-        [Header("Game State")]
-        public int chickensCaught = 0;
-        public int chickensEscaped = 0;
-        public int chickenThreshold = 2;
-
         [Header("HidingSpot")]
         [SerializeField] public List<Transform> hidingSpotSpawnPos;
 
@@ -108,14 +103,10 @@ namespace PixelPeeps.HeadlessChickens.Network
 
         private void SpawnPlayers()
         {
-
-            if(chickensEscaped >= chickenThreshold)
-
-                if (playerPrefab == null)
-
-                {
-                    Debug.LogError("<Color=Red><a>Missing</a></Color> playerPrefab Reference. Please set it up in GameObject 'NewGameManager'",this);
-                }
+            if (playerPrefab == null)
+            {
+                Debug.LogError("<Color=Red><a>Missing</a></Color> playerPrefab Reference. Please set it up in GameObject 'NewGameManager'",this);
+            }
             
             else
             {    
