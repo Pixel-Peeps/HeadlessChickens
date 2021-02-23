@@ -26,7 +26,8 @@ namespace PixelPeeps.HeadlessChickens.GameState
         [Header("Loading / Connecting")] 
         public GameObject loadingScreen;
         public GameObject connectingScreen;
-        public GameObject connectionErrorScreen;
+        public GameObject gameSetUpScreen;
+        public Menu connectionErrorMenu;
         #endregion
         
         [Header("Game Scenes")] 
@@ -93,14 +94,20 @@ namespace PixelPeeps.HeadlessChickens.GameState
             PhotonNetwork.LoadLevel(sceneName);
             AsyncOperation asyncLoad = PhotonNetwork._AsyncLevelLoadingOperation;
             
-            while (!asyncLoad.isDone)
+            while (asyncLoad != null && !asyncLoad.isDone)
             {
-                ShowLoadingScreen();
-                yield return new WaitForSecondsRealtime(0.2f);
+                if (sceneName == playScene)
+                {
+                    yield return new WaitForSecondsRealtime(0.2f);
+                }
+                else
+                {
+                    ShowLoadingScreen();
+                    yield return new WaitForSecondsRealtime(0.2f);
+                    HideLoadingScreen();
+                }
             }
-            
-            HideLoadingScreen();
-            uiManager = FindObjectOfType<UIManager>();
+
             currentState.OnSceneLoad();
             
             yield return null;
@@ -111,11 +118,6 @@ namespace PixelPeeps.HeadlessChickens.GameState
             loadingScreen.SetActive(true);
         }
         
-        public void ShowConnectingScreen()
-        {
-            connectingScreen.SetActive(true);
-        }
-        
         public void HideLoadingScreen()
         {
             if (loadingScreen != null)
@@ -124,9 +126,34 @@ namespace PixelPeeps.HeadlessChickens.GameState
             }
         }
         
+        public void ShowSetupScreen()
+        {
+            gameSetUpScreen.SetActive(true);
+        }
+        
+        public void HideSetupScreen()
+        {
+            gameSetUpScreen.SetActive(false);
+        }
+        
+        public void ShowConnectingScreen()
+        {
+            connectingScreen.SetActive(true);
+        }
+        
         public void HideConnectingScreen()
         {
             connectingScreen.SetActive(false);
+        }
+
+        public void ShowErrorScreen()
+        {
+            connectionErrorMenu.ActivateMenu();
+        }
+        
+        public void HideErrorScreen()
+        {
+            connectionErrorMenu.DeactivateMenu();
         }
     }
 }

@@ -549,18 +549,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 483725998252695555, guid: 6ec7b1480e17f6547be068378c5a4ae5, type: 3}
   m_PrefabInstance: {fileID: 588809143}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &588809149
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 588809144}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 204e3c1efe2e75b4d993074eb034ac95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &658694763 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 540946861786641999, guid: 95a50a535ecace248800065e5c292bef, type: 3}
@@ -712,18 +700,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 483725998252695555, guid: c75ede752e8351346a00f473c0c83e52, type: 3}
   m_PrefabInstance: {fileID: 829935349}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &829935355
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 829935350}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 204e3c1efe2e75b4d993074eb034ac95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &925786922 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8858242006548139510, guid: 41d52b5684bf2c84fbf957882a7768a4, type: 3}
@@ -867,18 +843,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 1076676221}
   firstSelectedButton: {fileID: 1922269717}
---- !u!114 &1076676226
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1076676221}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 204e3c1efe2e75b4d993074eb034ac95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1193262967
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1588,6 +1552,10 @@ PrefabInstance:
       propertyPath: connectionErrorScreen
       value: 
       objectReference: {fileID: 1076676221}
+    - target: {fileID: 540946861786641992, guid: 95a50a535ecace248800065e5c292bef, type: 3}
+      propertyPath: connectionErrorMenu
+      value: 
+      objectReference: {fileID: 1076676222}
     - target: {fileID: 540946861786641993, guid: 95a50a535ecace248800065e5c292bef, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

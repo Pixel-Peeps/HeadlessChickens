@@ -21,21 +21,16 @@ namespace PixelPeeps.HeadlessChickens.GameState
         
         public override void StateEnter()
         {
-            StateManager.LoadNextScene(sceneName);
-            ActivateMenu(menu);
+            StateManager.ShowErrorScreen();
         }
 
         public override void OnSceneLoad()
         {
-            menuManagerObj = GameObject.FindGameObjectWithTag("MenuManager");
-            StateManager.uiManager = menuManagerObj.GetComponent<UIManager>();
-
-            ActivateMenu(menu);
         }
 
         public override void StateExit()
         {
-            DeactivateMenu(menu);
+            StateManager.HideErrorScreen();
         }
     }
 }
