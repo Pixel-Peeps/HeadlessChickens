@@ -13,7 +13,8 @@ public class HidingSpot : MonoBehaviourPunCallbacks, IInteractable
         photonView.SetControllerInternal(character.photonView.Owner.ActorNumber);
         if (photonView.IsMine)
         {
-            if (canAccessHiding)
+
+            if (canAccessHiding && character.GetComponent<Interactor>().characterType == Interactor.eCharacterType.Chick)
             {
                 Debug.Log("Interact() method called, inUse false");
                 //character.photonView.GetComponent<CharacterBase>().currentHidingSpot = transform;
@@ -25,6 +26,8 @@ public class HidingSpot : MonoBehaviourPunCallbacks, IInteractable
                 // character.currentHidingSpot.position = null;
                 character.HidingInteraction(canAccessHiding, transform);
             }
+
+
         }
     }
 

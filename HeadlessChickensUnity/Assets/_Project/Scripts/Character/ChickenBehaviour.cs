@@ -103,7 +103,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         }
 
         [PunRPC]
-        private void RPC_LeaveHiding(Vector3 leavePos)
+        public void RPC_LeaveHiding(Vector3 leavePos)
         {
             //photonView.transform.SetParent(null);
             photonView.transform.position = positionBeforeHiding; 
