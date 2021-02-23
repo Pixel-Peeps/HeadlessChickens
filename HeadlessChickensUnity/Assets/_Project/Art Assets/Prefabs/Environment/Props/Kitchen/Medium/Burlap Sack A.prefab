@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6154745700789171546}
   - component: {fileID: 8254812050144248208}
   - component: {fileID: 8036430377794927159}
-  - component: {fileID: 8068673017653486043}
+  - component: {fileID: 6411437265414442262}
   m_Layer: 0
   m_Name: Burlap Sack A
   m_TagString: Ground
@@ -97,8 +97,8 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1129050821507349270, guid: d53dea70d71e54e53a687e25fd642b6c, type: 3}
---- !u!65 &8068673017653486043
-BoxCollider:
+--- !u!136 &6411437265414442262
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -107,6 +107,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.81952417, y: 1.0419896, z: 0.80801255}
-  m_Center: {x: 0.07922055, y: 0.51963246, z: -0.019988328}
+  m_Radius: 0.40976208
+  m_Height: 1.0565535
+  m_Direction: 1
+  m_Center: {x: 0.08213329, y: 0.51817614, z: -0.019988328}
