@@ -146,7 +146,7 @@ namespace PixelPeeps.HeadlessChickens.Network
             foreach (Transform hidingSpawnPos in hidingSpotSpawnPos)
             {
                 PhotonNetwork.InstantiateRoomObject(hidingSpotPrefab.name, hidingSpawnPos.position,
-                    Quaternion.identity);
+                    hidingSpawnPos.rotation);
             }
         }
 
