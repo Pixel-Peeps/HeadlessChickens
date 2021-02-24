@@ -28,7 +28,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         [PunRPC]
         public void ChickenCaptured()
         {
-            if (!hasBeenCaught)
+            if (!hasBeenCaught && !alreadyEscaped)
             {
                 chickenMesh.GetComponent<Renderer>().sharedMaterial = caughtMat;
                 NewGameManager.Instance.chickensCaught++;
