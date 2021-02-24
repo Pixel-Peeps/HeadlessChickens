@@ -24,6 +24,11 @@ namespace PixelPeeps.HeadlessChickens.Network
         private GameObject playerPrefab; // The prefab this player uses. Assigned as fox or chick when roles are assigned
         private Transform spawnPos;
 
+        [Header("Game State")]
+        public int chickensCaught = 0;
+        public int chickensEscaped = 0;
+        public int chickenEscapeThreshold = 2;
+
         [Header("HidingSpot")]
         [SerializeField] public List<Transform> hidingSpotSpawnPos;
 
@@ -99,6 +104,28 @@ namespace PixelPeeps.HeadlessChickens.Network
             StartTimer();
             
             NetworkManager.Instance.GameSetupComplete();
+        }
+
+        public void CheckForFinish()
+        {
+            if (chickensCaught + chickensEscaped == PhotonNetwork.CurrentRoom.PlayerCount - 1)
+            {
+                DetermineWinner();
+            }
+        }
+
+        public void DetermineWinner()
+        {
+            if (chickensEscaped >= chickenEscapeThreshold)
+            {
+                // Show Chickens Win Screen / Fox Lose Screen
+                Debug.Log("Chickens Wins!");
+            }
+            else
+            {
+                // Show Fox Win Screen / Chickens Lose Screen
+                Debug.Log("Fox Wins!");
+            }
         }
 
         private void SpawnPlayers()
