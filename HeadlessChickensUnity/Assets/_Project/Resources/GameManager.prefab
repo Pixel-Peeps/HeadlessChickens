@@ -47,6 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 4736487094571944351, guid: 4238311699e664348b8e40254d1ec715, type: 3}
   cube: {fileID: 0}
+  leversPulled: 0
+  allLeversPulled: 0
 --- !u!114 &849949290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,6 +71,17 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  chickensCaught: 0
+  chickensEscaped: 0
+  chickenEscapeThreshold: 1
+  hidingSpotSpawnPos: []
+  hidingSpotPrefab: {fileID: 0}
+  rooms: []
+  leverSpotPrefab: {fileID: 0}
+  maxNumberOfLevers: 0
+  exits: []
+  exitTime: 0
+  totalGameTime: 0
 --- !u!114 &849949289
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -28,12 +28,12 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         [PunRPC]
         public void ChickenCaptured()
         {
-            if (!hasBeenCaught)
+            if (!hasBeenCaught && !alreadyEscaped)
             {
                 chickenMesh.GetComponent<Renderer>().sharedMaterial = caughtMat;
-                //NewGameManager.Instance.chickensCaught++;
+                NewGameManager.Instance.chickensCaught++;
                 hasBeenCaught = true;
-                //NewGameManager.Instance.CheckForFinish();
+                NewGameManager.Instance.CheckForFinish();
             }
         }
 
@@ -43,9 +43,9 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             if(!alreadyEscaped && !hasBeenCaught)
             {
                 Debug.Log(gameObject.name + " has escaped");
-                //NewGameManager.Instance.chickensEscaped++;
+                NewGameManager.Instance.chickensEscaped++;
                 alreadyEscaped = true;
-                //NewGameManager.Instance.CheckForFinish();
+                NewGameManager.Instance.CheckForFinish();
             }
         }
 
