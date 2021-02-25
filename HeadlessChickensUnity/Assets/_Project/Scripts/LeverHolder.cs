@@ -6,9 +6,9 @@ using UnityEngine;
 public class LeverHolder : MonoBehaviour
 {
     Lever lever;
-    
+
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         lever = transform.GetChild(0).GetComponent<Lever>();
     }
