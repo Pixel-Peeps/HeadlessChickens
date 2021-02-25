@@ -11,6 +11,8 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
     Interactable interactable;
     public LeverManager leverManager;
 
+    public Animator animator;
+
     private void Start()
     {
         interactable = GetComponent<Interactable>();
@@ -23,6 +25,9 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
        
         leverManager.photonView.RPC("RPC_IncrementLeverCount", RpcTarget.AllBufferedViaServer);
         interactable.photonView.RPC("RPC_ToggleInteractAllowed", RpcTarget.AllBufferedViaServer);
+
+        photonView.RPC("PlayLeverAnimation", RpcTarget.AllBufferedViaServer);
+        
         //interactable.interactAllowed = false;
     }
 
@@ -37,6 +42,12 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
             Debug.Log("InteractionFocus() false");
         }
         
+    }
+
+    [PunRPC]
+    public void PlayLeverAnimation()
+    {
+        animator.Play("LeverOn");
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
