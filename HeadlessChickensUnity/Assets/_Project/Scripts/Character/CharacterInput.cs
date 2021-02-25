@@ -64,6 +64,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             _controls.Player.Jump.started += ctx => jumpButtonPressed = true;
             _controls.Player.Jump.canceled += ctx => jumpButtonPressed = false;
             _controls.Player.Interact.performed += InteractPressed;
+            _controls.Player.TrapInteract.performed += TrapInteractPressed;
 
             #endregion
 
@@ -238,6 +239,16 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
                 var interacted = _character.interactor.TryInteract();
                 int interactTypeNumber = _character.interactor.GetInteractType();
+            }
+        }
+        
+        private void TrapInteractPressed(InputAction.CallbackContext obj)
+        {
+            if (photonView.IsMine)
+            {
+                //if character has trap && blueprint is not active
+                //instantiate blueprint && set bool to true
+               
             }
         }
 
