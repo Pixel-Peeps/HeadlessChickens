@@ -1,13 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Photon.Pun;
 using Photon.Realtime;
+using PixelPeeps.HeadlessChickens.Network;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace PixelPeeps.HeadlessChickens.UI
 {
     // Handles all the different canvas that are present in a scene. Interfaced with by the GameStates    
-    public class UIManager : MonoBehaviour
+    public class UIManager : MonoBehaviourPun
     {
         [Header("Menus")] 
         public Menu mainMenu;
@@ -15,7 +17,6 @@ namespace PixelPeeps.HeadlessChickens.UI
         public Menu roomSearch;
         public Menu createRoom;
         public Menu waitingRoom;
-        public Menu connectionError;
         
         [Header("Waiting Room Info")]
         public GameObject startGameButton;
@@ -27,11 +28,6 @@ namespace PixelPeeps.HeadlessChickens.UI
         
         [Header("Room List")]
         public RoomList roomList;
-
-        public void Awake()
-        {
-            
-        }
 
         public void ActivateMenu(Menu menu)
         {
@@ -59,9 +55,24 @@ namespace PixelPeeps.HeadlessChickens.UI
             roomList.UpdateRoomList(serverRoomList);
         }
 
-        public void UpdatePlayerList(Player newPlayer)
+        public void UpdateRoomInfo()
         {
-            playerList.GeneratePlayerList(newPlayer);
+            string roomName = PhotonNetwork.CurrentRoom.Name;
+            int playerCount = PhotonNetwork.CurrentRoom.PlayerCount;
+            int maxPlayers = PhotonNetwork.CurrentRoom.MaxPlayers;
+            Player[] playersInRoom = PhotonNetwork.PlayerList;
+            
+            // Update room name and player count
+            roomNameText.text = roomName;
+            roomPlayerCount.text =
+                string.Format("In Room: {0} / {1}", playerCount , maxPlayers);
+            
+            // Generate player list
+            playerList.GeneratePlayerList(playersInRoom);
+            
+            // Start game button
+            startGameButton.SetActive(PhotonNetwork.IsMasterClient);
+            startGameButton.GetComponent<Button>().enabled = (playerCount >= NetworkManager.minPlayersPerRoom);
         }
     }
 }

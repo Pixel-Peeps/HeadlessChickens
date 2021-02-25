@@ -18,17 +18,14 @@ namespace PixelPeeps.HeadlessChickens.GameState
         private bool initialised;
         private GameState currentState;
 
-        #region GUI Elements
-
         [Header("GUI")] 
-        [HideInInspector] public UIManager uiManager;
+        public UIManager uiManager;
 
         [Header("Loading / Connecting")] 
         public GameObject loadingScreen;
         public GameObject connectingScreen;
         public GameObject gameSetUpScreen;
         public Menu connectionErrorMenu;
-        #endregion
         
         [Header("Game Scenes")] 
         [HideInInspector] public string menuScene = "MenuScene";
@@ -96,17 +93,12 @@ namespace PixelPeeps.HeadlessChickens.GameState
             
             while (asyncLoad != null && !asyncLoad.isDone)
             {
-                if (sceneName == mainScene)
-                {
-                    yield return new WaitForSecondsRealtime(0.2f);
-                }
-                else
-                {
-                    ShowLoadingScreen();
-                    yield return new WaitForSecondsRealtime(0.2f);
-                    HideLoadingScreen();
-                }
+                ShowLoadingScreen();
+                yield return new WaitForSecondsRealtime(0.2f);
+                HideLoadingScreen();
             }
+
+            uiManager = GameObject.FindGameObjectWithTag("MenuManager").GetComponent<UIManager>();
 
             currentState.OnSceneLoad();
             
@@ -126,14 +118,15 @@ namespace PixelPeeps.HeadlessChickens.GameState
             }
         }
         
+        //TODO - Fix bug with setup screen not disabling after set-up; may be related to PhotonView IDs
         public void ShowSetupScreen()
         {
-            gameSetUpScreen.SetActive(true);
+            //gameSetUpScreen.SetActive(true);
         }
         
         public void HideSetupScreen()
         {
-            gameSetUpScreen.SetActive(false);
+            //gameSetUpScreen.SetActive(false);
         }
         
         public void ShowConnectingScreen()

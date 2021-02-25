@@ -5,12 +5,6 @@ namespace PixelPeeps.HeadlessChickens.GameState
 {
     public class ConnectionErrorState : GameState
     {
-        private readonly Menu 
-            menu = StateManager.uiManager.connectionError;
-
-        private readonly string 
-            sceneName = StateManager.menuScene;
-
         private readonly string
             errorMessage;
 

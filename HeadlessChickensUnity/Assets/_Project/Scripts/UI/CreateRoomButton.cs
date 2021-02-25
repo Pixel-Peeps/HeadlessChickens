@@ -1,4 +1,5 @@
-﻿using PixelPeeps.HeadlessChickens.Network;
+﻿using Photon.Pun;
+using PixelPeeps.HeadlessChickens.Network;
 using UnityEngine;
 using UnityEngine.UI;
 using WebSocketSharp;
@@ -30,8 +31,14 @@ namespace PixelPeeps.HeadlessChickens.UI
             }
             else
             {
+                if (PhotonNetwork.CurrentRoom != null)
+                {
+                    NetworkManager.Instance.LeaveRoom();
+                }
+                
                 createRoomMenu.HideErrorMessage();
                 NetworkManager.Instance.CreateRoom();
+                Debug.Log("created room");
             }
         }
     }

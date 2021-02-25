@@ -1,5 +1,5 @@
-﻿using Photon.Pun;
-using TMPro;
+﻿using System;
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.UI;
 using WebSocketSharp;
@@ -77,6 +77,17 @@ namespace PixelPeeps.HeadlessChickens.GameState
                 case eGameStates.HowToPlay:
                     newState = new HowToPlayState();
                     break;
+                
+                case eGameStates.ReturnToLobby:
+                    newState = new ReturnToLobbyState();
+                    break;
+                
+                case eGameStates.ReturnToMenu:
+                    newState = new ReturnToMenuState();
+                    break;
+                
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
 
             if (newState != null)

@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using ExitGames.Client.Photon.Encryption;
 using Photon.Pun;
 using Photon.Realtime;
 using PixelPeeps.HeadlessChickens.GameState;
@@ -22,14 +24,17 @@ namespace PixelPeeps.HeadlessChickens.Network
         public List<Transform> chickSpawnPoints;
         
         private GameObject playerPrefab; // The prefab this player uses. Assigned as fox or chick when roles are assigned
-        private Transform spawnPos;
-
-        [Header("Game State")]
-        public int chickensCaught = 0;
-        public int chickensEscaped = 0;
+        private Transform spawnPos;
+
+        [Header("Game State")]
+        public int chickensCaught = 0;
+        public int chickensEscaped = 0;
         public int chickenEscapeThreshold = 2;
 
-        [Header("HidingSpot")]
+        [Header("Players and Controllers")] 
+        public GameObject myController;
+
+        [Header("Hiding Spot")]
         [SerializeField] public List<Transform> hidingSpotSpawnPos;
 
         public GameObject hidingSpotPrefab;
@@ -96,36 +101,40 @@ namespace PixelPeeps.HeadlessChickens.Network
         public void Initialise()
         {            
             SpawnPlayers();
+            Debug.Log("Players spawned");
             
             SpawnHidingSpots();
+            Debug.Log("Hiding spots spawned");
             
             SpawnLevers();
+            Debug.Log("Levers spawned");
             
             StartTimer();
+            Debug.Log("Timer started");
             
             NetworkManager.Instance.GameSetupComplete();
-        }
-
-        public void CheckForFinish()
-        {
-            if (chickensCaught + chickensEscaped == PhotonNetwork.CurrentRoom.PlayerCount - 1)
-            {
-                DetermineWinner();
-            }
-        }
-
-        public void DetermineWinner()
-        {
-            if (chickensEscaped >= chickenEscapeThreshold)
-            {
-                // Show Chickens Win Screen / Fox Lose Screen
-                Debug.Log("Chickens Wins!");
-            }
-            else
-            {
-                // Show Fox Win Screen / Chickens Lose Screen
-                Debug.Log("Fox Wins!");
-            }
+        }
+
+        public void CheckForFinish()
+        {
+            if (chickensCaught + chickensEscaped == PhotonNetwork.CurrentRoom.PlayerCount - 1)
+            {
+                DetermineWinner();
+            }
+        }
+
+        public void DetermineWinner()
+        {
+            if (chickensEscaped >= chickenEscapeThreshold)
+            {
+                // Show Chickens Win Screen / Fox Lose Screen
+                Debug.Log("Chickens Wins!");
+            }
+            else
+            {
+                // Show Fox Win Screen / Chickens Lose Screen
+                Debug.Log("Fox Wins!");
+            }
         }
 
         private void SpawnPlayers()
@@ -137,7 +146,8 @@ namespace PixelPeeps.HeadlessChickens.Network
             
             else
             {    
-                PhotonNetwork.Instantiate(playerPrefab.name, spawnPos.position, Quaternion.identity);
+                GameObject newController = PhotonNetwork.Instantiate(playerPrefab.name, spawnPos.position, Quaternion.identity);
+                myController = newController;
             }
         }
 
@@ -151,23 +161,23 @@ namespace PixelPeeps.HeadlessChickens.Network
         }
 
         private void SpawnLevers()
-        {
-            if (!PhotonNetwork.IsMasterClient) return;
-
+        {
+            if (!PhotonNetwork.IsMasterClient) return;
+
             maxNumberOfLevers = PhotonNetwork.CurrentRoom.PlayerCount;
             HUDManager.Instance.UpdateLeverCount(0);
 
-            List<RoomTile> tempRooms = rooms;
-
-            // If a room has no levers, remove it from the list
-
-            foreach (RoomTile room in tempRooms.ToList())
-            {
-                if(!room.leverPositions.Any())
-                {
-                    tempRooms.Remove(room);
-                    continue;
-                }
+            List<RoomTile> tempRooms = rooms;
+
+            // If a room has no levers, remove it from the list
+
+            foreach (RoomTile room in tempRooms.ToList())
+            {
+                if(!room.leverPositions.Any())
+                {
+                    tempRooms.Remove(room);
+                    continue;
+                }
             }
 
             for (int i = 0; i < maxNumberOfLevers; i++)
@@ -194,16 +204,56 @@ namespace PixelPeeps.HeadlessChickens.Network
         }
 
         #endregion
+
+        #region Results and Ending Game
+
+        [Header("Results Screens")]
+        public GameObject foxWinScreen;
+        public GameObject foxLossScreen;
+        public GameObject chickenWinScreen;
+        public GameObject chickenLossScreen;
         
-        public override void OnLeftRoom()
+        [Header("Return to Lobby")]
+        public float lobbyReturnCountdown;
+
+        public void EndGame()
         {
-            GameStateManager.Instance.SwitchGameState(new MainMenuState());
+            if (!PhotonNetwork.IsMasterClient)
+            {
+                return;
+            }
+            
+            photonView.RPC("EndGameRPC", RpcTarget.AllBuffered);
+            
+            StartCoroutine(LobbyReturnCountdownCoroutine());
+        }
+        
+        // ReSharper disable once UnusedMember.Global
+        [PunRPC]
+        public void EndGameRPC()
+        {
+            NetworkManager.Instance.gameIsRunning = false;
+            // TODO Set correct results screen active
+            chickenWinScreen.SetActive(true);
+            PhotonNetwork.Destroy(myController);
+        }
+        
+        private IEnumerator LobbyReturnCountdownCoroutine()
+        {            
+            yield return new WaitForSecondsRealtime(lobbyReturnCountdown);
+            photonView.RPC("ReturnToLobbyRPC", RpcTarget.AllViaServer); 
+            
+            NetworkManager.Instance.MakeRoomPublic();
+        }
+        
+        // ReSharper disable once UnusedMember.Local
+        [PunRPC]
+        private void ReturnToLobbyRPC()
+        {
+            GameStateManager.Instance.SwitchGameState(new ReturnToLobbyState());
         }
 
-        public void LeaveRoom()
-        {
-            PhotonNetwork.LeaveRoom();
-        }
+        #endregion
 
         #region Timer
 
@@ -238,7 +288,7 @@ namespace PixelPeeps.HeadlessChickens.Network
         }
         
         #endregion
-
+        
         #region Data Streaming
 
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

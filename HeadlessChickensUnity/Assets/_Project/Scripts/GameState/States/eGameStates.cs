@@ -9,5 +9,7 @@
         WaitingRoom,
         ConnectionError,
         PlayScene,
+        ReturnToLobby,
+        ReturnToMenu
     }
 }

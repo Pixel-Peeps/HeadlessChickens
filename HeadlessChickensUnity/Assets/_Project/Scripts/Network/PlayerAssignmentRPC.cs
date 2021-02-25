@@ -7,26 +7,28 @@ namespace PixelPeeps.HeadlessChickens.Network
     public class PlayerAssignmentRPC : MonoBehaviourPunCallbacks
     {
         private static PlayerAssignmentRPC _instance;
+
         public static PlayerAssignmentRPC Instance
         {
             get => _instance;
             set => _instance = value;
         }
-        
-        [HideInInspector]
-        public int[] chickenPlayersActorNumbers;
+
+        [HideInInspector] public bool chickenOnlyMode;
+
+        [HideInInspector] public int[] chickenPlayersActorNumbers;
         public Player foxPlayer;
 
         public void Awake()
-        {            
+        {
             DontDestroyOnLoad(gameObject);
-            
-            if (_instance != null && _instance != this)    
+
+            if (_instance != null && _instance != this)
             {
                 Destroy(gameObject);
             }
             else
-            {    
+            {
                 _instance = this;
             }
         }
@@ -36,16 +38,26 @@ namespace PixelPeeps.HeadlessChickens.Network
         {
             Player[] playersInRoom = PhotonNetwork.PlayerList;
             chickenPlayersActorNumbers = new int[PhotonNetwork.CurrentRoom.PlayerCount];
-            print("chickenPlayers length: "  + chickenPlayersActorNumbers.Length);
+            print("chickenPlayers length: " + chickenPlayersActorNumbers.Length);
             print("PlayersInRoom length: " + playersInRoom.Length);
-            
+
             Debug.Log("AssignPlayerRoles");
 
-            //for (int i = 0; i < playersInRoom.Length; i++)
-            //{
-            //    chickenPlayersActorNumbers[i] = playersInRoom[i].ActorNumber;
-            //}
+            if (chickenOnlyMode)
+            {
+                GenerateChickenOnly(playersInRoom);
+            }
 
+            else
+            {
+                GenerateStandardRoles(playersInRoom);
+            }
+
+            photonView.RPC("SendRolesToRoom", RpcTarget.AllBufferedViaServer, chickenPlayersActorNumbers, foxPlayer);
+        }
+
+        public void GenerateStandardRoles(Player[] playersInRoom)
+        {
             int randomIndex = Random.Range(0, playersInRoom.Length);
 
             for (int i = 0; i < playersInRoom.Length; i++)
@@ -59,17 +71,26 @@ namespace PixelPeeps.HeadlessChickens.Network
                     chickenPlayersActorNumbers[i] = playersInRoom[i].ActorNumber;
                 }
             }
-
-            // Send roles to every player in the room
-            photonView.RPC("SendRolesToRoom", RpcTarget.AllBufferedViaServer, chickenPlayersActorNumbers, foxPlayer);
         }
-        
+
+        private void GenerateChickenOnly(Player[] playersInRoom)
+        {
+            for (int i = 0; i < playersInRoom.Length; i++)
+            {
+                chickenPlayersActorNumbers[i] = playersInRoom[i].ActorNumber;
+            }
+        }
+
+       
+        // ReSharper disable once UnusedMember.Global
         [PunRPC]
         public void SendRolesToRoom(int[] assignedChickens, Player assignedFox)
         {
             Debug.Log("SendRolesToRoom");
             chickenPlayersActorNumbers = assignedChickens;
             foxPlayer = assignedFox;
+
+            chickenOnlyMode = false;
             
             NewGameManager.Instance.DeterminePlayerRole();
             NewGameManager.Instance.Initialise();

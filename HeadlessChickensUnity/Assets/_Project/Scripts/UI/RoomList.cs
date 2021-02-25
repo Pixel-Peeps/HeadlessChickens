@@ -19,12 +19,6 @@ namespace PixelPeeps.HeadlessChickens.UI
                 if (info.RemovedFromList)
                 {
                     CheckToRemoveItem(info);
-                    // int index = currentItems.FindIndex(x => x.roomInfo.Name == info.Name);
-                    // if (index != -1)
-                    // {
-                    //     Destroy(currentItems[index].gameObject);
-                    //     currentItems.RemoveAt(index);
-                    // }
                 }
                 
                 else
@@ -38,7 +32,7 @@ namespace PixelPeeps.HeadlessChickens.UI
 
         private void CheckToAddItem(RoomInfo info)
         {
-            GameObject newRoomItem = Instantiate(listItemPrefab, this.transform);
+            GameObject newRoomItem = Instantiate(listItemPrefab, transform);
             newRoomItem.name = info.Name;
             RoomListItem roomScript = newRoomItem.GetComponent<RoomListItem>();
             roomScript.SetUp(info);

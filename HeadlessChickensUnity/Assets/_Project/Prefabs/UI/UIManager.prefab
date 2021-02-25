@@ -43,31 +43,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5c589330422ca94bafb8b1d9692fdfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadingScreenCanvas: {fileID: 0}
-  connectingScreenCanvas: {fileID: 0}
-  connectionErrorCanvas: {fileID: 0}
-  connectionErrorFirstSelected: {fileID: 0}
-  mainMenuCanvas: {fileID: 0}
-  mainMenuFirstSelected: {fileID: 0}
-  roomSearchCanvas: {fileID: 0}
-  roomSearchCanvasFirstSelected: {fileID: 0}
-  enterNamePrompt: {fileID: 0}
-  joiningPlayerNameInputField: {fileID: 0}
-  roomListParent: {fileID: 0}
-  roomListItemPrefab: {fileID: 6224988673747218744, guid: 7840055f0318d3f488ce1c4d20af48e9, type: 3}
-  currentRoomListings: []
-  createRoomCanvas: {fileID: 0}
-  createRoomCanvasFirstSelected: {fileID: 0}
-  createRoomEnterNicknamePrompt: {fileID: 0}
-  createRoomEnterRoomNamePrompt: {fileID: 0}
-  roomNameInputField: {fileID: 0}
-  hostPlayerNameInputField: {fileID: 0}
-  waitingRoomCanvas: {fileID: 0}
-  waitingRoomFirstSelected: {fileID: 0}
+  mainMenu: {fileID: 0}
+  howToPlay: {fileID: 0}
+  roomSearch: {fileID: 0}
+  createRoom: {fileID: 0}
+  waitingRoom: {fileID: 0}
+  connectionError: {fileID: 0}
   startGameButton: {fileID: 0}
   roomNameText: {fileID: 0}
   roomPlayerCount: {fileID: 0}
-  playerListParent: {fileID: 0}
-  playerListItemPrefab: {fileID: 6224988673747218744, guid: ebdfeca34d6930344865fcd42a701759, type: 3}
-  currentPlayerList: []
-  playSceneHUDCanvas: {fileID: 0}
+  playerList: {fileID: 0}
+  roomList: {fileID: 0}
