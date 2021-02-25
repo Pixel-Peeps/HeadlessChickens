@@ -14,38 +14,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7387430776235136830, guid: f78c2994bc9cdb94185ec14dc59fcc95, type: 3}
---- !u!1 &7740733505717494682
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5663140370653346084}
-  m_Layer: 0
-  m_Name: Empty
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5663140370653346084
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7740733505717494682}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2118992450318398205}
-  - {fileID: 2695987545539394228}
-  m_Father: {fileID: 9175561711408705398}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9175561711408705403
 GameObject:
   m_ObjectHideFlags: 0
@@ -73,7 +41,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 5663140370653346084}
+  - {fileID: 2118992450318398205}
+  - {fileID: 2695987545539394228}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -82,7 +51,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 5663140370653346084}
+    m_TransformParent: {fileID: 9175561711408705398}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: f78c2994bc9cdb94185ec14dc59fcc95, type: 3}
       propertyPath: m_LocalPosition.x
@@ -94,11 +63,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f78c2994bc9cdb94185ec14dc59fcc95, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.10000033
+      value: -0.10000038
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f78c2994bc9cdb94185ec14dc59fcc95, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f78c2994bc9cdb94185ec14dc59fcc95, type: 3}
       propertyPath: m_LocalRotation.y
@@ -128,9 +97,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f78c2994bc9cdb94185ec14dc59fcc95, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c0ea4dc6efe16a64aa56ef004207aa07, type: 2}
     - target: {fileID: 919132149155446097, guid: f78c2994bc9cdb94185ec14dc59fcc95, type: 3}
       propertyPath: m_Name
-      value: Wall4mDoorway (1)
+      value: Wall4mDoorway
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f78c2994bc9cdb94185ec14dc59fcc95, type: 3}
       propertyPath: m_TagString
@@ -157,7 +130,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 5663140370653346084}
+    m_TransformParent: {fileID: 9175561711408705398}
     m_Modifications:
     - target: {fileID: 4856447745962922336, guid: a75065bea530f4d49a2a98b97b34dfac, type: 3}
       propertyPath: m_Mesh
@@ -227,6 +200,10 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+    - target: {fileID: 4856447745962922343, guid: a75065bea530f4d49a2a98b97b34dfac, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c0ea4dc6efe16a64aa56ef004207aa07, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a75065bea530f4d49a2a98b97b34dfac, type: 3}
 --- !u!4 &2118992450318398205 stripped
