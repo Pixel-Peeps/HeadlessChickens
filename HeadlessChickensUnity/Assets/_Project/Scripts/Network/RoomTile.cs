@@ -12,12 +12,12 @@ public class RoomTile : MonoBehaviour
     private void Start()
     {
         // Levers
-        leverPositions.Clear();
+        //leverPositions.Clear();
 
-        foreach(Transform t in this.transform.GetChild(0))
-        {
-            leverPositions.Add(t);
-        }
+        //foreach(Transform t in this.transform.GetChild(0))
+        //{
+        //    leverPositions.Add(t);
+        //}
 
 
     }

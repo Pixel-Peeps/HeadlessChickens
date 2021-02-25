@@ -143,11 +143,11 @@ namespace PixelPeeps.HeadlessChickens.Network
 
         private void SpawnHidingSpots()
         {
-            foreach (Transform hidingSpawnPos in hidingSpotSpawnPos)
-            {
-                PhotonNetwork.InstantiateRoomObject(hidingSpotPrefab.name, hidingSpawnPos.position,
-                    hidingSpawnPos.rotation);
-            }
+            //foreach (Transform hidingSpawnPos in hidingSpotSpawnPos)
+            //{
+            //    PhotonNetwork.InstantiateRoomObject(hidingSpotPrefab.name, hidingSpawnPos.position,
+            //        hidingSpawnPos.rotation);
+            //}
         }
 
         private void SpawnLevers()
@@ -165,10 +165,11 @@ namespace PixelPeeps.HeadlessChickens.Network
 
                 // Get random lever from room
                 int leverNumber = UnityEngine.Random.Range(0, room.leverPositions.Count);
-                Transform lever = room.leverPositions[leverNumber];
+                GameObject lever = room.leverPositions[leverNumber].gameObject;
 
-                PhotonNetwork.InstantiateRoomObject(leverSpotPrefab.name, lever.position,
-                    lever.rotation);
+                lever.SetActive(true);
+                //PhotonNetwork.InstantiateRoomObject(leverSpotPrefab.name, lever.position,
+                //    lever.rotation);
 
                 tempRooms.RemoveAt(roomNumber);
 
