@@ -21,7 +21,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         private void Start()
         {
-            chickenMesh = GetComponent<Renderer>();
+            // chickenMesh = GetComponent<Renderer>();
             
         }
 
