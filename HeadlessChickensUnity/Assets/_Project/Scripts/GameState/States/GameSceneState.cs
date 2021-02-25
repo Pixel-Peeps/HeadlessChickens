@@ -8,7 +8,7 @@ namespace PixelPeeps.HeadlessChickens.GameState
     {
         public override void StateEnter()
         {
-            StateManager.LoadNextScene(StateManager.playScene);
+            StateManager.LoadNextScene(StateManager.mainScene);
         }
 
         public override void OnSceneLoad()

@@ -74,14 +74,31 @@ MonoBehaviour:
   chickensCaught: 0
   chickensEscaped: 0
   chickenEscapeThreshold: 1
-  hidingSpotSpawnPos: []
-  hidingSpotPrefab: {fileID: 0}
-  rooms: []
-  leverSpotPrefab: {fileID: 0}
+  hidingSpotSpawnPos:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  hidingSpotPrefab: {fileID: 5648197294204226697, guid: b8e36aeea3fa2ee41b6e1f268bc3c454, type: 3}
+  rooms:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  leverSpotPrefab: {fileID: 1664495383705939199, guid: a0a6eb8fbbfb6a347bd574e78d6166ab, type: 3}
   maxNumberOfLevers: 0
-  exits: []
-  exitTime: 0
-  totalGameTime: 0
+  exits:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  exitTime: 120
+  totalGameTime: 100
 --- !u!114 &849949289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,7 +117,8 @@ MonoBehaviour:
   observableSearch: 2
   Synchronization: 3
   OwnershipTransfer: 0
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 849949290}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0

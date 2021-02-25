@@ -143,19 +143,33 @@ namespace PixelPeeps.HeadlessChickens.Network
 
         private void SpawnHidingSpots()
         {
-            foreach (Transform hidingSpawnPos in hidingSpotSpawnPos)
-            {
-                PhotonNetwork.InstantiateRoomObject(hidingSpotPrefab.name, hidingSpawnPos.position,
-                    Quaternion.identity);
-            }
+            //foreach (Transform hidingSpawnPos in hidingSpotSpawnPos)
+            //{
+            //    PhotonNetwork.InstantiateRoomObject(hidingSpotPrefab.name, hidingSpawnPos.position,
+            //        hidingSpawnPos.rotation);
+            //}
         }
 
         private void SpawnLevers()
         {
+            if (!PhotonNetwork.IsMasterClient) return;
+
             maxNumberOfLevers = PhotonNetwork.CurrentRoom.PlayerCount;
             HUDManager.Instance.UpdateLeverCount(0);
 
             List<RoomTile> tempRooms = rooms;
+
+            // If a room has no levers, remove it from the list
+
+            foreach (RoomTile room in tempRooms.ToList())
+            {
+                if(!room.leverPositions.Any())
+                {
+                    tempRooms.Remove(room);
+                    continue;
+                }
+            }
+
             for (int i = 0; i < maxNumberOfLevers; i++)
             {
                 // Get random room from list
@@ -165,10 +179,14 @@ namespace PixelPeeps.HeadlessChickens.Network
 
                 // Get random lever from room
                 int leverNumber = UnityEngine.Random.Range(0, room.leverPositions.Count);
-                Transform lever = room.leverPositions[leverNumber];
+                LeverHolder leverHolder = room.leverPositions[leverNumber];
 
-                PhotonNetwork.InstantiateRoomObject(leverSpotPrefab.name, lever.position,
-                    lever.rotation);
+
+                leverHolder.photonView.RPC("RPC_EnableLever", RpcTarget.AllBufferedViaServer);
+
+                // leverHolder.transform.GetChild(0).gameObject.SetActive(true);
+                //PhotonNetwork.InstantiateRoomObject(leverSpotPrefab.name, lever.position,
+                //    lever.rotation);
 
                 tempRooms.RemoveAt(roomNumber);
 
