@@ -9,6 +9,8 @@ public class Traps : MonoBehaviour
     public enum EOwner { Chick, Fox }
     public EOwner tCharacter;
 
+    
+    // Placing the trap within the world
     public virtual void PlaceTrap()
     {
         // TODO
@@ -19,12 +21,15 @@ public class Traps : MonoBehaviour
         // different colour indicating placeable and obstructed
     }
 
+    
+    // Once a location has been found set the trap
     public virtual void InitiateTrap()
     {
         // TODO
         // Code that activates the trap once an area is acceptable to place the trap.
     }
 
+    // Player has walked into trap and activated its effect.
     public virtual void ActivateTrap()
     {
         // TODO
@@ -35,5 +40,11 @@ public class Traps : MonoBehaviour
     {
         // TODO
         // inform the network that a trap has be placed and initiated.
+    }
+
+    public void RPC_TrapActivation()
+    {
+        // TODO
+        // inform the network that a trap has been activated by a player
     }
 }
