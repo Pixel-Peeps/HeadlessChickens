@@ -66,11 +66,11 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             _controls.Player.Interact.performed += InteractPressed;
             _controls.Player.TrapInteract.performed += TrapInteractPressed;
             _controls.Player.Attack.performed += MouseClicked;
-            
+
 
             #endregion
 
-            
+
         }
 
 
