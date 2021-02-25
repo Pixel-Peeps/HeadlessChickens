@@ -291,7 +291,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                     {
                         Debug.Log("cancelling blueprint");
                         PhotonNetwork.Destroy(_character.gameObject.GetComponentInChildren<TrapBlueprint>().gameObject);
-
+                        _character.isBlueprintActive = false;
                         if (_character.gameObject.GetComponentInChildren<TrapBlueprint>().gameObject == null)
                         {
                             _character.isBlueprintActive = false;
