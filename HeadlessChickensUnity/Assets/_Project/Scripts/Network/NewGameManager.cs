@@ -152,6 +152,8 @@ namespace PixelPeeps.HeadlessChickens.Network
 
         private void SpawnLevers()
         {
+            if (!PhotonNetwork.IsMasterClient) return;
+
             maxNumberOfLevers = PhotonNetwork.CurrentRoom.PlayerCount;
             HUDManager.Instance.UpdateLeverCount(0);
 
