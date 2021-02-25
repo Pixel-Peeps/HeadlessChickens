@@ -1345,33 +1345,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 483725998252695555, guid: 7f9db1192d2431845b1e8c5dd789c95f, type: 3}
   m_PrefabInstance: {fileID: 1579662083}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1580268628 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6838034777965456340, guid: e236eff54e57af34dbdc0e94a0e01668, type: 3}
-  m_PrefabInstance: {fileID: 6838034777370279232}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1580268629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1580268628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  observableSearch: 2
-  Synchronization: 3
-  OwnershipTransfer: 0
-  ObservedComponents: []
-  viewIdField: 2
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
 --- !u!1 &1651941166 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1988486186212478597, guid: 2922d7fcd55b0d5408e2ce5cf6af81c7, type: 3}
@@ -1845,6 +1818,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1580268629, guid: e236eff54e57af34dbdc0e94a0e01668, type: 3}
+      propertyPath: viewIdField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6838034777965456340, guid: e236eff54e57af34dbdc0e94a0e01668, type: 3}
       propertyPath: m_Name
       value: NetworkManager
