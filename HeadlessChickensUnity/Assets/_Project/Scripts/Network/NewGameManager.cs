@@ -156,6 +156,18 @@ namespace PixelPeeps.HeadlessChickens.Network
             HUDManager.Instance.UpdateLeverCount(0);
 
             List<RoomTile> tempRooms = rooms;
+
+            // If a room has no levers, remove it from the list
+
+            foreach (RoomTile room in tempRooms.ToList())
+            {
+                if(!room.leverPositions.Any())
+                {
+                    tempRooms.Remove(room);
+                    continue;
+                }
+            }
+
             for (int i = 0; i < maxNumberOfLevers; i++)
             {
                 // Get random room from list
@@ -167,7 +179,7 @@ namespace PixelPeeps.HeadlessChickens.Network
                 int leverNumber = UnityEngine.Random.Range(0, room.leverPositions.Count);
                 GameObject lever = room.leverPositions[leverNumber].gameObject;
 
-                lever.SetActive(true);
+                lever.transform.GetChild(0).gameObject.SetActive(true);
                 //PhotonNetwork.InstantiateRoomObject(leverSpotPrefab.name, lever.position,
                 //    lever.rotation);
 
