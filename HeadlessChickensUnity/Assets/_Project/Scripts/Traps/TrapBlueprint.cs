@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Photon.Pun;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class TrapBlueprint : MonoBehaviour
@@ -29,7 +30,7 @@ public class TrapBlueprint : MonoBehaviour
     {
         _cam = Camera.main;
 
-        if (!(_cam is null))
+        /*if (!(_cam is null))
         {
             Ray ray = _cam.ScreenPointToRay(Mouse.current.position.ReadValue());
 
@@ -38,10 +39,12 @@ public class TrapBlueprint : MonoBehaviour
                 _newPosition = _hit.point;
             }
         }
+        */
     }
 
     private void Update()
     {
+        /*
         Ray ray = _cam.ScreenPointToRay(Mouse.current.position.ReadValue());
         // if (Physics.Raycast(ray, out _hit, 50000.0f, (1 << 11)))
         if (Physics.Raycast(ray, out _hit))
@@ -49,23 +52,25 @@ public class TrapBlueprint : MonoBehaviour
             _newPosition = new Vector3(_hit.point.x, 0f, _hit.point.z);
             transform.position = _newPosition;
         }
+        */
     }
 
     private void SetDown()
     {
-        _newPosition.y = 0;
+        //_newPosition.y = 0;
 
         //godGO = PlacementManager.Instance.ReturnCurrentGod();
         //trap prefab == where ever trap info is stored.currenttrap
         
        // godGO.transform.position = new Vector3(_newPosition.x, 0, _newPosition.z);
-
+       PhotonNetwork.InstantiateRoomObject(actualTrapPrefab.name, gameObject.transform.position,
+           gameObject.transform.rotation, 0);
+            
 
         if (gameObject != null)
         {
-           // _playerControls.Disable();
-          
-            Destroy(gameObject);
+            _controls.Disable();
+            PhotonNetwork.Destroy(gameObject);
         }
     }
 }

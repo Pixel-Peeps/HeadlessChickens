@@ -18,6 +18,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public bool isHiding;
         public bool hasTrap;
         public bool isBlueprintActive;
+        public bool isFox;
+        public bool hasLever;
         public GameObject trapSlot;
         
         public bool cooldownRunning = false;

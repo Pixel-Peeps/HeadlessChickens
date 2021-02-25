@@ -246,14 +246,27 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         
         private void TrapInteractPressed(InputAction.CallbackContext obj)
         {
+            //spaghetti for dinner boys
             if (photonView.IsMine)
             {
-                //if character has trap && blueprint is not active
-                //instantiate correct blueprint && set bool to true
-               
+                if (_character.hasTrap && !_character.isBlueprintActive && !_character.isFox)
+                {
+                    _character.isBlueprintActive = true;
+                    var blueprint = PhotonNetwork.InstantiateRoomObject(_character.trapSlot.name, new Vector3(0, 0.1f, 0.4f),
+                        Quaternion.identity);
+                    blueprint.gameObject.transform.SetParent(_character.gameObject.transform, false);
+                }
+
+                if (_character.hasTrap && !_character.isBlueprintActive && _character.isFox && !_character.hasLever)
+                {
+                    _character.isBlueprintActive = true;
+                    var blueprint = PhotonNetwork.InstantiateRoomObject(_character.trapSlot.name, new Vector3(0, 0.5f, 1.5f),
+                        Quaternion.identity);
+                    blueprint.gameObject.transform.SetParent(_character.gameObject.transform, false);
+                }
                 
-                //if character has a goddamn lever && bp is not active
-                //god idk show all the lever blueprints
+                //lever now!
+
             }
         }
         
@@ -261,9 +274,19 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         {
             if (photonView.IsMine)
             {
-                //if blueprint active, cancel blueprint
-                //else idk eat a chicken
-               
+                if (_character.isBlueprintActive)
+                {
+                    if (_character.gameObject.GetComponentInChildren<TrapBlueprint>().gameObject != null)
+                    {
+                        Debug.Log("cancelling blueprint");
+                        PhotonNetwork.Destroy(_character.gameObject.GetComponentInChildren<TrapBlueprint>().gameObject);
+
+                        if (_character.gameObject.GetComponentInChildren<TrapBlueprint>().gameObject == null)
+                        {
+                            _character.isBlueprintActive = false;
+                        }
+                    }
+                }
             }
         }
 

@@ -45,6 +45,10 @@ namespace PixelPeeps.HeadlessChickens.Network
         [SerializeField] public List<ExitDoor> exits;
         public float exitTime;
         
+        [Header("Trap Pick-Ups")]
+        [SerializeField] public List<Transform> trapSpawnPos;
+        public GameObject trapPickUpPrefab;
+        
         void Awake()
         {
             if (Instance != null && Instance != this)
@@ -101,6 +105,8 @@ namespace PixelPeeps.HeadlessChickens.Network
             
             SpawnLevers();
             
+            SpawnTrapPickUps();
+            
             StartTimer();
             
             NetworkManager.Instance.GameSetupComplete();
@@ -141,6 +147,18 @@ namespace PixelPeeps.HeadlessChickens.Network
             }
         }
 
+
+        private void SpawnTrapPickUps()
+        {
+            foreach (Transform t in trapSpawnPos)
+            {
+                Debug.Log("Spawning trap pick ups!!");
+                PhotonNetwork.InstantiateRoomObject(trapPickUpPrefab.name, t.position,
+                    Quaternion.identity);
+                Debug.Log("Spawned!?!");
+            }
+        }
+        
         private void SpawnHidingSpots()
         {
             foreach (Transform hidingSpawnPos in hidingSpotSpawnPos)
