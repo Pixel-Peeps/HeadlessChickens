@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class LeverHolder : MonoBehaviour
 {
-    Lever lever;
+    GameObject lever;
 
     // Start is called before the first frame update
     private void Awake()
     {
-        lever = transform.GetChild(0).GetComponent<Lever>();
+        lever = transform.GetChild(0).gameObject;
     }
 
 
