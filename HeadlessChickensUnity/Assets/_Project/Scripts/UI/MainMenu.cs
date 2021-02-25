@@ -7,10 +7,17 @@ namespace PixelPeeps.HeadlessChickens.UI
     {
         public TMP_InputField playerNameInput;
         public GameObject emptyPlayerNameError;
-        
+
         public override string GetInputFieldText()
         {
             return playerNameInput.text;
+        }
+
+        public override void SetInputFieldText(string text)
+        {
+            print("playerNameInput: " + playerNameInput.text);
+            playerNameInput.text = text;
+            print("playerNameInput: " + playerNameInput.text);
         }
 
         public override void DisplayErrorMessage()

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace PixelPeeps.HeadlessChickens.UI
@@ -6,6 +7,7 @@ namespace PixelPeeps.HeadlessChickens.UI
     public class Menu : MonoBehaviour
     {
         public GameObject canvas;
+        public TMP_InputField inputField;
         public GameObject firstSelectedButton;
 
         public void ActivateMenu()
@@ -57,6 +59,11 @@ namespace PixelPeeps.HeadlessChickens.UI
         {
             Debug.LogWarning("There is no input field object variable on the base Menu class; use a subclass", this);
             return null;
+        }
+        
+        public virtual void SetInputFieldText(string text)
+        {
+            Debug.LogWarning("There is no input field object variable on the base Menu class; use a subclass", this);
         }
 
         public virtual void DisplayErrorMessage()

@@ -1,6 +1,4 @@
-﻿using Photon.Pun;
-using PixelPeeps.HeadlessChickens.Network;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace PixelPeeps.HeadlessChickens.GameState
 {
@@ -13,7 +11,7 @@ namespace PixelPeeps.HeadlessChickens.GameState
 
         public override void OnSceneLoad()
         {
-            Debug.Log("OnSceneLoad");
+            
         }
 
         public override void StateExit()

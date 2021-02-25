@@ -1,4 +1,5 @@
-﻿using PixelPeeps.HeadlessChickens.Network;
+﻿using PixelPeeps.HeadlessChickens.GameState;
+using PixelPeeps.HeadlessChickens.Network;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,13 +8,10 @@ namespace PixelPeeps.HeadlessChickens.UI
     public class LeaveRoomButton : MonoBehaviour
     {
         private Button thisButton;
-        private UIManager uiManager;
 
         private void Start()
-        {
-            uiManager = FindObjectOfType<UIManager>();
-            
-            thisButton = this.GetComponent<Button>();
+        {      
+            thisButton = GetComponent<Button>();
             
             thisButton.onClick.AddListener(OnClick);
         }
@@ -21,6 +19,7 @@ namespace PixelPeeps.HeadlessChickens.UI
         public void OnClick()
         {
             NetworkManager.Instance.LeaveRoom();
+            GameStateManager.Instance.SwitchGameState(new MainMenuState());
         }
     }
 }

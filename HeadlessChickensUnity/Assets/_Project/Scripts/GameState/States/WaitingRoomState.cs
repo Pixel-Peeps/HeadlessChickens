@@ -1,5 +1,6 @@
 ﻿using PixelPeeps.HeadlessChickens.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace PixelPeeps.HeadlessChickens.GameState
 {
@@ -13,15 +14,19 @@ namespace PixelPeeps.HeadlessChickens.GameState
         
         public override void StateEnter()
         {
-            StateManager.LoadNextScene(sceneName);
-            ActivateMenu(menu);
+            if (SceneManager.GetActiveScene().name != sceneName)
+            {
+                StateManager.LoadNextScene(sceneName);
+            }
+            else
+            {
+               ActivateMenu(menu); 
+               StateManager.uiManager.UpdateRoomInfo();
+            }
         }
 
         public override void OnSceneLoad()
         {
-            menuManagerObj = GameObject.FindGameObjectWithTag("MenuManager");
-            StateManager.uiManager = menuManagerObj.GetComponent<UIManager>();
-            
             ActivateMenu(menu);
         }
 

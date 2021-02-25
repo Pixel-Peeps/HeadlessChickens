@@ -19,9 +19,6 @@ namespace PixelPeeps.HeadlessChickens.GameState
 
         public override void OnSceneLoad()
         {
-            menuManagerObj = GameObject.FindGameObjectWithTag("MenuManager");
-            StateManager.uiManager = menuManagerObj.GetComponent<UIManager>();
-            
             ActivateMenu(menu);
         }
 

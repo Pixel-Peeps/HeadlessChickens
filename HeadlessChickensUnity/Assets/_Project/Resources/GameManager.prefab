@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5173365763610788296}
-  - component: {fileID: 2382090305524964847}
   - component: {fileID: 849949290}
   - component: {fileID: 849949289}
   m_Layer: 0
@@ -33,20 +32,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2382090305524964847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6425314097948912326}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80752e867027f46f092febd7555e54d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 4736487094571944351, guid: 4238311699e664348b8e40254d1ec715, type: 3}
-  cube: {fileID: 0}
 --- !u!114 &849949290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,6 +54,31 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  hidingSpotSpawnPos:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  hidingSpotPrefab: {fileID: 5648197294204226697, guid: b8e36aeea3fa2ee41b6e1f268bc3c454, type: 3}
+  rooms:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  leverSpotPrefab: {fileID: 1664495383705939199, guid: a0a6eb8fbbfb6a347bd574e78d6166ab, type: 3}
+  maxNumberOfLevers: 0
+  exits:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  exitTime: 120
+  totalGameTime: 100
 --- !u!114 &849949289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,7 +97,8 @@ MonoBehaviour:
   observableSearch: 2
   Synchronization: 3
   OwnershipTransfer: 0
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 849949290}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0

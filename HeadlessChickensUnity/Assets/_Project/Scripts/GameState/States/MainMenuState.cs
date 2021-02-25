@@ -1,4 +1,5 @@
-﻿using PixelPeeps.HeadlessChickens.UI;
+﻿using Photon.Pun;
+using PixelPeeps.HeadlessChickens.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,16 +15,21 @@ namespace PixelPeeps.HeadlessChickens.GameState
         
         public override void StateEnter()
         {
-            StateManager.LoadNextScene(sceneName);
+            if (SceneManager.GetActiveScene().name != sceneName)
+            {
+                StateManager.LoadNextScene(sceneName);
+            }
+            
             ActivateMenu(menu);
+            StateManager.uiManager.createRoom.SetInputFieldText("");
+            Debug.Log("<color=green> set input field to </color>" + StateManager.uiManager.createRoom.inputField.text);
         }
 
         public override void OnSceneLoad()
         {
-            menuManagerObj = GameObject.FindGameObjectWithTag("MenuManager");
-            StateManager.uiManager = menuManagerObj.GetComponent<UIManager>();
-            
             ActivateMenu(menu);
+            StateManager.uiManager.createRoom.SetInputFieldText("");
+            Debug.Log("<color=green> set input field to </color>" + StateManager.uiManager.createRoom.inputField.text);
         }
 
         public override void StateExit()

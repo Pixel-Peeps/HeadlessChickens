@@ -12,6 +12,11 @@ namespace PixelPeeps.HeadlessChickens.UI
         {
             return roomNameInput.text;
         }
+        
+        public override void SetInputFieldText(string text)
+        {
+            roomNameInput.text = text;
+        }
 
         public override void DisplayErrorMessage()
         {
@@ -20,7 +25,13 @@ namespace PixelPeeps.HeadlessChickens.UI
 
         public override void HideErrorMessage()
         {
-            emptyRoomNameError.SetActive(false);
+            Debug.Log("Hiding error message");
+            
+            if (emptyRoomNameError != null)
+            {
+                emptyRoomNameError.SetActive(false);
+                Debug.Log("Hid error message");
+            }
         }
     }
 }
