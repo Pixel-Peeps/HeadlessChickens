@@ -12,27 +12,38 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         [Header("Required Components/Objects")]
         private InputControls _controls;
         private CharacterBase _character;
+        [Tooltip("Camera attached to the GameObject")]
         [SerializeField] private new GameObject camera;
         private Rigidbody _rigidbody;
         private Transform _camTransform;
         
         [Header("Movement")]
+        [Tooltip("Speed multiplier that effects the Objects movement speed")]
         [SerializeField] private float moveSpeed;
+        [Tooltip("Multiplier that affects how much time is taken to move the Object")]
         [SerializeField] private float moveTime;
+        [Tooltip("Distance the Object is required to be from its final move position")]
         public float stopDistance = 0.1f;
         private Vector3 _newPosition = Vector3.zero;
         private Vector2 _movDirection = Vector2.zero;
         private bool _strafeActive;
+        [Tooltip("Multiplier that increase movement speed when running")]
         public float sprintMultiplier = 1.5f;
+        [Tooltip("Current rotation speed")]
         [SerializeField] float turnSpeed = 50f;
+        [Tooltip("Minimum rotation speed")]
         [SerializeField] float turnSpeedLow = 5f;
+        [Tooltip("Maximum rotation speed")]
         [SerializeField] float turnSpeedHigh = 50f;
 
         [Header("Jump")]
         public bool isGrounded = true;
+        [Tooltip("Velocity multiplier applied in the jump direction")]
         public float jumpForce = 1f;
         private Vector3 _characterVelocity;
+        [Tooltip("Effects how much gravity is applied on this object")]
         public float fallMultiplier = 2.5f;
+        [Tooltip("Multiplier to give a minimum jump force when button is pressed and not held")]
         public float lowJumpMultiplier = 2f;
         public bool jumpButtonPressed;
 
