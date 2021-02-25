@@ -168,6 +168,11 @@ namespace PixelPeeps.HeadlessChickens.Network
                 }
             }
 
+            foreach(RoomTile room in tempRooms)
+            {
+                Debug.Log("<color=red> Remaining rooms in list are </color>" + room.gameObject.name);
+            }
+
             for (int i = 0; i < maxNumberOfLevers; i++)
             {
                 // Get random room from list
