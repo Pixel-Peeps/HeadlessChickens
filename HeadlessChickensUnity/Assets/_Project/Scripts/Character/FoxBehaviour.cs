@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
@@ -6,6 +7,12 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 {
     public class FoxBehaviour : CharacterBase
     {
+        //public bool hasLever;
+
+        public void Start()
+        {
+            isFox = true;
+        }
 
         protected override void Action()
         {

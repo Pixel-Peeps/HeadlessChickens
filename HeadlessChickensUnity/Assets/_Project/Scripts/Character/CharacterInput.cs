@@ -12,27 +12,38 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         [Header("Required Components/Objects")]
         private InputControls _controls;
         private CharacterBase _character;
+        [Tooltip("Camera attached to the GameObject")]
         [SerializeField] private new GameObject camera;
         private Rigidbody _rigidbody;
         private Transform _camTransform;
         
         [Header("Movement")]
+        [Tooltip("Speed multiplier that effects the Objects movement speed")]
         [SerializeField] private float moveSpeed;
+        [Tooltip("Multiplier that affects how much time is taken to move the Object")]
         [SerializeField] private float moveTime;
+        [Tooltip("Distance the Object is required to be from its final move position")]
         public float stopDistance = 0.1f;
         private Vector3 _newPosition = Vector3.zero;
         private Vector2 _movDirection = Vector2.zero;
         private bool _strafeActive;
+        [Tooltip("Multiplier that increase movement speed when running")]
         public float sprintMultiplier = 1.5f;
+        [Tooltip("Current rotation speed")]
         [SerializeField] float turnSpeed = 50f;
+        [Tooltip("Minimum rotation speed")]
         [SerializeField] float turnSpeedLow = 5f;
+        [Tooltip("Maximum rotation speed")]
         [SerializeField] float turnSpeedHigh = 50f;
 
         [Header("Jump")]
         public bool isGrounded = true;
+        [Tooltip("Velocity multiplier applied in the jump direction")]
         public float jumpForce = 1f;
         private Vector3 _characterVelocity;
+        [Tooltip("Effects how much gravity is applied on this object")]
         public float fallMultiplier = 2.5f;
+        [Tooltip("Multiplier to give a minimum jump force when button is pressed and not held")]
         public float lowJumpMultiplier = 2f;
         public bool jumpButtonPressed;
 
@@ -64,10 +75,13 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             _controls.Player.Jump.started += ctx => jumpButtonPressed = true;
             _controls.Player.Jump.canceled += ctx => jumpButtonPressed = false;
             _controls.Player.Interact.performed += InteractPressed;
+            _controls.Player.TrapInteract.performed += TrapInteractPressed;
+            _controls.Player.Attack.performed += MouseClicked;
+
 
             #endregion
 
-            
+
         }
 
 
@@ -238,6 +252,52 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
                 var interacted = _character.interactor.TryInteract();
                 int interactTypeNumber = _character.interactor.GetInteractType();
+            }
+        }
+        
+        private void TrapInteractPressed(InputAction.CallbackContext obj)
+        {
+            //spaghetti for dinner boys
+            if (photonView.IsMine)
+            {
+                if (_character.hasTrap && !_character.isBlueprintActive && !_character.isFox)
+                {
+                    _character.isBlueprintActive = true;
+                    var blueprint = PhotonNetwork.InstantiateRoomObject(_character.trapSlot.name, new Vector3(0, 0.1f, 0.4f),
+                        Quaternion.identity);
+                    blueprint.gameObject.transform.SetParent(_character.gameObject.transform, false);
+                }
+
+                if (_character.hasTrap && !_character.isBlueprintActive && _character.isFox && !_character.hasLever)
+                {
+                    _character.isBlueprintActive = true;
+                    var blueprint = PhotonNetwork.InstantiateRoomObject(_character.trapSlot.name, new Vector3(0, 0.5f, 1.5f),
+                        Quaternion.identity);
+                    blueprint.gameObject.transform.SetParent(_character.gameObject.transform, false);
+                }
+                
+                //lever now!
+
+            }
+        }
+        
+        private void MouseClicked(InputAction.CallbackContext obj)
+        {
+            if (photonView.IsMine)
+            {
+                if (_character.isBlueprintActive)
+                {
+                    if (_character.gameObject.GetComponentInChildren<TrapBlueprint>().gameObject != null)
+                    {
+                        Debug.Log("cancelling blueprint");
+                        PhotonNetwork.Destroy(_character.gameObject.GetComponentInChildren<TrapBlueprint>().gameObject);
+                        _character.isBlueprintActive = false;
+                        if (_character.gameObject.GetComponentInChildren<TrapBlueprint>().gameObject == null)
+                        {
+                            _character.isBlueprintActive = false;
+                        }
+                    }
+                }
             }
         }
 

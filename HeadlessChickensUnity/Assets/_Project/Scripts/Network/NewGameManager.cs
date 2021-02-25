@@ -24,11 +24,11 @@ namespace PixelPeeps.HeadlessChickens.Network
         public List<Transform> chickSpawnPoints;
         
         private GameObject playerPrefab; // The prefab this player uses. Assigned as fox or chick when roles are assigned
-        private Transform spawnPos;
-
-        [Header("Game State")]
-        public int chickensCaught = 0;
-        public int chickensEscaped = 0;
+        private Transform spawnPos;
+
+        [Header("Game State")]
+        public int chickensCaught = 0;
+        public int chickensEscaped = 0;
         public int chickenEscapeThreshold = 2;
 
         [Header("Players and Controllers")] 
@@ -49,6 +49,10 @@ namespace PixelPeeps.HeadlessChickens.Network
         [Header("Exits")]
         [SerializeField] public List<ExitDoor> exits;
         public float exitTime;
+        
+        [Header("Trap Pick-Ups")]
+        [SerializeField] public List<Transform> trapSpawnPos;
+        public GameObject trapPickUpPrefab;
         
         void Awake()
         {
@@ -109,32 +113,34 @@ namespace PixelPeeps.HeadlessChickens.Network
             SpawnLevers();
             Debug.Log("Levers spawned");
             
+            SpawnTrapPickUps();
+            
             StartTimer();
             Debug.Log("Timer started");
             
             NetworkManager.Instance.GameSetupComplete();
-        }
-
-        public void CheckForFinish()
-        {
-            if (chickensCaught + chickensEscaped == PhotonNetwork.CurrentRoom.PlayerCount - 1)
-            {
-                DetermineWinner();
-            }
-        }
-
-        public void DetermineWinner()
-        {
-            if (chickensEscaped >= chickenEscapeThreshold)
-            {
-                // Show Chickens Win Screen / Fox Lose Screen
-                Debug.Log("Chickens Wins!");
-            }
-            else
-            {
-                // Show Fox Win Screen / Chickens Lose Screen
-                Debug.Log("Fox Wins!");
-            }
+        }
+
+        public void CheckForFinish()
+        {
+            if (chickensCaught + chickensEscaped == PhotonNetwork.CurrentRoom.PlayerCount - 1)
+            {
+                DetermineWinner();
+            }
+        }
+
+        public void DetermineWinner()
+        {
+            if (chickensEscaped >= chickenEscapeThreshold)
+            {
+                // Show Chickens Win Screen / Fox Lose Screen
+                Debug.Log("Chickens Wins!");
+            }
+            else
+            {
+                // Show Fox Win Screen / Chickens Lose Screen
+                Debug.Log("Fox Wins!");
+            }
         }
 
         private void SpawnPlayers()
@@ -151,6 +157,18 @@ namespace PixelPeeps.HeadlessChickens.Network
             }
         }
 
+
+        private void SpawnTrapPickUps()
+        {
+            foreach (Transform t in trapSpawnPos)
+            {
+                Debug.Log("Spawning trap pick ups!!");
+                PhotonNetwork.InstantiateRoomObject(trapPickUpPrefab.name, t.position,
+                    Quaternion.identity);
+                Debug.Log("Spawned!?!");
+            }
+        }
+        
         private void SpawnHidingSpots()
         {
             //foreach (Transform hidingSpawnPos in hidingSpotSpawnPos)
@@ -161,23 +179,23 @@ namespace PixelPeeps.HeadlessChickens.Network
         }
 
         private void SpawnLevers()
-        {
-            if (!PhotonNetwork.IsMasterClient) return;
-
+        {
+            if (!PhotonNetwork.IsMasterClient) return;
+
             maxNumberOfLevers = PhotonNetwork.CurrentRoom.PlayerCount;
             HUDManager.Instance.UpdateLeverCount(0);
 
-            List<RoomTile> tempRooms = rooms;
-
-            // If a room has no levers, remove it from the list
-
-            foreach (RoomTile room in tempRooms.ToList())
-            {
-                if(!room.leverPositions.Any())
-                {
-                    tempRooms.Remove(room);
-                    continue;
-                }
+            List<RoomTile> tempRooms = rooms;
+
+            // If a room has no levers, remove it from the list
+
+            foreach (RoomTile room in tempRooms.ToList())
+            {
+                if(!room.leverPositions.Any())
+                {
+                    tempRooms.Remove(room);
+                    continue;
+                }
             }
 
             for (int i = 0; i < maxNumberOfLevers; i++)
