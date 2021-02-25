@@ -73,6 +73,14 @@ public class @InputControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Attack"",
+                    ""type"": ""Button"",
+                    ""id"": ""2c9ebe2d-d87c-4256-8157-d49e8625bf92"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -438,6 +446,17 @@ public class @InputControls : IInputActionCollection, IDisposable
                     ""action"": ""TrapInteract"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b3094ae5-31e0-4611-aff9-83bd8fb3dbf9"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -546,6 +565,7 @@ public class @InputControls : IInputActionCollection, IDisposable
         m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_TrapInteract = m_Player.FindAction("TrapInteract", throwIfNotFound: true);
+        m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
         // Camera
         m_Camera = asset.FindActionMap("Camera", throwIfNotFound: true);
         m_Camera_CameraMove = m_Camera.FindAction("CameraMove", throwIfNotFound: true);
@@ -608,6 +628,7 @@ public class @InputControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Run;
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_TrapInteract;
+    private readonly InputAction m_Player_Attack;
     public struct PlayerActions
     {
         private @InputControls m_Wrapper;
@@ -619,6 +640,7 @@ public class @InputControls : IInputActionCollection, IDisposable
         public InputAction @Run => m_Wrapper.m_Player_Run;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @TrapInteract => m_Wrapper.m_Player_TrapInteract;
+        public InputAction @Attack => m_Wrapper.m_Player_Attack;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -649,6 +671,9 @@ public class @InputControls : IInputActionCollection, IDisposable
                 @TrapInteract.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTrapInteract;
                 @TrapInteract.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTrapInteract;
                 @TrapInteract.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTrapInteract;
+                @Attack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
+                @Attack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
+                @Attack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -674,6 +699,9 @@ public class @InputControls : IInputActionCollection, IDisposable
                 @TrapInteract.started += instance.OnTrapInteract;
                 @TrapInteract.performed += instance.OnTrapInteract;
                 @TrapInteract.canceled += instance.OnTrapInteract;
+                @Attack.started += instance.OnAttack;
+                @Attack.performed += instance.OnAttack;
+                @Attack.canceled += instance.OnAttack;
             }
         }
     }
@@ -771,6 +799,7 @@ public class @InputControls : IInputActionCollection, IDisposable
         void OnRun(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnTrapInteract(InputAction.CallbackContext context);
+        void OnAttack(InputAction.CallbackContext context);
     }
     public interface ICameraActions
     {
