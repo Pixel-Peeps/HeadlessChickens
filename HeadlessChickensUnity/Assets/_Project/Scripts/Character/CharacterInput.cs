@@ -15,13 +15,14 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         [SerializeField] private new GameObject camera;
         private Rigidbody _rigidbody;
         private Transform _camTransform;
+        private CinemachineFreeLook virtualCam;
         
         [Header("Movement")]
         [SerializeField] private float moveSpeed;
         [SerializeField] private float moveTime;
         public float stopDistance = 0.1f;
         private Vector3 _newPosition = Vector3.zero;
-        private Vector2 _movDirection = Vector2.zero;
+        public Vector2 _movDirection = Vector2.zero;
         private bool _strafeActive;
         public float sprintMultiplier = 1.5f;
         [SerializeField] float turnSpeed = 50f;
@@ -36,14 +37,16 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public float lowJumpMultiplier = 2f;
         public bool jumpButtonPressed;
 
-        private CinemachineFreeLook virtualCam;
+        [Header("Animation")] 
+        private Animator _anim;
+        public float animSpeed;
 
         private void Awake()
         {
             _character = GetComponent<CharacterBase>();
             _rigidbody = GetComponent<Rigidbody>();
             virtualCam = camera.GetComponent<CinemachineFreeLook>();
-            
+            _anim = GetComponentInChildren<Animator>();
             
              /*####################################
               *           INPUT KEY ACTIONS       *
@@ -107,8 +110,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         public void Move()
         {
-            if (photonView.IsMine)
-            {
+        //    if (photonView.IsMine)
+         //   {
                 // Check Camera facing direction
                 var forward = _camTransform.forward;
                 Vector3 tempForward = new Vector3(forward.x, 0, forward.z);
@@ -122,8 +125,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 // check distance to target position
                 float distanceToDestination = Vector3.Distance(transform.position, _newPosition);
                 if (distanceToDestination < stopDistance) _character.SwitchState(CharacterBase.EStates.Idle);
-
-                // lock look at when in strafe mode
+                
+                /*// lock look at when in strafe mode
                 if (!_strafeActive)
                 {
                     float tS = _rigidbody.velocity.magnitude / moveSpeed;
@@ -143,17 +146,21 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                         _rigidbody.velocity = new Vector3(0, _rigidbody.velocity.y, 0);
                         turnSpeedHigh = 40f;
                     }
-                }
+                }*/
 
+                Vector3 velocity = facingDirectrion * (moveSpeed / animSpeed);
+                Debug.Log("<color=cyan>cam forward = " + velocity + "</color>");
+                _anim.SetFloat("Vertical_f",   velocity.z);
+                _anim.SetFloat("horizontal_f",  velocity.x);
                 // move to position
                 transform.position = Vector3.Lerp(transform.position, _newPosition, Time.deltaTime * moveTime);
-            }
+           // }
         }
 
         private void Jump()
         {
-            if (photonView.IsMine)
-            {
+          //  if (photonView.IsMine)
+         //   {
                 // lock jump if not grounded, set jump direction based on forward direction
                 // If character is not moving jump up, if is moving jump based on forward facing direction
                 if (!isGrounded || _character.State == CharacterBase.EStates.Hiding) return;
@@ -173,7 +180,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 isGrounded = false;
 
 
-            }
+           // }
         }
 
         /*##################################
@@ -224,8 +231,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         private void InteractPressed(InputAction.CallbackContext obj)
         {
-            if (photonView.IsMine)
-            {
+            //if (photonView.IsMine)
+           // {
                 // if caught, don't do anything
                 if (_character.hasBeenCaught) return;
 
@@ -238,7 +245,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
                 var interacted = _character.interactor.TryInteract();
                 int interactTypeNumber = _character.interactor.GetInteractType();
-            }
+         //   }
         }
 
         #endregion
