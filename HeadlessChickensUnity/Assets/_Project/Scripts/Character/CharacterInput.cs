@@ -126,7 +126,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 float distanceToDestination = Vector3.Distance(transform.position, _newPosition);
                 if (distanceToDestination < stopDistance) _character.SwitchState(CharacterBase.EStates.Idle);
                 
-                /*// lock look at when in strafe mode
+                // lock look at when in strafe mode
                 if (!_strafeActive)
                 {
                     float tS = _rigidbody.velocity.magnitude / moveSpeed;
@@ -146,12 +146,13 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                         _rigidbody.velocity = new Vector3(0, _rigidbody.velocity.y, 0);
                         turnSpeedHigh = 40f;
                     }
-                }*/
+                }
 
-                Vector3 velocity = facingDirectrion * (moveSpeed / animSpeed);
-                Debug.Log("<color=cyan>cam forward = " + velocity + "</color>");
-                _anim.SetFloat("Vertical_f",   velocity.z);
-                _anim.SetFloat("horizontal_f",  velocity.x);
+                //Vector3 velocity = facingDirectrion * (moveSpeed / animSpeed);
+                //Debug.Log("<color=cyan>cam forward = " + velocity + "</color>");
+                _anim.SetFloat("Vertical_f",   Math.Abs(_movDirection.y));
+                _anim.SetFloat("horizontal_f",  _movDirection.x);
+                
                 // move to position
                 transform.position = Vector3.Lerp(transform.position, _newPosition, Time.deltaTime * moveTime);
            // }
