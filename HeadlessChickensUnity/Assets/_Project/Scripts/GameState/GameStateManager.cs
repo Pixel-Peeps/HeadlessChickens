@@ -33,7 +33,7 @@ namespace PixelPeeps.HeadlessChickens.GameState
         [Header("Game Scenes")] 
         [HideInInspector] public string menuScene = "MenuScene";
         [HideInInspector] public string lobbyScene = "LobbyScene";
-        [HideInInspector] public string playScene = "PlayScene";
+        [HideInInspector] public string mainScene = "MainScene";
 
         private void Awake()
         {
@@ -96,7 +96,7 @@ namespace PixelPeeps.HeadlessChickens.GameState
             
             while (asyncLoad != null && !asyncLoad.isDone)
             {
-                if (sceneName == playScene)
+                if (sceneName == mainScene)
                 {
                     yield return new WaitForSecondsRealtime(0.2f);
                 }
