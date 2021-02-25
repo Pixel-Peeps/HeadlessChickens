@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class TrapBehaviour : MonoBehaviour
+public class TrapBlueprint : MonoBehaviour
 {
     //this script goes on the trap blueprint
     

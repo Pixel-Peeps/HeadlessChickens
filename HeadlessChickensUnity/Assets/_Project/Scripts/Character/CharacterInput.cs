@@ -65,6 +65,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             _controls.Player.Jump.canceled += ctx => jumpButtonPressed = false;
             _controls.Player.Interact.performed += InteractPressed;
             _controls.Player.TrapInteract.performed += TrapInteractPressed;
+            _controls.Player.Attack.performed += MouseClicked;
+            
 
             #endregion
 
@@ -247,7 +249,20 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             if (photonView.IsMine)
             {
                 //if character has trap && blueprint is not active
-                //instantiate blueprint && set bool to true
+                //instantiate correct blueprint && set bool to true
+               
+                
+                //if character has a goddamn lever && bp is not active
+                //god idk show all the lever blueprints
+            }
+        }
+        
+        private void MouseClicked(InputAction.CallbackContext obj)
+        {
+            if (photonView.IsMine)
+            {
+                //if blueprint active, cancel blueprint
+                //else idk eat a chicken
                
             }
         }
