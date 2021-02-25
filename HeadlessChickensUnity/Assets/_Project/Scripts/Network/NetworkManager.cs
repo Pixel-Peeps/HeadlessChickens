@@ -221,8 +221,6 @@ namespace PixelPeeps.HeadlessChickens.Network
         {
             PhotonNetwork.CurrentRoom.IsOpen = true;
             PhotonNetwork.CurrentRoom.IsVisible = true;
-            
-            photonView.RPC("EndGameForOthers", RpcTarget.AllBuffered);
         }
 
         public void MakeRoomPrivate()
