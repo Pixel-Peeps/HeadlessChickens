@@ -12,8 +12,11 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
     {
         public Vector3 positionBeforeHiding;
         
+        [Header("Mesh and Materials")]
         [SerializeField] Renderer chickenMesh;
         [SerializeField] Material caughtMat;
+        
+        [Header("Hiding")]
         public HidingSpot hidedSpot;
         public Transform currentHidingSpot;
 
@@ -28,25 +31,23 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         [PunRPC]
         public void ChickenCaptured()
         {
-            if (!hasBeenCaught && !alreadyEscaped)
-            {
-                chickenMesh.GetComponent<Renderer>().sharedMaterial = caughtMat;
-                NewGameManager.Instance.chickensCaught++;
-                hasBeenCaught = true;
-                NewGameManager.Instance.CheckForFinish();
-            }
+            if (hasBeenCaught || alreadyEscaped) return;
+            
+            chickenMesh.GetComponent<Renderer>().sharedMaterial = caughtMat;
+            NewGameManager.Instance.chickensCaught++;
+            hasBeenCaught = true;
+            NewGameManager.Instance.CheckForFinish();
         }
 
         [PunRPC]
         public void ChickenEscaped()
         {
-            if(!alreadyEscaped && !hasBeenCaught)
-            {
-                Debug.Log(gameObject.name + " has escaped");
-                NewGameManager.Instance.chickensEscaped++;
-                alreadyEscaped = true;
-                NewGameManager.Instance.CheckForFinish();
-            }
+            if (alreadyEscaped || hasBeenCaught) return;
+            
+            Debug.Log(gameObject.name + " has escaped");
+            NewGameManager.Instance.chickensEscaped++;
+            alreadyEscaped = true;
+            NewGameManager.Instance.CheckForFinish();
         }
 
         protected override void Action()
@@ -85,6 +86,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         private void RPC_EnterHiding(int hideViewID)
         {
             Debug.Log("hiding spot view id:: "+hideViewID);
+            
             // log position before entering hiding as a return position when leaving
             positionBeforeHiding = transform.position;
 
@@ -93,18 +95,18 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
             // lock physics on entering hiding
             _rigidbody.isKinematic = true;
-
             
-            // lock the hiding spot while in use
             isHiding = true;
             Debug.Log("after isHiding = true");
             SwitchState(EStates.Hiding);
             Debug.Log("after switch state to hiding");
             
+            // Set the current hiding spot as a parent object
             currentHidingSpot = PhotonView.Find(hideViewID).gameObject.transform;
             gameObject.transform.SetParent(PhotonView.Find(hideViewID).gameObject.transform);
             Debug.Log("after set parent");
             
+            // move player into the hiding spot
             gameObject.transform.position = PhotonView.Find(hideViewID).gameObject.transform.position;
             Debug.Log("after gameObject.transform.position = currentHidingSpot.position");
            
@@ -126,9 +128,6 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
             // Re-enable Mesh
             chickenMesh.enabled = true;
-
-            
-            
             
             SwitchState(EStates.Moving);
         }

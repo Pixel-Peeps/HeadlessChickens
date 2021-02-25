@@ -16,6 +16,11 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public Rigidbody _rigidbody;
 
         public bool isHiding;
+        public bool hasTrap;
+        public bool isBlueprintActive;
+        public bool isFox;
+        public bool hasLever;
+        public GameObject trapSlot;
         
         public bool cooldownRunning = false;
         public bool hasBeenCaught = false;
