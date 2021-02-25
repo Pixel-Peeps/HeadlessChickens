@@ -9,6 +9,7 @@ namespace PixelPeeps.HeadlessChickens.Network
     public class ExitDoor : MonoBehaviour
     {
         public bool exitActive = false;
+        [SerializeField] private GameObject doorClosedMesh;
 
         // Start is called before the first frame update
         void Start()
@@ -26,6 +27,7 @@ namespace PixelPeeps.HeadlessChickens.Network
         {
             Debug.Log("RPC_ActivateExit called");
             exitActive = true;
+            doorClosedMesh.SetActive(false);
             Debug.Log("RPC_ActivateExit finished. " + gameObject.name + " has been activated");
         }
 
