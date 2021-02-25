@@ -19,10 +19,14 @@ namespace PixelPeeps.HeadlessChickens.GameState
             {
                 StateManager.LoadNextScene(sceneName);
             }
-            
-            ActivateMenu(menu);
-            StateManager.uiManager.createRoom.SetInputFieldText("");
-            Debug.Log("<color=green> set input field to </color>" + StateManager.uiManager.createRoom.inputField.text);
+
+            if (StateManager.uiManager.createRoom != null)
+            {
+                ActivateMenu(menu);
+
+                StateManager.uiManager.createRoom.SetInputFieldText("");
+                Debug.Log("<color=green> set input field to </color>" + StateManager.uiManager.createRoom.inputField.text);
+            }
         }
 
         public override void OnSceneLoad()

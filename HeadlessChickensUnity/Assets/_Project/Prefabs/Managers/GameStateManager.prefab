@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 4002415444017768403}
   - component: {fileID: 6804823237606140411}
   - component: {fileID: 3480398000151210927}
+  - component: {fileID: 562248418942138166}
   m_Layer: 0
   m_Name: GameStateManager
   m_TagString: Untagged
@@ -93,6 +94,20 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &562248418942138166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 773096914354042839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 701bea051a994b45b4796029dffe6ad3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chickenOnlyMode: 0
+  chickenPlayersActorNumbers: 
 --- !u!1001 &143141164426097292
 PrefabInstance:
   m_ObjectHideFlags: 0
