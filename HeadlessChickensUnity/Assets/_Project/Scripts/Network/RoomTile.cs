@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RoomTile : MonoBehaviour
 {
-    public List<Transform> leverPositions;
+    public List<LeverHolder> leverPositions;
 
     public List<Transform> powerUpPositions;
 

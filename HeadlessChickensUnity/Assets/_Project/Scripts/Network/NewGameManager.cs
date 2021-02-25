@@ -177,9 +177,11 @@ namespace PixelPeeps.HeadlessChickens.Network
 
                 // Get random lever from room
                 int leverNumber = UnityEngine.Random.Range(0, room.leverPositions.Count);
-                GameObject lever = room.leverPositions[leverNumber].gameObject;
+                LeverHolder leverHolder = room.leverPositions[leverNumber];
 
-                lever.transform.GetChild(0).gameObject.SetActive(true);
+                leverHolder.EnableLever();
+
+                // leverHolder.transform.GetChild(0).gameObject.SetActive(true);
                 //PhotonNetwork.InstantiateRoomObject(leverSpotPrefab.name, lever.position,
                 //    lever.rotation);
 
