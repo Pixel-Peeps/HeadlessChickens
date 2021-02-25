@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &483725998252695559
 RectTransform:
   m_ObjectHideFlags: 0
@@ -115,6 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 483725998252695555}
+  inputField: {fileID: 0}
   firstSelectedButton: {fileID: 5047709522756959017}
 --- !u!1 &5047709522756959017
 GameObject:
@@ -153,7 +154,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 36, y: 17.000061}
+  m_AnchoredPosition: {x: 36, y: 17}
   m_SizeDelta: {x: 160, y: 69.142395}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &4519008425187318644
@@ -317,8 +318,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: BACK
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7770c22efdeeb4649b4fb77c303f0a71, type: 2}
-  m_sharedMaterial: {fileID: 5579491580409945025, guid: 7770c22efdeeb4649b4fb77c303f0a71, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b451ae240dfc7a347ae210bf279fd8f9, type: 2}
+  m_sharedMaterial: {fileID: -2605257266534445381, guid: b451ae240dfc7a347ae210bf279fd8f9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -384,6 +385,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &925786926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8858242006548139510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aed2b7ec207bd54aa060112033b4a49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listItemPrefab: {fileID: 6224988673747218744, guid: 7840055f0318d3f488ce1c4d20af48e9, type: 3}
 --- !u!1 &9124764285717714890
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,8 +465,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Choose a room to join
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7770c22efdeeb4649b4fb77c303f0a71, type: 2}
-  m_sharedMaterial: {fileID: 5579491580409945025, guid: 7770c22efdeeb4649b4fb77c303f0a71, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b451ae240dfc7a347ae210bf279fd8f9, type: 2}
+  m_sharedMaterial: {fileID: -2605257266534445381, guid: b451ae240dfc7a347ae210bf279fd8f9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -631,6 +645,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04ec56020008b4442b1e550174a59536, type: 3}
+--- !u!1 &8858242006548139510 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 65771754979225344, guid: 04ec56020008b4442b1e550174a59536, type: 3}
+  m_PrefabInstance: {fileID: 8793110305085629174}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &4056447111913532639 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4777195589902749225, guid: 04ec56020008b4442b1e550174a59536, type: 3}

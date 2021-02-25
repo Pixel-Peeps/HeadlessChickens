@@ -1624,7 +1624,6 @@ GameObject:
   - component: {fileID: 1168967160}
   - component: {fileID: 1168967159}
   - component: {fileID: 1168967158}
-  - component: {fileID: 1168967157}
   - component: {fileID: 1778878786}
   m_Layer: 5
   m_Name: LeaveScreenButton
@@ -1734,19 +1733,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1168967157
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1168967155}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c5deb4c63b64ef2ab0b65282d8cc9da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stateToChangeTo: 0
 --- !u!114 &1778878786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2200,8 +2186,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: BACK
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7770c22efdeeb4649b4fb77c303f0a71, type: 2}
-  m_sharedMaterial: {fileID: 5579491580409945025, guid: 7770c22efdeeb4649b4fb77c303f0a71, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b451ae240dfc7a347ae210bf279fd8f9, type: 2}
+  m_sharedMaterial: {fileID: -2605257266534445381, guid: b451ae240dfc7a347ae210bf279fd8f9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2458,7 +2444,7 @@ GameObject:
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &483725998252695559
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2558,6 +2544,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 483725998252695555}
+  inputField: {fileID: 0}
   firstSelectedButton: {fileID: 1168967155}
 --- !u!114 &1227879164
 MonoBehaviour:
@@ -2674,7 +2661,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.5254539, g: 0.9056604, b: 0.57781774, a: 1}
     m_PressedColor: {r: 0.5254902, g: 0.9058824, b: 0.5764706, a: 1}
     m_SelectedColor: {r: 0.23137257, g: 0.8862746, b: 0.32156864, a: 1}
-    m_DisabledColor: {r: 0.5254902, g: 0.9058824, b: 0.5764706, a: 0.5019608}
+    m_DisabledColor: {r: 0.3679245, g: 0.3679245, b: 0.3679245, a: 0.7607843}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -3014,7 +3001,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: TESTING
+  m_text: Testing
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 950409113c89f404a8970589a1c9316f, type: 2}
   m_sharedMaterial: {fileID: -2876438317418848986, guid: 950409113c89f404a8970589a1c9316f, type: 2}
@@ -3360,8 +3347,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: START GAME
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7770c22efdeeb4649b4fb77c303f0a71, type: 2}
-  m_sharedMaterial: {fileID: 5579491580409945025, guid: 7770c22efdeeb4649b4fb77c303f0a71, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b451ae240dfc7a347ae210bf279fd8f9, type: 2}
+  m_sharedMaterial: {fileID: -2605257266534445381, guid: b451ae240dfc7a347ae210bf279fd8f9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3570,7 +3557,7 @@ MonoBehaviour:
   m_text: ROOM NAME
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7770c22efdeeb4649b4fb77c303f0a71, type: 2}
-  m_sharedMaterial: {fileID: 5579491580409945025, guid: 7770c22efdeeb4649b4fb77c303f0a71, type: 2}
+  m_sharedMaterial: {fileID: -6902538538798360263, guid: 7770c22efdeeb4649b4fb77c303f0a71, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3594,8 +3581,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 42.9
+  m_fontSizeBase: 42.9
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3865,13 +3852,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03cba86a32f7ada44b9e525227b3ba56, type: 3}
---- !u!1 &1938486667741762445 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 65771754979225344, guid: 03cba86a32f7ada44b9e525227b3ba56, type: 3}
-  m_PrefabInstance: {fileID: 1877799054908226701}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &6360008868879741604 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4777195589902749225, guid: 03cba86a32f7ada44b9e525227b3ba56, type: 3}
+  m_PrefabInstance: {fileID: 1877799054908226701}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1938486667741762445 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 65771754979225344, guid: 03cba86a32f7ada44b9e525227b3ba56, type: 3}
   m_PrefabInstance: {fileID: 1877799054908226701}
   m_PrefabAsset: {fileID: 0}
