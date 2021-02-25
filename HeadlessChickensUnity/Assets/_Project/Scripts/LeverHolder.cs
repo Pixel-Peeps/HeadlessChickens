@@ -15,7 +15,7 @@ public class LeverHolder : MonoBehaviour
 
 
     [PunRPC]
-    public void EnableLever()
+    public void RPC_EnableLever()
     {
         lever.gameObject.SetActive(true);
     }
