@@ -181,9 +181,6 @@ namespace PixelPeeps.HeadlessChickens.Network
             
             photonView.RPC("EndGameRPC", RpcTarget.AllBuffered);
             
-            // TODO Set correct results screen active
-            chickenWinScreen.SetActive(true);
-            
             StartCoroutine(LobbyReturnCountdownCoroutine());
         }
         
@@ -191,6 +188,9 @@ namespace PixelPeeps.HeadlessChickens.Network
         [PunRPC]
         public void EndGameRPC()
         {
+            NetworkManager.Instance.gameIsRunning = false;
+            // TODO Set correct results screen active
+            chickenWinScreen.SetActive(true);
             PhotonNetwork.Destroy(myController);
         }
         

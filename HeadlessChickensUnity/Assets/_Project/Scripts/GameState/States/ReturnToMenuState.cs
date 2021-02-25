@@ -1,4 +1,5 @@
-﻿using PixelPeeps.HeadlessChickens.Network;
+﻿using Photon.Pun;
+using PixelPeeps.HeadlessChickens.Network;
 using PixelPeeps.HeadlessChickens.UI;
 using UnityEngine;
 
@@ -14,15 +15,18 @@ namespace PixelPeeps.HeadlessChickens.GameState
         
         public override void StateEnter()
         {
-            StateManager.LoadNextScene(sceneName);
+            NetworkManager.Instance.LeaveRoom();
+            PhotonNetwork.LeaveRoom();
+            Debug.Log("Left room");
+            NetworkManager.Instance.gameIsRunning = false;
+            Debug.Log("game is not running");
+            StateManager.SwitchGameState(new MainMenuState());
+            Debug.Log("<color=green> switch to main menu state</color>");
         }
 
         public override void OnSceneLoad()
         {
-            NetworkManager.Instance.LeaveRoom();
-            NetworkManager.Instance.gameIsRunning = false;
-            StateManager.SwitchGameState(new MainMenuState());
-            Debug.Log("<color=green> switch to main menu state</color>");
+
         }
 
         public override void StateExit()
