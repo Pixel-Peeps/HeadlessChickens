@@ -19,7 +19,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         
         [Header("Movement")]
         [Tooltip("Speed multiplier that effects the Objects movement speed")]
-        [SerializeField] private float moveSpeed;
+        [SerializeField] public float moveSpeed;
         [Tooltip("Multiplier that affects how much time is taken to move the Object")]
         [SerializeField] private float moveTime;
         [Tooltip("Distance the Object is required to be from its final move position")]
