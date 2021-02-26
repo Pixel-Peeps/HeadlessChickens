@@ -109,7 +109,7 @@ namespace PixelPeeps.HeadlessChickens.Network
             
             SpawnLevers();
             
-            SpawnTrapPickUps();
+            // SpawnTrapPickUps();
             
             StartTimer();
 
