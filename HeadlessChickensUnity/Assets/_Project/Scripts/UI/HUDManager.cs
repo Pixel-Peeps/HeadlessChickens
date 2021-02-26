@@ -1,44 +1,32 @@
-﻿using System;
-using PixelPeeps.HeadlessChickens.Network;
+﻿using Photon.Pun;
 using TMPro;
 using UnityEngine;
+// ReSharper disable UnusedMember.Global
 
 namespace PixelPeeps.HeadlessChickens.UI
 {
-    public class HUDManager : MonoBehaviour
+    public class HUDManager : MonoBehaviourPunCallbacks
     {
-        [Header("Singleton Instance")] 
-        private static HUDManager _instance;
-        
-        public static HUDManager Instance
-        {
-            get => _instance;
-            set => _instance = value;
-        }
+        [field: Header("Singleton Instance")]
+        public static HUDManager Instance { get; private set; }
 
         [Header("HUD Elements")]
-        public TextMeshProUGUI leverCounter;
+        public LeverCounter leverCounter;
+        public ChickCounter chickCounter;
         public TextMeshProUGUI timerDisplay;
-        public TextMeshProUGUI chickenCounter;
 
         public void Awake()
         {
-            if (_instance != null && _instance != this)    
+            if (Instance != null && Instance != this)    
             {
                 Destroy(gameObject);
             }
             else
             {    
-                _instance = this;
+                Instance = this;
             }
         }
-
-        public void UpdateLeverCount(int newLeverCount)
-        {
-            int maximumLevers = NewGameManager.Instance.maxNumberOfLevers;
-            leverCounter.text = $"{newLeverCount} /{maximumLevers}";
-        }
-
+        
         public void UpdateTimeDisplay(float timeToDisplay)
         {
             timeToDisplay += 1;
@@ -49,9 +37,24 @@ namespace PixelPeeps.HeadlessChickens.UI
             timerDisplay.text = $"{minutes:00}:{seconds:00}";
         }
 
-        public void UpdateChickenCount()
+        public void GenerateChickIcons()
         {
-            
+            chickCounter.GenerateChickIcons();
+        }
+        
+        public void UpdateChickCounter()
+        {
+            chickCounter.UpdateCounter();
+        }
+        
+        public void GenerateLeverIcons()
+        {
+            leverCounter.GenerateLeverIcons();
+        }
+
+        public void UpdateLeverCounter(int currentLeverCount)
+        {
+            leverCounter.UpdateCounter(currentLeverCount);
         }
     }
 }

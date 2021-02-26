@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using ExitGames.Client.Photon.Encryption;
 using Photon.Pun;
 using Photon.Realtime;
 using PixelPeeps.HeadlessChickens.GameState;
@@ -105,18 +104,17 @@ namespace PixelPeeps.HeadlessChickens.Network
         public void Initialise()
         {            
             SpawnPlayers();
-            Debug.Log("Players spawned");
             
             SpawnHidingSpots();
-            Debug.Log("Hiding spots spawned");
             
             SpawnLevers();
-            Debug.Log("Levers spawned");
             
             SpawnTrapPickUps();
             
             StartTimer();
-            Debug.Log("Timer started");
+
+            HUDManager.Instance.GenerateChickIcons();
+            HUDManager.Instance.GenerateLeverIcons();  
             
             NetworkManager.Instance.GameSetupComplete();
         }
@@ -181,7 +179,6 @@ namespace PixelPeeps.HeadlessChickens.Network
         private void SpawnLevers()
         {
             maxNumberOfLevers = PhotonNetwork.CurrentRoom.PlayerCount;
-            HUDManager.Instance.UpdateLeverCount(0);
 
             if (!PhotonNetwork.IsMasterClient) return;
 
