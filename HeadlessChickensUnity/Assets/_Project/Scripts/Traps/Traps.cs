@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 
-public class Traps : MonoBehaviour
+public class Traps : MonoBehaviourPunCallbacks
 {
     
     // Who is this trap for?
@@ -47,4 +49,6 @@ public class Traps : MonoBehaviour
         // TODO
         // inform the network that a trap has been activated by a player
     }
+    ///////////////////////////////////////////////////////////////////////////'
+
 }
