@@ -40,6 +40,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         [Header("Animation")] 
         private Animator _anim;
         public float animSpeed;
+        public float verticalForward;
 
         private void Awake()
         {
@@ -100,12 +101,28 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             {
                 // normal camera on
             }
+
+
         }
 
         private void FixedUpdate()
         {
             _camTransform = camera.transform;
             _camTransform.LookAt(transform.position);
+
+            float temp = 0;
+
+            if (_character.State == CharacterBase.EStates.Moving)
+            {
+                verticalForward = Mathf.SmoothDamp(verticalForward, 1, ref temp, 0.065f);
+            }
+            else
+            {
+                verticalForward = Mathf.SmoothDamp(verticalForward, 0, ref temp, 0.05f);
+            }
+
+            _anim.SetFloat("Vertical_f", Math.Abs(verticalForward));
+            _anim.SetFloat("horizontal_f", verticalForward * _movDirection.x);
         }
 
         public void Move()
@@ -148,13 +165,19 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                     }
                 }
 
-                //Vector3 velocity = facingDirectrion * (moveSpeed / animSpeed);
-                //Debug.Log("<color=cyan>cam forward = " + velocity + "</color>");
-                _anim.SetFloat("Vertical_f",   Math.Abs(_movDirection.y));
-                _anim.SetFloat("horizontal_f",  _movDirection.x);
-                
-                // move to position
-                transform.position = Vector3.Lerp(transform.position, _newPosition, Time.deltaTime * moveTime);
+            //Vector3 velocity = facingDirectrion * (moveSpeed / animSpeed);
+            //Debug.Log("<color=cyan>cam forward = " + velocity + "</color>");
+
+
+
+
+
+
+
+
+
+            // move to position
+            transform.position = Vector3.Lerp(transform.position, _newPosition, Time.deltaTime * moveTime);
            // }
         }
 

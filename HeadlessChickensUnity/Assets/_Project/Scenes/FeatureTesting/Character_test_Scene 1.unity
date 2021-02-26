@@ -1363,6 +1363,7 @@ MonoBehaviour:
   lowJumpMultiplier: 2
   jumpButtonPressed: 0
   animSpeed: 0
+  verticalForward: 0
 --- !u!143 &978879538
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2110,6 +2111,7 @@ MonoBehaviour:
   lowJumpMultiplier: 2
   jumpButtonPressed: 0
   animSpeed: 0
+  verticalForward: 0
 --- !u!114 &1698191771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2230,11 +2232,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 245849566, guid: 6fece93d40b9507428081ecec48683b1, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000016543792
+      value: 0.000000016543789
       objectReference: {fileID: 0}
     - target: {fileID: 245849566, guid: 6fece93d40b9507428081ecec48683b1, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000047289066
+      value: -0.0000000047289057
       objectReference: {fileID: 0}
     - target: {fileID: 652241785, guid: 6fece93d40b9507428081ecec48683b1, type: 3}
       propertyPath: m_LocalRotation.y
@@ -2334,6 +2336,7 @@ GameObject:
   - component: {fileID: 2017813690}
   - component: {fileID: 2017813689}
   - component: {fileID: 2017813692}
+  - component: {fileID: 2017813693}
   m_Layer: 8
   m_Name: Terrain
   m_TagString: Ground
@@ -2349,7 +2352,7 @@ TerrainCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2017813688}
   m_Material: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_TerrainData: {fileID: 15600000, guid: 2328350af9e867f46bbfebefe9974416, type: 2}
   m_EnableTreeColliders: 1
 --- !u!218 &2017813690
@@ -2412,6 +2415,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 51.451622, y: 0.8099117, z: 50.79245}
   m_Center: {x: 25.225811, y: -0.095044136, z: 24.896225}
+--- !u!65 &2017813693
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017813688}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 50, y: 0.15, z: 50}
+  m_Center: {x: 25, y: 0, z: 25}
 --- !u!1 &2026634522
 GameObject:
   m_ObjectHideFlags: 3
