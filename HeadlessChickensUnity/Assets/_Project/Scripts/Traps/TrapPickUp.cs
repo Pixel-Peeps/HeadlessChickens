@@ -37,6 +37,10 @@ public class TrapPickUp : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.GetComponent<CharacterBase>().hasTrap)
+        {
+            return;
+        }
         
         if (!other.gameObject.GetComponent<CharacterBase>().isFox)
         {
