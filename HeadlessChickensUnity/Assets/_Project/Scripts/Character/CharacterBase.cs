@@ -67,7 +67,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         private void FixedUpdate()
         {
-            if (State == EStates.Moving && _controller.isGrounded == true && photonView.IsMine)
+            if (State == EStates.Moving && _controller.isGrounded == true) //&& photonView.IsMine)
             {
                 _controller.Move();
             }
