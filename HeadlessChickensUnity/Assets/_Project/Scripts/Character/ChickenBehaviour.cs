@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using Photon.Pun;
 using PixelPeeps.HeadlessChickens.Network;
+using PixelPeeps.HeadlessChickens.UI;
 
 namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
@@ -34,7 +35,10 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             if (hasBeenCaught || alreadyEscaped) return;
             
             chickenMesh.GetComponent<Renderer>().sharedMaterial = caughtMat;
+            
             NewGameManager.Instance.chickensCaught++;
+            HUDManager.Instance.UpdateChickCounter();
+            
             hasBeenCaught = true;
             NewGameManager.Instance.CheckForFinish();
         }
@@ -45,7 +49,10 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             if (alreadyEscaped || hasBeenCaught) return;
             
             Debug.Log(gameObject.name + " has escaped");
+            
             NewGameManager.Instance.chickensEscaped++;
+            HUDManager.Instance.UpdateChickCounter();
+            
             alreadyEscaped = true;
             NewGameManager.Instance.CheckForFinish();
         }
