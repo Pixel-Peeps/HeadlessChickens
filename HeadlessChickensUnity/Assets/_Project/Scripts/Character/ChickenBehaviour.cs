@@ -23,6 +23,9 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public HidingSpot hidedSpot;
         public Transform currentHidingSpot;
 
+        [Header("Following")]
+        public Transform chickToFollow;
+
         private bool alreadyEscaped = false;
 
         private void Start()
@@ -76,7 +79,10 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
             int randomInt = UnityEngine.Random.Range(0, chickenManager.activeChickens.Count);
 
-            ChickenBehaviour chickToFollow = chickenManager.activeChickens[randomInt];
+            int chickToFollowID = chickenManager.activeChickens[randomInt].GetComponent<PhotonView>().ViewID;
+            ChickenBehaviour chickToFollow = PhotonView.Find(chickToFollowID).GetComponent<ChickenBehaviour>();
+
+            Debug.Log("Following " + chickToFollow);
             chickToFollow.playerCam.enabled = true;
 
             // if chick is watching this cam, they call this method
