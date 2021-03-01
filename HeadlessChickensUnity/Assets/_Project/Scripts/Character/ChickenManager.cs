@@ -30,6 +30,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public void UpdateActiveList(int chickenID)
         {
             activeChicks.Remove(PhotonView.Find(chickenID).GetComponent<ChickenBehaviour>());
+            Debug.Log("<color=green> Chicken removed from active</color>");
         }
 
 
@@ -37,6 +38,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public void UpdateEscapedList(int chickenID)
         {
             escapedChicks.Add(PhotonView.Find(chickenID).GetComponent<ChickenBehaviour>());
+            Debug.Log("<color=green> Chicken added to escaped</color>");
         }
 
         [PunRPC]
@@ -51,6 +53,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             foreach (var chicken in escapedChicks.Where(chicken => iD == chicken.chickToFollowID))
             {
                 chicken.photonView.GetComponent<ChickenBehaviour>().SwitchToObserverCam();
+                Debug.Log("<color=green>" + chicken.photonView.Owner.NickName + "did the foreach loop</color>");
             }
         }
     }
