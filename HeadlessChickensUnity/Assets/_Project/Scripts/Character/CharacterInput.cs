@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 using Cinemachine;
 using System;
 using Photon.Pun;
+using PixelPeeps.HeadlessChickens.Network;
 
 namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 {
@@ -306,9 +307,12 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                         Quaternion.identity);
                     blueprint.gameObject.transform.SetParent(_character.gameObject.transform, false);
                 }
-                
-                //lever now!
 
+                if (_character.isFox && _character.hasLever && !_character.isBlueprintActive)
+                {
+                    Debug.Log("Showing false levers????");
+                    LeverManager.Instance.IdentifyFakeLeverPositions();
+                }
             }
         }
         

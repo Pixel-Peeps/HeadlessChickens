@@ -44,6 +44,7 @@ namespace PixelPeeps.HeadlessChickens.Network
         [Header("Levers")]
         public GameObject leverSpotPrefab;
         public int maxNumberOfLevers;
+        [SerializeField] public List<RoomTile> inactiveLevers;
 
         [Header("Exits")]
         [SerializeField] public List<ExitDoor> exits;
@@ -194,6 +195,10 @@ namespace PixelPeeps.HeadlessChickens.Network
                     continue;
                 }
             }
+
+            inactiveLevers = tempRooms;
+            //send this to lever manager for later
+            LeverManager.Instance.SetLeverPosList(tempRooms);
 
             for (int i = 0; i < maxNumberOfLevers; i++)
             {
