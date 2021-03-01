@@ -1020,10 +1020,11 @@ MonoBehaviour:
   isBlueprintActive: 0
   isFox: 0
   hasLever: 0
-  trapSlot: {fileID: 0}
+  trapSlot: {fileID: 3685449852532122639, guid: 77a645d81b946e9479078ac31b968101, type: 3}
   cooldownRunning: 0
   hasBeenCaught: 0
   states: 0
+  chickenManager: {fileID: 0}
   positionBeforeHiding: {x: 0, y: 0, z: 0}
   chickenMesh: {fileID: 1426164002682427600}
   caughtMat: {fileID: 2100000, guid: b67046d3144638c4c855fe1d6caf598f, type: 2}
@@ -1045,6 +1046,7 @@ MonoBehaviour:
   moveSpeed: 1.2
   moveTime: 5
   stopDistance: 0.1
+  _movDirection: {x: 0, y: 0}
   sprintMultiplier: 1.5
   turnSpeed: 50
   turnSpeedLow: 5
@@ -1054,6 +1056,8 @@ MonoBehaviour:
   fallMultiplier: 5.5
   lowJumpMultiplier: 4
   jumpButtonPressed: 0
+  animSpeed: 0
+  verticalForward: 0
 --- !u!114 &4736984460096568289
 MonoBehaviour:
   m_ObjectHideFlags: 0
