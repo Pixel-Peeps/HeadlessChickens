@@ -6,6 +6,8 @@ namespace PixelPeeps.HeadlessChickens.GameState
     {
         public override void StateEnter()
         {
+            Debug.Log("StateEnter GameSceneState");
+
             StateManager.LoadNextScene(StateManager.mainScene);
         }
 
@@ -16,6 +18,7 @@ namespace PixelPeeps.HeadlessChickens.GameState
 
         public override void StateExit()
         {
+            Debug.Log("StateExit on GameSceneState");
         }
     }
 }

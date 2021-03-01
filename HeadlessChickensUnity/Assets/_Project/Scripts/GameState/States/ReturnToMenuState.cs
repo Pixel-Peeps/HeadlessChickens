@@ -26,7 +26,7 @@ namespace PixelPeeps.HeadlessChickens.GameState
 
         public override void OnSceneLoad()
         {
-
+            ActivateMenu(menu);
         }
 
         public override void StateExit()

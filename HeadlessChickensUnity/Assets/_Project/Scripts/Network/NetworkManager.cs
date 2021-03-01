@@ -161,6 +161,7 @@ namespace PixelPeeps.HeadlessChickens.Network
 
         public override void OnRoomListUpdate(List<RoomInfo> roomList)
         {
+            uiManager = GameObject.FindGameObjectWithTag("MenuManager").GetComponent<UIManager>();
             Debug.Log("RoomListUpdate");
             uiManager.GenerateRoomList(roomList);
         }
@@ -185,6 +186,7 @@ namespace PixelPeeps.HeadlessChickens.Network
         #region Game Set-up
         public void StartGameOnMaster()
         {
+            Debug.Log("Starting game on master");
             PhotonNetwork.CurrentRoom.IsOpen = false;
             PhotonNetwork.CurrentRoom.IsVisible = false;
             
@@ -200,6 +202,7 @@ namespace PixelPeeps.HeadlessChickens.Network
         [PunRPC]
         public void StartGameForOthers()
         {            
+            Debug.Log("Starting game on others");
             GameStateManager.Instance.SwitchGameState(new GameSceneState());
             
             GameSetupBegin();

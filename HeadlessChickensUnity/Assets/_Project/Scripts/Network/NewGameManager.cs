@@ -106,7 +106,12 @@ namespace PixelPeeps.HeadlessChickens.Network
         }
         
         public void Initialise()
-        {            
+        {
+            foxWinScreen.SetActive(false);
+            foxLossScreen.SetActive(false);
+            chickenWinScreen.SetActive(false);
+            chickenLossScreen.SetActive(false);
+            
             SpawnPlayers();
             
             SpawnHidingSpots();
@@ -314,7 +319,7 @@ namespace PixelPeeps.HeadlessChickens.Network
         [PunRPC]
         private void ReturnToLobbyRPC()
         {
-            GameStateManager.Instance.SwitchGameState(new ReturnToLobbyState());
+            GameStateManager.Instance.SwitchGameState(new ReturnToMenuState());
         }
 
         #endregion
@@ -337,7 +342,7 @@ namespace PixelPeeps.HeadlessChickens.Network
         {
             if (timerIsRunning)
             {
-                if (timeRemaining > 0)
+                if (timeRemaining >= 0)
                 {
                     timeRemaining -= Time.deltaTime;
                     HUDManager.Instance.UpdateTimeDisplay(timeRemaining);

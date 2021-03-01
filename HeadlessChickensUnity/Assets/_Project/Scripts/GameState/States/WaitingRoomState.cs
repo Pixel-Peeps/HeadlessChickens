@@ -14,24 +14,29 @@ namespace PixelPeeps.HeadlessChickens.GameState
         
         public override void StateEnter()
         {
+            Debug.Log("StateEnter on WaitingRoomState");
             if (SceneManager.GetActiveScene().name != sceneName)
             {
                 StateManager.LoadNextScene(sceneName);
             }
+            
             else
             {
-               ActivateMenu(menu); 
-               StateManager.uiManager.UpdateRoomInfo();
+                ActivateMenu(menu); 
+                StateManager.uiManager.UpdateRoomInfo();
             }
         }
 
         public override void OnSceneLoad()
         {
+            StateManager.uiManager = GameObject.FindGameObjectWithTag("MenuManager").GetComponent<UIManager>();
             ActivateMenu(menu);
+            StateManager.uiManager.UpdateRoomInfo();
         }
 
         public override void StateExit()
         {
+            Debug.Log("StateExit on WaitingRoomState");
             DeactivateMenu(menu);
         }
     }

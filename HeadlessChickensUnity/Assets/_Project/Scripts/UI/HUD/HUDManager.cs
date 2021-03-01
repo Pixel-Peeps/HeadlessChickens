@@ -44,11 +44,11 @@ namespace PixelPeeps.HeadlessChickens.UI
             switch (playerType)
             {
                 case PlayerType.Fox:
-                    objectiveMessage.text = "Catch all the chicks!";
+                    objectiveMessage.text = foxText;
                     break;
                 
                 case PlayerType.Chick:
-                    objectiveMessage.text = "Find all the levers!";
+                    objectiveMessage.text = chickText;
                     break;
             }
 

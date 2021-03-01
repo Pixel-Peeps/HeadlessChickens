@@ -14,7 +14,7 @@ namespace PixelPeeps.HeadlessChickens.GameState
             sceneName = StateManager.menuScene;
         
         public override void StateEnter()
-        {
+        {            
             if (SceneManager.GetActiveScene().name != sceneName)
             {
                 StateManager.LoadNextScene(sceneName);
@@ -23,19 +23,19 @@ namespace PixelPeeps.HeadlessChickens.GameState
             if (StateManager.uiManager.createRoom != null)
             {
                 ActivateMenu(menu);
-
+                StateManager.uiManager.DeactivateMenu(StateManager.uiManager.waitingRoom);
                 StateManager.uiManager.createRoom.SetInputFieldText("");
                 Debug.Log("<color=green> set input field to </color>" + StateManager.uiManager.createRoom.inputField.text);
             }
         }
-
+        
         public override void OnSceneLoad()
         {
             ActivateMenu(menu);
             StateManager.uiManager.createRoom.SetInputFieldText("");
             Debug.Log("<color=green> set input field to </color>" + StateManager.uiManager.createRoom.inputField.text);
         }
-
+        
         public override void StateExit()
         {
             DeactivateMenu(menu);

@@ -51,7 +51,7 @@ namespace PixelPeeps.HeadlessChickens.GameState
         private void Initialise()
         {
             uiManager = FindObjectOfType<UIManager>();
-            
+
             currentState = new MainMenuState();
             currentState.StateEnter();
         }
@@ -64,19 +64,9 @@ namespace PixelPeeps.HeadlessChickens.GameState
             currentState.StateEnter();
         }
 
-        public GameObject InstantiateGUI(GameObject objectToInstantiate)
-        {
-            GameObject newInstance = Instantiate(objectToInstantiate);
-            return newInstance;
-        }
-
-        public void DestroyGUI(GameObject objectToDestroy)
-        {
-            Destroy(objectToDestroy);
-        }
-
         public void LoadNextScene(string sceneName)
         {
+            Debug.Log("LoadNextScene: " + sceneName);
             Scene activeScene = SceneManager.GetActiveScene();
             
             if (activeScene.name != sceneName)
@@ -87,6 +77,7 @@ namespace PixelPeeps.HeadlessChickens.GameState
 
         private IEnumerator AsyncSceneLoadCoroutine(string sceneName)
         {
+            print("Loading scene: " + sceneName);
             // AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
             PhotonNetwork.LoadLevel(sceneName);
             AsyncOperation asyncLoad = PhotonNetwork._AsyncLevelLoadingOperation;
@@ -98,7 +89,7 @@ namespace PixelPeeps.HeadlessChickens.GameState
                 HideLoadingScreen();
             }
 
-            uiManager = GameObject.FindGameObjectWithTag("MenuManager").GetComponent<UIManager>();
+            uiManager = GameObject.FindGameObjectWithTag("MenuManager").GetComponent<UIManager>(); 
 
             currentState.OnSceneLoad();
             
