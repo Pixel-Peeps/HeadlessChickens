@@ -62,9 +62,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             NewGameManager.Instance.chickensEscaped++;
             HUDManager.Instance.UpdateChickCounter();
             
-            
             NewGameManager.Instance.CheckForFinish();
-            
 
             chickenManager.photonView.RPC("UpdateActiveList", RpcTarget.AllViaServer, photonView.ViewID);
             chickenManager.photonView.RPC("UpdateEscapedList", RpcTarget.AllViaServer, photonView.ViewID);
@@ -91,9 +89,10 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         public void SwitchToObserverCam()
         {
-            if (!photonView.IsMine) return;
+            // if (!photonView.IsMine) return;
 
-            var currentFollow = chickToFollow != null ? chickToFollow : null;
+            var currentFollow = 
+                chickToFollow != null ? chickToFollow : null;
 
             int randomInt = UnityEngine.Random.Range(0, chickenManager.activeChicks.Count);
 
@@ -102,7 +101,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             chickToFollow = PhotonView.Find(chickToFollowID).GetComponent<ChickenBehaviour>();
 
             if (currentFollow != null) currentFollow.playerCam.gameObject.SetActive(false);
-            if(!alreadyEscaped) playerCam.gameObject.SetActive(false);
+
+            if (!alreadyEscaped) playerCam.gameObject.SetActive(false);
             Debug.Log("Following " + chickToFollow);
 
             if(chickToFollowID == photonView.ViewID)
