@@ -83,6 +83,12 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         }
 
+        [PunRPC]
+        public void UpdateChickToFollow(int ID)
+        {
+            chickToFollowID = ID;
+        }
+
         public void SwitchToObserverCam()
         {
             if (!photonView.IsMine) return;
@@ -92,6 +98,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             int randomInt = UnityEngine.Random.Range(0, chickenManager.activeChicks.Count);
 
             chickToFollowID = chickenManager.activeChicks[randomInt].photonView.ViewID;
+            photonView.RPC("UpdateChickToFollow", RpcTarget.AllViaServer, chickToFollowID);
             chickToFollow = PhotonView.Find(chickToFollowID).GetComponent<ChickenBehaviour>();
 
             if (currentFollow != null) currentFollow.playerCam.gameObject.SetActive(false);
