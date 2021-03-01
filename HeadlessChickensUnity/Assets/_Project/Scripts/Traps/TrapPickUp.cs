@@ -5,7 +5,7 @@ using PixelPeeps.HeadlessChickens._Project.Scripts.Character;
 using UnityEngine;
 
 
-public class TrapPickUp : MonoBehaviour
+public class TrapPickUp : MonoBehaviourPunCallbacks
 {
     
     //not using these anymore, but keeping JIC
@@ -44,12 +44,17 @@ public class TrapPickUp : MonoBehaviour
         
         if (!other.gameObject.GetComponent<CharacterBase>().isFox)
         {
+            photonView.SetControllerInternal(other.gameObject.GetComponent<PhotonView>().Owner.ActorNumber);
             Debug.Log("Trap: it's a chicken");
             int random = Random.Range(0, chickenTraps.Count+1);
             other.gameObject.GetComponent<ChickenBehaviour>().trapSlot = chickenTraps[random];
             other.gameObject.GetComponent<ChickenBehaviour>().hasTrap = true;
             Debug.Log("Assigning chick trap: "+chickenTraps[random].name);
-            PhotonNetwork.Destroy(gameObject);
+            
+            if (gameObject != null)
+            {
+                PhotonNetwork.Destroy(gameObject);
+            }
         }
         else
         {
@@ -67,12 +72,19 @@ public class TrapPickUp : MonoBehaviour
             else
             {
             */
+            photonView.SetControllerInternal(other.gameObject.GetComponent<PhotonView>().Owner.ActorNumber);
+            Debug.Log(other.gameObject.GetComponent<PhotonView>().Owner.ActorNumber);
                 Debug.Log("Oh lord he has the glue");
                 //it has the tub of glue
                 other.gameObject.GetComponent<FoxBehaviour>().hasTrap = true;
                 other.gameObject.GetComponent<FoxBehaviour>().trapSlot = tubGluePrefab;
-                PhotonNetwork.Destroy(gameObject);
-            //}
+
+                if (gameObject != null)
+                {
+                    PhotonNetwork.Destroy(gameObject);
+                }
+
+                //}
         }
     }
 }

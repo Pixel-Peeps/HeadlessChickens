@@ -318,15 +318,16 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             {
                 if (_character.isBlueprintActive)
                 {
-                    if (_character.gameObject.GetComponentInChildren<TrapBlueprint>().gameObject != null)
+                    if (_character.gameObject.GetComponentInChildren<TrapBlueprint>().gameObject !=null)
                     {
                         Debug.Log("cancelling blueprint");
                         PhotonNetwork.Destroy(_character.gameObject.GetComponentInChildren<TrapBlueprint>().gameObject);
                         _character.isBlueprintActive = false;
-                        if (_character.gameObject.GetComponentInChildren<TrapBlueprint>().gameObject == null)
-                        {
-                            _character.isBlueprintActive = false;
-                        }
+                        
+                        //if (_character.gameObject.GetComponentInChildren<TrapBlueprint>().gameObject == null)
+                        //{
+                        //    _character.isBlueprintActive = false;
+                        //}
                     }
                 }
             }

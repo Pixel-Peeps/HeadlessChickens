@@ -1,4 +1,5 @@
 ﻿using Photon.Pun;
+using PixelPeeps.HeadlessChickens._Project.Scripts.Character;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -63,8 +64,13 @@ public class TrapBlueprint : MonoBehaviour
         //trap prefab == where ever trap info is stored.currenttrap
         
        // godGO.transform.position = new Vector3(_newPosition.x, 0, _newPosition.z);
+
+       gameObject.transform.GetComponentInParent<CharacterBase>().trapSlot = null;
+       gameObject.transform.GetComponentInParent<CharacterBase>().hasTrap = false;
+       gameObject.transform.GetComponentInParent<CharacterBase>().isBlueprintActive = false;
        PhotonNetwork.InstantiateRoomObject(actualTrapPrefab.name, gameObject.transform.position,
            gameObject.transform.rotation, 0);
+       
             
 
         if (gameObject != null)

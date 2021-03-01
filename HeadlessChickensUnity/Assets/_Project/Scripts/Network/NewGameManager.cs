@@ -109,7 +109,7 @@ namespace PixelPeeps.HeadlessChickens.Network
             
             SpawnLevers();
             
-            // SpawnTrapPickUps();
+            SpawnTrapPickUps();
             
             StartTimer();
 
@@ -169,11 +169,11 @@ namespace PixelPeeps.HeadlessChickens.Network
         
         private void SpawnHidingSpots()
         {
-            //foreach (Transform hidingSpawnPos in hidingSpotSpawnPos)
-            //{
-            //    PhotonNetwork.InstantiateRoomObject(hidingSpotPrefab.name, hidingSpawnPos.position,
-            //        hidingSpawnPos.rotation);
-            //}
+            foreach (Transform hidingSpawnPos in hidingSpotSpawnPos)
+            {
+                PhotonNetwork.InstantiateRoomObject(hidingSpotPrefab.name, hidingSpawnPos.position,
+                    hidingSpawnPos.rotation);
+            }
         }
 
         private void SpawnLevers()
