@@ -68,12 +68,12 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             
             alreadyEscaped = true;
             NewGameManager.Instance.CheckForFinish();
-
-            SwitchToObserverCam();
+            
 
             chickenManager.photonView.RPC("UpdateActiveList", RpcTarget.AllViaServer, photonView.ViewID);
             chickenManager.photonView.RPC("UpdateEscapedList", RpcTarget.AllViaServer, photonView.ViewID);
 
+            SwitchToObserverCam();
             chickenManager.UpdateEscapedChickCam();
 
             // chickenMesh.enabled = false;
@@ -88,6 +88,11 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public void SwitchToObserverCam()
         {
             if (!photonView.IsMine) return;
+
+            if(chickToFollow != null)
+            {
+                chickToFollow.playerCam.gameObject.SetActive(false);
+            }
 
             int randomInt = UnityEngine.Random.Range(0, chickenManager.activeChicks.Count);
 

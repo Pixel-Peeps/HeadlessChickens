@@ -40,11 +40,11 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         public void UpdateEscapedChickCam()
         {
-            int chickID = escapedChicks[escapedChicks.Count - 1].GetComponent<PhotonView>().ViewID;
+            int lastChickToEscapseID = escapedChicks[escapedChicks.Count - 1].photonView.ViewID;
 
             foreach (ChickenBehaviour chicken in escapedChicks)
             {
-                if (chickID == chicken.chickToFollowID)
+                if (lastChickToEscapseID == chicken.chickToFollowID)
                 {
                     chicken.SwitchToObserverCam();
                 }
