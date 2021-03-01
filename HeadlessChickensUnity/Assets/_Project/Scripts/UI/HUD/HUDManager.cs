@@ -52,7 +52,7 @@ namespace PixelPeeps.HeadlessChickens.UI
                     break;
             }
 
-            objectiveMsgTweener.ScaleUp();
+            objectiveMsgTweener.ScaleUpFromZero();
             StartCoroutine(ObjectiveMessageCoroutine(lifetime));
         }
 

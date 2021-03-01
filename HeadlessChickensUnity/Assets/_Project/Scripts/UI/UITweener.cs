@@ -3,22 +3,25 @@
 namespace PixelPeeps.HeadlessChickens.UI
 {
     public class UITweener : MonoBehaviour
-    {   
-        public void ScaleUp()
+    {
+        [Header("Scale Tween")] 
+        public Vector3 scaleTo = new Vector3(2, 2, 2);
+        public float scaleTime = 0.5f;
+        
+        public void ScaleUpFromZero()
         {
             gameObject.transform.localScale = Vector3.zero;
-            
-            Vector3 scaleTo = new Vector3(2, 2, 2);
-            float scaleTime = 0.5f;
 
+            LeanTween.scale(gameObject, scaleTo, scaleTime);
+        }
+
+        public void ScaleUpFromCurrent()
+        {
             LeanTween.scale(gameObject, scaleTo, scaleTime);
         }
         
         public void ScaleDown()
         {
-            Vector3 scaleTo = new Vector3(0, 0, 0);
-            float scaleTime = 0.5f;
-
             LeanTween.scale(gameObject, scaleTo, scaleTime).setOnComplete(DisableObject);
         }
 
