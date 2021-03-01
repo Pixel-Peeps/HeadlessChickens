@@ -110,6 +110,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             chickToFollowID = chickenManager.activeChicks[randomInt].photonView.ViewID;
             photonView.RPC("UpdateChickToFollow", RpcTarget.AllViaServer, chickToFollowID);
             chickToFollow = PhotonView.Find(chickToFollowID).GetComponent<ChickenBehaviour>();
+            Debug.Log("<color=lime>currentFollow is: " + currentFollow + "</color>");
 
             if (currentFollow != null) currentFollow.playerCam.gameObject.SetActive(false);
 
