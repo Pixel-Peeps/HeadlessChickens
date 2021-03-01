@@ -96,7 +96,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
             int randomInt = UnityEngine.Random.Range(0, chickenManager.activeChicks.Count);
 
-            chickToFollowID = chickenManager.activeChicks[randomInt].GetComponent<PhotonView>().ViewID;
+            chickToFollowID = chickenManager.activeChicks[randomInt].photonView.ViewID;
             chickToFollow = PhotonView.Find(chickToFollowID).GetComponent<ChickenBehaviour>();
 
             playerCam.gameObject.SetActive(false);

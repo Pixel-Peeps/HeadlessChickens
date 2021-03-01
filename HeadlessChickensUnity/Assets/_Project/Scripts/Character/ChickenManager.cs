@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Photon.Pun;
 using PixelPeeps.HeadlessChickens.Network;
@@ -40,14 +41,22 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         public void UpdateEscapedChickCam()
         {
+<<<<<<< Updated upstream
             int lastChickToEscapseID = escapedChicks[escapedChicks.Count - 1].photonView.ViewID;
+=======
+            int chickID = escapedChicks[escapedChicks.Count - 1].photonView.ViewID;
+>>>>>>> Stashed changes
 
-            foreach (ChickenBehaviour chicken in escapedChicks)
+            foreach (var chicken in escapedChicks.Where(chicken => chickID == chicken.chickToFollowID))
             {
+<<<<<<< Updated upstream
                 if (lastChickToEscapseID == chicken.chickToFollowID)
                 {
                     chicken.SwitchToObserverCam();
                 }
+=======
+                chicken.SwitchToObserverCam();
+>>>>>>> Stashed changes
             }
         }
     }
