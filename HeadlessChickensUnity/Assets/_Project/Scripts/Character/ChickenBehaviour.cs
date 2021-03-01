@@ -55,6 +55,9 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             
             alreadyEscaped = true;
             NewGameManager.Instance.CheckForFinish();
+
+
+            gameObject.SetActive(false);
         }
 
         protected override void Action()
