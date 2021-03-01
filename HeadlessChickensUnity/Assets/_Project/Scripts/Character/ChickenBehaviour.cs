@@ -38,6 +38,17 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             escapeLocation = GameObject.FindGameObjectWithTag("Sanctuary").transform.GetChild(0);
         }
 
+        private void LateUpdate()
+        {
+            if (alreadyEscaped)
+            {
+                if (chickToFollow.alreadyEscaped)
+                {
+                    SwitchToObserverCam();
+                }
+            }
+        }
+
         [PunRPC]
         public void ChickenCaptured()
         {
