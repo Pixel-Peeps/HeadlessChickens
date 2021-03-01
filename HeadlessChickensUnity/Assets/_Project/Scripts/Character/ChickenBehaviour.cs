@@ -70,9 +70,10 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             NewGameManager.Instance.CheckForFinish();
 
             SwitchToObserverCam();
-            chickenManager.activeChicks.Remove(this);
 
-            chickenManager.escapedChicks.Add(this);
+            chickenManager.photonView.RPC("UpdateActiveList", RpcTarget.AllViaServer, photonView.ViewID);
+            chickenManager.photonView.RPC("UpdateEscapedList", RpcTarget.AllViaServer, photonView.ViewID);
+
             chickenManager.UpdateEscapedChickCam();
 
             // chickenMesh.enabled = false;

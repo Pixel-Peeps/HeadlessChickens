@@ -7,7 +7,7 @@ using PixelPeeps.HeadlessChickens.UI;
 
 namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 {
-    public class ChickenManager : MonoBehaviour
+    public class ChickenManager : MonoBehaviourPunCallbacks
     {
         public List<ChickenBehaviour> activeChicks;
         public List<ChickenBehaviour> escapedChicks;
@@ -22,6 +22,20 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         void Update()
         {
 
+        }
+        
+
+        [PunRPC]
+        public void UpdateActiveList(int chickenID)
+        {
+            activeChicks.Remove(PhotonView.Find(chickenID).GetComponent<ChickenBehaviour>());
+        }
+
+
+        [PunRPC]
+        public void UpdateEscapedList(int chickenID)
+        {
+            escapedChicks.Add(PhotonView.Find(chickenID).GetComponent<ChickenBehaviour>());
         }
 
         public void UpdateEscapedChickCam()
