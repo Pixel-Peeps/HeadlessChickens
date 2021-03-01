@@ -85,9 +85,9 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             int chickToFollowID = chickenManager.activeChickens[randomInt].GetComponent<PhotonView>().ViewID;
             chickToFollow = PhotonView.Find(chickToFollowID).GetComponent<ChickenBehaviour>();
 
-            playerCam.enabled = false;
+            playerCam.gameObject.SetActive(false);
             Debug.Log("Following " + chickToFollow);
-            chickToFollow.playerCam.enabled = true;
+            chickToFollow.playerCam.gameObject.SetActive(true);
 
             // if chick is watching this cam, they call this method
         }
