@@ -40,7 +40,11 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             HUDManager.Instance.UpdateChickCounter();
             
             hasBeenCaught = true;
-            NewGameManager.Instance.CheckForFinish();
+            
+            if (PhotonNetwork.IsMasterClient)
+            {
+                NewGameManager.Instance.CheckForFinish();
+            }
         }
 
         [PunRPC]
@@ -54,7 +58,11 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             HUDManager.Instance.UpdateChickCounter();
             
             alreadyEscaped = true;
-            NewGameManager.Instance.CheckForFinish();
+            
+            if (PhotonNetwork.IsMasterClient)
+            {
+                NewGameManager.Instance.CheckForFinish();
+            }
         }
 
         protected override void Action()

@@ -21,6 +21,8 @@ namespace PixelPeeps.HeadlessChickens.Network
         [Header("Chickens")]
         public GameObject chickPrefab;
         public List<Transform> chickSpawnPoints;
+
+        [HideInInspector] public PlayerType myType;
         
         private GameObject playerPrefab; // The prefab this player uses. Assigned as fox or chick when roles are assigned
         private Transform spawnPos;
@@ -81,6 +83,7 @@ namespace PixelPeeps.HeadlessChickens.Network
             {
                 playerPrefab = foxPrefab;
                 spawnPos = foxSpawnPoint;
+                myType = PlayerType.Fox;
             }
             else
             {
@@ -98,6 +101,7 @@ namespace PixelPeeps.HeadlessChickens.Network
                 }
                 Debug.Log("index: " + indexInChickenList);
                 spawnPos = chickSpawnPoints[indexInChickenList];
+                myType = PlayerType.Chick;
             }
         }
         
@@ -117,6 +121,13 @@ namespace PixelPeeps.HeadlessChickens.Network
             HUDManager.Instance.GenerateLeverIcons();  
             
             NetworkManager.Instance.GameSetupComplete();
+            
+            HUDManager.Instance.DisplayObjectiveMessage(myType, 3f, "Catch all the chicks!", "Find all the levers!");
+        }
+
+        public void ExitDoorOpened()
+        {
+            HUDManager.Instance.DisplayObjectiveMessage(myType, 3f, "Prevent their escape!", "Rush for the exit!");
         }
 
         public void CheckForFinish()
@@ -127,18 +138,59 @@ namespace PixelPeeps.HeadlessChickens.Network
             }
         }
 
-        public void DetermineWinner()
+        private void DetermineWinner()
         {
             if (chickensEscaped >= chickenEscapeThreshold)
             {
-                // Show Chickens Win Screen / Fox Lose Screen
-                Debug.Log("Chickens Wins!");
+                photonView.RPC("ChickenWinRPC", RpcTarget.All);
             }
             else
             {
-                // Show Fox Win Screen / Chickens Lose Screen
-                Debug.Log("Fox Wins!");
+                photonView.RPC("FoxWinRPC", RpcTarget.All);
             }
+        }
+
+        
+        // ReSharper disable once UnusedMember.Global
+        [PunRPC]
+        public void ChickenWinRPC()
+        {
+            switch (myType)
+            {
+                case PlayerType.Fox:
+                    foxLossScreen.SetActive(true);
+                    break;
+                
+                case PlayerType.Chick:
+                    chickenWinScreen.SetActive(true);
+                    break;
+                
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            
+            EndGame();
+        }
+        
+        // ReSharper disable once UnusedMember.Global
+        [PunRPC]
+        public void FoxWinRPC()
+        {
+            switch (myType)
+            {
+                case PlayerType.Fox:
+                    foxWinScreen.SetActive(true);
+                    break;
+                
+                case PlayerType.Chick:
+                    chickenLossScreen.SetActive(true);
+                    break;
+                
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            
+            EndGame();
         }
 
         private void SpawnPlayers()
@@ -154,7 +206,6 @@ namespace PixelPeeps.HeadlessChickens.Network
                 myController = newController;
             }
         }
-
 
         private void SpawnTrapPickUps()
         {
@@ -248,8 +299,6 @@ namespace PixelPeeps.HeadlessChickens.Network
         public void EndGameRPC()
         {
             NetworkManager.Instance.gameIsRunning = false;
-            // TODO Set correct results screen active
-            chickenWinScreen.SetActive(true);
             PhotonNetwork.Destroy(myController);
         }
         
@@ -298,6 +347,8 @@ namespace PixelPeeps.HeadlessChickens.Network
                 {
                     timerIsRunning = false;
                     timeRemaining = 0;
+                    HUDManager.Instance.UpdateTimeDisplay(timeRemaining);
+                    photonView.RPC("FoxWinRPC", RpcTarget.All);
                 }
             }
         }
@@ -320,5 +371,11 @@ namespace PixelPeeps.HeadlessChickens.Network
         }
 
         #endregion
+    }
+
+    public enum PlayerType
+    {
+        Fox,
+        Chick
     }
 }

@@ -1,4 +1,7 @@
-﻿using Photon.Pun;
+﻿using System;
+using System.Collections;
+using Photon.Pun;
+using PixelPeeps.HeadlessChickens.Network;
 using TMPro;
 using UnityEngine;
 // ReSharper disable UnusedMember.Global
@@ -10,7 +13,9 @@ namespace PixelPeeps.HeadlessChickens.UI
         [field: Header("Singleton Instance")]
         public static HUDManager Instance { get; private set; }
 
-        [Header("HUD Elements")]
+        [Header("HUD Elements")] 
+        public TextMeshProUGUI objectiveMessage;
+        public UITweener objectiveMsgTweener;
         public LeverCounter leverCounter;
         public ChickCounter chickCounter;
         public TextMeshProUGUI timerDisplay;
@@ -25,6 +30,36 @@ namespace PixelPeeps.HeadlessChickens.UI
             {    
                 Instance = this;
             }
+        }
+
+        public void Start()
+        {
+            objectiveMessage.gameObject.SetActive(false);
+        }
+
+        public void DisplayObjectiveMessage(PlayerType playerType, float lifetime, string foxText, string chickText)
+        {
+            objectiveMessage.gameObject.SetActive(true);
+            
+            switch (playerType)
+            {
+                case PlayerType.Fox:
+                    objectiveMessage.text = "Catch all the chicks!";
+                    break;
+                
+                case PlayerType.Chick:
+                    objectiveMessage.text = "Find all the levers!";
+                    break;
+            }
+
+            objectiveMsgTweener.ScaleUp();
+            StartCoroutine(ObjectiveMessageCoroutine(lifetime));
+        }
+
+        private IEnumerator ObjectiveMessageCoroutine(float lifetime)
+        {
+            yield return new WaitForSecondsRealtime(lifetime);
+            objectiveMsgTweener.ScaleDown();
         }
         
         public void UpdateTimeDisplay(float timeToDisplay)

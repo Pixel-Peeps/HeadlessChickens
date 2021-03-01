@@ -1,8 +1,9 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using PixelPeeps.HeadlessChickens._Project.Scripts.Character;
 using Photon.Pun;
+using PixelPeeps.HeadlessChickens.GameState;
+using PixelPeeps.HeadlessChickens.UI;
 
 namespace PixelPeeps.HeadlessChickens.Network
 {
@@ -26,6 +27,7 @@ namespace PixelPeeps.HeadlessChickens.Network
         [PunRPC] public void RPC_ActivateExit()
         {
             Debug.Log("RPC_ActivateExit called");
+            NewGameManager.Instance.ExitDoorOpened();
             exitActive = true;
             doorClosedMesh.SetActive(false);
             Debug.Log("RPC_ActivateExit finished. " + gameObject.name + " has been activated");
