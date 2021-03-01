@@ -66,7 +66,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             NewGameManager.Instance.chickensEscaped++;
             HUDManager.Instance.UpdateChickCounter();
             
-            alreadyEscaped = true;
+            
             NewGameManager.Instance.CheckForFinish();
             
 
@@ -74,7 +74,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             chickenManager.photonView.RPC("UpdateEscapedList", RpcTarget.AllViaServer, photonView.ViewID);
 
             SwitchToObserverCam();
-            chickenManager.UpdateEscapedChickCam();
+            alreadyEscaped = true;
+            chickenManager.UpdateEscapedChickCam(photonView.ViewID);
 
             // chickenMesh.enabled = false;
             _rigidbody.isKinematic = true;
@@ -89,17 +90,15 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         {
             if (!photonView.IsMine) return;
 
-            if(chickToFollow != null)
-            {
-                chickToFollow.playerCam.gameObject.SetActive(false);
-            }
+            var currentFollow = !chickToFollow ? chickToFollow : null;
 
             int randomInt = UnityEngine.Random.Range(0, chickenManager.activeChicks.Count);
 
             chickToFollowID = chickenManager.activeChicks[randomInt].photonView.ViewID;
             chickToFollow = PhotonView.Find(chickToFollowID).GetComponent<ChickenBehaviour>();
 
-            playerCam.gameObject.SetActive(false);
+            if (currentFollow != null) currentFollow.playerCam.gameObject.SetActive(false);
+            if(!alreadyEscaped) playerCam.gameObject.SetActive(false);
             Debug.Log("Following " + chickToFollow);
             chickToFollow.playerCam.gameObject.SetActive(true);
 
