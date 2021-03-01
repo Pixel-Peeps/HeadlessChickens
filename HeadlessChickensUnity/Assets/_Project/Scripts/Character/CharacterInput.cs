@@ -141,8 +141,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         public void Move()
         {
-        //    if (photonView.IsMine)
-         //   {
+            if (photonView.IsMine)
+            {
                 // Check Camera facing direction
                 var forward = _camTransform.forward;
                 Vector3 tempForward = new Vector3(forward.x, 0, forward.z);
@@ -192,13 +192,13 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
             // move to position
             transform.position = Vector3.Lerp(transform.position, _newPosition, Time.deltaTime * moveTime);
-           // }
+            }
         }
 
         private void Jump()
         {
-          //  if (photonView.IsMine)
-         //   {
+            if (photonView.IsMine)
+            {
                 // lock jump if not grounded, set jump direction based on forward direction
                 // If character is not moving jump up, if is moving jump based on forward facing direction
                 if (!isGrounded || _character.State == CharacterBase.EStates.Hiding) return;
@@ -218,7 +218,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 isGrounded = false;
 
 
-           // }
+            }
         }
 
         /*##################################
@@ -269,8 +269,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         private void InteractPressed(InputAction.CallbackContext obj)
         {
-            //if (photonView.IsMine)
-           // {
+            if (photonView.IsMine)
+            {
                 // if caught, don't do anything
                 if (_character.hasBeenCaught) return;
 
@@ -283,7 +283,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
                 var interacted = _character.interactor.TryInteract();
                 int interactTypeNumber = _character.interactor.GetInteractType();
-         //   }
+            }
         }
         
         private void TrapInteractPressed(InputAction.CallbackContext obj)
