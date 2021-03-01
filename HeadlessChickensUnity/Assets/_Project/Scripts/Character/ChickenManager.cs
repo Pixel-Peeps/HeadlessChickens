@@ -44,7 +44,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         {
             //int lastChickToEscapseID = escapedChicks[escapedChicks.Count - 1].photonView.ViewID;
 
-            // Debug.Log(iD + " called UpdateEscapedChickCam");
+            Debug.Log(iD + " called UpdateEscapedChickCam");
 
             if (!PhotonView.Find(iD).GetComponent<ChickenBehaviour>().alreadyEscaped) return;
 
