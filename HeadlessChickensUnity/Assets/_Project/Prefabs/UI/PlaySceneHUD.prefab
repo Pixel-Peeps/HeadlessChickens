@@ -1180,7 +1180,7 @@ GameObject:
   - component: {fileID: 7477385095465537474}
   - component: {fileID: 2313858987424337402}
   m_Layer: 5
-  m_Name: Image
+  m_Name: SpectatorIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1226,7 +1226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5882353}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2101,8 +2101,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4288196272
-  m_fontColor: {r: 0.6886792, g: 0.6814752, b: 0.5944731, a: 1}
+    rgba: 2526588592
+  m_fontColor: {r: 0.6886792, g: 0.6814752, b: 0.5944731, a: 0.5882353}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

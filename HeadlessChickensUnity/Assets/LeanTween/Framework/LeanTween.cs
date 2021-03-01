@@ -1668,7 +1668,7 @@ public class LeanTween : MonoBehaviour {
     * 
     * @method LeanTween.scaleX
     * @param {GameObject} gameObject:GameObject Gameobject that you wish to scale
-    * @param {float} scaleTo:float the size with which to scale to
+    * @param {float} scaleUpTo:float the size with which to scale to
     * @param {float} time:float the time to complete the tween in
     * @return {LTDescr} LTDescr an object that distinguishes the tween
     */
@@ -1681,7 +1681,7 @@ public class LeanTween : MonoBehaviour {
     * 
     * @method LeanTween.scaleY
     * @param {GameObject} gameObject:GameObject Gameobject that you wish to scale
-    * @param {float} scaleTo:float the size with which to scale to
+    * @param {float} scaleUpTo:float the size with which to scale to
     * @param {float} time:float the time to complete the tween in
     * @return {LTDescr} LTDescr an object that distinguishes the tween
     */
@@ -1694,7 +1694,7 @@ public class LeanTween : MonoBehaviour {
     * 
     * @method LeanTween.scaleZ
     * @param {GameObject} gameObject:GameObject Gameobject that you wish to scale
-    * @param {float} scaleTo:float the size with which to scale to
+    * @param {float} scaleUpTo:float the size with which to scale to
     * @param {float} time:float the time to complete the tween in
     * @return {LTDescr} LTDescr an object that distinguishes the tween
     */
