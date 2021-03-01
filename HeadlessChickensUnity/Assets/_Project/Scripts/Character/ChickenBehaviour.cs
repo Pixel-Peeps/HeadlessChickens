@@ -90,7 +90,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         {
             if (!photonView.IsMine) return;
 
-            var currentFollow = !chickToFollow ? chickToFollow : null;
+            var currentFollow = chickToFollow != null ? chickToFollow : null;
 
             int randomInt = UnityEngine.Random.Range(0, chickenManager.activeChicks.Count);
 
