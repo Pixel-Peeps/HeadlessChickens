@@ -5,6 +5,7 @@ using UnityEngine;
 using Photon.Pun;
 using PixelPeeps.HeadlessChickens.Network;
 using PixelPeeps.HeadlessChickens.UI;
+using System.Collections.Generic;
 
 namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
@@ -73,7 +74,12 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             // select chick at random
             // turn their cam on
 
-            
+            int randomInt = UnityEngine.Random.Range(0, chickenManager.activeChickens.Count);
+
+            ChickenBehaviour chickToFollow = chickenManager.activeChickens[randomInt];
+            chickToFollow.playerCam.enabled = true;
+
+            // if chick is watching this cam, they call this method
         }
 
         protected override void Action()

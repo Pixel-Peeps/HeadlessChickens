@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.ComponentModel;
+using Cinemachine;
 using Photon.Pun;
 using UnityEngine;
 
@@ -14,6 +15,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public Interactor interactor;
         public PhotonView photonView;
         public Rigidbody _rigidbody;
+        public CinemachineVirtualCamera playerCam;
 
         public bool isHiding;
         public bool hasTrap;
@@ -49,6 +51,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             _controller = GetComponent<CharacterInput>();
             _rigidbody = GetComponent<Rigidbody>();
             photonView = GetComponent<PhotonView>();
+            playerCam = GetComponent<CinemachineVirtualCamera>();
 
             interactor.OnCanInteract += OnCanInteract;
         }
