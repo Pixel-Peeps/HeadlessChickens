@@ -6,6 +6,7 @@ using Photon.Pun;
 using PixelPeeps.HeadlessChickens.Network;
 using PixelPeeps.HeadlessChickens.UI;
 using System.Collections.Generic;
+using Cinemachine;
 
 namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
@@ -65,9 +66,11 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             NewGameManager.Instance.CheckForFinish();
 
             SwitchToObserverCam();
-            gameObject.SetActive(false);
-
             chickenManager.activeChickens.Remove(this);
+
+            chickenMesh.enabled = false;
+            _controller.enabled = false;
+            
         }
 
         private void SwitchToObserverCam()
