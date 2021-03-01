@@ -27,6 +27,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         private void Start()
         {
             // chickenMesh = GetComponent<Renderer>();
+            chickenManager = FindObjectOfType<ChickenManager>();
             chickenManager.activeChickens.Add(this);
         }
 
