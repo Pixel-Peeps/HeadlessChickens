@@ -26,14 +26,16 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         [Header("Following")]
         public ChickenBehaviour chickToFollow;
+        public int chickToFollowID;
 
-        
+        public Transform escapeLocation;
 
         private void Start()
         {
             // chickenMesh = GetComponent<Renderer>();
             chickenManager = FindObjectOfType<ChickenManager>();
-            chickenManager.activeChickens.Add(this);
+            chickenManager.activeChicks.Add(this);
+            escapeLocation = GameObject.FindGameObjectWithTag("Sanctuary").transform.GetChild(0);
         }
 
         [PunRPC]
@@ -49,7 +51,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             hasBeenCaught = true;
             NewGameManager.Instance.CheckForFinish();
 
-            chickenManager.activeChickens.Remove(this);
+            chickenManager.activeChicks.Remove(this);
         }
 
         [PunRPC]
@@ -66,23 +68,28 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             NewGameManager.Instance.CheckForFinish();
 
             SwitchToObserverCam();
-            chickenManager.activeChickens.Remove(this);
+            chickenManager.activeChicks.Remove(this);
 
-            chickenMesh.enabled = false;
+            chickenManager.escapedChicks.Add(this);
+            chickenManager.UpdateEscapedChickCam();
+
+            // chickenMesh.enabled = false;
+            _rigidbody.isKinematic = true;
             _controller.enabled = false;
-            
+
+            transform.position = escapeLocation.position;
         }
 
-        private void SwitchToObserverCam()
+        public void SwitchToObserverCam()
         {
             // find all characterBases, make list
             // remove fox, remove inactive chicks
             // select chick at random
             // turn their cam on
 
-            int randomInt = UnityEngine.Random.Range(0, chickenManager.activeChickens.Count);
+            int randomInt = UnityEngine.Random.Range(0, chickenManager.activeChicks.Count);
 
-            int chickToFollowID = chickenManager.activeChickens[randomInt].GetComponent<PhotonView>().ViewID;
+            chickToFollowID = chickenManager.activeChicks[randomInt].GetComponent<PhotonView>().ViewID;
             chickToFollow = PhotonView.Find(chickToFollowID).GetComponent<ChickenBehaviour>();
 
             playerCam.gameObject.SetActive(false);

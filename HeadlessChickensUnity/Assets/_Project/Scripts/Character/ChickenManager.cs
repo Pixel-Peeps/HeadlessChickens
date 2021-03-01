@@ -9,7 +9,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 {
     public class ChickenManager : MonoBehaviour
     {
-        public List<ChickenBehaviour> activeChickens;
+        public List<ChickenBehaviour> activeChicks;
+        public List<ChickenBehaviour> escapedChicks;
         
         // Start is called before the first frame update
         void Start()
@@ -21,6 +22,19 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         void Update()
         {
 
+        }
+
+        public void UpdateEscapedChickCam()
+        {
+            int chickID = escapedChicks[escapedChicks.Count - 1].GetComponent<PhotonView>().ViewID;
+
+            foreach (ChickenBehaviour chicken in escapedChicks)
+            {
+                if (chickID == chicken.chickToFollowID)
+                {
+                    chicken.SwitchToObserverCam();
+                }
+            }
         }
     }
 
