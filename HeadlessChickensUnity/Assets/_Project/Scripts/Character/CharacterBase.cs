@@ -25,7 +25,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         
         public bool cooldownRunning = false;
         public bool hasBeenCaught = false;
-        protected bool alreadyEscaped = false;
+        public bool alreadyEscaped = false;
 
         public enum EStates
         {
