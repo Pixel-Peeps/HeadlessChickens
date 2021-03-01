@@ -75,7 +75,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
             SwitchToObserverCam();
             alreadyEscaped = true;
-            chickenManager.UpdateEscapedChickCam(photonView.ViewID);
+
+            chickenManager.photonView.RPC("UpdateEscapedChickCam", RpcTarget.AllViaServer, photonView.ViewID);
 
             // chickenMesh.enabled = false;
             _rigidbody.isKinematic = true;

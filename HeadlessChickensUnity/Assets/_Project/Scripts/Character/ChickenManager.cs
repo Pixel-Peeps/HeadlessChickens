@@ -39,10 +39,15 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             escapedChicks.Add(PhotonView.Find(chickenID).GetComponent<ChickenBehaviour>());
         }
 
+        [PunRPC]
         public void UpdateEscapedChickCam(int iD)
         {
             //int lastChickToEscapseID = escapedChicks[escapedChicks.Count - 1].photonView.ViewID;
-            
+
+            // Debug.Log(iD + " called UpdateEscapedChickCam");
+
+            if (!PhotonView.Find(iD).GetComponent<ChickenBehaviour>().alreadyEscaped) return;
+
             foreach (var chicken in escapedChicks.Where(chicken => iD == chicken.chickToFollowID))
             {
                 chicken.SwitchToObserverCam();
