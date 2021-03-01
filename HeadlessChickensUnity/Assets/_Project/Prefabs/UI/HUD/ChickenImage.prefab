@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5384006560100942018}
   - component: {fileID: 3725532696780940836}
   - component: {fileID: 1748497887589243705}
+  - component: {fileID: 116200702010078893}
   m_Layer: 5
   m_Name: ChickenImage
   m_TagString: Untagged
@@ -92,3 +93,20 @@ MonoBehaviour:
   defaultChick: {fileID: 21300000, guid: e36704cc479c95541a5a464568205617, type: 3}
   deadChick: {fileID: 21300000, guid: ee53be0c5cfd2284e8687cb6a78650f9, type: 3}
   escapedChick: {fileID: 21300000, guid: 49f4d2413a9925c42b61719412866e21, type: 3}
+--- !u!114 &116200702010078893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 927507112963275997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83fbf47957a723144b6ff905f8e6e702, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentlyTweening: 0
+  scaleUpTo: {x: 2, y: 2, z: 2}
+  scaleDownTo: {x: 1, y: 1, z: 1}
+  scaleTime: 0.5
+  holdTime: 0.2

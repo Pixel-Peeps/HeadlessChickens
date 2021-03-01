@@ -47,9 +47,15 @@ namespace PixelPeeps.HeadlessChickens.UI
             for (int i = 0; i < deadChickCount; i++)
             {
                 ChickCounterImage t = imagesInCounter[i];
+                UITweener chickTween = t.GetComponent<UITweener>();
                 
                 if (t.currentState != ChickState.Escaped)
                 {
+                    if (t.currentState != ChickState.Dead)
+                    {
+                        chickTween.ScaleUpAndDown();
+                    }
+                    
                     t.ChangeState(ChickState.Dead);
                 }
             }
@@ -63,6 +69,8 @@ namespace PixelPeeps.HeadlessChickens.UI
             // Reverse for loop so that escaped chickens start counting from the opposite end
             for (int i = imagesInCounter.Count - 1; i >= 0; i--)
             {
+                UITweener chickTween =  imagesInCounter[i].GetComponent<UITweener>();
+                
                 loopIncrement++;
                 if (loopIncrement > escapedChickCount)
                 {
@@ -71,6 +79,12 @@ namespace PixelPeeps.HeadlessChickens.UI
                 
                 if (imagesInCounter[i].currentState != ChickState.Dead)
                 {
+                    // Tweening it if it hadn't already escaped
+                    if (imagesInCounter[i].currentState != ChickState.Escaped)
+                    {
+                        chickTween.ScaleUpAndDown();
+                    }
+                    
                     imagesInCounter[i].ChangeState(ChickState.Escaped);
                 }
             }
