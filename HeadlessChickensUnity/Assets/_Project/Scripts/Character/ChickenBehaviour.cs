@@ -103,7 +103,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             if (currentFollow != null) currentFollow.playerCam.gameObject.SetActive(false);
 
             if (!alreadyEscaped) playerCam.gameObject.SetActive(false);
-            Debug.Log("Following " + chickToFollow);
+            Debug.Log("<color=cyan>Following " + chickToFollow.photonView.Owner.NickName + "</color>");
 
             if(chickToFollowID == photonView.ViewID)
             {
