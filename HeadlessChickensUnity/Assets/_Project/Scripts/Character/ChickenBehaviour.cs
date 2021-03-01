@@ -11,6 +11,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 {
     public class ChickenBehaviour : CharacterBase
     {
+        public ChickenManager chickenManager;
         public Vector3 positionBeforeHiding;
         
         [Header("Mesh and Materials")]
@@ -26,7 +27,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         private void Start()
         {
             // chickenMesh = GetComponent<Renderer>();
-            
+            chickenManager.activeChickens.Add(this);
         }
 
         [PunRPC]
@@ -41,6 +42,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             
             hasBeenCaught = true;
             NewGameManager.Instance.CheckForFinish();
+
+            chickenManager.activeChickens.Remove(this);
         }
 
         [PunRPC]
@@ -56,8 +59,20 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             alreadyEscaped = true;
             NewGameManager.Instance.CheckForFinish();
 
-
+            SwitchToObserverCam();
             gameObject.SetActive(false);
+
+            chickenManager.activeChickens.Remove(this);
+        }
+
+        private void SwitchToObserverCam()
+        {
+            // find all characterBases, make list
+            // remove fox, remove inactive chicks
+            // select chick at random
+            // turn their cam on
+
+            
         }
 
         protected override void Action()
