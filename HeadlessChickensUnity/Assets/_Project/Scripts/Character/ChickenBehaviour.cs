@@ -100,7 +100,15 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             if (currentFollow != null) currentFollow.playerCam.gameObject.SetActive(false);
             if(!alreadyEscaped) playerCam.gameObject.SetActive(false);
             Debug.Log("Following " + chickToFollow);
-            chickToFollow.playerCam.gameObject.SetActive(true);
+
+            if(chickToFollowID == photonView.ViewID)
+            {
+                SwitchToObserverCam();
+            }
+            else
+            {
+                chickToFollow.playerCam.gameObject.SetActive(true);
+            }
 
             // if chick is watching this cam, they call this method
         }
