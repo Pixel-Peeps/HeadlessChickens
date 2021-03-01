@@ -27,7 +27,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         [Header("Following")]
         public Transform chickToFollow;
 
-        private bool alreadyEscaped = false;
+        
 
         private void Start()
         {

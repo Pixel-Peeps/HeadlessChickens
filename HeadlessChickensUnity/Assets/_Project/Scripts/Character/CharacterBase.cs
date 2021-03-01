@@ -25,6 +25,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         
         public bool cooldownRunning = false;
         public bool hasBeenCaught = false;
+        protected bool alreadyEscaped = false;
 
         public enum EStates
         {
@@ -69,7 +70,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         private void FixedUpdate()
         {
-            if (State == EStates.Moving && _controller.isGrounded == true) //&& photonView.IsMine)
+            if (State == EStates.Moving && _controller.isGrounded == true && !alreadyEscaped) //&& photonView.IsMine)
             {
                 _controller.Move();
             }
