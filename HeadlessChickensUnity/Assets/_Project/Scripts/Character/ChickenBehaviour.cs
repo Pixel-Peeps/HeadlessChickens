@@ -57,6 +57,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         [PunRPC]
         public void ChickenEscaped()
         {
+            if (!photonView.IsMine) return;
+
             if (alreadyEscaped || hasBeenCaught) return;
             
             Debug.Log(gameObject.name + " has escaped");
@@ -78,14 +80,13 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             _controller.enabled = false;
 
             transform.position = escapeLocation.position;
+
+
         }
 
         public void SwitchToObserverCam()
         {
-            // find all characterBases, make list
-            // remove fox, remove inactive chicks
-            // select chick at random
-            // turn their cam on
+            if (!photonView.IsMine) return;
 
             int randomInt = UnityEngine.Random.Range(0, chickenManager.activeChicks.Count);
 
