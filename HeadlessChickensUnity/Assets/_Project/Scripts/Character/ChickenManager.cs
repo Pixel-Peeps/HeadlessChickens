@@ -50,7 +50,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
             foreach (var chicken in escapedChicks.Where(chicken => iD == chicken.chickToFollowID))
             {
-                chicken.SwitchToObserverCam();
+                chicken.photonView.GetComponent<ChickenBehaviour>().SwitchToObserverCam();
             }
         }
     }
