@@ -67,8 +67,12 @@ public class Interactor : MonoBehaviour
                 case eCharacterType.Chick when interactable.GetInteractionType() == 2:
                     break;
                 // lock the interactables from a specific character
-                case eCharacterType.Fox when (interactable.GetInteractionType() == 0 || interactable.GetInteractionType() == 2):
+                case eCharacterType.Fox when interactable.GetInteractionType() == 0:
+                    break;
+                case eCharacterType.Fox when interactable.GetInteractionType() == 2:
                     return;
+                
+                //0==lever
             }
 
             if (interactable != null)

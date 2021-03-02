@@ -269,7 +269,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6370731450160081177
 Transform:
   m_ObjectHideFlags: 0
@@ -491,7 +491,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6554810946436669686
 Transform:
   m_ObjectHideFlags: 0
@@ -1213,6 +1213,10 @@ PrefabInstance:
       propertyPath: blueprintBits
       value: 
       objectReference: {fileID: 4792593230488629959}
+    - target: {fileID: 3864278940422369177, guid: a0a6eb8fbbfb6a347bd574e78d6166ab, type: 3}
+      propertyPath: isFake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5930666620710289874, guid: a0a6eb8fbbfb6a347bd574e78d6166ab, type: 3}
       propertyPath: viewIdField
       value: 0

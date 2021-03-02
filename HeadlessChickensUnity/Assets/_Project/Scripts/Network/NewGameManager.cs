@@ -252,9 +252,10 @@ namespace PixelPeeps.HeadlessChickens.Network
                 }
             }
 
-            inactiveLevers = tempRooms;
             //send this to lever manager for later
             LeverManager.Instance.SetLeverPosList(tempRooms);
+            
+            
 
             for (int i = 0; i < maxNumberOfLevers; i++)
             {
@@ -266,14 +267,8 @@ namespace PixelPeeps.HeadlessChickens.Network
                 // Get random lever from room
                 int leverNumber = UnityEngine.Random.Range(0, room.leverPositions.Count);
                 LeverHolder leverHolder = room.leverPositions[leverNumber];
-
-
+                leverHolder.isChildFake = false;
                 leverHolder.photonView.RPC("RPC_EnableLever", RpcTarget.AllBufferedViaServer);
-
-                // leverHolder.transform.GetChild(0).gameObject.SetActive(true);
-                //PhotonNetwork.InstantiateRoomObject(leverSpotPrefab.name, lever.position,
-                //    lever.rotation);
-
                 tempRooms.RemoveAt(roomNumber);
 
             }
@@ -339,7 +334,8 @@ namespace PixelPeeps.HeadlessChickens.Network
 
         private void StartTimer()
         {
-            timeRemaining = totalGameTime;
+            //timeRemaining = totalGameTime;
+            timeRemaining = 10f;
             timerIsRunning = true;
         }
 
@@ -353,14 +349,14 @@ namespace PixelPeeps.HeadlessChickens.Network
                     HUDManager.Instance.UpdateTimeDisplay(timeRemaining);
                 }
 
-                else
+             /*   else
                 {
                     timerIsRunning = false;
                     timeRemaining = 0;
                     HUDManager.Instance.UpdateTimeDisplay(timeRemaining);
                     photonView.RPC("FoxWinRPC", RpcTarget.All);
                 }
-            }
+            */}
         }
         
         #endregion

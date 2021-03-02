@@ -278,7 +278,6 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 // if character is hiding, leave hiding spot
                 if (_character.State == CharacterBase.EStates.Hiding)
                 {
-
                     _character.HidingInteraction(true, transform);
                 }
 
@@ -312,6 +311,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 {
                     Debug.Log("Showing false levers????");
                     LeverManager.Instance.IdentifyFakeLeverPositions();
+                    _character.isBlueprintActive = true;
                 }
             }
         }
@@ -320,18 +320,20 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         {
             if (photonView.IsMine)
             {
-                if (_character.isBlueprintActive)
+                if (_character.isFox && _character.hasLever && _character.isBlueprintActive)
+                {
+                    Debug.Log("unshowing false levers????");
+                    LeverManager.Instance.IdentifyFakeLeverPositions();
+                    _character.isBlueprintActive = false;
+                }
+                
+                if (_character.isBlueprintActive && !_character.hasLever)
                 {
                     if (_character.gameObject.GetComponentInChildren<TrapBlueprint>().gameObject !=null)
                     {
                         Debug.Log("cancelling blueprint");
                         PhotonNetwork.Destroy(_character.gameObject.GetComponentInChildren<TrapBlueprint>().gameObject);
                         _character.isBlueprintActive = false;
-                        
-                        //if (_character.gameObject.GetComponentInChildren<TrapBlueprint>().gameObject == null)
-                        //{
-                        //    _character.isBlueprintActive = false;
-                        //}
                     }
                 }
             }

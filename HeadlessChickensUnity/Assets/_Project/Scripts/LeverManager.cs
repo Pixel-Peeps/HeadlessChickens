@@ -53,11 +53,12 @@ namespace PixelPeeps.HeadlessChickens.Network
                 foreach (var leverPos in room.leverPositions)
                 {
                     Debug.Log("inside for each");
-                    if (!leverPos.isChildActive)
+                    if (leverPos.isChildFake)
                     {
-                        Debug.Log("I'm setting up a fake lever right!! now!!!");
-                        leverPos.GetComponent<Lever>().gameObject.SetActive(true);
-                        leverPos.GetComponent<Lever>().photonView.RPC("RPC_SetUp", RpcTarget.AllViaServer, true);
+                        Debug.Log("I'm setting up a fake lever right!! now!!!"); 
+                        //leverPos.GetComponent<Lever>().gameObject.SetActive(true);
+                        //leverPos.GetComponent<Lever>().photonView.RPC("RPC_SetUp", RpcTarget.AllViaServer, true);
+                       leverPos.ShowBlueprintOnLever();
                     }
                 }
             }
