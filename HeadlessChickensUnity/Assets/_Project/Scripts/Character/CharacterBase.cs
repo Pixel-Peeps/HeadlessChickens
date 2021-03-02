@@ -46,7 +46,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 states = value;
             }
         }
-        private void Awake()
+        protected void Awake()
         {
             _controller = GetComponent<CharacterInput>();
             _rigidbody = GetComponent<Rigidbody>();

@@ -37,8 +37,9 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         public bool spectating;
         
-        private void Awake()
+        private new void Awake()
         {
+            base.Awake();
             controls = new InputControls();
             
             controls.Spectator.Disable();
