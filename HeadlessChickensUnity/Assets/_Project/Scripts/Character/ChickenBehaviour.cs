@@ -241,7 +241,10 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             
             SwitchState(EStates.Moving);
 
-            playerCam.gameObject.SetActive(true);
+            if (photonView.IsMine)
+            {
+                playerCam.gameObject.SetActive(true);
+            }
         }
 
         [PunRPC]

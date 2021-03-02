@@ -63,15 +63,21 @@ public class HidingSpot : MonoBehaviourPunCallbacks, IInteractable
 
     public void EnableHidingCam()
     {
-        hidingMesh.SetActive(false);
-        hidingCam.gameObject.SetActive(true);
+        if (photonView.IsMine)
+        {
+            hidingMesh.SetActive(false);
+            hidingCam.gameObject.SetActive(true);
+        }
     }
 
     public void DisableHidingCam()
     {
-        hidingCam.gameObject.SetActive(false);
-        hidingMesh.SetActive(true);
-        Debug.Log("<color=yellow> Hiding spot REactivated </color>");
+        if (photonView.IsMine)
+        {
+            hidingCam.gameObject.SetActive(false);
+            hidingMesh.SetActive(true);
+            Debug.Log("<color=yellow> Hiding spot REactivated </color>");
+        }
     }
 
 
