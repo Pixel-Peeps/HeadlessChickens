@@ -23,12 +23,24 @@ namespace PixelPeeps.HeadlessChickens.UI
 
         private void GenerateIcon()
         {
+            DestroyExistingIcons();
+            
             GameObject newLeverImage = Instantiate(leverImagePrefab, transform);
             
             LeverCounterImage counterImageScript = newLeverImage.GetComponent<LeverCounterImage>();
             imagesInCounter.Add(counterImageScript);
             
             counterImageScript.Setup();
+        }
+        
+        private void DestroyExistingIcons()
+        {
+            foreach (Transform t in transform)
+            {
+                Destroy(t.gameObject);
+            }
+            
+            imagesInCounter.Clear();
         }
 
         public void UpdateCounter(int leverCount)

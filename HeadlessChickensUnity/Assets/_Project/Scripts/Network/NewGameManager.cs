@@ -123,8 +123,8 @@ namespace PixelPeeps.HeadlessChickens.Network
             
             StartTimer();
 
-            HUDManager.Instance.GenerateChickIcons();
-            HUDManager.Instance.GenerateLeverIcons();  
+
+            HUDManager.Instance.Initialise();
             
             NetworkManager.Instance.GameSetupComplete();
             
@@ -324,7 +324,7 @@ namespace PixelPeeps.HeadlessChickens.Network
         [PunRPC]
         private void ReturnToLobbyRPC()
         {
-            GameStateManager.Instance.SwitchGameState(new ReturnToMenuState());
+           NetworkManager.Instance.StartGameOnMaster();
         }
 
         #endregion
@@ -335,7 +335,7 @@ namespace PixelPeeps.HeadlessChickens.Network
         public float totalGameTime;
         
         private bool timerIsRunning;
-        private float timeRemaining;
+        private float timeRemaining = 10;
 
         private void StartTimer()
         {

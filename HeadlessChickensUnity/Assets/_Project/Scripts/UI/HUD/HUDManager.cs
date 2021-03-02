@@ -42,6 +42,12 @@ namespace PixelPeeps.HeadlessChickens.UI
             objectiveMessage.gameObject.SetActive(false);
         }
 
+        public void Initialise()
+        {
+            GenerateChickIcons();
+            GenerateLeverIcons();
+        }
+
         public void DisplayObjectiveMessage(PlayerType playerType, float lifetime, string foxText, string chickText)
         {
             objectiveMessage.gameObject.SetActive(true);

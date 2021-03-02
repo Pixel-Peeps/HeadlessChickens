@@ -25,12 +25,24 @@ namespace PixelPeeps.HeadlessChickens.UI
 
         private void GenerateIcon()
         {
+            DestroyExistingIcons();
+                
             GameObject newChickImage = Instantiate(chickImagePrefab, transform);
             
             ChickCounterImage counterImageScript = newChickImage.GetComponent<ChickCounterImage>();
             imagesInCounter.Add(counterImageScript);
             
             counterImageScript.Setup();
+        }
+
+        private void DestroyExistingIcons()
+        {
+            foreach (Transform t in transform)
+            {
+                Destroy(t.gameObject);
+            }
+            
+            imagesInCounter.Clear();
         }
 
         public void UpdateCounter()
