@@ -334,8 +334,8 @@ namespace PixelPeeps.HeadlessChickens.Network
         [Header("Timer")]
         public float totalGameTime;
         
-        private bool timerIsRunning = 10;
-        private float timeRemaining;
+        private bool timerIsRunning;
+        private float timeRemaining = 10;
 
         private void StartTimer()
         {
