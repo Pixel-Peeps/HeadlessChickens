@@ -13,16 +13,30 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
     public LeverManager leverManager;
     public GameObject blueprintBits;
     public GameObject regularBits;
-    public bool isFake;
-
+    public bool isFake = true;
+    public bool isShowingBlueprints;
     public Animator animator;
+
+
+    private void Awake()
+    {
+        isFake = true;
+    }
 
     private void Start()
     {
         interactable = GetComponent<Interactable>();
         leverManager = GameObject.FindWithTag("LeverManager").GetComponent<LeverManager>();
-        
-        photonView.RPC("RPC_SetUp", RpcTarget.AllViaServer);
+
+        if (!isFake)
+        {
+            photonView.RPC("RPC_SetUp", RpcTarget.AllViaServer);
+        }
+
+        if (isFake)
+        {
+            photonView.RPC("RPC_SetUp", RpcTarget.AllViaServer, true);
+        }
     }
 
     [PunRPC]
@@ -31,8 +45,10 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
         Debug.Log("Setting up lever. fake? : "+isFake);
         if (isFake)
         {
-            blueprintBits.gameObject.SetActive(true);
+            //if fake then
+            blueprintBits.gameObject.SetActive(false);
             regularBits.gameObject.SetActive(false);
+            
         }else if (!isFake)
         {
             regularBits.gameObject.SetActive(true);
@@ -48,7 +64,7 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
         Debug.Log("Setting up lever. fake? : "+isFake);
         if (isFake)
         {
-            blueprintBits.gameObject.SetActive(true);
+            blueprintBits.gameObject.SetActive(false);
             regularBits.gameObject.SetActive(false);
         }else if (!isFake)
         {
@@ -57,17 +73,34 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
         }
     }
 
+    public void ShowBlueprints()
+    {
+        if(!isShowingBlueprints) blueprintBits.gameObject.SetActive(true);
+        else if (isShowingBlueprints) blueprintBits.gameObject.SetActive(false);
+        isShowingBlueprints = !isShowingBlueprints;
+    }
+
     public void Interact(CharacterBase characterBase)
     {
        // PhotonView gameManagerPhotonView = NewGameManager.Instance.GetComponent<PhotonView>();
-       if (!isFake)
+       if (!isFake && !characterBase.isFox)
        {
            leverManager.photonView.RPC("RPC_IncrementLeverCount", RpcTarget.AllBufferedViaServer);
            interactable.photonView.RPC("RPC_ToggleInteractAllowed", RpcTarget.AllBufferedViaServer);
            photonView.RPC("PlayLeverAnimation", RpcTarget.AllBufferedViaServer);
-       } else if (isFake)
+       } else if (isFake && isShowingBlueprints && characterBase.isFox)
        {
-           Debug.Log("Wee woo wee woo fake lever");
+           Debug.Log(" fake lever is READY AND GOGOGO");
+           //regularBits.gameObject.SetActive(true);
+           //blueprintBits.gameObject.SetActive(false);
+           characterBase.hasTrap = false;
+           characterBase.isBlueprintActive = false;
+           characterBase.hasLever = false;
+           photonView.RPC("RPC_SetUp", RpcTarget.AllViaServer, false);
+
+       } else if (isFake && !characterBase.isFox)
+       {
+           Debug.Log("wee woo wee woo FAKE LEVER");
        }
        //interactable.interactAllowed = false;
     }

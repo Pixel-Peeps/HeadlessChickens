@@ -252,9 +252,10 @@ namespace PixelPeeps.HeadlessChickens.Network
                 }
             }
 
-            inactiveLevers = tempRooms;
             //send this to lever manager for later
             LeverManager.Instance.SetLeverPosList(tempRooms);
+            
+            
 
             for (int i = 0; i < maxNumberOfLevers; i++)
             {
@@ -266,14 +267,8 @@ namespace PixelPeeps.HeadlessChickens.Network
                 // Get random lever from room
                 int leverNumber = UnityEngine.Random.Range(0, room.leverPositions.Count);
                 LeverHolder leverHolder = room.leverPositions[leverNumber];
-
-
+                leverHolder.isChildFake = false;
                 leverHolder.photonView.RPC("RPC_EnableLever", RpcTarget.AllBufferedViaServer);
-
-                // leverHolder.transform.GetChild(0).gameObject.SetActive(true);
-                //PhotonNetwork.InstantiateRoomObject(leverSpotPrefab.name, lever.position,
-                //    lever.rotation);
-
                 tempRooms.RemoveAt(roomNumber);
 
             }

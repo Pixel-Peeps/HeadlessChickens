@@ -312,6 +312,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 {
                     Debug.Log("Showing false levers????");
                     LeverManager.Instance.IdentifyFakeLeverPositions();
+                    _character.isBlueprintActive = true;
                 }
             }
         }
@@ -320,7 +321,14 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         {
             if (photonView.IsMine)
             {
-                if (_character.isBlueprintActive)
+                if (_character.isFox && _character.hasLever && _character.isBlueprintActive)
+                {
+                    Debug.Log("unshowing false levers????");
+                    LeverManager.Instance.IdentifyFakeLeverPositions();
+                    _character.isBlueprintActive = false;
+                }
+                
+                if (_character.isBlueprintActive && !_character.hasLever)
                 {
                     if (_character.gameObject.GetComponentInChildren<TrapBlueprint>().gameObject !=null)
                     {
@@ -334,6 +342,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                         //}
                     }
                 }
+                
+               
             }
         }
 
