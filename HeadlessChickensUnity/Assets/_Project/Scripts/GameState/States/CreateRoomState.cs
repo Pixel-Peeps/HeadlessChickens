@@ -1,4 +1,6 @@
-﻿using PixelPeeps.HeadlessChickens.Network;
+﻿using ExitGames.Client.Photon.Encryption;
+using Photon.Pun;
+using PixelPeeps.HeadlessChickens.Network;
 using PixelPeeps.HeadlessChickens.UI;
 using UnityEngine;
 
@@ -15,7 +17,12 @@ namespace PixelPeeps.HeadlessChickens.GameState
         public override void StateEnter()
         {
             StateManager.uiManager.DeactivateMenu(StateManager.uiManager.mainMenu);
-            NetworkManager.Instance.LeaveRoom();
+            
+            if (PhotonNetwork.CurrentRoom != null)
+            {
+                NetworkManager.Instance.LeaveRoom(); 
+            }
+            
             Debug.Log("StateEnter on CreateRoomState");
             StateManager.LoadNextScene(sceneName);
             ActivateMenu(menu);
