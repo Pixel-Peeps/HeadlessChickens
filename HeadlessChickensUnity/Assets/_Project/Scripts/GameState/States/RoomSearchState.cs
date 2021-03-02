@@ -12,6 +12,7 @@ namespace PixelPeeps.HeadlessChickens.GameState
         
         public override void StateEnter()
         {
+            StateManager.uiManager.DeactivateMenu(StateManager.uiManager.mainMenu);
             StateManager.LoadNextScene(sceneName);
             ActivateMenu(menu);
         }

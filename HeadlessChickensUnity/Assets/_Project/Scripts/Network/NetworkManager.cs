@@ -68,6 +68,11 @@ namespace PixelPeeps.HeadlessChickens.Network
             PhotonNetwork.AutomaticallySyncScene = true;
         }
 
+        public override void OnDisconnected(DisconnectCause cause)
+        {
+            ConnectToMaster();
+        }
+
         public override void OnJoinedLobby()
         {
             GameStateManager.Instance.HideConnectingScreen();
