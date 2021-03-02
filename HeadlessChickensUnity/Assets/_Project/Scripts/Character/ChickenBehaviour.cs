@@ -110,20 +110,20 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 int randomInt = UnityEngine.Random.Range(0, chickenManager.activeChicks.Count);
 
                 chickToFollowID = chickenManager.activeChicks[randomInt].photonView.ViewID;
-                photonView.RPC("UpdateChickToFollow", RpcTarget.AllViaServer, chickToFollowID);
-                chickToFollow = PhotonView.Find(chickToFollowID).GetComponent<ChickenBehaviour>();
-                Debug.Log("<color=lime>currentFollow is: " + currentFollow + "</color>");
 
-            chickToFollowID = chickenManager.activeChicks[randomInt].photonView.ViewID;
-            photonView.RPC("UpdateChickToFollow", RpcTarget.AllViaServer, chickToFollowID);
-            chickToFollow = PhotonView.Find(chickToFollowID).GetComponent<ChickenBehaviour>();
-            Debug.Log("<color=lime>" + photonView.Owner.NickName + "'s currentFollow is: " + currentFollow + "</color>");
-                Debug.Log("<color=cyan>Following " + chickToFollow.photonView.Owner.NickName + "</color>");
 
                 if (chickToFollowID == photonView.ViewID)
                 {
                     continue;
-                }
+                }                
+                photonView.RPC("UpdateChickToFollow", RpcTarget.AllViaServer, chickToFollowID);
+                chickToFollow = PhotonView.Find(chickToFollowID).GetComponent<ChickenBehaviour>();
+                Debug.Log("<color=lime>currentFollow is: " + currentFollow + "</color>");
+                chickToFollowID = chickenManager.activeChicks[randomInt].photonView.ViewID;
+                photonView.RPC("UpdateChickToFollow", RpcTarget.AllViaServer, chickToFollowID);
+                chickToFollow = PhotonView.Find(chickToFollowID).GetComponent<ChickenBehaviour>();
+                Debug.Log("<color=lime>" + photonView.Owner.NickName + "'s currentFollow is: " + currentFollow + "</color>");
+                Debug.Log("<color=cyan>Following " + chickToFollow.photonView.Owner.NickName + "</color>");
                 photonView.RPC("RPC_pVid", RpcTarget.AllViaServer, photonView.ViewID);
 
                 // if chick is watching this cam, they call this method
@@ -134,6 +134,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         [PunRPC]
         public void RPC_CamSwitch(int pVid)
         {
+            currentFollow = 
+                chickToFollow != null ? chickToFollow : null;
             if (currentFollow != null) currentFollow.playerCam.gameObject.SetActive(false);
             if (!alreadyEscaped) playerCam.gameObject.SetActive(false);
             chickToFollow.playerCam.gameObject.SetActive(true);

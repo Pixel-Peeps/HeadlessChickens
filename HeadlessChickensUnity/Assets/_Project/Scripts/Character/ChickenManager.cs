@@ -52,7 +52,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
             foreach (var chicken in escapedChicks.Where(chicken => iD == chicken.chickToFollowID))
             {
-                chicken.photonView.GetComponent<ChickenBehaviour>().SwitchToObserverCam();
+                chicken.photonView.RPC("RPC_CamSwitch", RpcTarget.AllViaServer, chicken.photonView.ViewID);
                 Debug.Log("<color=green>" + chicken.photonView.Owner.NickName + "did the foreach loop</color>");
             }
         }
