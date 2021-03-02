@@ -177,6 +177,9 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                         photonView.RPC("RPC_LeaveHiding", RpcTarget.AllViaServer, positionBeforeHiding);
                         photonView.RPC("RPC_SetParent", RpcTarget.AllViaServer);
                         hidedSpot.photonView.RPC("RPC_ToggleAccess", RpcTarget.AllViaServer);
+
+                        hidedSpot.DisableHidingCam();
+
                         break;
                     case false:
                         currentHidingSpot = hideSpot;
@@ -215,7 +218,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             // move player into the hiding spot
             gameObject.transform.position = PhotonView.Find(hideViewID).gameObject.transform.position;
             Debug.Log("after gameObject.transform.position = currentHidingSpot.position");
-           
+
+            playerCam.gameObject.SetActive(false);
         }
 
         [PunRPC]
@@ -236,6 +240,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             chickenMesh.enabled = true;
             
             SwitchState(EStates.Moving);
+
+            playerCam.gameObject.SetActive(true);
         }
 
         [PunRPC]
