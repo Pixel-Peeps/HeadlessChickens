@@ -1,11 +1,28 @@
 ﻿using System.Collections;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace PixelPeeps.HeadlessChickens.UI
 {
     public class UITweener : MonoBehaviour
     {
         [HideInInspector] public bool currentlyTweening = false;
+
+        [Header("Move Tween")] 
+        public Transform targetPosition;
+        public float moveTime = 0.5f;
+        public AnimationCurve movementCurve;
+
+        [Header("Fade Image Tween")] 
+        public Image imageToFade; 
+        
+        [Header("Fade Text Tween")] 
+        public TextMeshProUGUI textToFade;
+        
+        public Color32 targetColour;
+        private Color initialColour;
+        public float fadeTime = 0.5f;
         
         [Header("Scale Tween")] 
         public Vector3 scaleUpTo = new Vector3(2, 2, 2);
@@ -14,6 +31,67 @@ namespace PixelPeeps.HeadlessChickens.UI
         public float scaleTime = 0.5f;
         [Tooltip("Time this object pauses for before beginning to scale down again")]
         public float holdTime = 0.2f;
+        
+        
+        private void EnableObject()
+        {
+            gameObject.SetActive(true);
+        }
+        
+        private void DisableObject()
+        {
+            gameObject.SetActive(false);
+        }
+
+        #region Move Tween
+
+        public void MoveToTarget()
+        {
+            LeanTween.move(gameObject, targetPosition, moveTime).setEaseOutSine();
+        }
+        
+        #endregion
+
+        #region Fade In Tween
+        
+        public void FadeInImage()
+        {
+            
+            //LeanTween.alpha(imageToFade.rectTransform, 1, fadeTime);
+            //LeanTween.color(imageToFade.gameObject, targetColour, fadeTime);
+            
+            //imageToFade = this.gameObject.GetComponent<Image>();
+            initialColour = imageToFade.color;
+            initialColour = new Color(initialColour.r, initialColour.g, initialColour.b, 0);
+            
+            LeanTween.value(gameObject, initialColour, targetColour, fadeTime).setOnUpdate(SetImageColour);
+        }
+        
+        public void FadeInText()
+        {
+            //LeanTween.alpha(textToFade.rectTransform, 1, fadeTime);
+            
+            //textToFade = this.gameObject.GetComponent<TextMeshProUGUI>();
+
+            initialColour = textToFade.color;
+            initialColour = new Color(initialColour.r, initialColour.g, initialColour.b, 0);
+            
+            LeanTween.value(gameObject, 0, 1, fadeTime).setOnUpdate(SetTextColour);
+        }
+
+        private void SetTextColour(float v)
+        {
+            textToFade.color = new Color(initialColour.r, initialColour.g, initialColour.b, v);
+        }
+        
+        private void SetImageColour(float v)
+        {
+            imageToFade.color = new Color(initialColour.r, initialColour.g, initialColour.b, v);
+        }
+        
+        #endregion
+        
+        #region Scale Tween
         
         public void ScaleUpFromZero()
         {
@@ -55,16 +133,6 @@ namespace PixelPeeps.HeadlessChickens.UI
             StartCoroutine(HoldTimeCoroutine());
         }
 
-        private void EnableObject()
-        {
-            gameObject.SetActive(true);
-        }
-        
-        private void DisableObject()
-        {
-            gameObject.SetActive(false);
-        }
-
         private IEnumerator CurrentTweenCoroutine()
         {
             currentlyTweening = true;
@@ -77,5 +145,7 @@ namespace PixelPeeps.HeadlessChickens.UI
             yield return new WaitForSecondsRealtime(holdTime + scaleTime);
             ScaleDown(false);
         }
+        
+        #endregion
     }
 }
