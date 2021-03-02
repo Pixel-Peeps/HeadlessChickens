@@ -34,7 +34,7 @@ public class HidingSpot : MonoBehaviourPunCallbacks, IInteractable
                 photonView.RPC("RPC_ToggleAccess", RpcTarget.AllViaServer);
 
                 // mainCam.CullHidingSpots();
-                EnableHidingCam();
+                EnableHidingCam(character);
                 Debug.Log("<color=cyan> Hiding spot DEactivated </color>");
             }
             else
@@ -61,7 +61,7 @@ public class HidingSpot : MonoBehaviourPunCallbacks, IInteractable
     }
 
 
-    public void EnableHidingCam()
+    public void EnableHidingCam(CharacterBase chicken)
     {
         if (photonView.IsMine)
         {
