@@ -18,6 +18,8 @@ namespace PixelPeeps.HeadlessChickens.GameState
         {
             StateManager.uiManager.DeactivateMenu(StateManager.uiManager.mainMenu);
             
+            NetworkManager.Instance.DisconnectFromMaster();
+            
             if (PhotonNetwork.CurrentRoom != null)
             {
                 NetworkManager.Instance.LeaveRoom(); 
