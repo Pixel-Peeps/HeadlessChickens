@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Collections;
 using System.ComponentModel;
+using Cinemachine;
 using Photon.Pun;
 using UnityEngine;
 
 namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 {
-    [RequireComponent(typeof(CharacterInput))]
     [RequireComponent(typeof(Interactor))]
     public class CharacterBase : MonoBehaviourPunCallbacks, IPunObservable
     {
-        private CharacterInput _controller;
+        protected CharacterInput _controller;
         public Interactor interactor;
         public PhotonView photonView;
         public Rigidbody _rigidbody;
+        public CinemachineFreeLook playerCam;
 
         public bool isHiding;
         public bool hasTrap;
@@ -24,6 +25,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         
         public bool cooldownRunning = false;
         public bool hasBeenCaught = false;
+        public bool alreadyEscaped = false;
 
         public enum EStates
         {
@@ -49,6 +51,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             _controller = GetComponent<CharacterInput>();
             _rigidbody = GetComponent<Rigidbody>();
             photonView = GetComponent<PhotonView>();
+            playerCam = GetComponentInChildren<CinemachineFreeLook>(true);
 
             interactor.OnCanInteract += OnCanInteract;
         }
@@ -67,10 +70,11 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         private void FixedUpdate()
         {
-            if (State == EStates.Moving && _controller.isGrounded == true) //&& photonView.IsMine)
+            if (State == EStates.Moving && _controller.isGrounded == true && !alreadyEscaped) //&& photonView.IsMine)
             {
                 _controller.Move();
             }
+
         }
 
         public void SwitchState(EStates change)

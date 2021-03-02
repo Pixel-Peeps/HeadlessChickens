@@ -5,12 +5,15 @@ using UnityEngine;
 using Photon.Pun;
 using PixelPeeps.HeadlessChickens.Network;
 using PixelPeeps.HeadlessChickens.UI;
+using System.Collections.Generic;
+using Cinemachine;
 
 namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
 {
     public class ChickenBehaviour : CharacterBase
     {
+        public ChickenManager chickenManager;
         public Vector3 positionBeforeHiding;
         
         [Header("Mesh and Materials")]
@@ -21,12 +24,30 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public HidingSpot hidedSpot;
         public Transform currentHidingSpot;
 
-        private bool alreadyEscaped = false;
+        [Header("Following")]
+        public ChickenBehaviour chickToFollow;
+        public ChickenBehaviour currentFollow;
+        public int chickToFollowID;
+
+        public Transform escapeLocation;
 
         private void Start()
         {
             // chickenMesh = GetComponent<Renderer>();
-            
+            chickenManager = FindObjectOfType<ChickenManager>();
+            chickenManager.activeChicks.Add(this);
+            escapeLocation = GameObject.FindGameObjectWithTag("Sanctuary").transform.GetChild(0);
+        }
+
+        private void LateUpdate()
+        {
+            if (alreadyEscaped)
+            {
+                if (chickToFollow.alreadyEscaped)
+                {
+                    SwitchToObserverCam();
+                }
+            }
         }
 
         [PunRPC]
@@ -40,29 +61,99 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             HUDManager.Instance.UpdateChickCounter();
             
             hasBeenCaught = true;
-            
-            if (PhotonNetwork.IsMasterClient)
-            {
-                NewGameManager.Instance.CheckForFinish();
-            }
+            NewGameManager.Instance.CheckForFinish();
+
+            chickenManager.activeChicks.Remove(this);
         }
 
         [PunRPC]
         public void ChickenEscaped()
         {
-            if (alreadyEscaped || hasBeenCaught) return;
+            if (!photonView.IsMine || alreadyEscaped || hasBeenCaught) return;
             
-            Debug.Log(gameObject.name + " has escaped");
+            //NewGameManager.Instance.chickensEscaped++;
+            //HUDManager.Instance.UpdateChickCounter();
             
-            NewGameManager.Instance.chickensEscaped++;
-            HUDManager.Instance.UpdateChickCounter();
-            
+            //NewGameManager.Instance.CheckForFinish();
+
+            chickenManager.photonView.RPC("UpdateActiveList", RpcTarget.AllViaServer, photonView.ViewID);
+            chickenManager.photonView.RPC("UpdateEscapedList", RpcTarget.AllViaServer, photonView.ViewID);
+
+            SwitchToObserverCam();
+
+            photonView.RPC("UpdateAlreadyEscaped", RpcTarget.AllBufferedViaServer);
+            // alreadyEscaped = true;
+
+            chickenManager.photonView.RPC("UpdateEscapedChickCam", RpcTarget.AllViaServer, photonView.ViewID);
+
+            // chickenMesh.enabled = false;
+            _rigidbody.isKinematic = true;
+            _controller.enabled = false;
+
+            transform.position = escapeLocation.position;
+
+
+        }
+
+        [PunRPC]
+        public void UpdateAlreadyEscaped()
+        {
             alreadyEscaped = true;
-            
-            if (PhotonNetwork.IsMasterClient)
+        }
+
+        [PunRPC]
+        public void UpdateChickToFollow(int ID)
+        {
+            chickToFollowID = ID;
+            chickToFollow = PhotonView.Find(chickToFollowID).GetComponent<ChickenBehaviour>();
+            Debug.Log("<color=lime>" + photonView.Owner.NickName + " currentFollow is: " + currentFollow + "</color>");
+            currentFollow = 
+                chickToFollow != null ? chickToFollow : null;
+        }
+
+        public void SwitchToObserverCam()
+        {
+            while (true)
             {
-                NewGameManager.Instance.CheckForFinish();
+                // if (!photonView.IsMine) return;
+
+                int randomInt = UnityEngine.Random.Range(0, chickenManager.activeChicks.Count);
+
+                chickToFollowID = chickenManager.activeChicks[randomInt].photonView.ViewID;
+
+
+                if (chickToFollowID == photonView.ViewID)
+                {
+                    continue;
+                }
+                chickToFollowID = chickenManager.activeChicks[randomInt].photonView.ViewID;
+                photonView.RPC("UpdateChickToFollow", RpcTarget.AllViaServer, chickToFollowID);
+                Debug.Log("<color=lime>" + photonView.Owner.NickName + "'s currentFollow is: " + currentFollow + "</color>");
+                Debug.Log("<color=cyan>Following " + chickToFollow.photonView.Owner.NickName + "</color>");
+                photonView.RPC("RPC_CamSwitch", RpcTarget.AllViaServer, photonView.ViewID);
+
+                // if chick is watching this cam, they call this method
+                break;
             }
+        }
+
+        [PunRPC]
+        public void RPC_CamSwitch(int pVid)
+        {
+            if (!photonView.IsMine) return;
+
+            currentFollow = 
+                chickToFollow != null ? chickToFollow : null;
+
+            // if (currentFollow != null) currentFollow.playerCam.gameObject.SetActive(false);
+            foreach(ChickenBehaviour chicken in chickenManager.escapedChicks)
+            {
+                chicken.playerCam.gameObject.SetActive(false);
+            }
+
+
+            if (!alreadyEscaped) playerCam.gameObject.SetActive(false);
+            chickToFollow.playerCam.gameObject.SetActive(true);
         }
 
         protected override void Action()
