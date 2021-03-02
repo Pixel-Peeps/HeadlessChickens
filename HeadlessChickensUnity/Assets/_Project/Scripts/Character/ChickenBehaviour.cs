@@ -80,7 +80,9 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             chickenManager.photonView.RPC("UpdateEscapedList", RpcTarget.AllViaServer, photonView.ViewID);
 
             SwitchToObserverCam();
-            alreadyEscaped = true;
+
+            photonView.RPC("UpdateAlreadyEscaped", RpcTarget.AllBufferedViaServer);
+            // alreadyEscaped = true;
 
             chickenManager.photonView.RPC("UpdateEscapedChickCam", RpcTarget.AllViaServer, photonView.ViewID);
 
@@ -91,6 +93,12 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             transform.position = escapeLocation.position;
 
 
+        }
+
+        [PunRPC]
+        public void UpdateAlreadyEscaped()
+        {
+            alreadyEscaped = true;
         }
 
         [PunRPC]
