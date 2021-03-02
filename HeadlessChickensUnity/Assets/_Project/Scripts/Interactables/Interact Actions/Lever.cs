@@ -72,6 +72,25 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
             blueprintBits.gameObject.SetActive(false);
         }
     }
+    
+    [PunRPC]
+    public void RPC_SetUpFake()
+    {
+        isFake = true;
+        Debug.Log("hello this is the fake lever rpc");
+        Debug.Log("Setting up lever. fake? : "+isFake);
+        
+        if (isFake)
+        {
+            regularBits.gameObject.SetActive(true);
+            blueprintBits.gameObject.SetActive(false);
+            Debug.Log("fake lever set up should be complete");
+            
+        }else if (!isFake)
+        {
+            Debug.Log("fake lever set up did not work");
+        }
+    }
 
     public void ShowBlueprints()
     {
@@ -96,7 +115,7 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
            characterBase.hasTrap = false;
            characterBase.isBlueprintActive = false;
            characterBase.hasLever = false;
-           photonView.RPC("RPC_SetUp", RpcTarget.AllViaServer, false);
+           photonView.RPC("RPC_SetUpFake", RpcTarget.AllViaServer);
 
        } else if (isFake && !characterBase.isFox)
        {
