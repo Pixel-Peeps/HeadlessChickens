@@ -144,7 +144,14 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
             currentFollow = 
                 chickToFollow != null ? chickToFollow : null;
-            if (currentFollow != null) currentFollow.playerCam.gameObject.SetActive(false);
+
+            // if (currentFollow != null) currentFollow.playerCam.gameObject.SetActive(false);
+            foreach(ChickenBehaviour chicken in chickenManager.escapedChicks)
+            {
+                chicken.playerCam.gameObject.SetActive(false);
+            }
+
+
             if (!alreadyEscaped) playerCam.gameObject.SetActive(false);
             chickToFollow.playerCam.gameObject.SetActive(true);
         }
