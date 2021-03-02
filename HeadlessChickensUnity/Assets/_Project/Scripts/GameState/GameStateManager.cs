@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using Photon.Pun;
 using PixelPeeps.HeadlessChickens.UI;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -26,6 +27,7 @@ namespace PixelPeeps.HeadlessChickens.GameState
         public GameObject connectingScreen;
         public GameObject gameSetUpScreen;
         public Menu connectionErrorMenu;
+        public TextMeshProUGUI connectionErrorText;
         
         [Header("Game Scenes")] 
         [HideInInspector] public string menuScene = "MenuScene";
@@ -130,9 +132,10 @@ namespace PixelPeeps.HeadlessChickens.GameState
             connectingScreen.SetActive(false);
         }
 
-        public void ShowErrorScreen()
+        public void ShowErrorScreen(string errorMessage)
         {
             connectionErrorMenu.ActivateMenu();
+            connectionErrorText.text = errorMessage;
         }
         
         public void HideErrorScreen()

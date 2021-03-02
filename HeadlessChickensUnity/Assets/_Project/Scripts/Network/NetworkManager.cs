@@ -110,7 +110,7 @@ namespace PixelPeeps.HeadlessChickens.Network
 
         public override void OnCreateRoomFailed(short returnCode, string message)
         {
-            GameStateManager.Instance.ShowErrorScreen();
+            GameStateManager.Instance.ShowErrorScreen(message);
         }
         
         public void LeaveRoom()

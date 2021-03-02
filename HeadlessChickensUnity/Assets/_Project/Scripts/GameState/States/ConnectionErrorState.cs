@@ -11,11 +11,12 @@ namespace PixelPeeps.HeadlessChickens.GameState
         public ConnectionErrorState(string errorString)
         {
             errorMessage = errorString;
+            StateManager.ShowErrorScreen(errorMessage);
         }
         
         public override void StateEnter()
         {
-            StateManager.ShowErrorScreen();
+            StateManager.ShowErrorScreen(errorMessage);
         }
 
         public override void OnSceneLoad()

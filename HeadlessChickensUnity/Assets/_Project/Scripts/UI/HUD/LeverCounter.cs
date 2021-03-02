@@ -35,6 +35,11 @@ namespace PixelPeeps.HeadlessChickens.UI
         {
             for (int i = 0; i < leverCount; i++)
             {
+                if (imagesInCounter[i].currentState != LeverState.Activated)
+                {
+                    UITweener leverTween = imagesInCounter[i].GetComponent<UITweener>();
+                    leverTween.ScaleUpAndDown();
+                }
                 imagesInCounter[i].ChangeState(LeverState.Activated);
             }
         }

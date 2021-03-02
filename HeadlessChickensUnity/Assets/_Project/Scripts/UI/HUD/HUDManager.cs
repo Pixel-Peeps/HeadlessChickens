@@ -16,9 +16,14 @@ namespace PixelPeeps.HeadlessChickens.UI
         [Header("HUD Elements")] 
         public TextMeshProUGUI objectiveMessage;
         public UITweener objectiveMsgTweener;
+        
         public LeverCounter leverCounter;
         public ChickCounter chickCounter;
+        
         public TextMeshProUGUI timerDisplay;
+        public UITweener timerTween;
+        private bool hitHalfPoint;
+        private bool hitLowTimePoint;
 
         public void Awake()
         {
@@ -59,11 +64,27 @@ namespace PixelPeeps.HeadlessChickens.UI
         private IEnumerator ObjectiveMessageCoroutine(float lifetime)
         {
             yield return new WaitForSecondsRealtime(lifetime);
-            objectiveMsgTweener.ScaleDown();
+            objectiveMsgTweener.ScaleDown(true);
         }
         
         public void UpdateTimeDisplay(float timeToDisplay)
-        {
+        {          
+            if (timeToDisplay < NewGameManager.Instance.totalGameTime / 2 && !timerTween.currentlyTweening && !hitHalfPoint)
+            {
+                timerTween.ScaleUpAndDown();
+                hitHalfPoint = true;
+            }
+            
+            if (timeToDisplay < 20 && !timerTween.currentlyTweening && !hitLowTimePoint)
+            {
+                timerTween.ScaleUpAndDown();
+                
+                Color newColor = new Color32(206, 78, 78, 255);
+                timerDisplay.color = newColor;
+                
+                hitLowTimePoint = true;
+            }
+            
             timeToDisplay += 1;
         
             float minutes = Mathf.FloorToInt(timeToDisplay / 60); 
