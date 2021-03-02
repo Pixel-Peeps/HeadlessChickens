@@ -131,15 +131,15 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             spectating = true;
             controls.Spectator.Enable();
             HUDManager.Instance.EnableSpectatorHUD();
-            
+            currentFollow = 
+                chickToFollow != null ? chickToFollow : null;
             chickToFollowID = ID;
             chickToFollow = PhotonView.Find(chickToFollowID).GetComponent<ChickenBehaviour>();
             
             HUDManager.Instance.UpdateSpectatorHUD(currentFollow.photonView.Owner.NickName);
             
             Debug.Log("<color=lime>" + photonView.Owner.NickName + " currentFollow is: " + currentFollow + "</color>");
-            currentFollow = 
-                chickToFollow != null ? chickToFollow : null;
+            
         }
         
         public void SwitchToObserverCam()
@@ -170,16 +170,12 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public void RPC_CamSwitch(int pVid)
         {
             if (!photonView.IsMine) return;
-
-            currentFollow = 
-                chickToFollow != null ? chickToFollow : null;
-
-            // if (currentFollow != null) currentFollow.playerCam.gameObject.SetActive(false);
+            
             foreach(ChickenBehaviour chicken in chickenManager.escapedChicks)
             {
                 chicken.playerCam.gameObject.SetActive(false);
             }
-
+            if (currentFollow != null) currentFollow.playerCam.gameObject.SetActive(false);
             if (!alreadyEscaped) playerCam.gameObject.SetActive(false);
             chickToFollow.playerCam.gameObject.SetActive(true);
         }
@@ -187,6 +183,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public void NextSpecCam()
         {
             if (!spectating) return;
+            
             
             if (followInt == chickenManager.activeChicks.Count - 1)
             {
