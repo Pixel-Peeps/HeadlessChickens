@@ -132,7 +132,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         [PunRPC]
         public void RPC_CamSwitch(int pVid)
         {
-            
+            if (!photonView.IsMine) return;
+
             currentFollow = 
                 chickToFollow != null ? chickToFollow : null;
             if (currentFollow != null) currentFollow.playerCam.gameObject.SetActive(false);
