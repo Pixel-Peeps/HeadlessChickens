@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Management.Instrumentation;
-using Photon.Pun;
+﻿using Photon.Pun;
 using UnityEngine;
 using PixelPeeps.HeadlessChickens._Project.Scripts.Character;
 using PixelPeeps.HeadlessChickens.Network;

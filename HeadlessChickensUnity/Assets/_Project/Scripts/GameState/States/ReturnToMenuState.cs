@@ -15,8 +15,7 @@ namespace PixelPeeps.HeadlessChickens.GameState
         
         public override void StateEnter()
         {
-            NetworkManager.Instance.LeaveRoom();
-            PhotonNetwork.LeaveRoom();
+            NetworkManager.Instance.DisconnectFromMaster();
             Debug.Log("Left room");
             NetworkManager.Instance.gameIsRunning = false;
             Debug.Log("game is not running");

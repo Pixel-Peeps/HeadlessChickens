@@ -13,6 +13,7 @@ namespace PixelPeeps.HeadlessChickens.GameState
         
         public override void StateEnter()
         {
+            StateManager.uiManager.DeactivateMenu(StateManager.uiManager.mainMenu);
             Debug.Log("StateEnter on CreateRoomState");
             StateManager.LoadNextScene(sceneName);
             ActivateMenu(menu);
