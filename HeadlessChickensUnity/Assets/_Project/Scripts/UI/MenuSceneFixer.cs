@@ -1,4 +1,5 @@
 ﻿using PixelPeeps.HeadlessChickens.GameState;
+using PixelPeeps.HeadlessChickens.Network;
 using UnityEngine;
 
 namespace PixelPeeps.HeadlessChickens.UI
@@ -8,6 +9,7 @@ namespace PixelPeeps.HeadlessChickens.UI
         void Start()
         {
             GameStateManager.Instance.SwitchGameState(new MainMenuState());
+            NetworkManager.Instance.DisconnectFromMaster();
         }
     }
 }

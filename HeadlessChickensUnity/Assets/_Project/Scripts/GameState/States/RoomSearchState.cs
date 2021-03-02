@@ -1,4 +1,5 @@
 ﻿using PixelPeeps.HeadlessChickens.UI;
+using UnityEngine;
 
 namespace PixelPeeps.HeadlessChickens.GameState
 {
@@ -12,6 +13,7 @@ namespace PixelPeeps.HeadlessChickens.GameState
         
         public override void StateEnter()
         {
+            StateManager.uiManager = GameObject.FindGameObjectWithTag("MenuManager").GetComponent<UIManager>();
             StateManager.uiManager.DeactivateMenu(StateManager.uiManager.mainMenu);
             StateManager.LoadNextScene(sceneName);
             ActivateMenu(menu);
