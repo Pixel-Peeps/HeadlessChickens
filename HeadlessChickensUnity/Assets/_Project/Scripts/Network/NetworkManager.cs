@@ -43,6 +43,7 @@ namespace PixelPeeps.HeadlessChickens.Network
 
         public void ConnectToMaster()
         {
+            uiManager = GameObject.FindGameObjectWithTag("MenuManager").GetComponent<UIManager>();
             PhotonNetwork.ConnectUsingSettings();
             
             GameStateManager.Instance.ShowConnectingScreen();

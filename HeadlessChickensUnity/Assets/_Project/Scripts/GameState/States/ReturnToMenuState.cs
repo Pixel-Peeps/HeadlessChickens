@@ -16,15 +16,13 @@ namespace PixelPeeps.HeadlessChickens.GameState
         public override void StateEnter()
         {
             NetworkManager.Instance.DisconnectFromMaster();
-            Debug.Log("Left room");
             NetworkManager.Instance.gameIsRunning = false;
-            Debug.Log("game is not running");
-            StateManager.SwitchGameState(new MainMenuState());
-            Debug.Log("<color=green> switch to main menu state</color>");
+            GameStateManager.Instance.LoadNextScene(sceneName);
         }
 
         public override void OnSceneLoad()
         {
+            StateManager.uiManager = GameObject.FindGameObjectWithTag("MenuManager").GetComponent<UIManager>();
             ActivateMenu(menu);
         }
 
