@@ -107,7 +107,13 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
            leverManager.photonView.RPC("RPC_IncrementLeverCount", RpcTarget.AllBufferedViaServer);
            interactable.photonView.RPC("RPC_ToggleInteractAllowed", RpcTarget.AllBufferedViaServer);
            photonView.RPC("PlayLeverAnimation", RpcTarget.AllBufferedViaServer);
-       } else if (isFake && isShowingBlueprints && characterBase.isFox)
+           
+       } else if (isFake && !characterBase.isFox)
+       {
+           Debug.Log("wee woo wee woo FAKE LEVER");
+           regularBits.gameObject.SetActive(false);
+       }
+       else if (isFake && isShowingBlueprints && characterBase.isFox)
        {
            Debug.Log(" fake lever is READY AND GOGOGO");
            //regularBits.gameObject.SetActive(true);
@@ -117,10 +123,7 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
            characterBase.hasLever = false;
            photonView.RPC("RPC_SetUpFake", RpcTarget.AllViaServer);
 
-       } else if (isFake && !characterBase.isFox)
-       {
-           Debug.Log("wee woo wee woo FAKE LEVER");
-       }
+       } 
        //interactable.interactAllowed = false;
     }
 

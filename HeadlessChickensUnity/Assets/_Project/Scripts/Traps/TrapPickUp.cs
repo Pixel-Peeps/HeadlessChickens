@@ -37,6 +37,8 @@ public class TrapPickUp : MonoBehaviourPunCallbacks
 
     public void OnTriggerEnter(Collider other)
     {
+        photonView.SetControllerInternal(other.gameObject.GetComponent<PhotonView>().Owner.ActorNumber);
+        
         if (other.gameObject.GetComponent<CharacterBase>().hasTrap)
         {
             return;
@@ -44,7 +46,7 @@ public class TrapPickUp : MonoBehaviourPunCallbacks
 
         if (!other.gameObject.GetComponent<CharacterBase>().isFox)
         {
-            photonView.SetControllerInternal(other.gameObject.GetComponent<PhotonView>().Owner.ActorNumber);
+            
             Debug.Log("Trap: it's a chicken");
             int random = Random.Range(0, chickenTraps.Count + 1);
             other.gameObject.GetComponent<ChickenBehaviour>().trapSlot = chickenTraps[random];
@@ -61,23 +63,23 @@ public class TrapPickUp : MonoBehaviourPunCallbacks
             Debug.Log("Assigning FOX trap");
             //int random = Random.Range(0, 2);
 
-           // if (random == 0)
-            //{
-                Debug.Log("Oh lord he has the lever");
-                //fox has lever
-                other.gameObject.GetComponent<CharacterBase>().hasLever = true;
-                other.gameObject.GetComponent<CharacterBase>().hasTrap = true;
-
-                if (gameObject != null)
-                {
-                    PhotonNetwork.Destroy(gameObject);
-                }
+           // // if (random == 0)
+           //  //{
+           //      Debug.Log("Oh lord he has the lever");
+           //      //fox has lever
+           //      other.gameObject.GetComponent<CharacterBase>().hasLever = true;
+           //      other.gameObject.GetComponent<CharacterBase>().hasTrap = true;
+           //
+           //      if (gameObject != null)
+           //      {
+           //          PhotonNetwork.Destroy(gameObject);
+           //      }
            // }
-            /*else
-            {
+           // else
+           // { 
 
                 photonView.SetControllerInternal(other.gameObject.GetComponent<PhotonView>().Owner.ActorNumber);
-                Debug.Log(other.gameObject.GetComponent<PhotonView>().Owner.ActorNumber);
+                
                 Debug.Log("Oh lord he has the glue");
                 //it has the tub of glue
                 other.gameObject.GetComponent<FoxBehaviour>().hasTrap = true;
@@ -89,7 +91,7 @@ public class TrapPickUp : MonoBehaviourPunCallbacks
                 }
 
               
-            }*/
+           // }
         }
     }
 }

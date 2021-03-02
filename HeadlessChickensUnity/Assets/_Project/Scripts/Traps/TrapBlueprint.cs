@@ -57,23 +57,14 @@ public class TrapBlueprint : MonoBehaviour
     }
 
     private void SetDown()
-    {
-        //_newPosition.y = 0;
-
-        //godGO = PlacementManager.Instance.ReturnCurrentGod();
-        //trap prefab == where ever trap info is stored.currenttrap
-        
-       // godGO.transform.position = new Vector3(_newPosition.x, 0, _newPosition.z);
-
-       gameObject.transform.GetComponentInParent<CharacterBase>().trapSlot = null;
+    {  gameObject.transform.GetComponentInParent<CharacterBase>().trapSlot = null;
        gameObject.transform.GetComponentInParent<CharacterBase>().hasTrap = false;
        gameObject.transform.GetComponentInParent<CharacterBase>().isBlueprintActive = false;
-       PhotonNetwork.InstantiateRoomObject(actualTrapPrefab.name, gameObject.transform.position,
-           gameObject.transform.rotation, 0);
        
-            
+       PhotonNetwork.InstantiateRoomObject(actualTrapPrefab.name, new Vector3(gameObject.transform.position.x, 0, gameObject.transform.position.z),
+           gameObject.transform.rotation, 0);
 
-        if (gameObject != null)
+       if (gameObject != null)
         {
             _controls.Disable();
             PhotonNetwork.Destroy(gameObject);

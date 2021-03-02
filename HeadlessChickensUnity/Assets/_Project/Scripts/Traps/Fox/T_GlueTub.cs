@@ -43,12 +43,16 @@ public class T_GlueTub : Traps
 
         victim.moveSpeed = origChickenSpeed;
         Debug.Log("ok, that's enough: "+victim.moveSpeed);
+        
         photonView.RPC("RPC_DestroySelf", RpcTarget.AllBufferedViaServer);
     }
 
     [PunRPC]
     public void RPC_DestroySelf()
     {
-        PhotonNetwork.Destroy(gameObject);
+        if (gameObject.activeSelf)
+        {
+            PhotonNetwork.Destroy(gameObject);
+        }
     }
 }
