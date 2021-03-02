@@ -75,12 +75,6 @@ namespace PixelPeeps.HeadlessChickens.UI
             objectiveMsgTweener.ScaleDown(true);
         }
         #endregion
-
-        #region MyRegion
-
-        
-
-        #endregion
         
         #region Timer
 

@@ -13,6 +13,9 @@ namespace PixelPeeps.HeadlessChickens.UI
         
         public void GenerateLeverIcons()
         {
+            DestroyExistingIcons();
+            
+            
             int leverCount = NewGameManager.Instance.maxNumberOfLevers;
 
             for (int i = 0; i < leverCount; i++)
@@ -23,8 +26,6 @@ namespace PixelPeeps.HeadlessChickens.UI
 
         private void GenerateIcon()
         {
-            DestroyExistingIcons();
-            
             GameObject newLeverImage = Instantiate(leverImagePrefab, transform);
             
             LeverCounterImage counterImageScript = newLeverImage.GetComponent<LeverCounterImage>();

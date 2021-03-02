@@ -334,8 +334,8 @@ namespace PixelPeeps.HeadlessChickens.Network
 
         private void StartTimer()
         {
-            //timeRemaining = totalGameTime;
             timeRemaining = 10f;
+            timeRemaining = totalGameTime;
             timerIsRunning = true;
         }
 
@@ -348,15 +348,14 @@ namespace PixelPeeps.HeadlessChickens.Network
                     timeRemaining -= Time.deltaTime;
                     HUDManager.Instance.UpdateTimeDisplay(timeRemaining);
                 }
-
-             /*   else
+                else
                 {
                     timerIsRunning = false;
                     timeRemaining = 0;
                     HUDManager.Instance.UpdateTimeDisplay(timeRemaining);
-                    //photonView.RPC("FoxWinRPC", RpcTarget.All);
+                    photonView.RPC("FoxWinRPC", RpcTarget.All);
                 }
-            */}
+            }
         }
         
         #endregion

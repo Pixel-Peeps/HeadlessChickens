@@ -15,6 +15,9 @@ namespace PixelPeeps.HeadlessChickens.UI
         
         public void GenerateChickIcons()
         {
+            DestroyExistingIcons();
+
+            
             int chickenCount = PhotonNetwork.CurrentRoom.PlayerCount - 1;
 
             for (int i = 0; i < chickenCount; i++)
@@ -24,9 +27,7 @@ namespace PixelPeeps.HeadlessChickens.UI
         }
 
         private void GenerateIcon()
-        {
-            DestroyExistingIcons();
-                
+        {                
             GameObject newChickImage = Instantiate(chickImagePrefab, transform);
             
             ChickCounterImage counterImageScript = newChickImage.GetComponent<ChickCounterImage>();
