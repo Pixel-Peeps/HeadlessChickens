@@ -511,6 +511,52 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Spectator",
+            "id": "823046df-fe97-4e10-814e-9710eabf88d9",
+            "actions": [
+                {
+                    "name": "PreviousPlayer",
+                    "type": "Button",
+                    "id": "55efb734-f7be-4d44-837c-ac424814bdfc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "NextPlayer",
+                    "type": "Button",
+                    "id": "699d3cc4-3f7c-497a-b145-01b59f2ea757",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f7961b6b-1a01-473f-a4b5-a81c7c2ef5dc",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PreviousPlayer",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b335406c-210c-44f6-b135-51b3b967e270",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NextPlayer",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

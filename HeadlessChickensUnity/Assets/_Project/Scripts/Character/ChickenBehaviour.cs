@@ -33,8 +33,23 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         public Transform escapeLocation;
 
+        public InputControls controls;
+
+        public bool spectating;
+        
+        private void Awake()
+        {
+            controls = new InputControls();
+            
+            controls.Spectator.Disable();
+
+            controls.Spectator.NextPlayer.performed += _ => NextSpecCam();
+            controls.Spectator.NextPlayer.performed += _ => PreviousSpecCam();
+        }
+        
         private void Start()
         {
+            spectating = false;
             // chickenMesh = GetComponent<Renderer>();
             chickenManager = FindObjectOfType<ChickenManager>();
             chickenManager.activeChicks.Add(this);
@@ -112,8 +127,15 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         [PunRPC]
         public void UpdateChickToFollow(int ID)
         {
+            spectating = true;
+            controls.Spectator.Enable();
+            HUDManager.Instance.EnableSpectatorHUD();
+            
             chickToFollowID = ID;
             chickToFollow = PhotonView.Find(chickToFollowID).GetComponent<ChickenBehaviour>();
+            
+            HUDManager.Instance.UpdateSpectatorHUD(currentFollow.photonView.Owner.NickName);
+            
             Debug.Log("<color=lime>" + photonView.Owner.NickName + " currentFollow is: " + currentFollow + "</color>");
             currentFollow = 
                 chickToFollow != null ? chickToFollow : null;
@@ -157,13 +179,14 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 chicken.playerCam.gameObject.SetActive(false);
             }
 
-
             if (!alreadyEscaped) playerCam.gameObject.SetActive(false);
             chickToFollow.playerCam.gameObject.SetActive(true);
         }
 
         public void NextSpecCam()
         {
+            if (!spectating) return;
+            
             if (followInt == chickenManager.activeChicks.Count - 1)
             {
                 followInt = - 1;
@@ -180,6 +203,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         public void PreviousSpecCam()
         {
+            if (!spectating) return;
+            
             if (followInt == 0)
             {
                 followInt = chickenManager.activeChicks.Count;
