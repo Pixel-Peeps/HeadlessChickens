@@ -52,6 +52,10 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
             foreach (var chicken in escapedChicks.Where(chicken => iD == chicken.chickToFollowID))
             {
+                int randomInt = UnityEngine.Random.Range(0, activeChicks.Count);
+
+                var chickToFollowID = activeChicks[randomInt].photonView.ViewID;
+                chicken.photonView.RPC("UpdateChickToFollow", RpcTarget.AllViaServer, chickToFollowID);
                 chicken.photonView.RPC("RPC_CamSwitch", RpcTarget.AllViaServer, chicken.photonView.ViewID);
                 Debug.Log("<color=green>" + chicken.photonView.Owner.NickName + "did the foreach loop</color>");
             }
