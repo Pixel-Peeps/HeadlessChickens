@@ -7,6 +7,7 @@ using PixelPeeps.HeadlessChickens.Network;
 using PixelPeeps.HeadlessChickens.UI;
 using System.Collections.Generic;
 using Cinemachine;
+using UnityEngine.Serialization;
 
 namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
@@ -28,6 +29,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public ChickenBehaviour chickToFollow;
         public ChickenBehaviour currentFollow;
         public int chickToFollowID;
+        [FormerlySerializedAs("followIntID")] public int followInt;
 
         public Transform escapeLocation;
 
@@ -66,6 +68,12 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             chickenManager.activeChicks.Remove(this);
         }
 
+        /*############################################
+        *           CHICKEN ESCAPED / SPEC CAM       *
+        * ###########################################*/
+        
+        #region CHICKEN ESCAPED / SEPC CAM
+        
         [PunRPC]
         public void ChickenEscaped()
         {
@@ -110,23 +118,21 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             currentFollow = 
                 chickToFollow != null ? chickToFollow : null;
         }
-
+        
         public void SwitchToObserverCam()
         {
             while (true)
             {
                 // if (!photonView.IsMine) return;
-
-                int randomInt = UnityEngine.Random.Range(0, chickenManager.activeChicks.Count);
-
-                chickToFollowID = chickenManager.activeChicks[randomInt].photonView.ViewID;
-
+                
+                followInt = UnityEngine.Random.Range(0, chickenManager.activeChicks.Count);
+                chickToFollowID = chickenManager.activeChicks[followInt].photonView.ViewID;
 
                 if (chickToFollowID == photonView.ViewID)
                 {
                     continue;
                 }
-                chickToFollowID = chickenManager.activeChicks[randomInt].photonView.ViewID;
+                chickToFollowID = chickenManager.activeChicks[followInt].photonView.ViewID;
                 photonView.RPC("UpdateChickToFollow", RpcTarget.AllViaServer, chickToFollowID);
                 Debug.Log("<color=lime>" + photonView.Owner.NickName + "'s currentFollow is: " + currentFollow + "</color>");
                 Debug.Log("<color=cyan>Following " + chickToFollow.photonView.Owner.NickName + "</color>");
@@ -156,10 +162,49 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             chickToFollow.playerCam.gameObject.SetActive(true);
         }
 
+        public void NextSpecCam()
+        {
+            if (followInt == chickenManager.activeChicks.Count - 1)
+            {
+                followInt = - 1;
+            }
+
+            followInt++;
+            
+            chickToFollowID = chickenManager.activeChicks[followInt].photonView.ViewID;
+            photonView.RPC("UpdateChickToFollow", RpcTarget.AllViaServer, chickToFollowID);
+            Debug.Log("<color=lime>" + photonView.Owner.NickName + "'s currentFollow is: " + currentFollow + "</color>");
+            Debug.Log("<color=cyan>Following " + chickToFollow.photonView.Owner.NickName + "</color>");
+            photonView.RPC("RPC_CamSwitch", RpcTarget.AllViaServer, photonView.ViewID);
+        }
+
+        public void PreviousSpecCam()
+        {
+            if (followInt == 0)
+            {
+                followInt = chickenManager.activeChicks.Count;
+            }
+
+            followInt--;
+            
+            chickToFollowID = chickenManager.activeChicks[followInt].photonView.ViewID;
+            photonView.RPC("UpdateChickToFollow", RpcTarget.AllViaServer, chickToFollowID);
+            Debug.Log("<color=lime>" + photonView.Owner.NickName + "'s currentFollow is: " + currentFollow + "</color>");
+            Debug.Log("<color=cyan>Following " + chickToFollow.photonView.Owner.NickName + "</color>");
+            photonView.RPC("RPC_CamSwitch", RpcTarget.AllViaServer, photonView.ViewID);
+        }
+        #endregion
+
         protected override void Action()
         {
             throw new System.NotImplementedException();
         }
+
+        /*########################
+        *           HIDING       *
+        * #######################*/
+        
+        #region HIDING
         
         public override void HidingInteraction(bool canAccessHiding, Transform hideSpot)
         {
@@ -252,5 +297,6 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                     break;
             }
         }
+        #endregion
     }
 }
