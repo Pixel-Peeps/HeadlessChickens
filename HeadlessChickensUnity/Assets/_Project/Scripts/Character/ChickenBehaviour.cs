@@ -124,7 +124,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 chickToFollow = PhotonView.Find(chickToFollowID).GetComponent<ChickenBehaviour>();
                 Debug.Log("<color=lime>" + photonView.Owner.NickName + "'s currentFollow is: " + currentFollow + "</color>");
                 Debug.Log("<color=cyan>Following " + chickToFollow.photonView.Owner.NickName + "</color>");
-                photonView.RPC("RPC_pVid", RpcTarget.AllViaServer, photonView.ViewID);
+                photonView.RPC("RPC_CamSwitch", RpcTarget.AllViaServer, photonView.ViewID);
 
                 // if chick is watching this cam, they call this method
                 break;
