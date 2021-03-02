@@ -34,6 +34,8 @@ public class T_GlueTub : Traps
             origChickenSpeed = victim.moveSpeed;
             victim.moveSpeed /= 2;
             StartCoroutine(GlueEffectCoolDown());
+            
+            
         }
     }
 
