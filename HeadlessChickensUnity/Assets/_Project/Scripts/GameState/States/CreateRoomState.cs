@@ -1,4 +1,5 @@
-﻿using PixelPeeps.HeadlessChickens.UI;
+﻿using PixelPeeps.HeadlessChickens.Network;
+using PixelPeeps.HeadlessChickens.UI;
 using UnityEngine;
 
 namespace PixelPeeps.HeadlessChickens.GameState
@@ -14,6 +15,7 @@ namespace PixelPeeps.HeadlessChickens.GameState
         public override void StateEnter()
         {
             StateManager.uiManager.DeactivateMenu(StateManager.uiManager.mainMenu);
+            NetworkManager.Instance.LeaveRoom();
             Debug.Log("StateEnter on CreateRoomState");
             StateManager.LoadNextScene(sceneName);
             ActivateMenu(menu);
