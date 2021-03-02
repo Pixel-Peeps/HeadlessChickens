@@ -20,18 +20,21 @@ public class T_GlueTub : Traps
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<CharacterBase>().isFox)
+        var _character = other.gameObject.GetComponent<CharacterBase>();
+        if (_character.isFox)
         {
             return;
         }
-        
-        //effect
-        victim = other.gameObject.GetComponent<CharacterInput>();
-        Debug.Log("Let's slow this baby down: "+victim.moveSpeed);
-        origChickenSpeed = victim.moveSpeed;
-        victim.moveSpeed /= 2;
-        StartCoroutine(GlueEffectCoolDown());
 
+        if (!_character.isFox)
+        {
+            //effect
+            victim = other.gameObject.GetComponent<CharacterInput>();
+            Debug.Log("Let's slow this baby down: " + victim.moveSpeed);
+            origChickenSpeed = victim.moveSpeed;
+            victim.moveSpeed /= 2;
+            StartCoroutine(GlueEffectCoolDown());
+        }
     }
 
     public IEnumerator GlueEffectCoolDown()

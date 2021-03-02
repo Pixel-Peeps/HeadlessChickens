@@ -5,7 +5,7 @@ using PixelPeeps.HeadlessChickens._Project.Scripts.Character;
 using UnityEngine;
 
 
-public class TrapPickUp : MonoBehaviour
+public class TrapPickUp : MonoBehaviourPunCallbacks
 {
     
     //not using these anymore, but keeping JIC
@@ -41,38 +41,55 @@ public class TrapPickUp : MonoBehaviour
         {
             return;
         }
-        
+
         if (!other.gameObject.GetComponent<CharacterBase>().isFox)
         {
+            photonView.SetControllerInternal(other.gameObject.GetComponent<PhotonView>().Owner.ActorNumber);
             Debug.Log("Trap: it's a chicken");
-            int random = Random.Range(0, chickenTraps.Count+1);
+            int random = Random.Range(0, chickenTraps.Count + 1);
             other.gameObject.GetComponent<ChickenBehaviour>().trapSlot = chickenTraps[random];
             other.gameObject.GetComponent<ChickenBehaviour>().hasTrap = true;
-            Debug.Log("Assigning chick trap: "+chickenTraps[random].name);
-            PhotonNetwork.Destroy(gameObject);
+            Debug.Log("Assigning chick trap: " + chickenTraps[random].name);
+
+            if (gameObject != null)
+            {
+                PhotonNetwork.Destroy(gameObject);
+            }
         }
         else
         {
-            /*Debug.Log("Assigning FOX trap");
-            int random = Random.Range(0, 2);
+            Debug.Log("Assigning FOX trap");
+            //int random = Random.Range(0, 2);
 
-            if (random == 0)
-            {
+           // if (random == 0)
+            //{
                 Debug.Log("Oh lord he has the lever");
                 //fox has lever
                 other.gameObject.GetComponent<CharacterBase>().hasLever = true;
                 other.gameObject.GetComponent<CharacterBase>().hasTrap = true;
-                PhotonNetwork.Destroy(gameObject);
-            }
-            else
+
+                if (gameObject != null)
+                {
+                    PhotonNetwork.Destroy(gameObject);
+                }
+           // }
+            /*else
             {
-            */
+
+                photonView.SetControllerInternal(other.gameObject.GetComponent<PhotonView>().Owner.ActorNumber);
+                Debug.Log(other.gameObject.GetComponent<PhotonView>().Owner.ActorNumber);
                 Debug.Log("Oh lord he has the glue");
                 //it has the tub of glue
                 other.gameObject.GetComponent<FoxBehaviour>().hasTrap = true;
                 other.gameObject.GetComponent<FoxBehaviour>().trapSlot = tubGluePrefab;
-                PhotonNetwork.Destroy(gameObject);
-            //}
+
+                if (gameObject != null)
+                {
+                    PhotonNetwork.Destroy(gameObject);
+                }
+
+              
+            }*/
         }
     }
 }
