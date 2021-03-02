@@ -45,7 +45,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             controls.Spectator.Disable();
 
             controls.Spectator.NextPlayer.performed += _ => NextSpecCam();
-            controls.Spectator.NextPlayer.performed += _ => PreviousSpecCam();
+            controls.Spectator.PreviousPlayer.performed += _ => PreviousSpecCam();
         }
         
         private void Start()
