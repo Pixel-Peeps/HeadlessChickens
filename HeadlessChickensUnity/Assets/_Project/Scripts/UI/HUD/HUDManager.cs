@@ -16,14 +16,9 @@ namespace PixelPeeps.HeadlessChickens.UI
         [Header("HUD Elements")] 
         public TextMeshProUGUI objectiveMessage;
         public UITweener objectiveMsgTweener;
-        
-        public LeverCounter leverCounter;
-        public ChickCounter chickCounter;
-        
-        public TextMeshProUGUI timerDisplay;
-        public UITweener timerTween;
-        private bool hitHalfPoint;
-        private bool hitLowTimePoint;
+
+        public GameObject interactButton;
+        public GameObject itemButton;
 
         public void Awake()
         {
@@ -46,8 +41,15 @@ namespace PixelPeeps.HeadlessChickens.UI
         {
             GenerateChickIcons();
             GenerateLeverIcons();
+            
+            InitialiseSpectatorHUD();
+            InitialiseTimer();
+            
+            interactButton.SetActive(true);
+            itemButton.SetActive(true);
         }
 
+        #region Objective Message
         public void DisplayObjectiveMessage(PlayerType playerType, float lifetime, string foxText, string chickText)
         {
             objectiveMessage.gameObject.SetActive(true);
@@ -72,6 +74,28 @@ namespace PixelPeeps.HeadlessChickens.UI
             yield return new WaitForSecondsRealtime(lifetime);
             objectiveMsgTweener.ScaleDown(true);
         }
+        #endregion
+
+        #region MyRegion
+
+        
+
+        #endregion
+        
+        #region Timer
+
+        public TextMeshProUGUI timerDisplay;
+        public Color32 defaultTimerColour = new Color32(147, 147, 147, 255);
+        public Color32 redTimerColour = new Color32(206, 78, 78, 255);
+        public UITweener timerTween;
+        private bool hitHalfPoint;
+        private bool hitLowTimePoint;
+
+        private void InitialiseTimer()
+        {
+            timerDisplay.gameObject.SetActive(true);
+            timerDisplay.color = defaultTimerColour;
+        }
         
         public void UpdateTimeDisplay(float timeToDisplay)
         {          
@@ -85,8 +109,7 @@ namespace PixelPeeps.HeadlessChickens.UI
             {
                 timerTween.ScaleUpAndDown();
                 
-                Color newColor = new Color32(206, 78, 78, 255);
-                timerDisplay.color = newColor;
+                timerDisplay.color = redTimerColour;
                 
                 hitLowTimePoint = true;
             }
@@ -98,7 +121,14 @@ namespace PixelPeeps.HeadlessChickens.UI
 
             timerDisplay.text = $"{minutes:00}:{seconds:00}";
         }
+        
+        #endregion
 
+        #region Counters
+        
+        public LeverCounter leverCounter;
+        public ChickCounter chickCounter;
+        
         public void GenerateChickIcons()
         {
             chickCounter.GenerateChickIcons();
@@ -118,5 +148,30 @@ namespace PixelPeeps.HeadlessChickens.UI
         {
             leverCounter.UpdateCounter(currentLeverCount);
         }
+        #endregion
+
+        #region Spectator Mode
+
+        public GameObject spectatorCanvas;
+        public TextMeshProUGUI spectatingText;
+
+        private void InitialiseSpectatorHUD()
+        {
+            spectatorCanvas.SetActive(false);
+        }
+        
+        public void EnableSpectatorHUD()
+        {
+            interactButton.SetActive(false);
+            itemButton.SetActive(false);
+            spectatorCanvas.SetActive(true);
+        }
+
+        public void UpdateSpectatorHUD(string currentPlayerName)
+        {
+            spectatingText.text = $"Spectating: {currentPlayerName}";
+        }
+        
+        #endregion
     }
 }

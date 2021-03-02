@@ -524,6 +524,52 @@ public class @InputControls : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Spectator"",
+            ""id"": ""823046df-fe97-4e10-814e-9710eabf88d9"",
+            ""actions"": [
+                {
+                    ""name"": ""PreviousPlayer"",
+                    ""type"": ""Button"",
+                    ""id"": ""55efb734-f7be-4d44-837c-ac424814bdfc"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""NextPlayer"",
+                    ""type"": ""Button"",
+                    ""id"": ""699d3cc4-3f7c-497a-b145-01b59f2ea757"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""f7961b6b-1a01-473f-a4b5-a81c7c2ef5dc"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PreviousPlayer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b335406c-210c-44f6-b135-51b3b967e270"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextPlayer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -572,6 +618,10 @@ public class @InputControls : IInputActionCollection, IDisposable
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_replacethis = m_UI.FindAction("replacethis", throwIfNotFound: true);
+        // Spectator
+        m_Spectator = asset.FindActionMap("Spectator", throwIfNotFound: true);
+        m_Spectator_PreviousPlayer = m_Spectator.FindAction("PreviousPlayer", throwIfNotFound: true);
+        m_Spectator_NextPlayer = m_Spectator.FindAction("NextPlayer", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -772,6 +822,47 @@ public class @InputControls : IInputActionCollection, IDisposable
         }
     }
     public UIActions @UI => new UIActions(this);
+
+    // Spectator
+    private readonly InputActionMap m_Spectator;
+    private ISpectatorActions m_SpectatorActionsCallbackInterface;
+    private readonly InputAction m_Spectator_PreviousPlayer;
+    private readonly InputAction m_Spectator_NextPlayer;
+    public struct SpectatorActions
+    {
+        private @InputControls m_Wrapper;
+        public SpectatorActions(@InputControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @PreviousPlayer => m_Wrapper.m_Spectator_PreviousPlayer;
+        public InputAction @NextPlayer => m_Wrapper.m_Spectator_NextPlayer;
+        public InputActionMap Get() { return m_Wrapper.m_Spectator; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(SpectatorActions set) { return set.Get(); }
+        public void SetCallbacks(ISpectatorActions instance)
+        {
+            if (m_Wrapper.m_SpectatorActionsCallbackInterface != null)
+            {
+                @PreviousPlayer.started -= m_Wrapper.m_SpectatorActionsCallbackInterface.OnPreviousPlayer;
+                @PreviousPlayer.performed -= m_Wrapper.m_SpectatorActionsCallbackInterface.OnPreviousPlayer;
+                @PreviousPlayer.canceled -= m_Wrapper.m_SpectatorActionsCallbackInterface.OnPreviousPlayer;
+                @NextPlayer.started -= m_Wrapper.m_SpectatorActionsCallbackInterface.OnNextPlayer;
+                @NextPlayer.performed -= m_Wrapper.m_SpectatorActionsCallbackInterface.OnNextPlayer;
+                @NextPlayer.canceled -= m_Wrapper.m_SpectatorActionsCallbackInterface.OnNextPlayer;
+            }
+            m_Wrapper.m_SpectatorActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @PreviousPlayer.started += instance.OnPreviousPlayer;
+                @PreviousPlayer.performed += instance.OnPreviousPlayer;
+                @PreviousPlayer.canceled += instance.OnPreviousPlayer;
+                @NextPlayer.started += instance.OnNextPlayer;
+                @NextPlayer.performed += instance.OnNextPlayer;
+                @NextPlayer.canceled += instance.OnNextPlayer;
+            }
+        }
+    }
+    public SpectatorActions @Spectator => new SpectatorActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -808,5 +899,10 @@ public class @InputControls : IInputActionCollection, IDisposable
     public interface IUIActions
     {
         void OnReplacethis(InputAction.CallbackContext context);
+    }
+    public interface ISpectatorActions
+    {
+        void OnPreviousPlayer(InputAction.CallbackContext context);
+        void OnNextPlayer(InputAction.CallbackContext context);
     }
 }
