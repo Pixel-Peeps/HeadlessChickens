@@ -217,7 +217,11 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             gameObject.transform.position = PhotonView.Find(hideViewID).gameObject.transform.position;
             Debug.Log("after gameObject.transform.position = currentHidingSpot.position");
 
-            hidedSpot.EnableHidingCam();
+            if (photonView.IsMine)
+            {
+                hidedSpot.EnableHidingCam();
+            }
+
             playerCam.gameObject.SetActive(false);
         }
 
@@ -239,7 +243,10 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             // Re-enable Mesh
             chickenMesh.enabled = true;
 
-            hidedSpot.DisableHidingCam();
+            if (photonView.IsMine)
+            {
+                hidedSpot.DisableHidingCam();
+            }
 
             SwitchState(EStates.Moving);
 
