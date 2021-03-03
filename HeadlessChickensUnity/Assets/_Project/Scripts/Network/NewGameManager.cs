@@ -358,7 +358,7 @@ namespace PixelPeeps.HeadlessChickens.Network
                     timerIsRunning = false;
                     timeRemaining = 0;
                     HUDManager.Instance.UpdateTimeDisplay(timeRemaining);
-                    photonView.RPC("FoxWinRPC", RpcTarget.All);
+                   // photonView.RPC("FoxWinRPC", RpcTarget.All);
                 }
             }
         }
