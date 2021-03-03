@@ -177,9 +177,6 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                         photonView.RPC("RPC_LeaveHiding", RpcTarget.AllViaServer, positionBeforeHiding);
                         photonView.RPC("RPC_SetParent", RpcTarget.AllViaServer);
                         hidedSpot.photonView.RPC("RPC_ToggleAccess", RpcTarget.AllViaServer);
-
-                        hidedSpot.DisableHidingCam();
-
                         break;
                     case false:
                         currentHidingSpot = hideSpot;
@@ -238,7 +235,9 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
             // Re-enable Mesh
             chickenMesh.enabled = true;
-            
+
+            hidedSpot.DisableHidingCam();
+
             SwitchState(EStates.Moving);
 
             if (photonView.IsMine)
