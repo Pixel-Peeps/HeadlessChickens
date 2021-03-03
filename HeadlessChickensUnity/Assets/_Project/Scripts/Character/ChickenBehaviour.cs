@@ -175,14 +175,14 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 {
                     case true:
                         photonView.RPC("RPC_LeaveHiding", RpcTarget.AllViaServer, positionBeforeHiding);
-                        photonView.RPC("RPC_SetParent", RpcTarget.AllViaServer);
+                        // photonView.RPC("RPC_SetParent", RpcTarget.AllViaServer);
                         hidedSpot.photonView.RPC("RPC_ToggleAccess", RpcTarget.AllViaServer);
                         break;
                     case false:
                         currentHidingSpot = hideSpot;
                         photonView.RPC("RPC_EnterHiding", RpcTarget.AllViaServer, currentHidingSpot.GetComponent<PhotonView>().ViewID);
-                        photonView.RPC("RPC_SetParent", RpcTarget.AllViaServer);
-                        
+                        // photonView.RPC("RPC_SetParent", RpcTarget.AllViaServer);
+
                         break;
                 }
             }
@@ -210,12 +210,14 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             // Set the current hiding spot as a parent object
             currentHidingSpot = PhotonView.Find(hideViewID).gameObject.transform;
             gameObject.transform.SetParent(PhotonView.Find(hideViewID).gameObject.transform);
+            hidedSpot = transform.GetComponentInParent<HidingSpot>();
             Debug.Log("after set parent");
             
             // move player into the hiding spot
             gameObject.transform.position = PhotonView.Find(hideViewID).gameObject.transform.position;
             Debug.Log("after gameObject.transform.position = currentHidingSpot.position");
 
+            hidedSpot.EnableHidingCam();
             playerCam.gameObject.SetActive(false);
         }
 
@@ -225,7 +227,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             isHiding = false;
 
             // gameObject.transform.SetParent(null);
-            photonView.RPC("RPC_SetParent", RpcTarget.AllViaServer);
+            // photonView.RPC("RPC_SetParent", RpcTarget.AllViaServer);
+            transform.SetParent(null);
 
             //photonView.transform.SetParent(null);
             photonView.transform.position = positionBeforeHiding; 
