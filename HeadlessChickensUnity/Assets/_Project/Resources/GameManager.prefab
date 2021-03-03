@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5173365763610788296}
   - component: {fileID: 849949290}
   - component: {fileID: 849949289}
+  - component: {fileID: 2382090305524964847}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -32,22 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2382090305524964847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6425314097948912326}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80752e867027f46f092febd7555e54d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 4736487094571944351, guid: 4238311699e664348b8e40254d1ec715, type: 3}
-  cube: {fileID: 0}
-  leversPulled: 0
-  allLeversPulled: 0
 --- !u!114 &849949290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,14 +54,12 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
+  myType: 0
   chickensCaught: 0
   chickensEscaped: 0
   chickenEscapeThreshold: 1
-  hidingSpotSpawnPos:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  myController: {fileID: 0}
+  hidingSpotSpawnPos: []
   hidingSpotPrefab: {fileID: 5648197294204226697, guid: b8e36aeea3fa2ee41b6e1f268bc3c454, type: 3}
   rooms:
   - {fileID: 0}
@@ -89,15 +72,34 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  leverSpotPrefab: {fileID: 1664495383705939199, guid: a0a6eb8fbbfb6a347bd574e78d6166ab, type: 3}
-  maxNumberOfLevers: 0
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  leverSpotPrefab: {fileID: 5889737990007388748, guid: c6fc392a72e364340b36515d916f6045, type: 3}
+  maxNumberOfLevers: 5
+  inactiveLevers: []
   exits:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   exitTime: 120
-  totalGameTime: 100
+  trapSpawnPos:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  trapPickUpPrefab: {fileID: 213685057680608487, guid: 32bcfc1ff1b09467ea9e27679ec05c7e, type: 3}
+  foxWinScreen: {fileID: 0}
+  foxLossScreen: {fileID: 0}
+  chickenWinScreen: {fileID: 0}
+  chickenLossScreen: {fileID: 0}
+  lobbyReturnCountdown: 5
+  totalGameTime: 600
 --- !u!114 &849949289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,3 +123,19 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &2382090305524964847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6425314097948912326}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80752e867027f46f092febd7555e54d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPrefab: {fileID: 4736487094571944351, guid: 4238311699e664348b8e40254d1ec715, type: 3}
+  cube: {fileID: 0}
+  leversPulled: 0
+  allLeversPulled: 0
