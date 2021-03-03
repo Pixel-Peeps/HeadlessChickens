@@ -256,7 +256,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: -4973734387028869240, guid: 3640edef240a342578554cad18656376, type: 3}
-  - {fileID: 2100000, guid: f05276e40ea1c1849a7a93e2f685df32, type: 2}
+  - {fileID: 2100000, guid: e1fb621ebd33bff4399784926ad351be, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -464,7 +464,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f05276e40ea1c1849a7a93e2f685df32, type: 2}
+  - {fileID: 2100000, guid: e1fb621ebd33bff4399784926ad351be, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1514,6 +1514,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HidingCamVir
       objectReference: {fileID: 0}
+    - target: {fileID: 382388804875785480, guid: 6ca7e2a97b0973a40ab7b5e0011d22e6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 382388804875785481, guid: 6ca7e2a97b0973a40ab7b5e0011d22e6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.018
@@ -1557,6 +1561,46 @@ PrefabInstance:
     - target: {fileID: 382388804875785481, guid: 6ca7e2a97b0973a40ab7b5e0011d22e6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0.975
+      objectReference: {fileID: 0}
+    - target: {fileID: 382388806300346156, guid: 6ca7e2a97b0973a40ab7b5e0011d22e6, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.6777251
+      objectReference: {fileID: 0}
+    - target: {fileID: 382388806300346156, guid: 6ca7e2a97b0973a40ab7b5e0011d22e6, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 6.5760803
+      objectReference: {fileID: 0}
+    - target: {fileID: 382388806403714082, guid: 6ca7e2a97b0973a40ab7b5e0011d22e6, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.28364345
+      objectReference: {fileID: 0}
+    - target: {fileID: 382388806403714082, guid: 6ca7e2a97b0973a40ab7b5e0011d22e6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 382388806403714082, guid: 6ca7e2a97b0973a40ab7b5e0011d22e6, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 7.774048
+      objectReference: {fileID: 0}
+    - target: {fileID: 382388806614567283, guid: 6ca7e2a97b0973a40ab7b5e0011d22e6, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 382388806614567283, guid: 6ca7e2a97b0973a40ab7b5e0011d22e6, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 382388806614567283, guid: 6ca7e2a97b0973a40ab7b5e0011d22e6, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 382388806614567283, guid: 6ca7e2a97b0973a40ab7b5e0011d22e6, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 382388806633547937, guid: 6ca7e2a97b0973a40ab7b5e0011d22e6, type: 3}
+      propertyPath: m_HorizontalAxis.Value
+      value: 154.9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ca7e2a97b0973a40ab7b5e0011d22e6, type: 3}
