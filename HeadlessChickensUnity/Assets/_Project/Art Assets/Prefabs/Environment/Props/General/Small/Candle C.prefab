@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 1331728652691574945}
   - component: {fileID: 1567703873808873887}
   - component: {fileID: 4103430534232943775}
+  - component: {fileID: 168315546432168158}
   m_Layer: 0
   m_Name: MeltedCandle2
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1331728652691574945
 Transform:
@@ -25,8 +26,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 809879262109934035}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -28.839586, y: 1.0190517, z: -18.250195}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8214337803259551785}
@@ -59,9 +60,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 3187221798020242887, guid: 6bbd50bd673aa46509733e74f17fc7b4, type: 3}
-  - {fileID: 2565534315720911105, guid: 6bbd50bd673aa46509733e74f17fc7b4, type: 3}
-  - {fileID: 1934441646436348413, guid: 6bbd50bd673aa46509733e74f17fc7b4, type: 3}
+  - {fileID: 2100000, guid: 162643c26c608d2409a573e5e561d2b2, type: 2}
+  - {fileID: 2100000, guid: 98394452be9602f489281e819dca0719, type: 2}
+  - {fileID: 2100000, guid: 95a2b8eaf4704ed499bae75855906ae0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -83,6 +84,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &168315546432168158
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 809879262109934035}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1131096640491906007, guid: 6bbd50bd673aa46509733e74f17fc7b4, type: 3}
 --- !u!1 &8841938368408943251
 GameObject:
   m_ObjectHideFlags: 0

@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 2393829632915168940}
   - component: {fileID: 2386818464830317623}
   - component: {fileID: 8193861427861735086}
+  - component: {fileID: 7644361602723482899}
   m_Layer: 0
   m_Name: Spear_A
   m_TagString: Ground
@@ -123,8 +124,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8067726398312463513, guid: db662f94a0e3d4dcaad58373d210079f, type: 3}
-  - {fileID: -4801087792941676145, guid: db662f94a0e3d4dcaad58373d210079f, type: 3}
+  - {fileID: 2100000, guid: 69b8e08419f5f3346a07d9e6ae187f96, type: 2}
+  - {fileID: 2100000, guid: 4d2bdaedac5de8447a9b06ee344e60a3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -169,7 +170,20 @@ BoxCollider:
   m_GameObject: {fileID: 3912727756073140851}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.105866015, y: 1.5833517, z: 0.10349758}
+  m_Center: {x: 0.0021422654, y: 0.7967126, z: -0.000000067055225}
+--- !u!65 &7644361602723482899
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3912727756073140851}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.105866015, y: 1.9850441, z: 0.10349758}
-  m_Center: {x: 0.0021422654, y: 0.9975588, z: -0.00000006891787}
+  m_Size: {x: 0.20840833, y: 0.41261816, z: 0.08111542}
+  m_Center: {x: 0.0000008046627, y: 1.7900722, z: -0.000000067055225}
