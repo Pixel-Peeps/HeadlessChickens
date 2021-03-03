@@ -140,7 +140,7 @@ namespace PixelPeeps.HeadlessChickens.Network
         {
             if (chickensCaught + chickensEscaped == PhotonNetwork.CurrentRoom.PlayerCount - 1)
             {
-                DetermineWinner();
+               // DetermineWinner();
             }
         }
 
@@ -353,7 +353,7 @@ namespace PixelPeeps.HeadlessChickens.Network
                     timerIsRunning = false;
                     timeRemaining = 0;
                     HUDManager.Instance.UpdateTimeDisplay(timeRemaining);
-                    photonView.RPC("FoxWinRPC", RpcTarget.All);
+                   // photonView.RPC("FoxWinRPC", RpcTarget.All);
                 }
             }
         }
