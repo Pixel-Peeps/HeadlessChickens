@@ -1,24 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!95 &1527816878243559672
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2556769668080374457}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2a4dc3be13977d440ad34b7a0b029d23, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!95 &8204692340689846153
 Animator:
   serializedVersion: 3
@@ -57,6 +38,26 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: f9f07508894bd424bb4ae6bdc185aae2, type: 2}
+    - target: {fileID: 2704245307722068842, guid: c6fc392a72e364340b36515d916f6045, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.3535534
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704245307722068842, guid: c6fc392a72e364340b36515d916f6045, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.61237246
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704245307722068842, guid: c6fc392a72e364340b36515d916f6045, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.3535534
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704245307722068842, guid: c6fc392a72e364340b36515d916f6045, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.61237246
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704245307722068842, guid: c6fc392a72e364340b36515d916f6045, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 4597392246805387694, guid: c6fc392a72e364340b36515d916f6045, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -135,11 +136,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6fc392a72e364340b36515d916f6045, type: 3}
---- !u!1 &2556769668080374457 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5143873144892612565, guid: c6fc392a72e364340b36515d916f6045, type: 3}
-  m_PrefabInstance: {fileID: 7213021851177602412}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7214638210468216136 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1765893142523940, guid: c6fc392a72e364340b36515d916f6045, type: 3}
