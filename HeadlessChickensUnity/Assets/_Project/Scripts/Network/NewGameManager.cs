@@ -140,7 +140,7 @@ namespace PixelPeeps.HeadlessChickens.Network
         {
             if (chickensCaught + chickensEscaped == PhotonNetwork.CurrentRoom.PlayerCount - 1)
             {
-                DetermineWinner();
+               // DetermineWinner();
             }
         }
 
