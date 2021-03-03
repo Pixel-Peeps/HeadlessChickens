@@ -44,7 +44,7 @@ public class TrapBlueprint : MonoBehaviour
     }
 
     private void Update()
-    {
+    { //leaving this here in case we need to return to a raycast solution
         /*
         Ray ray = _cam.ScreenPointToRay(Mouse.current.position.ReadValue());
         // if (Physics.Raycast(ray, out _hit, 50000.0f, (1 << 11)))

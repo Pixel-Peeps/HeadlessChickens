@@ -5,17 +5,11 @@ using Photon.Pun;
 using PixelPeeps.HeadlessChickens._Project.Scripts.Character;
 using UnityEngine;
 
-public class T_BrokenEggshells : Traps
+public class T_BrokenEggshells : MonoBehaviourPunCallbacks
 {
     public float effectDuration = 4f;
     private CharacterInput victim;
     private float origSpeed;
-    
-    public override void ActivateTrap()
-    {
-        // TODO
-        // Implement the actions this trap does on the corresponding player that it effects
-    }
 
     public void OnTriggerEnter(Collider other)
     {
