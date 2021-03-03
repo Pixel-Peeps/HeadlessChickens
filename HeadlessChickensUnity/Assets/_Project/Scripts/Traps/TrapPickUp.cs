@@ -44,7 +44,7 @@ public class TrapPickUp : MonoBehaviourPunCallbacks
         {
 
             Debug.Log("Trap: it's a chicken");
-            int random = Random.Range(0, chickenTraps.Count + 2);
+            int random = Random.Range(0, chickenTraps.Count + 1);
 
             if (random < 3)
             {
@@ -52,12 +52,12 @@ public class TrapPickUp : MonoBehaviourPunCallbacks
                 other.gameObject.GetComponent<ChickenBehaviour>().trapSlot = chickenTraps[random];
                 Debug.Log("Assigning chick trap: " + chickenTraps[random].name);
             }
-            else if (random == 3)
+            /*else if (random == 3)
             {
                 //assigning decoy chicken (no blueprint)
                 other.gameObject.GetComponent<ChickenBehaviour>().hasDecoy = true;
             }
-
+*/
             other.gameObject.GetComponent<ChickenBehaviour>().hasTrap = true;
 
             if (gameObject != null)
@@ -68,22 +68,22 @@ public class TrapPickUp : MonoBehaviourPunCallbacks
         else
         {
             Debug.Log("Assigning FOX trap");
-            int random = Random.Range(0, 2);
-
-            if (random == 0)
-            {
-                //assigning the false lever
-                Debug.Log("Oh lord he has the lever");
-                other.gameObject.GetComponent<CharacterBase>().hasLever = true;
-                other.gameObject.GetComponent<CharacterBase>().hasTrap = true;
-
-                if (gameObject != null)
-                {
-                    PhotonNetwork.Destroy(gameObject);
-                }
-            }
-            else
-            {
+            // int random = Random.Range(0, 2);
+            //
+            // if (random == 0)
+            // {
+            //     //assigning the false lever
+            //     Debug.Log("Oh lord he has the lever");
+            //     other.gameObject.GetComponent<CharacterBase>().hasLever = true;
+            //     other.gameObject.GetComponent<CharacterBase>().hasTrap = true;
+            //
+            //     if (gameObject != null)
+            //     {
+            //         PhotonNetwork.Destroy(gameObject);
+            //     }
+            // }
+            // else
+            // {
                 //assigning the glue tub
                 Debug.Log("Oh lord he has the glue");
                 other.gameObject.GetComponent<FoxBehaviour>().hasTrap = true;
@@ -93,7 +93,7 @@ public class TrapPickUp : MonoBehaviourPunCallbacks
                 {
                     PhotonNetwork.Destroy(gameObject);
                 }
-            }
+            //}
         }
     }
 }
