@@ -1015,6 +1015,7 @@ MonoBehaviour:
   interactor: {fileID: 4736984460096568289}
   photonView: {fileID: 0}
   _rigidbody: {fileID: 0}
+  playerCam: {fileID: 0}
   isHiding: 0
   hasTrap: 0
   isBlueprintActive: 0
@@ -1023,6 +1024,7 @@ MonoBehaviour:
   trapSlot: {fileID: 3685449852532122639, guid: 77a645d81b946e9479078ac31b968101, type: 3}
   cooldownRunning: 0
   hasBeenCaught: 0
+  alreadyEscaped: 0
   states: 0
   chickenManager: {fileID: 0}
   positionBeforeHiding: {x: 0, y: 0, z: 0}
@@ -1030,6 +1032,12 @@ MonoBehaviour:
   caughtMat: {fileID: 2100000, guid: b67046d3144638c4c855fe1d6caf598f, type: 2}
   hidedSpot: {fileID: 0}
   currentHidingSpot: {fileID: 0}
+  chickToFollow: {fileID: 0}
+  currentFollow: {fileID: 0}
+  chickToFollowID: 0
+  followInt: 0
+  escapeLocation: {fileID: 0}
+  spectating: 0
 --- !u!114 &4736984460096568292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1625,6 +1633,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rigged chick
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 4ff269c29119b4f4ebd3a54fd51cf7be, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: cbfdd5c96b06aef4e9ce1f15acc4924b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ff269c29119b4f4ebd3a54fd51cf7be, type: 3}
 --- !u!4 &1815084442811093427 stripped
