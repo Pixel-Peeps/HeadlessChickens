@@ -21,6 +21,7 @@ public class T_RottenEgg : MonoBehaviourPunCallbacks
     }
     public void OnTriggerEnter(Collider other)
     {
+        photonView.SetControllerInternal(other.gameObject.GetComponent<PhotonView>().Owner.ActorNumber);
         var _character = other.gameObject.GetComponent<CharacterBase>();
         if (!_character.isFox)
         {
@@ -33,7 +34,7 @@ public class T_RottenEgg : MonoBehaviourPunCallbacks
             victim = other.gameObject.GetComponent<CharacterInput>();
             smokeImage.GetComponent<ToggleSmokeTrap>().EnableDisableSmoke(true);
             Debug.Log("phew smelly smelly");
-            
+            gameObject.GetComponent<MeshRenderer>().enabled = false;
             StartCoroutine(RottenEggEffectCoolDown());
         }
     }

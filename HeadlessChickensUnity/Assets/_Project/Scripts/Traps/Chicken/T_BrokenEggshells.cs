@@ -13,6 +13,7 @@ public class T_BrokenEggshells : MonoBehaviourPunCallbacks
 
     public void OnTriggerEnter(Collider other)
     {
+        photonView.SetControllerInternal(other.gameObject.GetComponent<PhotonView>().Owner.ActorNumber);
         var _character = other.gameObject.GetComponent<CharacterBase>();
         if (!_character.isFox)
         {

@@ -62,12 +62,20 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                if (other.GetComponent<ChickenBehaviour>() != null)
+                var chick = other.GetComponent<ChickenBehaviour>();
+                if (chick != null)
                 {
-                    if (other.GetComponent<ChickenBehaviour>().isHiding == false)
+                    if (!chick.isHiding && !chick.hasDecoy)
                     {
-                        other.GetComponent<ChickenBehaviour>().photonView
+                        chick.photonView
                             .RPC("ChickenCaptured", RpcTarget.AllBufferedViaServer);
+                    }
+                    
+                    if (!chick.isHiding && chick.hasDecoy)
+                    {
+                        Debug.Log("DECOY DEPLOYED");
+                        chick.hasDecoy = false;
+                        chick.hasTrap = false;
                     }
                 }
             }
