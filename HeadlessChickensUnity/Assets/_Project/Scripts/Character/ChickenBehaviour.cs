@@ -115,7 +115,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             SwitchToObserverCam();
 
             photonView.RPC("UpdateAlreadyEscaped", RpcTarget.AllBufferedViaServer);
-            // alreadyEscaped = true;
+            alreadyEscaped = true;
 
             chickenManager.photonView.RPC("UpdateEscapedChickCam", RpcTarget.AllViaServer, photonView.ViewID);
 
