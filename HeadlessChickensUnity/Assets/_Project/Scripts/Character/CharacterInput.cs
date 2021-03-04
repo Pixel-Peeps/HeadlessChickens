@@ -324,6 +324,15 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 {
                     _anim.SetTrigger("SwipeTrigger");
                 }
+
+                if (!_character.isFox)
+                {
+                    ChickenBehaviour chicken = _character.GetComponent<ChickenBehaviour>();
+                    if (chicken.hasBeenCaught)
+                    {
+                        chicken.photonView.RPC("RestoreHead", RpcTarget.AllViaServer);
+                    }
+                }
                 
                 //if (_character.isFox && _character.hasLever && _character.isBlueprintActive)
                 //{

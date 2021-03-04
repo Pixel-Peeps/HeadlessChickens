@@ -20,6 +20,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         [Header("Mesh and Materials")]
         [SerializeField] Renderer chickenMesh;
         [SerializeField] Material caughtMat;
+        [SerializeField] Material normalMat;
         
         [Header("Hiding")]
         public HidingSpot hidedSpot;
@@ -71,6 +72,13 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             NewGameManager.Instance.CheckForFinish();
 
             chickenManager.activeChicks.Remove(this);
+        }
+
+        [PunRPC]
+        public void RestoreHead()
+        {
+            chickenMesh.GetComponent<Renderer>().sharedMaterial = normalMat;
+            hasBeenCaught = false;
         }
 
         /*############################################
