@@ -20,7 +20,7 @@ namespace PixelPeeps.HeadlessChickens.Network
 
         private string currentRoomName;
 
-        public float gameTime;
+        public float gameTime = 600f;
 
         private void Awake()
         {

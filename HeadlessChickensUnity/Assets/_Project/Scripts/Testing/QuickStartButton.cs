@@ -9,11 +9,11 @@ namespace PixelPeeps.HeadlessChickens.Network
     {
         public void QuickStart()
         {
-            string roomName = "Quick Start Room";
+            const string roomName = "Quick Start Room";
             
             RoomOptions options = new RoomOptions
             {
-                MaxPlayers = 6, 
+                MaxPlayers = 5, 
                 EmptyRoomTtl = 0
             };
 
@@ -29,6 +29,11 @@ namespace PixelPeeps.HeadlessChickens.Network
                     PhotonNetwork.LocalPlayer.NickName = PlayerPrefs.GetString("Nickname");
                 }
             }
+        }
+
+        public override void OnCreatedRoom()
+        {
+            PhotonNetwork.CurrentRoom.IsVisible = false;
         }
 
         public override void OnJoinedRoom()

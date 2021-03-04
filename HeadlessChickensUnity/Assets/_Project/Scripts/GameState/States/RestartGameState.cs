@@ -28,7 +28,8 @@ namespace PixelPeeps.HeadlessChickens.GameState
             {
                 NetworkManager.Instance.StartGameOnMaster();
             }
-            
+            // PhotonNetwork.LeaveRoom();
+            // StateManager.SwitchGameState(new MainMenuState());
         }
 
         public override void StateExit()

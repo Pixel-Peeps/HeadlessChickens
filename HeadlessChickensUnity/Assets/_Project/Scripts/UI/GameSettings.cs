@@ -60,7 +60,7 @@ namespace PixelPeeps.HeadlessChickens.UI
             if (PhotonNetwork.IsMasterClient)
             {
                 gameTime = gameTimeOptions[gameTimeIndex];
-            
+                NetworkManager.Instance.UpdateGameTime(gameTime);
                 photonView.RPC("UpdateTimeText", RpcTarget.All, gameTime, gameTimeIndex);
                 photonView.RPC("UpdateAccessButton", RpcTarget.All, privateRoom);
             }
