@@ -305,7 +305,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 _character.isBlueprintActive = true;
                 var blueprint = PhotonNetwork.Instantiate(_character.trapSlot.name,
                     new Vector3(0, 0.1f, 0.4f),
-                    Quaternion.identity);
+                    Quaternion.identity, 0);
                 blueprint.gameObject.transform.SetParent(_character.gameObject.transform, false);
             }
         }
