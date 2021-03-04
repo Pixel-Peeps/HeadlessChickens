@@ -84,7 +84,9 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         [PunRPC]
         public void RestoreHead()
         {
-            chickenMesh.GetComponent<Renderer>().sharedMaterial = normalMat;
+            normalChick.SetActive(true);
+            headlessChick.SetActive(false);
+
             hasBeenCaught = false;
         }
 
