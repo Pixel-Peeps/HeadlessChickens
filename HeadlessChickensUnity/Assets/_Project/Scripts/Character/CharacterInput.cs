@@ -332,13 +332,10 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         [PunRPC]
         public void RPC_DestroyBluePrint()
         {
-            if (PhotonNetwork.IsMasterClient)
-            {
-                _character.gameObject.GetComponentInChildren<TrapBlueprint>().gameObject.GetPhotonView()
+            _character.gameObject.GetComponentInChildren<TrapBlueprint>().gameObject.GetPhotonView()
                     .isRuntimeInstantiated = false;
                 PhotonNetwork.Destroy(_character.gameObject.GetComponentInChildren<TrapBlueprint>().gameObject);
                 _character.isBlueprintActive = false;
-            }
         }
         #endregion
     }
