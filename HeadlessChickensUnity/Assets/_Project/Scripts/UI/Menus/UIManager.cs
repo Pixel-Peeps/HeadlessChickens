@@ -22,6 +22,7 @@ namespace PixelPeeps.HeadlessChickens.UI
         public GameObject startGameButton;
         public TextMeshProUGUI roomNameText;
         public TextMeshProUGUI roomPlayerCount;
+        public GameSettings gameSettings;
         
         [Header("Player List")]
         public PlayerList playerList;
@@ -73,6 +74,8 @@ namespace PixelPeeps.HeadlessChickens.UI
             // Start game button
             startGameButton.SetActive(PhotonNetwork.IsMasterClient);
             startGameButton.GetComponent<Button>().enabled = (playerCount >= NetworkManager.minPlayersPerRoom);
+            
+            gameSettings.UpdateSettingsScreen();
         }
     }
 }

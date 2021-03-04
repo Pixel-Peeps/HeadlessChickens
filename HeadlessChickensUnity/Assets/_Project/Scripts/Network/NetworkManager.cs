@@ -19,6 +19,8 @@ namespace PixelPeeps.HeadlessChickens.Network
 
         private string currentRoomName;
 
+        public float gameTime;
+
         private void Awake()
         {
             DontDestroyOnLoad(gameObject);
@@ -41,7 +43,18 @@ namespace PixelPeeps.HeadlessChickens.Network
             ConnectToMaster();
         }
 
-        public void ConnectToMaster()
+        public void UpdateGameTime(float _gameTime)
+        {
+            photonView.RPC("UpdateGameTimeRPC", RpcTarget.All, _gameTime);
+        }
+
+        [PunRPC]
+        public void UpdateGameTimeRPC(float _gameTime)
+        {
+            gameTime = _gameTime;
+        }
+        
+        private void ConnectToMaster()
         {
             uiManager = GameObject.FindGameObjectWithTag("MenuManager").GetComponent<UIManager>();
             PhotonNetwork.ConnectUsingSettings();

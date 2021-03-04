@@ -1932,6 +1932,10 @@ PrefabInstance:
       propertyPath: roomList
       value: 
       objectReference: {fileID: 925786926}
+    - target: {fileID: 7501125784343262428, guid: 2d49a1878a8e4de4d9c342e06ad7da66, type: 3}
+      propertyPath: gameSettings
+      value: 
+      objectReference: {fileID: 1857398491}
     - target: {fileID: 7501125784343262429, guid: 2d49a1878a8e4de4d9c342e06ad7da66, type: 3}
       propertyPath: m_Name
       value: UIManager
@@ -2016,6 +2020,90 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1711959996}
     m_Modifications:
+    - target: {fileID: 337552371, guid: 2922d7fcd55b0d5408e2ce5cf6af81c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 337552371, guid: 2922d7fcd55b0d5408e2ce5cf6af81c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 337552371, guid: 2922d7fcd55b0d5408e2ce5cf6af81c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 337552371, guid: 2922d7fcd55b0d5408e2ce5cf6af81c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1857398491}
+    - target: {fileID: 337552371, guid: 2922d7fcd55b0d5408e2ce5cf6af81c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PixelPeeps.HeadlessChickens.UI.GameSettings, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 337552371, guid: 2922d7fcd55b0d5408e2ce5cf6af81c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DecreaseGameTime
+      objectReference: {fileID: 0}
+    - target: {fileID: 337552371, guid: 2922d7fcd55b0d5408e2ce5cf6af81c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061007126, guid: 2922d7fcd55b0d5408e2ce5cf6af81c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061007126, guid: 2922d7fcd55b0d5408e2ce5cf6af81c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061007126, guid: 2922d7fcd55b0d5408e2ce5cf6af81c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061007126, guid: 2922d7fcd55b0d5408e2ce5cf6af81c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1857398491}
+    - target: {fileID: 1061007126, guid: 2922d7fcd55b0d5408e2ce5cf6af81c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PixelPeeps.HeadlessChickens.UI.GameSettings, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061007126, guid: 2922d7fcd55b0d5408e2ce5cf6af81c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: IncreaseGameTime
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061007126, guid: 2922d7fcd55b0d5408e2ce5cf6af81c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1488638577, guid: 2922d7fcd55b0d5408e2ce5cf6af81c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1488638577, guid: 2922d7fcd55b0d5408e2ce5cf6af81c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1488638577, guid: 2922d7fcd55b0d5408e2ce5cf6af81c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1488638577, guid: 2922d7fcd55b0d5408e2ce5cf6af81c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1857398491}
+    - target: {fileID: 1488638577, guid: 2922d7fcd55b0d5408e2ce5cf6af81c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PixelPeeps.HeadlessChickens.UI.GameSettings, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1488638577, guid: 2922d7fcd55b0d5408e2ce5cf6af81c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpdateRoomAccess
+      objectReference: {fileID: 0}
+    - target: {fileID: 1488638577, guid: 2922d7fcd55b0d5408e2ce5cf6af81c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 483725998252695555, guid: 2922d7fcd55b0d5408e2ce5cf6af81c7, type: 3}
       propertyPath: m_Name
       value: WaitingRoomCanvas
@@ -2164,6 +2252,97 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3ddda1ed643c13479f4df28a01b9006, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1857398485 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1488638577, guid: 2922d7fcd55b0d5408e2ce5cf6af81c7, type: 3}
+  m_PrefabInstance: {fileID: 1857398478}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1857398486 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1061007124, guid: 2922d7fcd55b0d5408e2ce5cf6af81c7, type: 3}
+  m_PrefabInstance: {fileID: 1857398478}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1857398487 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 337552369, guid: 2922d7fcd55b0d5408e2ce5cf6af81c7, type: 3}
+  m_PrefabInstance: {fileID: 1857398478}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1857398488 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2058018544, guid: 2922d7fcd55b0d5408e2ce5cf6af81c7, type: 3}
+  m_PrefabInstance: {fileID: 1857398478}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1857398489 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1025268293, guid: 2922d7fcd55b0d5408e2ce5cf6af81c7, type: 3}
+  m_PrefabInstance: {fileID: 1857398478}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1857398490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1857398489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  observableSearch: 2
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 967
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &1857398491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1857398489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d72504c1e813c8747820123404b9e6c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  plusTimeButton: {fileID: 1857398486}
+  minusTimeButton: {fileID: 1857398487}
+  gameTimeText: {fileID: 1857398488}
+  privateButton: {fileID: 1857398485}
+  privateButtonColours:
+    m_NormalColor: {r: 0.85098046, g: 0.38431376, b: 0.34901962, a: 1}
+    m_HighlightedColor: {r: 0.8862746, g: 0.5254902, b: 0.49803925, a: 1}
+    m_PressedColor: {r: 0.8862746, g: 0.5254902, b: 0.49803925, a: 1}
+    m_SelectedColor: {r: 0.8862746, g: 0.5254902, b: 0.49803925, a: 1}
+    m_DisabledColor: {r: 0.8862746, g: 0.5254902, b: 0.49803925, a: 1}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0
+  publicButtonColours:
+    m_NormalColor: {r: 0.3529412, g: 0.8509804, b: 0.5568628, a: 1}
+    m_HighlightedColor: {r: 0.58431375, g: 0.8509804, b: 0.6509804, a: 1}
+    m_PressedColor: {r: 0.58431375, g: 0.8509804, b: 0.6509804, a: 1}
+    m_SelectedColor: {r: 0.58431375, g: 0.8509804, b: 0.6509804, a: 1}
+    m_DisabledColor: {r: 0.58431375, g: 0.8509804, b: 0.6509804, a: 1}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0
 --- !u!1 &1997100121
 GameObject:
   m_ObjectHideFlags: 0
