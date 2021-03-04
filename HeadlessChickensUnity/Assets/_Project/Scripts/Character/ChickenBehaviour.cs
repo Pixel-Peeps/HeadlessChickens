@@ -76,6 +76,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             // HUDManager.Instance.UpdateChickCounter();
             
             hasBeenCaught = true;
+            _controller.SwapAnimator();
             // NewGameManager.Instance.CheckForFinish();
 
             // chickenManager.activeChicks.Remove(this);

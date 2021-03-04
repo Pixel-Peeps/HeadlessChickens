@@ -197,6 +197,12 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             transform.position = Vector3.Lerp(transform.position, _newPosition, Time.deltaTime * moveTime);
             }
         }
+        
+
+        public void SwapAnimator()
+        {
+            _anim = GetComponentInChildren<Animator>();
+        }
 
         private void Jump()
         {
