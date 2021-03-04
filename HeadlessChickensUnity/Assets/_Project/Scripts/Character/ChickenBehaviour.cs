@@ -65,13 +65,13 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             
             chickenMesh.GetComponent<Renderer>().sharedMaterial = caughtMat;
             
-            NewGameManager.Instance.chickensCaught++;
-            HUDManager.Instance.UpdateChickCounter();
+            // NewGameManager.Instance.chickensCaught++;
+            // HUDManager.Instance.UpdateChickCounter();
             
             hasBeenCaught = true;
-            NewGameManager.Instance.CheckForFinish();
+            // NewGameManager.Instance.CheckForFinish();
 
-            chickenManager.activeChicks.Remove(this);
+            // chickenManager.activeChicks.Remove(this);
         }
 
         [PunRPC]
