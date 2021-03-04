@@ -339,7 +339,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         {
             if (photonView.IsMine)
             {
-                if (_character.isFox)
+                if (_character.isFox && !_character.isBlueprintActive)
                 {
                     _anim.SetTrigger("SwipeTrigger");
                 }
@@ -353,23 +353,23 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                         photonView.RPC("RPC_DestroyBluePrint", RpcTarget.AllViaServer);
                     }
                 }
-                
-                //if (_character.isFox && _character.hasLever && _character.isBlueprintActive)
-                //{
-                //    Debug.Log("unshowing false levers????");
-                //    LeverManager.Instance.IdentifyFakeLeverPositions();
-                //    _character.isBlueprintActive = false;
-                //}
-                
-                //if (_character.isBlueprintActive && !_character.hasLever)
-                //{
-                //    if (_character.gameObject.GetComponentInChildren<TrapBlueprint>().gameObject !=null)
-                //    {
-                //        Debug.Log("cancelling blueprint");
-                //        PhotonNetwork.Destroy(_character.gameObject.GetComponentInChildren<TrapBlueprint>().gameObject);
-                //        _character.isBlueprintActive = false;
-                //    }
-                //}
+
+                if (_character.isFox && _character.hasLever && _character.isBlueprintActive)
+                {
+                    Debug.Log("unshowing false levers????");
+                    LeverManager.Instance.IdentifyFakeLeverPositions();
+                    _character.isBlueprintActive = false;
+                }
+
+                if (_character.isBlueprintActive && !_character.hasLever)
+                {
+                    if (_character.gameObject.GetComponentInChildren<TrapBlueprint>().gameObject != null)
+                    {
+                        Debug.Log("cancelling blueprint");
+                        PhotonNetwork.Destroy(_character.gameObject.GetComponentInChildren<TrapBlueprint>().gameObject);
+                        _character.isBlueprintActive = false;
+                    }
+                }
             }
         }
 

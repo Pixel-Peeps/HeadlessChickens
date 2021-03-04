@@ -73,14 +73,14 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             normalChick.SetActive(false);
             headlessChick.SetActive(true);
             
-            // NewGameManager.Instance.chickensCaught++;
-            // HUDManager.Instance.UpdateChickCounter();
+            NewGameManager.Instance.chickensCaught++;
+            HUDManager.Instance.UpdateChickCounter();
             
             hasBeenCaught = true;
             _controller.SwapAnimator();
-            // NewGameManager.Instance.CheckForFinish();
+            NewGameManager.Instance.CheckForFinish();
 
-            // chickenManager.activeChicks.Remove(this);
+            chickenManager.activeChicks.Remove(this);
         }
 
         [PunRPC]
