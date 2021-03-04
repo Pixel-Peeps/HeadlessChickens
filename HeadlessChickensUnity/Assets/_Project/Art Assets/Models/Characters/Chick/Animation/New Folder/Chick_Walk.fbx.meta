@@ -1,0 +1,1134 @@
+fileFormatVersion: 2
+guid: dda7ed329902d3544b68a5c83a86e968
+ModelImporter:
+  serializedVersion: 20101
+  internalIDToNameTable:
+  - first:
+      74: 1827226128182048838
+    second: Take 001
+  - first:
+      74: -2123759457687380224
+    second: Walk_45
+  - first:
+      74: 4854180139978558704
+    second: Take 001 (2)
+  externalObjects: {}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 1
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 1
+      lastFrame: 34
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: Walk_45
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 1
+      lastFrame: 34
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Body2
+        weight: 1
+      - path: Body2/polySurface2
+        weight: 1
+      - path: Body2/polySurface2/polySurface2 1
+        weight: 1
+      - path: Body2/polySurface2/polySurface2 1/transform12
+        weight: 1
+      - path: Body2/polySurface2/transform10
+        weight: 1
+      - path: Body2/transform9
+        weight: 1
+      - path: Body2_polySurface2_polySurface2
+        weight: 1
+      - path: Body2_polySurface2_polySurface2/transform23
+        weight: 1
+      - path: Chick_Model
+        weight: 1
+      - path: Chick_Model/Beak
+        weight: 1
+      - path: Chick_Model/Beak/transform24
+        weight: 1
+      - path: Chick_Model/Body2 1
+        weight: 1
+      - path: Chick_Model/Body2 1/transform8
+        weight: 1
+      - path: Chick_Model/Eye_Right
+        weight: 1
+      - path: Chick_Model/Eye_Right/transform13
+        weight: 1
+      - path: Chick_Model/Eye_Rightt_Glare 1
+        weight: 1
+      - path: Chick_Model/Eye_Rightt_Glare 1/transform14
+        weight: 1
+      - path: Chick_Model/Leg_Right
+        weight: 1
+      - path: Chick_Model/Leg_Right/Leg_Right 2
+        weight: 1
+      - path: Chick_Model/Leg_Right/Leg_Right 2/transform25
+        weight: 1
+      - path: Chick_Model/Leg_Right/transform18
+        weight: 1
+      - path: Chick_Model/transform2
+        weight: 1
+      - path: Chick_Rig
+        weight: 1
+      - path: Chick_Rig/Chick_Hips
+        weight: 1
+      - path: Chick_Rig/Chick_Hips/Chick_LefttUpLeg1
+        weight: 1
+      - path: Chick_Rig/Chick_Hips/Chick_LefttUpLeg1/Chick_LeftLeg1
+        weight: 1
+      - path: Chick_Rig/Chick_Hips/Chick_LefttUpLeg1/Chick_LeftLeg1/Chick_LeftFoot1
+        weight: 1
+      - path: Chick_Rig/Chick_Hips/Chick_LefttUpLeg1/Chick_LeftLeg1/Chick_LeftFoot1/Chick_LefttoeBase1
+        weight: 1
+      - path: Chick_Rig/Chick_Hips/Chick_RightUpLeg
+        weight: 1
+      - path: Chick_Rig/Chick_Hips/Chick_RightUpLeg/Chick_RightLeg
+        weight: 1
+      - path: Chick_Rig/Chick_Hips/Chick_RightUpLeg/Chick_RightLeg/Chick_RightFoot
+        weight: 1
+      - path: Chick_Rig/Chick_Hips/Chick_RightUpLeg/Chick_RightLeg/Chick_RightFoot/Chick_RightoeBase
+        weight: 1
+      - path: Chick_Rig/Chick_Hips/Chick_Spine
+        weight: 1
+      - path: Chick_Rig/Chick_Hips/Chick_Spine/Chick_Spine1
+        weight: 1
+      - path: Chick_Rig/Chick_Hips/Chick_Spine/Chick_Spine1/Chick_Spine2
+        weight: 1
+      - path: Chick_Rig/Chick_Hips/Chick_Spine/Chick_Spine1/Chick_Spine2/Chick_LeftShoulder1
+        weight: 1
+      - path: Chick_Rig/Chick_Hips/Chick_Spine/Chick_Spine1/Chick_Spine2/Chick_LeftShoulder1/Chick_LeftArm1
+        weight: 1
+      - path: Chick_Rig/Chick_Hips/Chick_Spine/Chick_Spine1/Chick_Spine2/Chick_LeftShoulder1/Chick_LeftArm1/Chick_LeftForeArm1
+        weight: 1
+      - path: Chick_Rig/Chick_Hips/Chick_Spine/Chick_Spine1/Chick_Spine2/Chick_LeftShoulder1/Chick_LeftArm1/Chick_LeftForeArm1/Chick_LefttHand1
+        weight: 1
+      - path: Chick_Rig/Chick_Hips/Chick_Spine/Chick_Spine1/Chick_Spine2/Chick_Neck
+        weight: 1
+      - path: Chick_Rig/Chick_Hips/Chick_Spine/Chick_Spine1/Chick_Spine2/Chick_Neck/Chick_Head
+        weight: 1
+      - path: Chick_Rig/Chick_Hips/Chick_Spine/Chick_Spine1/Chick_Spine2/Chick_Neck/Chick_Head/Chick_Hair_1
+        weight: 1
+      - path: Chick_Rig/Chick_Hips/Chick_Spine/Chick_Spine1/Chick_Spine2/Chick_Neck/Chick_Head/Chick_Hair_1/Chick_Hair_2
+        weight: 1
+      - path: Chick_Rig/Chick_Hips/Chick_Spine/Chick_Spine1/Chick_Spine2/Chick_Neck/Chick_Head/Chick_Hair_front_1
+        weight: 1
+      - path: Chick_Rig/Chick_Hips/Chick_Spine/Chick_Spine1/Chick_Spine2/Chick_Neck/Chick_Head/Chick_Hair_front_1/Chick_Hair_front_2
+        weight: 1
+      - path: Chick_Rig/Chick_Hips/Chick_Spine/Chick_Spine1/Chick_Spine2/Chick_RightShoulder
+        weight: 1
+      - path: Chick_Rig/Chick_Hips/Chick_Spine/Chick_Spine1/Chick_Spine2/Chick_RightShoulder/Chick_RightArm
+        weight: 1
+      - path: Chick_Rig/Chick_Hips/Chick_Spine/Chick_Spine1/Chick_Spine2/Chick_RightShoulder/Chick_RightArm/Chick_RightForeArm
+        weight: 1
+      - path: Chick_Rig/Chick_Hips/Chick_Spine/Chick_Spine1/Chick_Spine2/Chick_RightShoulder/Chick_RightArm/Chick_RightForeArm/Chick_RightHand
+        weight: 1
+      - path: Chick_Rig/Chick_Hips/Chick_Spine/Chick_Tail_1
+        weight: 1
+      - path: Chick_Rig/Chick_Hips/Chick_Spine/Chick_Tail_1/Chick_Tail_2
+        weight: 1
+      - path: Chick_Rig/Chick_Hips/Chick_Spine/Chick_Tail_1/Chick_Tail_2/Chick_Tail_3
+        weight: 1
+      - path: Eye_Rightt_Glare
+        weight: 1
+      - path: Eye_Rightt_Glare/Eye_Rightt_Glare2
+        weight: 1
+      - path: Eye_Rightt_Glare/Eye_Rightt_Glare2/polySurface6
+        weight: 1
+      - path: Eye_Rightt_Glare/Eye_Rightt_Glare2/polySurface6/transform21
+        weight: 1
+      - path: Eye_Rightt_Glare/Eye_Rightt_Glare2/polySurface7
+        weight: 1
+      - path: Eye_Rightt_Glare/Eye_Rightt_Glare2/polySurface7/transform22
+        weight: 1
+      - path: Eye_Rightt_Glare/Eye_Rightt_Glare2/transform17
+        weight: 1
+      - path: Eye_Rightt_Glare/transform15
+        weight: 1
+      - path: Eye_Rightt_Glare4
+        weight: 1
+      - path: Eye_Rightt_Glare4/polySurface4
+        weight: 1
+      - path: Eye_Rightt_Glare4/polySurface4/transform19
+        weight: 1
+      - path: Eye_Rightt_Glare4/polySurface5
+        weight: 1
+      - path: Eye_Rightt_Glare4/polySurface5/transform20
+        weight: 1
+      - path: Eye_Rightt_Glare4/transform16
+        weight: 1
+      - path: ikHandle_Left
+        weight: 1
+      - path: ikHandle_Right
+        weight: 1
+      - path: Left_Foot_Control
+        weight: 1
+      - path: Left_Knee_Control
+        weight: 1
+      - path: Leg_Right2
+        weight: 1
+      - path: Leg_Right2/transform28
+        weight: 1
+      - path: Leg_Right3
+        weight: 1
+      - path: Leg_Right3/Beak 1
+        weight: 1
+      - path: Leg_Right3/Chick_Body
+        weight: 1
+      - path: Leg_Right3/Eye_Left
+        weight: 1
+      - path: Leg_Right3/Eye_Left_Glare
+        weight: 1
+      - path: Leg_Right3/Eye_Right 1
+        weight: 1
+      - path: Leg_Right3/Eye_Right_Glare
+        weight: 1
+      - path: Leg_Right3/Hair_back
+        weight: 1
+      - path: Leg_Right3/Hair_Front
+        weight: 1
+      - path: Leg_Right3/Leg_Left
+        weight: 1
+      - path: Leg_Right3/Leg_Right 1
+        weight: 1
+      - path: Leg_Right3/transform29
+        weight: 1
+      - path: polySurface3
+        weight: 1
+      - path: polySurface3/transform11
+        weight: 1
+      - path: pSphere2
+        weight: 1
+      - path: pSphere2/transform1
+        weight: 1
+      - path: pSphere3
+        weight: 1
+      - path: pSphere3/transform3
+        weight: 1
+      - path: pSphere4
+        weight: 1
+      - path: pSphere4/transform5
+        weight: 1
+      - path: pSphere5
+        weight: 1
+      - path: pSphere5/transform4
+        weight: 1
+      - path: pSphere6
+        weight: 1
+      - path: pSphere6/transform6
+        weight: 1
+      - path: pSphere8
+        weight: 1
+      - path: pSphere8/transform7
+        weight: 1
+      - path: pSphere9
+        weight: 1
+      - path: pSphere9/transform26
+        weight: 1
+      - path: pSphere10
+        weight: 1
+      - path: pSphere10/transform27
+        weight: 1
+      - path: Right_Foot_Control
+        weight: 1
+      - path: Right_Knee_Control1
+        weight: 1
+      - path: Root_Controller
+        weight: 1
+      - path: Root_Controller/Spine_Control_Lower
+        weight: 1
+      - path: Root_Controller/Spine_Control_Lower/Spine_Control_Upper
+        weight: 1
+      - path: Root_Controller/Spine_Control_Lower/Spine_Control_Upper/Chest_Control
+        weight: 1
+      - path: Root_Controller/Spine_Control_Lower/Spine_Control_Upper/Chest_Control/Head_Control
+        weight: 1
+      - path: Root_Controller/Spine_Control_Lower/Spine_Control_Upper/Chest_Control/Head_Control/Hair_Control
+        weight: 1
+      maskType: 1
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: Take 001 (2)
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 1
+      lastFrame: 34
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human:
+    - boneName: Chick_Hips
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Chick_LefttUpLeg1
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Chick_RightUpLeg
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Chick_LeftLeg1
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Chick_RightLeg
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Chick_LeftFoot1
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Chick_RightFoot
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Chick_Spine
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Chick_Spine1
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Chick_Neck
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Chick_Head
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Chick_LeftArm1
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Chick_RightShoulder
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Chick_LeftForeArm1
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Chick_RightArm
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Chick_LefttHand1
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Chick_RightForeArm
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Chick_Hair_front_1
+      humanName: RightEye
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Chick_Spine2
+      humanName: UpperChest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Chick_RightHand
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: Chick_Walk(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pSphere2
+      parentName: Chick_Walk(Clone)
+      position: {x: -0.6410547, y: 0.34518227, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 3.0417087, y: 3.0417087, z: 3.0417087}
+    - name: transform1
+      parentName: pSphere2
+      position: {x: -0, y: -0.101863965, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Chick_Model
+      parentName: Chick_Walk(Clone)
+      position: {x: 0.0016622161, y: 0.336984, z: -0.034967497}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Eye_Right
+      parentName: Chick_Model
+      position: {x: 0.045372095, y: 0.16346852, z: 0.16030614}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: transform13
+      parentName: Eye_Right
+      position: {x: -0.047034312, y: -0.5004525, z: -0.13587476}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Eye_Rightt_Glare 1
+      parentName: Chick_Model
+      position: {x: 0.045371998, y: 0.16347289, z: 0.16035403}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: transform14
+      parentName: Eye_Rightt_Glare 1
+      position: {x: -0.047034215, y: -0.5004569, z: -0.13592266}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Leg_Right
+      parentName: Chick_Model
+      position: {x: 0.04858937, y: -0.28822827, z: 0.0516834}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1.1929792, y: 1, z: 1.015006}
+    - name: Leg_Right 2
+      parentName: Leg_Right
+      position: {x: -0.05025159, y: -0.04875572, z: -0.01584299}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: transform25
+      parentName: Leg_Right 2
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: transform18
+      parentName: Leg_Right
+      position: {x: -0.05025159, y: -0.04875572, z: -0.01584299}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Beak
+      parentName: Chick_Model
+      position: {x: -0.0017403977, y: 0.10543173, z: 0.18009192}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: transform24
+      parentName: Beak
+      position: {x: -0.0015574169, y: -0.4488838, z: -0.15256883}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: transform2
+      parentName: Chick_Model
+      position: {x: -0.0016622161, y: -0.336984, z: 0.034967497}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Body2 1
+      parentName: Chick_Model
+      position: {x: -0, y: 0.036987167, z: -0.003148737}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: transform8
+      parentName: Body2 1
+      position: {x: -0.0016622161, y: -0.37397116, z: 0.038116235}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Chick_Rig
+      parentName: Chick_Walk(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.10721647, y: 0.10721647, z: 0.10721647}
+    - name: Chick_Hips
+      parentName: Chick_Rig
+      position: {x: -0.000000093378546, y: 1.0372107, z: 0.08245989}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Chick_RightUpLeg
+      parentName: Chick_Hips
+      position: {x: 0.43686134, y: -0.06269961, z: 0}
+      rotation: {x: 0.049076367, y: 0.014879003, z: -0.0009970688, w: 0.9986837}
+      scale: {x: 1, y: 0.9999998, z: 0.9999997}
+    - name: Chick_RightLeg
+      parentName: Chick_RightUpLeg
+      position: {x: 8.2839736e-17, y: -0.44878694, z: 0.052301038}
+      rotation: {x: -0.10241696, y: -0, z: -5.820766e-11, w: 0.99474156}
+      scale: {x: 1, y: 1.0000001, z: 0.99999964}
+    - name: Chick_RightFoot
+      parentName: Chick_RightLeg
+      position: {x: -8.2839736e-17, y: -0.40700942, z: -0.03639471}
+      rotation: {x: 0.000000014901161, y: -2.3845807e-11, z: 2.3160632e-10, w: 1}
+      scale: {x: 1, y: 1.0000002, z: 1.0000002}
+    - name: Chick_RightoeBase
+      parentName: Chick_RightFoot
+      position: {x: -0, y: -0.06262318, z: 0.12954742}
+      rotation: {x: -0, y: -0, z: 3.5533022e-19, w: 1}
+      scale: {x: 1, y: 1, z: 0.9999999}
+    - name: Chick_Spine
+      parentName: Chick_Hips
+      position: {x: -4.440892e-18, y: 0.2516354, z: 1.7763568e-17}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Chick_Tail_1
+      parentName: Chick_Spine
+      position: {x: -0.018011397, y: 0.33381847, z: -1.1596581}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 0.99999994, y: 1, z: 0.99999994}
+    - name: Chick_Tail_2
+      parentName: Chick_Tail_1
+      position: {x: 0.01801144, y: 0.24189499, z: -0.47759265}
+      rotation: {x: -0, y: -0.000000019970624, z: -0, w: 1}
+      scale: {x: 0.99999994, y: 1, z: 0.99999994}
+    - name: Chick_Tail_3
+      parentName: Chick_Tail_2
+      position: {x: -0.01801144, y: 0.8056279, z: -0.78398824}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1.0000002, y: 1, z: 1.0000002}
+    - name: Chick_Spine1
+      parentName: Chick_Spine
+      position: {x: -8.171956e-10, y: 0.8661656, z: 0}
+      rotation: {x: -0, y: -0, z: 0.000000002496328, w: 1}
+      scale: {x: 0.99999994, y: 0.99999994, z: 1}
+    - name: Chick_Spine2
+      parentName: Chick_Spine1
+      position: {x: -0.00000000771907, y: 0.91055024, z: -0.000000003952171}
+      rotation: {x: -0.0000000012481638, y: -0.000000019970624, z: -0.000000003744492, w: 1}
+      scale: {x: 0.9999996, y: 0.9999995, z: 1.0000001}
+    - name: Chick_RightShoulder
+      parentName: Chick_Spine2
+      position: {x: 0.8431549, y: 0.35495517, z: -0.13776188}
+      rotation: {x: 0.000000010819076, y: 0.000000018099877, z: 0.09412725, w: 0.99556017}
+      scale: {x: 1.0000004, y: 1.0000002, z: 0.9999997}
+    - name: Chick_RightArm
+      parentName: Chick_RightShoulder
+      position: {x: 0.3692382, y: -0.20766608, z: 0}
+      rotation: {x: 0.000000009627669, y: 0.000000021038456, z: 0.08661671, w: 0.99624175}
+      scale: {x: 0.9999999, y: 1, z: 1.0000002}
+    - name: Chick_RightForeArm
+      parentName: Chick_RightArm
+      position: {x: 0.66967905, y: -0.31264633, z: 0}
+      rotation: {x: -0.02220188, y: -0.030796293, z: 0.41074747, w: 0.91095847}
+      scale: {x: 1, y: 0.99999994, z: 1.0000001}
+    - name: Chick_RightHand
+      parentName: Chick_RightForeArm
+      position: {x: 0.3449002, y: -1.1334484, z: -0.106297776}
+      rotation: {x: -0.0000000012481629, y: -0.000000024848358, z: -0.000000029802322, w: 1}
+      scale: {x: 1.4884913, y: 0.99999994, z: 1}
+    - name: Chick_Neck
+      parentName: Chick_Spine2
+      position: {x: -0.000000001942971, y: 0.5742272, z: -0.0000000022008744}
+      rotation: {x: 0.00000000624082, y: 0.000000018098378, z: 0.0000000012481638, w: 1}
+      scale: {x: 1.0000004, y: 1.0000002, z: 0.99999946}
+    - name: Chick_Head
+      parentName: Chick_Neck
+      position: {x: -0, y: 2.09085, z: -7.105427e-17}
+      rotation: {x: -0, y: -0, z: -1.9264176e-18, w: 1}
+      scale: {x: 1.0000002, y: 1.0000001, z: 1.0000007}
+    - name: Chick_Hair_1
+      parentName: Chick_Head
+      position: {x: 0.00000004330655, y: -0.07818753, z: -0.16675493}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1.0000002, y: 1.0000002, z: 1.0000004}
+    - name: Chick_Hair_2
+      parentName: Chick_Hair_1
+      position: {x: -0.1080324, y: 0.5787179, z: -0.26222005}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1.0000002, y: 1.0000002, z: 1.0000001}
+    - name: Chick_Hair_front_1
+      parentName: Chick_Head
+      position: {x: 0.059676953, y: 0.07295957, z: 0.02413738}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1.0000002, y: 1.0000002, z: 1.0000006}
+    - name: Chick_Hair_front_2
+      parentName: Chick_Hair_front_1
+      position: {x: 0.38825974, y: 0.2108074, z: 0.29119825}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1.0000001, y: 1.0000002, z: 0.9999996}
+    - name: Chick_LeftShoulder1
+      parentName: Chick_Spine2
+      position: {x: -0.843155, y: 0.3549537, z: -0.13776149}
+      rotation: {x: -0.0000000073947017, y: 0.000000026307205, z: -0.09414169, w: 0.9955588}
+      scale: {x: 1.0000002, y: 1, z: 0.9999997}
+    - name: Chick_LeftArm1
+      parentName: Chick_LeftShoulder1
+      position: {x: -0.36923447, y: -0.20767806, z: 0}
+      rotation: {x: -0.000000005819241, y: 0.000000022814428, z: -0.08659876, w: 0.9962433}
+      scale: {x: 0.9999999, y: 1, z: 1.0000004}
+    - name: Chick_LeftForeArm1
+      parentName: Chick_LeftArm1
+      position: {x: -0.6696732, y: -0.31263855, z: 0}
+      rotation: {x: -0.0037648345, y: 0.037777927, z: 0.10144706, w: 0.9941163}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: Chick_LefttHand1
+      parentName: Chick_LeftForeArm1
+      position: {x: -1.1549592, y: -0.26411146, z: -0.10629855}
+      rotation: {x: 4.440892e-16, y: -0.000000004877732, z: -0.000000029802322, w: 1}
+      scale: {x: 1.4884912, y: 0.99999994, z: 1}
+    - name: Chick_LefttUpLeg1
+      parentName: Chick_Hips
+      position: {x: -0.43686116, y: -0.062699944, z: 0}
+      rotation: {x: 0.049081873, y: -0.00000005716257, z: 0.000000006558041, w: 0.9987948}
+      scale: {x: 1, y: 0.9999997, z: 0.9999997}
+    - name: Chick_LeftLeg1
+      parentName: Chick_LefttUpLeg1
+      position: {x: 1.1785466e-17, y: -0.44878647, z: 0.052301038}
+      rotation: {x: -0.10241698, y: -0.0000000043582418, z: -0.000000002359478, w: 0.9947416}
+      scale: {x: 1, y: 1.0000001, z: 1.0000004}
+    - name: Chick_LeftFoot1
+      parentName: Chick_LeftLeg1
+      position: {x: -8.2839736e-17, y: -0.40700957, z: -0.03639471}
+      rotation: {x: -0.000000029802319, y: 0.000000002011503, z: -0.0000000011962237, w: 1}
+      scale: {x: 1, y: 0.9999997, z: 0.99999946}
+    - name: Chick_LefttoeBase1
+      parentName: Chick_LeftFoot1
+      position: {x: -0, y: -0.06262321, z: 0.12954725}
+      rotation: {x: -0, y: -0, z: -5.1074836e-17, w: 1}
+      scale: {x: 1, y: 1.0000002, z: 1.0000001}
+    - name: ikHandle_Left
+      parentName: Chick_Walk(Clone)
+      position: {x: -0.035851885, y: 0.031884614, z: 0.034275923}
+      rotation: {x: 0.26448187, y: 0.020333571, z: 0.0055777673, w: 0.96416014}
+      scale: {x: 1, y: 1, z: 1}
+    - name: ikHandle_Right
+      parentName: Chick_Walk(Clone)
+      position: {x: 0.048561137, y: 0.0087397145, z: 0.0017054203}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Root_Controller
+      parentName: Chick_Walk(Clone)
+      position: {x: 0.0017224095, y: 0.11120606, z: 0.008841058}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Spine_Control_Lower
+      parentName: Root_Controller
+      position: {x: -0, y: 0.026979465, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Spine_Control_Upper
+      parentName: Spine_Control_Lower
+      position: {x: -0, y: 0.09286721, z: 0}
+      rotation: {x: 0, y: -0, z: -0.040913645, w: 0.9991627}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Chest_Control
+      parentName: Spine_Control_Upper
+      position: {x: -0, y: 0.097625956, z: 0}
+      rotation: {x: -0.010459008, y: -0.17156674, z: 0.034007765, w: 0.98452985}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Head_Control
+      parentName: Chest_Control
+      position: {x: -0, y: 0.061566617, z: 0}
+      rotation: {x: -0.024440324, y: 0.1776066, z: 0.0146774165, w: 0.98368853}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Hair_Control
+      parentName: Head_Control
+      position: {x: -0, y: 0.22417355, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Left_Foot_Control
+      parentName: Chick_Walk(Clone)
+      position: {x: -0.035851885, y: 0.031884614, z: 0.034275923}
+      rotation: {x: 0.26448187, y: 0.02033357, z: 0.0055777677, w: 0.96416014}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Right_Foot_Control
+      parentName: Chick_Walk(Clone)
+      position: {x: 0.048513245, y: 0.008739715, z: 0.0017054203}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Left_Knee_Control
+      parentName: Chick_Walk(Clone)
+      position: {x: -0.03787794, y: 0.0523767, z: 0.06649701}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Right_Knee_Control1
+      parentName: Chick_Walk(Clone)
+      position: {x: 0.048700724, y: 0.0523767, z: 0.06649701}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pSphere3
+      parentName: Chick_Walk(Clone)
+      position: {x: -0, y: 0.46947992, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 13.383496, y: 13.383496, z: 13.956894}
+    - name: transform3
+      parentName: pSphere3
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pSphere4
+      parentName: Chick_Walk(Clone)
+      position: {x: -0, y: 0.2175571, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 16.256176, y: 14.404724, z: 15.021874}
+    - name: transform5
+      parentName: pSphere4
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pSphere5
+      parentName: Chick_Walk(Clone)
+      position: {x: 0.19255072, y: 0.30174267, z: -0.014691188}
+      rotation: {x: 0.063952915, y: 0.02995775, z: 0.4231405, w: 0.9033077}
+      scale: {x: 2.430971, y: 10.320783, z: 7.9617844}
+    - name: transform4
+      parentName: pSphere5
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pSphere6
+      parentName: Chick_Walk(Clone)
+      position: {x: 0.14936921, y: 0.40512332, z: -0.00024858708}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: transform6
+      parentName: pSphere6
+      position: {x: -0.14936921, y: -0.40512332, z: 0.00024858708}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pSphere8
+      parentName: Chick_Walk(Clone)
+      position: {x: 0.13642399, y: 0.33841234, z: -0.030864751}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: transform7
+      parentName: pSphere8
+      position: {x: -0.13642399, y: -0.33841234, z: 0.030864751}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Body2
+      parentName: Chick_Walk(Clone)
+      position: {x: 0.119475804, y: 0.3664392, z: -0.03687253}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface2
+      parentName: Body2
+      position: {x: 0.016894266, y: -0.02802681, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface2 1
+      parentName: polySurface2
+      position: {x: -0.13637006, y: -0.3384124, z: 0.03687253}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: transform12
+      parentName: polySurface2 1
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: transform10
+      parentName: polySurface2
+      position: {x: -0.13637006, y: -0.3384124, z: 0.03687253}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: transform9
+      parentName: Body2
+      position: {x: -0.119475804, y: -0.3664392, z: 0.03687253}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pSphere9
+      parentName: Chick_Walk(Clone)
+      position: {x: 0.019974053, y: 0.6265896, z: 0.01185586}
+      rotation: {x: 0.37017986, y: 0.20086063, z: -0.34298414, w: 0.83963317}
+      scale: {x: 2.062544, y: 3.4401937, z: 1.887303}
+    - name: transform26
+      parentName: pSphere9
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pSphere10
+      parentName: Chick_Walk(Clone)
+      position: {x: -0.006586961, y: 0.63377976, z: -0.029863613}
+      rotation: {x: -0.21995802, y: 0.012552079, z: 0.046086323, w: 0.9743393}
+      scale: {x: 1.4064974, y: 3.312311, z: 1.4701674}
+    - name: transform27
+      parentName: pSphere10
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface3
+      parentName: Chick_Walk(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: transform11
+      parentName: polySurface3
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Body2_polySurface2_polySurface2
+      parentName: Chick_Walk(Clone)
+      position: {x: -0.000107841486, y: 0.3384124, z: -0.03687253}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: transform23
+      parentName: Body2_polySurface2_polySurface2
+      position: {x: 0.000107841486, y: -0.3384124, z: 0.03687253}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Eye_Rightt_Glare
+      parentName: Chick_Walk(Clone)
+      position: {x: 0.048477948, y: 0.49034247, z: 0.12527098}
+      rotation: {x: 0.030681768, y: -0.03781453, z: -0.021420881, w: 0.9985839}
+      scale: {x: 0.7378663, y: 1.054518, z: 1}
+    - name: Eye_Rightt_Glare2
+      parentName: Eye_Rightt_Glare
+      position: {x: -0.047034215, y: -0.5004569, z: -0.12538652}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface6
+      parentName: Eye_Rightt_Glare2
+      position: {x: 0.04688154, y: 0.5004569, z: 0.12654231}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: transform21
+      parentName: polySurface6
+      position: {x: -0.04688154, y: -0.5004569, z: -0.12654231}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface7
+      parentName: Eye_Rightt_Glare2
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: transform22
+      parentName: polySurface7
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: transform17
+      parentName: Eye_Rightt_Glare2
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: transform15
+      parentName: Eye_Rightt_Glare
+      position: {x: -0.047034215, y: -0.5004569, z: -0.12538652}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Eye_Rightt_Glare4
+      parentName: Chick_Walk(Clone)
+      position: {x: -0.04878733, y: 0.49025717, z: 0.12659617}
+      rotation: {x: 0.030681768, y: -0.03781453, z: -0.021420881, w: 0.9985839}
+      scale: {x: 0.7378663, y: 1.054518, z: 1}
+    - name: polySurface4
+      parentName: Eye_Rightt_Glare4
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: transform19
+      parentName: polySurface4
+      position: {x: -0.012342394, y: -0.49946547, z: -0.12869272}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface5
+      parentName: Eye_Rightt_Glare4
+      position: {x: -0.012342394, y: -0.49946547, z: -0.12869272}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: transform20
+      parentName: polySurface5
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: transform16
+      parentName: Eye_Rightt_Glare4
+      position: {x: -0.012342394, y: -0.49946547, z: -0.12869272}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Leg_Right2
+      parentName: Chick_Walk(Clone)
+      position: {x: -0.047040537, y: 0.04770285, z: 0.014784212}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1.1929792, y: 1, z: 1.015006}
+    - name: transform28
+      parentName: Leg_Right2
+      position: {x: -0.013726823, y: -0.04770285, z: -0.013939858}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Leg_Right3
+      parentName: Chick_Walk(Clone)
+      position: {x: -0.000107841486, y: 0.33433264, z: -0.03279795}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Leg_Left
+      parentName: Leg_Right3
+      position: {x: 0.000107841486, y: -0.33433264, z: 0.03279795}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Hair_back
+      parentName: Leg_Right3
+      position: {x: 0.000107841486, y: -0.33433264, z: 0.03279795}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Hair_Front
+      parentName: Leg_Right3
+      position: {x: 0.000107841486, y: -0.33433264, z: 0.03279795}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Leg_Right 1
+      parentName: Leg_Right3
+      position: {x: 0.000107841486, y: -0.33433264, z: 0.03279795}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Beak 1
+      parentName: Leg_Right3
+      position: {x: 0.000107841486, y: -0.33433264, z: 0.03279795}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Chick_Body
+      parentName: Leg_Right3
+      position: {x: 0.000107841486, y: -0.33433264, z: 0.03279795}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Eye_Right 1
+      parentName: Leg_Right3
+      position: {x: 0.000107841486, y: -0.33433264, z: 0.03279795}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Eye_Right_Glare
+      parentName: Leg_Right3
+      position: {x: 0.000107841486, y: -0.33433264, z: 0.03279795}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Eye_Left
+      parentName: Leg_Right3
+      position: {x: 0.000107841486, y: -0.33433264, z: 0.03279795}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Eye_Left_Glare
+      parentName: Leg_Right3
+      position: {x: 0.000107841486, y: -0.33433264, z: 0.03279795}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: transform29
+      parentName: Leg_Right3
+      position: {x: 0.000107841486, y: -0.33433264, z: 0.03279795}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 3
+  humanoidOversampling: 1
+  avatarSetup: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

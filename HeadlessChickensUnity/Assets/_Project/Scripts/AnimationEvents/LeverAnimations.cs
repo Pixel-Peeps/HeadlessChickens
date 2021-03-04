@@ -20,6 +20,13 @@ public class LeverAnimations : MonoBehaviour
         redLight.SetActive(false);
         greenLight.SetActive(true);
 
-        lightObject.GetComponent<Renderer>().sharedMaterial = greenLightMat;
+        SwapLightMaterial();
+    }
+
+    private void SwapLightMaterial()
+    {
+        lightObject.GetComponent<MeshRenderer>().materials[1].SetColor("_Color", Color.green);
+        lightObject.GetComponent<MeshRenderer>().materials[1].SetColor("_EmissionColor", Color.green);
+
     }
 }
