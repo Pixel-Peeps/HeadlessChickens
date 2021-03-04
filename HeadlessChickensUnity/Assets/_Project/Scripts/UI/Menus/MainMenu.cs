@@ -10,14 +10,13 @@ namespace PixelPeeps.HeadlessChickens.UI
 
         public override string GetInputFieldText()
         {
+            PlayerPrefs.SetString("Nickname", playerNameInput.text);
             return playerNameInput.text;
         }
 
         public override void SetInputFieldText(string text)
         {
-            print("playerNameInput: " + playerNameInput.text);
             playerNameInput.text = text;
-            print("playerNameInput: " + playerNameInput.text);
         }
 
         public override void DisplayErrorMessage()

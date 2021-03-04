@@ -1,6 +1,7 @@
 ﻿using Photon.Pun;
 using Photon.Realtime;
 using PixelPeeps.HeadlessChickens.GameState;
+using UnityEngine;
 
 namespace PixelPeeps.HeadlessChickens.Network
 {
@@ -19,7 +20,14 @@ namespace PixelPeeps.HeadlessChickens.Network
             
             if (PhotonNetwork.JoinOrCreateRoom(roomName, options, TypedLobby.Default))
             {
-                PhotonNetwork.LocalPlayer.NickName = "Player";
+                if (PlayerPrefs.GetString("Nickname") == "")
+                {
+                    PhotonNetwork.LocalPlayer.NickName = "Player";
+                }
+                else
+                {
+                    PhotonNetwork.LocalPlayer.NickName = PlayerPrefs.GetString("Nickname");
+                }
             }
         }
 

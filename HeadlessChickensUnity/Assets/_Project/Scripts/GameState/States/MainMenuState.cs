@@ -24,6 +24,7 @@ namespace PixelPeeps.HeadlessChickens.GameState
             {
                 ActivateMenu(menu);
                 StateManager.uiManager.DeactivateMenu(StateManager.uiManager.waitingRoom);
+                menu.SetInputFieldText(PlayerPrefs.GetString("Nickname"));
                 StateManager.uiManager.createRoom.SetInputFieldText("");
                 Debug.Log("<color=green> set input field to </color>" + StateManager.uiManager.createRoom.inputField.text);
             }

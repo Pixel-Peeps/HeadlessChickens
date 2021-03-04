@@ -641,6 +641,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoomSearchCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 483725998252695555, guid: 41d52b5684bf2c84fbf957882a7768a4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 483725998252695559, guid: 41d52b5684bf2c84fbf957882a7768a4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -724,6 +728,14 @@ PrefabInstance:
     - target: {fileID: 483725998252695559, guid: 41d52b5684bf2c84fbf957882a7768a4, type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8810061107251355526, guid: 41d52b5684bf2c84fbf957882a7768a4, type: 3}
+      propertyPath: m_ChildForceExpandHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8810061107251355526, guid: 41d52b5684bf2c84fbf957882a7768a4, type: 3}
+      propertyPath: m_Spacing
+      value: 15.11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41d52b5684bf2c84fbf957882a7768a4, type: 3}
@@ -1075,6 +1087,10 @@ PrefabInstance:
       propertyPath: m_fontColor32.rgba
       value: 4284374622
       objectReference: {fileID: 0}
+    - target: {fileID: 7958517313447683156, guid: b3c3d3e7e0842094fa46cd0d33886689, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8632218060392707640, guid: b3c3d3e7e0842094fa46cd0d33886689, type: 3}
       propertyPath: m_fontColor.a
       value: 0.5529412
@@ -1411,6 +1427,11 @@ MonoBehaviour:
   scaleDownTo: {x: 1, y: 1, z: 1}
   scaleTime: 0.5
   holdTime: 0.2
+--- !u!1 &1193262988 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7958517313447683156, guid: b3c3d3e7e0842094fa46cd0d33886689, type: 3}
+  m_PrefabInstance: {fileID: 1193262967}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1193262989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1442,6 +1463,17 @@ MonoBehaviour:
   scaleDownTo: {x: 1, y: 1, z: 1}
   scaleTime: 0.5
   holdTime: 0.2
+--- !u!114 &1193262990 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2323474261154819908, guid: b3c3d3e7e0842094fa46cd0d33886689, type: 3}
+  m_PrefabInstance: {fileID: 1193262967}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193262988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1193262991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1471,9 +1503,11 @@ MonoBehaviour:
   nameInputTitleText: {fileID: 1193263003}
   nameInputField: {fileID: 1193262994}
   inputFieldText: {fileID: 1193262993}
+  inputAreaText: {fileID: 1193262990}
   inputImageTween: {fileID: 1193262982}
   inputTitleTween: {fileID: 1193262980}
   inputTextTween: {fileID: 1193263001}
+  inputAreaTween: {fileID: 1193263002}
 --- !u!1 &1193262992 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2782234863506732907, guid: b3c3d3e7e0842094fa46cd0d33886689, type: 3}
@@ -1593,6 +1627,37 @@ MonoBehaviour:
   targetColour:
     serializedVersion: 2
     rgba: 0
+  fadeTime: 0.5
+  scaleUpTo: {x: 2, y: 2, z: 2}
+  scaleDownTo: {x: 1, y: 1, z: 1}
+  scaleTime: 0.5
+  holdTime: 0.2
+--- !u!114 &1193263002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193262988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83fbf47957a723144b6ff905f8e6e702, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentlyTweening: 0
+  targetPosition: {fileID: 0}
+  moveTime: 0.5
+  movementCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  imageToFade: {fileID: 0}
+  textToFade: {fileID: 1193262990}
+  targetColour:
+    serializedVersion: 2
+    rgba: 4281479730
   fadeTime: 0.5
   scaleUpTo: {x: 2, y: 2, z: 2}
   scaleDownTo: {x: 1, y: 1, z: 1}
