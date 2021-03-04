@@ -846,7 +846,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 633827197}
-  viewIdField: 1
+  viewIdField: 2
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &633827197
@@ -1599,6 +1599,8 @@ MonoBehaviour:
   jumpButtonPressed: 0
   animSpeed: 0
   verticalForward: 0
+  animAcceleration: 0.065
+  animDeceleration: 0.05
 --- !u!114 &3053582300511650420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1677,7 +1679,7 @@ MonoBehaviour:
   - {fileID: 8045161509034829110}
   - {fileID: 4979095357912769126}
   - {fileID: 6485128396210751623}
-  viewIdField: 2
+  viewIdField: 3
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &4979095357912769126

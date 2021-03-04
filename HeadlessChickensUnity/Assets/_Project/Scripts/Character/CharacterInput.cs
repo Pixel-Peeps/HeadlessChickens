@@ -53,6 +53,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         private Animator _anim;
         public float animSpeed;
         public float verticalForward;
+        [SerializeField] float animAcceleration;
+        [SerializeField] float animDeceleration;
 
         private void Awake()
         {
@@ -129,11 +131,11 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
             if (_character.State == CharacterBase.EStates.Moving)
             {
-                verticalForward = Mathf.SmoothDamp(verticalForward, 1, ref temp, 0.065f);
+                verticalForward = Mathf.SmoothDamp(verticalForward, 1, ref temp, animAcceleration);
             }
             else
             {
-                verticalForward = Mathf.SmoothDamp(verticalForward, 0, ref temp, 0.05f);
+                verticalForward = Mathf.SmoothDamp(verticalForward, 0, ref temp, animDeceleration);
             }
 
             _anim.SetFloat("Vertical_f", Math.Abs(verticalForward));
