@@ -29,9 +29,11 @@ namespace PixelPeeps.HeadlessChickens.UI
         [Header("Name Input")] public TextMeshProUGUI nameInputTitleText;
         public TMP_InputField nameInputField;
         public TextMeshProUGUI inputFieldText;
+        public TextMeshProUGUI inputAreaText;
         public UITweener inputImageTween;
         public UITweener inputTitleTween;
         public UITweener inputTextTween;
+        public UITweener inputAreaTween;
 
         public void Start()
         {
@@ -50,10 +52,12 @@ namespace PixelPeeps.HeadlessChickens.UI
             print(textColour.r);
             Color invisibleTextColour = new Color( textColour.r, textColour.g, textColour.b, 0);
             print(invisibleTextColour.r);
+            
             howToPlayText.color = invisibleTextColour;
             joinGameText.color = invisibleTextColour;
             hostGameText.color = invisibleTextColour;
             nameInputTitleText.color = invisibleTextColour;
+            inputAreaText.color = invisibleTextColour;
 
             Color inputTextColour = inputFieldText.color;
             Color32 invisibleInputTextColour = new Color32((byte) inputTextColour.r, (byte) inputTextColour.g,
@@ -107,6 +111,7 @@ namespace PixelPeeps.HeadlessChickens.UI
             inputTitleTween.FadeInText();
             inputImageTween.FadeInImage();
             inputTextTween.FadeInText();
+            inputAreaTween.FadeInText();
 
             nameInputField.enabled = true;
         }

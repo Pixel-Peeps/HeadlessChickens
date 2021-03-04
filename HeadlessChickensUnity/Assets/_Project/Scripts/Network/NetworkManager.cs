@@ -4,6 +4,7 @@ using Photon.Realtime;
 using PixelPeeps.HeadlessChickens.GameState;
 using PixelPeeps.HeadlessChickens.UI;
 using UnityEngine;
+// ReSharper disable UnusedMember.Global
 
 namespace PixelPeeps.HeadlessChickens.Network
 {
@@ -18,6 +19,8 @@ namespace PixelPeeps.HeadlessChickens.Network
         public const int minPlayersPerRoom = 1;
 
         private string currentRoomName;
+
+        public float gameTime = 600f;
 
         private void Awake()
         {
@@ -41,7 +44,18 @@ namespace PixelPeeps.HeadlessChickens.Network
             ConnectToMaster();
         }
 
-        public void ConnectToMaster()
+        public void UpdateGameTime(float _gameTime)
+        {
+            photonView.RPC("UpdateGameTimeRPC", RpcTarget.All, _gameTime);
+        }
+
+        [PunRPC]
+        public void UpdateGameTimeRPC(float _gameTime)
+        {
+            gameTime = _gameTime;
+        }
+        
+        private void ConnectToMaster()
         {
             uiManager = GameObject.FindGameObjectWithTag("MenuManager").GetComponent<UIManager>();
             PhotonNetwork.ConnectUsingSettings();
@@ -54,6 +68,20 @@ namespace PixelPeeps.HeadlessChickens.Network
             gameIsRunning = false;
             PhotonNetwork.LeaveRoom();
             PhotonNetwork.LeaveLobby();
+        }
+
+        public void KickPlayer(Player targetPlayer)
+        {
+            if (!PhotonNetwork.IsMasterClient) return;
+            
+            photonView.RPC("KickPlayerRPC", targetPlayer);
+        }
+
+        [PunRPC]
+        public void KickPlayerRPC()
+        {
+            PhotonNetwork.LeaveRoom();
+            GameStateManager.Instance.SwitchGameState(new MainMenuState());
         }
 
         #region Photon Callback Methods

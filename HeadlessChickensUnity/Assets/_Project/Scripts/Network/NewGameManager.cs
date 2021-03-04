@@ -350,6 +350,7 @@ namespace PixelPeeps.HeadlessChickens.Network
         private void StartTimer()
         {
             timeRemaining = 10f;
+            totalGameTime = NetworkManager.Instance.gameTime;
             timeRemaining = totalGameTime;
             timerIsRunning = true;
         }

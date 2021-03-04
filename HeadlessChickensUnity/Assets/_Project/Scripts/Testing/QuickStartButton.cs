@@ -19,8 +19,20 @@ namespace PixelPeeps.HeadlessChickens.Network
             
             if (PhotonNetwork.JoinOrCreateRoom(roomName, options, TypedLobby.Default))
             {
-                PhotonNetwork.LocalPlayer.NickName = "Player";
+                if (PlayerPrefs.GetString("Nickname") == "")
+                {
+                    PhotonNetwork.LocalPlayer.NickName = "Player";
+                }
+                else
+                {
+                    PhotonNetwork.LocalPlayer.NickName = PlayerPrefs.GetString("Nickname");
+                }
             }
+        }
+
+        public override void OnCreatedRoom()
+        {
+            PhotonNetwork.CurrentRoom.IsVisible = false;
         }
 
         public override void OnJoinedRoom()
