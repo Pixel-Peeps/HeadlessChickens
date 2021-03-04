@@ -1,10 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using ExitGames.Client.Photon.Encryption;
-using Photon.Pun;
+﻿using Photon.Pun;
 using Photon.Realtime;
 using PixelPeeps.HeadlessChickens.GameState;
-using UnityEngine;
 
 namespace PixelPeeps.HeadlessChickens.Network
 {
@@ -12,11 +8,11 @@ namespace PixelPeeps.HeadlessChickens.Network
     {
         public void QuickStart()
         {
-            string roomName = "Quick Start Room";
+            const string roomName = "Quick Start Room";
             
             RoomOptions options = new RoomOptions
             {
-                MaxPlayers = 6, 
+                MaxPlayers = 5, 
                 EmptyRoomTtl = 0
             };
 
