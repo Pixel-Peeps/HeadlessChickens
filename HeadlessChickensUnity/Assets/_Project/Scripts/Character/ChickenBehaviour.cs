@@ -16,10 +16,15 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
     {
         public ChickenManager chickenManager;
         public Vector3 positionBeforeHiding;
-        
+
+        [Header("Modes")]
+        [SerializeField] GameObject normalChick;
+        [SerializeField] GameObject headlessChick;
+
         [Header("Mesh and Materials")]
         [SerializeField] Renderer chickenMesh;
         [SerializeField] Material caughtMat;
+        [SerializeField] Material normalMat;
         
         [Header("Hiding")]
         public HidingSpot hidedSpot;
@@ -62,16 +67,29 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public void ChickenCaptured()
         {
             if (hasBeenCaught || alreadyEscaped) return;
+
+            // chickenMesh.GetComponent<Renderer>().sharedMaterial = caughtMat;
+
+            normalChick.SetActive(false);
+            headlessChick.SetActive(true);
             
-            chickenMesh.GetComponent<Renderer>().sharedMaterial = caughtMat;
-            
-            NewGameManager.Instance.chickensCaught++;
-            HUDManager.Instance.UpdateChickCounter();
+            // NewGameManager.Instance.chickensCaught++;
+            // HUDManager.Instance.UpdateChickCounter();
             
             hasBeenCaught = true;
-            NewGameManager.Instance.CheckForFinish();
+            _controller.SwapAnimator();
+            // NewGameManager.Instance.CheckForFinish();
 
-            chickenManager.activeChicks.Remove(this);
+            // chickenManager.activeChicks.Remove(this);
+        }
+
+        [PunRPC]
+        public void RestoreHead()
+        {
+            normalChick.SetActive(true);
+            headlessChick.SetActive(false);
+
+            hasBeenCaught = false;
         }
 
         /*############################################

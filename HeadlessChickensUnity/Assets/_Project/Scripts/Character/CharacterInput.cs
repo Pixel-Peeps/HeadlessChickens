@@ -53,6 +53,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         private Animator _anim;
         public float animSpeed;
         public float verticalForward;
+        [SerializeField] float animAcceleration;
+        [SerializeField] float animDeceleration;
 
         private void Awake()
         {
@@ -126,11 +128,11 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
             if (_character.State == CharacterBase.EStates.Moving)
             {
-                verticalForward = Mathf.SmoothDamp(verticalForward, 1, ref temp, 0.065f);
+                verticalForward = Mathf.SmoothDamp(verticalForward, 1, ref temp, animAcceleration);
             }
             else
             {
-                verticalForward = Mathf.SmoothDamp(verticalForward, 0, ref temp, 0.05f);
+                verticalForward = Mathf.SmoothDamp(verticalForward, 0, ref temp, animDeceleration);
             }
 
             _anim.SetFloat("Vertical_f", Math.Abs(verticalForward));
@@ -148,8 +150,25 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 Vector3 tempRight = new Vector3(right.x, 0, right.z);
 
                 // Set movement target based on cameras direction
+
                 _newPosition += tempForward * (_movDirection.y * moveSpeed) + tempRight * (_movDirection.x * moveSpeed);
+
+                // If headless, auto-run
+                //if (!_character.isFox && _character.hasBeenCaught)
+                //{
+                //    _newPosition += tempForward * (moveSpeed) + tempRight * (_movDirection.x * moveSpeed);
+                //}
+                //else
+                //{
+
+                //}
+
                 Vector3 facingDirectrion = tempForward * _movDirection.y + tempRight * _movDirection.x;
+
+                //if (!_character.isFox && _character.hasBeenCaught)
+                //{
+                //    facingDirectrion = _camTransform.forward;
+                //}
 
                 // check distance to target position
                 float distanceToDestination = Vector3.Distance(transform.position, _newPosition);
@@ -183,6 +202,12 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             // move to position
             transform.position = Vector3.Lerp(transform.position, _newPosition, Time.deltaTime * moveTime);
             }
+        }
+        
+
+        public void SwapAnimator()
+        {
+            _anim = GetComponentInChildren<Animator>();
         }
 
         private void Jump()
@@ -314,21 +339,37 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         {
             if (photonView.IsMine)
             {
-                if (_character.isFox && _character.hasLever && _character.isBlueprintActive)
+                if (_character.isFox)
                 {
-                    Debug.Log("unshowing false levers????");
-                    LeverManager.Instance.IdentifyFakeLeverPositions();
-                    _character.isBlueprintActive = false;
+                    _anim.SetTrigger("SwipeTrigger");
                 }
-                
-                if (_character.isBlueprintActive && !_character.hasLever)
+
+                if (!_character.isFox)
                 {
-                    if (_character.gameObject.GetComponentInChildren<TrapBlueprint>().gameObject !=null)
+                    ChickenBehaviour chicken = _character.GetComponent<ChickenBehaviour>();
+                    if (chicken.hasBeenCaught)
                     {
                         Debug.Log("cancelling blueprint");
                         photonView.RPC("RPC_DestroyBluePrint", RpcTarget.AllViaServer);
                     }
                 }
+                
+                //if (_character.isFox && _character.hasLever && _character.isBlueprintActive)
+                //{
+                //    Debug.Log("unshowing false levers????");
+                //    LeverManager.Instance.IdentifyFakeLeverPositions();
+                //    _character.isBlueprintActive = false;
+                //}
+                
+                //if (_character.isBlueprintActive && !_character.hasLever)
+                //{
+                //    if (_character.gameObject.GetComponentInChildren<TrapBlueprint>().gameObject !=null)
+                //    {
+                //        Debug.Log("cancelling blueprint");
+                //        PhotonNetwork.Destroy(_character.gameObject.GetComponentInChildren<TrapBlueprint>().gameObject);
+                //        _character.isBlueprintActive = false;
+                //    }
+                //}
             }
         }
 
