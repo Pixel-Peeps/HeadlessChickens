@@ -5,14 +5,8 @@ using UnityEngine;
 public class FoxAnimations : MonoBehaviour
 {
     [SerializeField] private GameObject colliderHolder;
-    [SerializeField] private GameObject[] trails;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
+    [SerializeField] private ParticleSystem[] trails;
 
     void TurnColliderOn()
     {
@@ -27,17 +21,19 @@ public class FoxAnimations : MonoBehaviour
 
     void TurnTrailsOn()
     {
-        foreach(GameObject trail in trails)
+        foreach (ParticleSystem trail in trails)
         {
-            trail.SetActive(true);
+            var em = trail.emission;
+            em.enabled = true;
         }
     }
 
     void TurnTrailsOff()
     {
-        foreach (GameObject trail in trails)
+        foreach (ParticleSystem trail in trails)
         {
-            trail.SetActive(false);
+            var em = trail.emission;
+            em.enabled = false;
         }
     }
 }
