@@ -81,8 +81,9 @@ public class TrapBlueprint : MonoBehaviourPunCallbacks
     [PunRPC]
     public void RPC_DestroySelf()
     {
-        if (gameObject != null)
+        if (PhotonNetwork.IsMasterClient && gameObject != null)
         {
+            Debug.Log("destroying blueprint!");
             _controls.Disable();
             PhotonNetwork.Destroy(gameObject);
         }
