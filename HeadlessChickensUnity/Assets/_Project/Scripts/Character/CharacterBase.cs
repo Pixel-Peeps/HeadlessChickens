@@ -21,6 +21,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public bool isBlueprintActive;
         public bool isFox;
         public bool hasLever;
+        public bool hasDecoy;
         public GameObject trapSlot;
         
         public bool cooldownRunning = false;

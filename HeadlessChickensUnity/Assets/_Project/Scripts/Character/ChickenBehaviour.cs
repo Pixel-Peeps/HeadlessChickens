@@ -32,6 +32,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         [FormerlySerializedAs("followIntID")] public int followInt;
 
         public Transform escapeLocation;
+        public float decoyDuration = 4f;
 
         public InputControls controls;
 
@@ -340,6 +341,22 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             {
                 playerCam.gameObject.SetActive(true);
             }
+        }
+
+        public IEnumerator DecoyCooldown()
+        {
+            Debug.Log("Starting decoy cooldown");
+            yield return new WaitForSeconds(decoyDuration);
+            
+            photonView.RPC("RPC_ToggleDecoy", RpcTarget.AllViaServer, false);
+        }
+        
+        
+        [PunRPC]
+        public void RPC_ToggleDecoy(bool newHasDecoy)
+        {
+            hasDecoy = newHasDecoy;
+            
         }
 
         [PunRPC]

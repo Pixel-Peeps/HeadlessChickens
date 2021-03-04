@@ -5,21 +5,17 @@ using Photon.Pun;
 using PixelPeeps.HeadlessChickens._Project.Scripts.Character;
 using UnityEngine;
 
-public class T_GlueTub : Traps
+public class T_GlueTub : MonoBehaviourPunCallbacks
+
 {
     public int speedDivideBy = 2;
     public float effectDuration = 4f;
     public float origChickenSpeed;
     private CharacterInput victim;
-    
-    public override void ActivateTrap()
-    {
-        // TODO
-        // Implement the actions this trap does on the corresponding player that it effects
-    }
-
+ 
     public void OnTriggerEnter(Collider other)
     {
+        photonView.SetControllerInternal(other.gameObject.GetComponent<PhotonView>().Owner.ActorNumber);
         var _character = other.gameObject.GetComponent<CharacterBase>();
         if (_character.isFox)
         {
@@ -34,6 +30,8 @@ public class T_GlueTub : Traps
             origChickenSpeed = victim.moveSpeed;
             victim.moveSpeed /= 2;
             StartCoroutine(GlueEffectCoolDown());
+            
+            
         }
     }
 

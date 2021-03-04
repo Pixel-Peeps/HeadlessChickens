@@ -3,7 +3,7 @@ using PixelPeeps.HeadlessChickens._Project.Scripts.Character;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class TrapBlueprint : MonoBehaviour
+public class TrapBlueprint : MonoBehaviourPunCallbacks
 {
     //this script goes on the trap blueprint
     
@@ -44,7 +44,7 @@ public class TrapBlueprint : MonoBehaviour
     }
 
     private void Update()
-    {
+    { //leaving this here in case we need to return to a raycast solution
         /*
         Ray ray = _cam.ScreenPointToRay(Mouse.current.position.ReadValue());
         // if (Physics.Raycast(ray, out _hit, 50000.0f, (1 << 11)))
@@ -57,15 +57,36 @@ public class TrapBlueprint : MonoBehaviour
     }
 
     private void SetDown()
-    {  gameObject.transform.GetComponentInParent<CharacterBase>().trapSlot = null;
-       gameObject.transform.GetComponentInParent<CharacterBase>().hasTrap = false;
-       gameObject.transform.GetComponentInParent<CharacterBase>().isBlueprintActive = false;
-       
-       PhotonNetwork.InstantiateRoomObject(actualTrapPrefab.name, new Vector3(gameObject.transform.position.x, 0, gameObject.transform.position.z),
-           gameObject.transform.rotation, 0);
-
-       if (gameObject != null)
+    {
+        if (gameObject != null)
         {
+            gameObject.transform.GetComponentInParent<CharacterBase>().trapSlot = null;
+            gameObject.transform.GetComponentInParent<CharacterBase>().hasTrap = false;
+            gameObject.transform.GetComponentInParent<CharacterBase>().isBlueprintActive = false;
+            
+            
+            photonView.RPC("RPC_SpawnTrap", RpcTarget.AllViaServer);
+            photonView.RPC("RPC_DestroySelf", RpcTarget.AllViaServer);
+        }
+    }
+
+    [PunRPC]
+    public void RPC_SpawnTrap()
+    {
+        if (photonView.IsMine)
+        {
+            PhotonNetwork.Instantiate(actualTrapPrefab.name,
+                new Vector3(gameObject.transform.position.x, 0, gameObject.transform.position.z),
+                gameObject.transform.rotation, 0);
+        }
+    }
+
+    [PunRPC]
+    public void RPC_DestroySelf()
+    {
+        if (gameObject != null)
+        {
+            Debug.Log("destroying blueprint!");
             _controls.Disable();
             PhotonNetwork.Destroy(gameObject);
         }
