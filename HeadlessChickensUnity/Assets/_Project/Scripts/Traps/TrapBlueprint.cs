@@ -3,7 +3,7 @@ using PixelPeeps.HeadlessChickens._Project.Scripts.Character;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class TrapBlueprint : MonoBehaviour
+public class TrapBlueprint : MonoBehaviourPunCallbacks
 {
     //this script goes on the trap blueprint
     
@@ -57,14 +57,29 @@ public class TrapBlueprint : MonoBehaviour
     }
 
     private void SetDown()
-    {  gameObject.transform.GetComponentInParent<CharacterBase>().trapSlot = null;
-       gameObject.transform.GetComponentInParent<CharacterBase>().hasTrap = false;
-       gameObject.transform.GetComponentInParent<CharacterBase>().isBlueprintActive = false;
-       
-       PhotonNetwork.InstantiateRoomObject(actualTrapPrefab.name, new Vector3(gameObject.transform.position.x, 0, gameObject.transform.position.z),
-           gameObject.transform.rotation, 0);
+    {
+        if (gameObject != null)
+        {
+            gameObject.transform.GetComponentInParent<CharacterBase>().trapSlot = null;
+            gameObject.transform.GetComponentInParent<CharacterBase>().hasTrap = false;
+            gameObject.transform.GetComponentInParent<CharacterBase>().isBlueprintActive = false;
+            
+            photonView.RPC("RPC_SpawnTrap", RpcTarget.AllViaServer);
+            photonView.RPC("RPC_DestroySelf", RpcTarget.AllViaServer);
+        }
+    }
 
-       if (gameObject != null)
+    [PunRPC]
+    public void RPC_SpawnTrap()
+    {
+        PhotonNetwork.InstantiateRoomObject(actualTrapPrefab.name, new Vector3(gameObject.transform.position.x, 0, gameObject.transform.position.z),
+            gameObject.transform.rotation, 0);
+    }
+
+    [PunRPC]
+    public void RPC_DestroySelf()
+    {
+        if (gameObject != null)
         {
             _controls.Disable();
             PhotonNetwork.Destroy(gameObject);

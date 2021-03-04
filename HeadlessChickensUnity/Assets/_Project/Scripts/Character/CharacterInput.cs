@@ -85,8 +85,6 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
 
             #endregion
-
-
         }
 
 
@@ -94,6 +92,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         private void Start()
         {
             _newPosition = transform.position;
+            //photonView.Group = 1;
         }
 
         private void Update()
@@ -116,8 +115,6 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             {
                 // normal camera on
             }
-
-
         }
 
         private void FixedUpdate()
@@ -183,14 +180,6 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             //Vector3 velocity = facingDirectrion * (moveSpeed / animSpeed);
             //Debug.Log("<color=cyan>cam forward = " + velocity + "</color>");
 
-
-
-
-
-
-
-
-
             // move to position
             transform.position = Vector3.Lerp(transform.position, _newPosition, Time.deltaTime * moveTime);
             }
@@ -217,8 +206,6 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                     ? (jumpDirection + (Vector3.up * 0.62f)) * jumpForce * (moveSpeed * 0.8f)
                     : Vector3.up * jumpForce;
                 isGrounded = false;
-
-
             }
         }
 
@@ -293,18 +280,12 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             {
                 if (_character.hasTrap && !_character.isBlueprintActive && !_character.isFox)
                 {
-                    _character.isBlueprintActive = true;
-                    var blueprint = PhotonNetwork.InstantiateRoomObject(_character.trapSlot.name, new Vector3(0, 0.1f, 0.4f),
-                        Quaternion.identity);
-                    blueprint.gameObject.transform.SetParent(_character.gameObject.transform, false);
+                    photonView.RPC("RPC_SpawnBluePrint", RpcTarget.AllBufferedViaServer);
                 }
 
                 if (_character.hasTrap && !_character.isBlueprintActive && _character.isFox && !_character.hasLever)
                 {
-                    _character.isBlueprintActive = true;
-                    var blueprint = PhotonNetwork.InstantiateRoomObject(_character.trapSlot.name, new Vector3(0, 0.5f, 1.5f),
-                        Quaternion.identity);
-                    blueprint.gameObject.transform.SetParent(_character.gameObject.transform, false);
+                    photonView.RPC("RPC_SpawnBluePrint", RpcTarget.AllBufferedViaServer);
                 }
 
                 if (_character.isFox && _character.hasLever && !_character.isBlueprintActive)
@@ -314,6 +295,15 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                     _character.isBlueprintActive = true;
                 }
             }
+        }
+
+        [PunRPC]
+        private void RPC_SpawnBluePrint()
+        {
+            _character.isBlueprintActive = true;
+            var blueprint = PhotonNetwork.InstantiateRoomObject(_character.trapSlot.name, new Vector3(0, 0.1f, 0.4f),
+                Quaternion.identity);
+            blueprint.gameObject.transform.SetParent(_character.gameObject.transform, false);
         }
         
         private void MouseClicked(InputAction.CallbackContext obj)
@@ -332,14 +322,20 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                     if (_character.gameObject.GetComponentInChildren<TrapBlueprint>().gameObject !=null)
                     {
                         Debug.Log("cancelling blueprint");
-                        PhotonNetwork.Destroy(_character.gameObject.GetComponentInChildren<TrapBlueprint>().gameObject);
-                        _character.isBlueprintActive = false;
+                        photonView.RPC("RPC_DestroyBluePrint", RpcTarget.AllViaServer);
                     }
                 }
             }
         }
 
+        [PunRPC]
+        public void RPC_DestroyBluePrint()
+        {
+            _character.gameObject.GetComponentInChildren<TrapBlueprint>().gameObject.GetPhotonView()
+                .isRuntimeInstantiated = false;
+            PhotonNetwork.Destroy(_character.gameObject.GetComponentInChildren<TrapBlueprint>().gameObject);
+            _character.isBlueprintActive = false;
+        }
         #endregion
-
     }
 }

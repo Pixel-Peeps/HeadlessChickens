@@ -87,7 +87,7 @@ public class TrapPickUp : MonoBehaviourPunCallbacks
                 //assigning the glue tub
                 Debug.Log("Oh lord he has the glue");
                 other.gameObject.GetComponent<FoxBehaviour>().hasTrap = true;
-                other.gameObject.GetComponent<FoxBehaviour>().trapSlot = tubGluePrefab;
+                other.gameObject.GetComponent<FoxBehaviour>().trapSlot = rottenEggPrefab;
 
                 if (gameObject != null)
                 {

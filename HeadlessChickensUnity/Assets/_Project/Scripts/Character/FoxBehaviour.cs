@@ -74,7 +74,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                     if (!chick.isHiding && chick.hasDecoy)
                     {
                         Debug.Log("DECOY DEPLOYED");
-                        chick.hasDecoy = false;
+                        StartCoroutine(chick.DecoyCooldown());
                         chick.hasTrap = false;
                     }
                 }

@@ -30,6 +30,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public int chickToFollowID;
 
         public Transform escapeLocation;
+        public float decoyDuration = 4f;
 
         private void Start()
         {
@@ -236,6 +237,22 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             chickenMesh.enabled = true;
             
             SwitchState(EStates.Moving);
+        }
+
+        public IEnumerator DecoyCooldown()
+        {
+            Debug.Log("Starting decoy cooldown");
+            yield return new WaitForSeconds(decoyDuration);
+            
+            photonView.RPC("RPC_ToggleDecoy", RpcTarget.AllViaServer, false);
+        }
+        
+        
+        [PunRPC]
+        public void RPC_ToggleDecoy(bool newHasDecoy)
+        {
+            hasDecoy = newHasDecoy;
+            
         }
 
         [PunRPC]
