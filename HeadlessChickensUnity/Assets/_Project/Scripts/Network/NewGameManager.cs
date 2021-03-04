@@ -72,7 +72,7 @@ namespace PixelPeeps.HeadlessChickens.Network
         
         public void DeterminePlayerRole()
         {
-            Debug.Log("DeterminePlayerRole");
+            print("<color=magenta> Determining player role </color>");
             Player localPlayer = PhotonNetwork.LocalPlayer;
             PlayerAssignmentRPC assignmentRPC = PlayerAssignmentRPC.Instance;
             
@@ -82,12 +82,15 @@ namespace PixelPeeps.HeadlessChickens.Network
 
             if (Equals(assignmentRPC.foxPlayer, localPlayer))
             {
+                print("<color=magenta> Determining type for fox </color>");
                 playerPrefab = foxPrefab;
                 spawnPos = foxSpawnPoint;
                 myType = PlayerType.Fox;
+                print("<color=magenta> MyType: " + myType + "</color>");
             }
             else
             {
+                print("<color=magenta> Determining type for chicken </color>");
                 playerPrefab = chickPrefab;
                 int indexInChickenList;
                 // Find index of this player 
@@ -103,28 +106,33 @@ namespace PixelPeeps.HeadlessChickens.Network
                 Debug.Log("index: " + indexInChickenList);
                 spawnPos = chickSpawnPoints[indexInChickenList];
                 myType = PlayerType.Chick;
+                print("<color=magenta> MyType: " + myType + "</color>");
             }
         }
         
         public void Initialise()
         {
+            chickensCaught = 0;
+            chickensEscaped = 0;
+            
             foxWinScreen.SetActive(false);
             foxLossScreen.SetActive(false);
             chickenWinScreen.SetActive(false);
             chickenLossScreen.SetActive(false);
             
             SpawnPlayers();
-            
-            SpawnHidingSpots();
-            
-            SpawnLevers();
-            
-            SpawnTrapPickUps();
-            
-            StartTimer();
 
+            SpawnHidingSpots();
+
+            SpawnLevers();
+
+            SpawnTrapPickUps();
+
+            StartTimer();
+            //LeverManager.Instance.Initialise();
 
             HUDManager.Instance.Initialise();
+            Debug.Log("<color=magenta> initialised HUD</color>");
             
             NetworkManager.Instance.GameSetupComplete();
             
@@ -140,7 +148,7 @@ namespace PixelPeeps.HeadlessChickens.Network
         {
             if (chickensCaught + chickensEscaped == PhotonNetwork.CurrentRoom.PlayerCount - 1)
             {
-               // DetermineWinner();
+               DetermineWinner();
             }
         }
 
@@ -201,6 +209,8 @@ namespace PixelPeeps.HeadlessChickens.Network
 
         private void SpawnPlayers()
         {
+            if (myController != null) return;
+            
             if (playerPrefab == null)
             {
                 Debug.LogError("<Color=Red><a>Missing</a></Color> playerPrefab Reference. Please set it up in GameObject 'NewGameManager'",this);
@@ -210,6 +220,7 @@ namespace PixelPeeps.HeadlessChickens.Network
             {    
                 GameObject newController = PhotonNetwork.Instantiate(playerPrefab.name, spawnPos.position, Quaternion.identity);
                 myController = newController;
+                Debug.Log("<color=magenta> Spawned a player </color>");
             }
         }
 
@@ -254,7 +265,6 @@ namespace PixelPeeps.HeadlessChickens.Network
 
             //send this to lever manager for later
             LeverManager.Instance.SetLeverPosList(tempRooms);
-            
             
 
             for (int i = 0; i < maxNumberOfLevers; i++)
@@ -303,23 +313,28 @@ namespace PixelPeeps.HeadlessChickens.Network
         [PunRPC]
         public void EndGameRPC()
         {
-            NetworkManager.Instance.gameIsRunning = false;
             PhotonNetwork.Destroy(myController);
+            NetworkManager.Instance.gameIsRunning = false;
         }
         
         private IEnumerator LobbyReturnCountdownCoroutine()
         {            
             yield return new WaitForSecondsRealtime(lobbyReturnCountdown);
-            photonView.RPC("ReturnToLobbyRPC", RpcTarget.AllViaServer); 
-            
+            photonView.RPC("RestartGameRPC", RpcTarget.All); 
+            //ReturnToMenu();
             NetworkManager.Instance.MakeRoomPublic();
         }
         
         // ReSharper disable once UnusedMember.Local
         [PunRPC]
-        private void ReturnToLobbyRPC()
+        private void RestartGameRPC()
         {
-           NetworkManager.Instance.StartGameOnMaster();
+            GameStateManager.Instance.SwitchGameState(new RestartGameState());  
+        }
+        
+        private void ReturnToMenu()
+        {
+            GameStateManager.Instance.SwitchGameState(new MainMenuState());
         }
 
         #endregion
@@ -353,7 +368,7 @@ namespace PixelPeeps.HeadlessChickens.Network
                     timerIsRunning = false;
                     timeRemaining = 0;
                     HUDManager.Instance.UpdateTimeDisplay(timeRemaining);
-                   // photonView.RPC("FoxWinRPC", RpcTarget.All);
+                    photonView.RPC("FoxWinRPC", RpcTarget.All);
                 }
             }
         }

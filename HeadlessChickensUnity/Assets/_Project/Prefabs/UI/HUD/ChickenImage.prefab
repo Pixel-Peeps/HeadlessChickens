@@ -106,7 +106,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentlyTweening: 0
+  targetPosition: {fileID: 0}
+  moveTime: 0.5
+  movementCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  imageToFade: {fileID: 0}
+  textToFade: {fileID: 0}
+  targetColour:
+    serializedVersion: 2
+    rgba: 0
+  fadeTime: 0.5
   scaleUpTo: {x: 2, y: 2, z: 2}
-  scaleDownTo: {x: 1, y: 1, z: 1}
+  scaleDownTo: {x: 1.7937, y: 1.7937, z: 1.7937}
   scaleTime: 0.5
   holdTime: 0.2

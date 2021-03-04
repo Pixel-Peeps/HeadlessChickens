@@ -122,8 +122,8 @@ namespace PixelPeeps.HeadlessChickens.UI
         
         public LeverCounter leverCounter;
         public ChickCounter chickCounter;
-        
-        public void GenerateChickIcons()
+
+        private void GenerateChickIcons()
         {
             chickCounter.GenerateChickIcons();
         }
@@ -132,8 +132,8 @@ namespace PixelPeeps.HeadlessChickens.UI
         {
             chickCounter.UpdateCounter();
         }
-        
-        public void GenerateLeverIcons()
+
+        private void GenerateLeverIcons()
         {
             leverCounter.GenerateLeverIcons();
         }

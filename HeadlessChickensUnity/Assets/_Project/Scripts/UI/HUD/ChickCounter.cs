@@ -11,7 +11,7 @@ namespace PixelPeeps.HeadlessChickens.UI
     {
         public GameObject chickImagePrefab;
         
-        private List<ChickCounterImage> imagesInCounter = new List<ChickCounterImage>();
+        private readonly List<ChickCounterImage> imagesInCounter = new List<ChickCounterImage>();
         
         public void GenerateChickIcons()
         {

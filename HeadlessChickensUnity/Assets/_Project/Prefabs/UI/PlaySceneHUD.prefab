@@ -414,8 +414,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83fbf47957a723144b6ff905f8e6e702, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scaleTo: {x: 0, y: 0, z: 0}
-  scaleTime: 0
+  currentlyTweening: 0
+  targetPosition: {fileID: 0}
+  moveTime: 0.5
+  movementCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  imageToFade: {fileID: 0}
+  textToFade: {fileID: 0}
+  targetColour:
+    serializedVersion: 2
+    rgba: 0
+  fadeTime: 0.5
+  scaleUpTo: {x: 2.7937, y: 2.7937, z: 2.7937}
+  scaleDownTo: {x: 1.7937, y: 1.7937, z: 1.7937}
+  scaleTime: 0.5
+  holdTime: 0.2
 --- !u!1 &93632974080698185
 GameObject:
   m_ObjectHideFlags: 0
@@ -714,6 +731,7 @@ GameObject:
   - component: {fileID: 874051379199558473}
   - component: {fileID: 6811371854912404404}
   - component: {fileID: 2524865176206814115}
+  - component: {fileID: 2049190653}
   m_Layer: 5
   m_Name: TimerText
   m_TagString: Untagged
@@ -837,6 +855,37 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &2049190653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350649730928147163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83fbf47957a723144b6ff905f8e6e702, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentlyTweening: 0
+  targetPosition: {fileID: 0}
+  moveTime: 0.5
+  movementCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  imageToFade: {fileID: 0}
+  textToFade: {fileID: 0}
+  targetColour:
+    serializedVersion: 2
+    rgba: 0
+  fadeTime: 0.5
+  scaleUpTo: {x: 1.4, y: 1.4, z: 1.4}
+  scaleDownTo: {x: 0.85929, y: 0.85929, z: 0.85929}
+  scaleTime: 0.5
+  holdTime: 0.2
 --- !u!1 &393755904755827148
 GameObject:
   m_ObjectHideFlags: 0
@@ -1468,7 +1517,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4480209386984306184
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1605,7 +1654,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2919033431986152932
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2173,8 +2222,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83fbf47957a723144b6ff905f8e6e702, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scaleTo: {x: 0, y: 0, z: 0}
+  currentlyTweening: 0
+  targetPosition: {fileID: 0}
+  moveTime: 0.5
+  movementCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  imageToFade: {fileID: 0}
+  textToFade: {fileID: 0}
+  targetColour:
+    serializedVersion: 2
+    rgba: 0
+  fadeTime: 0.5
+  scaleUpTo: {x: 2, y: 2, z: 2}
+  scaleDownTo: {x: 1, y: 1, z: 1}
   scaleTime: 0
+  holdTime: 0.2
 --- !u!1 &4088418099431063206
 GameObject:
   m_ObjectHideFlags: 0
@@ -3410,7 +3476,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1543579775922222449
 RectTransform:
   m_ObjectHideFlags: 0

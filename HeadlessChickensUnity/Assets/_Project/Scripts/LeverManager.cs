@@ -29,6 +29,12 @@ namespace PixelPeeps.HeadlessChickens.Network
                 Instance = this;
             }
         }
+
+        public void Initialise()
+        {
+            leversPulled = 0;
+            allLeversPulled = false;
+        }
         
         public void Start()
         {

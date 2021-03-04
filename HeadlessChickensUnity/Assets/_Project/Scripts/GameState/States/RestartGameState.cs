@@ -19,13 +19,16 @@ namespace PixelPeeps.HeadlessChickens.GameState
         
         public override void StateEnter()
         {
-            StateManager.LoadNextScene(menuScene);
+            StateManager.LoadNextScene("BufferScene");
         }
 
         public override void OnSceneLoad()
         {
-            StateManager.SwitchGameState(new GameSceneState());
-            NetworkManager.Instance.StartGameOnMaster();
+            if (PhotonNetwork.IsMasterClient)
+            {
+                NetworkManager.Instance.StartGameOnMaster();
+            }
+            
         }
 
         public override void StateExit()
