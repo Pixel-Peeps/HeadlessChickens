@@ -64,6 +64,7 @@ public class TrapBlueprint : MonoBehaviourPunCallbacks
             gameObject.transform.GetComponentInParent<CharacterBase>().hasTrap = false;
             gameObject.transform.GetComponentInParent<CharacterBase>().isBlueprintActive = false;
             
+            
             photonView.RPC("RPC_SpawnTrap", RpcTarget.AllViaServer);
             photonView.RPC("RPC_DestroySelf", RpcTarget.AllViaServer);
         }
@@ -72,10 +73,12 @@ public class TrapBlueprint : MonoBehaviourPunCallbacks
     [PunRPC]
     public void RPC_SpawnTrap()
     {
-        PhotonNetwork.Instantiate(actualTrapPrefab.name,
+        if (photonView.IsMine)
+        {
+            PhotonNetwork.Instantiate(actualTrapPrefab.name,
                 new Vector3(gameObject.transform.position.x, 0, gameObject.transform.position.z),
                 gameObject.transform.rotation, 0);
-        
+        }
     }
 
     [PunRPC]
