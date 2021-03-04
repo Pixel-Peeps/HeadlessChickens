@@ -84,8 +84,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         {
             if (!photonView.IsMine || alreadyEscaped || hasBeenCaught) return;
             
-            //NewGameManager.Instance.chickensEscaped++;
-            //HUDManager.Instance.UpdateChickCounter();
+            NewGameManager.Instance.chickensEscaped++;
+            HUDManager.Instance.UpdateChickCounter();
             
             NewGameManager.Instance.CheckForFinish();
 
