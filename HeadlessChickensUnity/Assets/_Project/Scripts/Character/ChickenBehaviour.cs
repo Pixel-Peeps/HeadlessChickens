@@ -87,7 +87,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             //NewGameManager.Instance.chickensEscaped++;
             //HUDManager.Instance.UpdateChickCounter();
             
-            //NewGameManager.Instance.CheckForFinish();
+            NewGameManager.Instance.CheckForFinish();
 
             chickenManager.photonView.RPC("UpdateActiveList", RpcTarget.AllViaServer, photonView.ViewID);
             chickenManager.photonView.RPC("UpdateEscapedList", RpcTarget.AllViaServer, photonView.ViewID);
@@ -121,11 +121,6 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         [PunRPC]
         public void UpdateChickToFollow(int ID)
         {
-            spectating = true;
-            controls.Spectator.Enable();
-            
-            HUDManager.Instance.EnableSpectatorHUD();
-            
             // if you are currently following a chick, store that chicken before assigning a new one
             currentFollow = 
                 chickToFollow != null ? chickToFollow : null;
@@ -133,9 +128,6 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             // Assign the new chick that you are going to follow
             chickToFollowID = ID;
             chickToFollow = PhotonView.Find(chickToFollowID).GetComponent<ChickenBehaviour>();
-            
-            // Update HUD of chick that is being followed
-            HUDManager.Instance.UpdateSpectatorHUD(chickToFollow.photonView.Owner.NickName);
             
             Debug.Log("<color=lime>" + photonView.Owner.NickName + "s currentFollow is: " + currentFollow.photonView.Owner.NickName + "</color>");
             Debug.Log("<color=cyan>" + photonView.Owner.NickName + "s Follow Changing to: " + chickToFollow.photonView.Owner.NickName + "</color>");
@@ -146,6 +138,11 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         {
             while (true)
             {
+                spectating = true;
+                controls.Spectator.Enable();
+            
+                HUDManager.Instance.EnableSpectatorHUD();
+                
                 // if (!photonView.IsMine) return;
                 
                 // Pick a random chick from the currently active chicks
@@ -161,6 +158,9 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 // Update who you are currently following
                 photonView.RPC("UpdateChickToFollow", RpcTarget.AllViaServer, chickToFollowID);
                 Debug.Log("<color=cyan>Following " + chickToFollow.photonView.Owner.NickName + "</color>");
+                
+                // Update HUD of chick that is being followed
+                HUDManager.Instance.UpdateSpectatorHUD(chickToFollow.photonView.Owner.NickName);
                 
                 // Switch your camera
                 photonView.RPC("RPC_CamSwitch", RpcTarget.AllViaServer, photonView.ViewID);
