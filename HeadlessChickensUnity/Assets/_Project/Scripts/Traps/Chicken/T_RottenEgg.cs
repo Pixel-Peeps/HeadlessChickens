@@ -34,7 +34,11 @@ public class T_RottenEgg : MonoBehaviourPunCallbacks
         {
             //effect
             victim = other.gameObject.GetComponent<CharacterInput>();
-            smokeImage.GetComponent<ToggleSmokeTrap>().EnableDisableSmoke(true);
+            if (photonView.IsMine)
+            {
+                smokeImage.GetComponent<ToggleSmokeTrap>().EnableDisableSmoke(true);
+            }
+
             photonView.RPC("RPC_ToggleParticles", RpcTarget.AllViaServer, true);
             Debug.Log("phew smelly smelly");
             gameObject.GetComponent<MeshRenderer>().enabled = false;

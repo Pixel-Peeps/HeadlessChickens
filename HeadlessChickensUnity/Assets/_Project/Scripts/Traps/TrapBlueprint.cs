@@ -72,8 +72,12 @@ public class TrapBlueprint : MonoBehaviourPunCallbacks
     [PunRPC]
     public void RPC_SpawnTrap()
     {
-        PhotonNetwork.InstantiateRoomObject(actualTrapPrefab.name, new Vector3(gameObject.transform.position.x, 0, gameObject.transform.position.z),
-            gameObject.transform.rotation, 0);
+        if (PhotonNetwork.IsMasterClient)
+        {
+            PhotonNetwork.InstantiateRoomObject(actualTrapPrefab.name,
+                new Vector3(gameObject.transform.position.x, 0, gameObject.transform.position.z),
+                gameObject.transform.rotation, 0);
+        }
     }
 
     [PunRPC]

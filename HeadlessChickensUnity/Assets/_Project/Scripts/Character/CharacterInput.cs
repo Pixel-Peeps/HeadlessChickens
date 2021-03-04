@@ -300,10 +300,14 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         [PunRPC]
         private void RPC_SpawnBluePrint()
         {
-            _character.isBlueprintActive = true;
-            var blueprint = PhotonNetwork.InstantiateRoomObject(_character.trapSlot.name, new Vector3(0, 0.1f, 0.4f),
-                Quaternion.identity);
-            blueprint.gameObject.transform.SetParent(_character.gameObject.transform, false);
+            if (PhotonNetwork.IsMasterClient)
+            {
+                _character.isBlueprintActive = true;
+                var blueprint = PhotonNetwork.InstantiateRoomObject(_character.trapSlot.name,
+                    new Vector3(0, 0.1f, 0.4f),
+                    Quaternion.identity);
+                blueprint.gameObject.transform.SetParent(_character.gameObject.transform, false);
+            }
         }
         
         private void MouseClicked(InputAction.CallbackContext obj)
