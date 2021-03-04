@@ -153,7 +153,15 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 Vector3 tempRight = new Vector3(right.x, 0, right.z);
 
                 // Set movement target based on cameras direction
+
                 _newPosition += tempForward * (_movDirection.y * moveSpeed) + tempRight * (_movDirection.x * moveSpeed);
+
+                // If headless, auto-run
+                if(!_character.isFox && _character.hasBeenCaught)
+                {
+                    _newPosition += tempForward * (moveSpeed) + tempRight * (_movDirection.x * moveSpeed);
+                }
+
                 Vector3 facingDirectrion = tempForward * _movDirection.y + tempRight * _movDirection.x;
 
                 // check distance to target position
