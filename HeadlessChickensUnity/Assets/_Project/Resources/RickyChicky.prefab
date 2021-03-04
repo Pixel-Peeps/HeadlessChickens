@@ -1144,6 +1144,7 @@ MonoBehaviour:
   isBlueprintActive: 0
   isFox: 0
   hasLever: 0
+  hasDecoy: 0
   trapSlot: {fileID: 3685449852532122639, guid: 77a645d81b946e9479078ac31b968101, type: 3}
   cooldownRunning: 0
   hasBeenCaught: 0
@@ -1163,6 +1164,7 @@ MonoBehaviour:
   chickToFollowID: 0
   followInt: 0
   escapeLocation: {fileID: 0}
+  decoyDuration: 4
   spectating: 0
 --- !u!114 &4736984460096568292
 MonoBehaviour:
@@ -1251,7 +1253,7 @@ MonoBehaviour:
   - {fileID: 1245716088192190339}
   - {fileID: 4762295317589040886}
   - {fileID: 2584813041712323464}
-  viewIdField: 1
+  viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &682641240311220080
