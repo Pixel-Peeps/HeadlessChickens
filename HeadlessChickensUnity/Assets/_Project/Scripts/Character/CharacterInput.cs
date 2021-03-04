@@ -154,17 +154,24 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
                 // Set movement target based on cameras direction
 
+                _newPosition += tempForward * (_movDirection.y * moveSpeed) + tempRight * (_movDirection.x * moveSpeed);
+
                 // If headless, auto-run
-                if (!_character.isFox && _character.hasBeenCaught)
-                {
-                    _newPosition += tempForward * (moveSpeed) + tempRight * (_movDirection.x * moveSpeed);
-                }
-                else
-                {
-                    _newPosition += tempForward * (_movDirection.y * moveSpeed) + tempRight * (_movDirection.x * moveSpeed);
-                }
+                //if (!_character.isFox && _character.hasBeenCaught)
+                //{
+                //    _newPosition += tempForward * (moveSpeed) + tempRight * (_movDirection.x * moveSpeed);
+                //}
+                //else
+                //{
+
+                //}
 
                 Vector3 facingDirectrion = tempForward * _movDirection.y + tempRight * _movDirection.x;
+
+                //if (!_character.isFox && _character.hasBeenCaught)
+                //{
+                //    facingDirectrion = _camTransform.forward;
+                //}
 
                 // check distance to target position
                 float distanceToDestination = Vector3.Distance(transform.position, _newPosition);
@@ -348,7 +355,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                     ChickenBehaviour chicken = _character.GetComponent<ChickenBehaviour>();
                     if (chicken.hasBeenCaught)
                     {
-                        chicken.photonView.RPC("RestoreHead", RpcTarget.AllViaServer);
+                        // chicken.photonView.RPC("RestoreHead", RpcTarget.AllViaServer);
                     }
                 }
                 
