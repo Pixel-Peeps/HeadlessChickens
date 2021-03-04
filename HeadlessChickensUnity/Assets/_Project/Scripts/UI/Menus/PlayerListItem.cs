@@ -1,21 +1,24 @@
 ﻿using Photon.Pun;
 using Photon.Realtime;
+using PixelPeeps.HeadlessChickens._Project.Scripts.UI;
 using TMPro;
 using UnityEngine;
+// ReSharper disable ConvertIfStatementToConditionalTernaryExpression
 
 namespace PixelPeeps.HeadlessChickens.UI
 {
     public class PlayerListItem : MonoBehaviourPunCallbacks
     {
-        Player player;
+        private Player player;
         public TextMeshProUGUI nameText;
+        public KickPlayerButton kickButton;
 
         public void SetUp(Player _player)
         {
             player = _player;
             nameText.text = player.NickName;
 
-            if (player == PhotonNetwork.LocalPlayer)
+            if (Equals(player, PhotonNetwork.LocalPlayer))
             {
                 nameText.color = Color.cyan;
             }
@@ -23,11 +26,13 @@ namespace PixelPeeps.HeadlessChickens.UI
             {
                 nameText.color = Color.white;
             }
+
+            kickButton.targetPlayer = player;
         }
 
         public override void OnPlayerLeftRoom(Player otherPlayer)
         {
-            if (player == otherPlayer)
+            if (Equals(player, otherPlayer))
             {
                 Debug.Log("Player that left is equal to: " + otherPlayer.NickName);
                 Destroy(gameObject);

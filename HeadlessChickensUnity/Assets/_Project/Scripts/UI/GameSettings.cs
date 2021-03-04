@@ -29,7 +29,7 @@ namespace PixelPeeps.HeadlessChickens.UI
         [Header("Settings")] 
         private readonly float[] gameTimeOptions =
         {
-            273f,
+            30f,
             300f,
             600f,
             900f

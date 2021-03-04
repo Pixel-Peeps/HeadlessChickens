@@ -4,6 +4,7 @@ using Photon.Realtime;
 using PixelPeeps.HeadlessChickens.GameState;
 using PixelPeeps.HeadlessChickens.UI;
 using UnityEngine;
+// ReSharper disable UnusedMember.Global
 
 namespace PixelPeeps.HeadlessChickens.Network
 {
@@ -67,6 +68,20 @@ namespace PixelPeeps.HeadlessChickens.Network
             gameIsRunning = false;
             PhotonNetwork.LeaveRoom();
             PhotonNetwork.LeaveLobby();
+        }
+
+        public void KickPlayer(Player targetPlayer)
+        {
+            if (!PhotonNetwork.IsMasterClient) return;
+            
+            photonView.RPC("KickPlayerRPC", targetPlayer);
+        }
+
+        [PunRPC]
+        public void KickPlayerRPC()
+        {
+            PhotonNetwork.LeaveRoom();
+            GameStateManager.Instance.SwitchGameState(new MainMenuState());
         }
 
         #region Photon Callback Methods
