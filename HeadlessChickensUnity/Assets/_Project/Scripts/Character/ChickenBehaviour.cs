@@ -64,26 +64,39 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             escapeLocation = GameObject.FindGameObjectWithTag("Sanctuary").transform.GetChild(0);
         }
 
-        [PunRPC]
+        // [PunRPC]
         public void ChickenCaptured()
         {
             if (hasBeenCaught || alreadyEscaped) return;
 
             // chickenMesh.GetComponent<Renderer>().sharedMaterial = caughtMat;
 
-            normalChick.SetActive(false);
-            headlessChick.SetActive(true);
-            ToggleBP(false);
-            // NewGameManager.Instance.chickensCaught++;
-            HUDManager.Instance.UpdateChickCounter();
-            
-            hasBeenCaught = true;
-            _controller.SwapAnimator();
+            if (photonView.IsMine)
+            {
+                // chickenManager.activeChicks.Remove(this);
+                chickenManager.photonView.RPC("UpdateDeadList", RpcTarget.AllViaServer, photonView.ViewID);
+                chickenManager.photonView.RPC("UpdateActiveList", RpcTarget.AllViaServer, photonView.ViewID);
+                // NewGameManager.Instance.CheckForFinish();
 
-            // chickenManager.activeChicks.Remove(this);
-            chickenManager.photonView.RPC("UpdateDeadList", RpcTarget.AllViaServer, photonView.ViewID);
-            chickenManager.photonView.RPC("UpdateActiveList", RpcTarget.AllViaServer, photonView.ViewID);
-            // NewGameManager.Instance.CheckForFinish();
+                photonView.RPC("SwitchToHeadless", RpcTarget.AllBufferedViaServer, photonView.ViewID);
+            }
+        }
+
+        [PunRPC]
+        private void SwitchToHeadless(int chickID)
+        {
+            HUDManager.Instance.UpdateChickCounter();
+
+            if (photonView.ViewID == chickID)
+            {
+                normalChick.SetActive(false);
+                headlessChick.SetActive(true);
+                ToggleBP(false);
+                // NewGameManager.Instance.chickensCaught++;
+
+                hasBeenCaught = true;
+                _controller.SwapAnimator();
+            }
         }
 
         [PunRPC]
@@ -127,8 +140,9 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 chickenManager.photonView.RPC("UpdateEscapedList", RpcTarget.AllViaServer, photonView.ViewID);
 
                 // Switch camera to an active chick in level
-                //SwitchToObserverCam();
-                //chickenManager.photonView.RPC("UpdateEscapedChickCam", RpcTarget.AllViaServer, photonView.ViewID);
+                SwitchToObserverCam();
+                chickenManager.UpdateEscapedChickCam(photonView.ViewID);
+                // chickenManager.photonView.RPC("UpdateEscapedChickCam", RpcTarget.AllViaServer, photonView.ViewID);
 
                 // chickenMesh.enabled = false;
 
