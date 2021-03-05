@@ -67,8 +67,9 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 {
                     if (!chick.isHiding && !chick.hasDecoy)
                     {
-                        chick.photonView
-                            .RPC("ChickenCaptured", RpcTarget.AllBufferedViaServer);
+                        //chick.photonView
+                        //    .RPC("ChickenCaptured", RpcTarget.AllBufferedViaServer);
+                        chick.ChickenCaptured();
                     }
                     
                     if (!chick.isHiding && chick.hasDecoy)
