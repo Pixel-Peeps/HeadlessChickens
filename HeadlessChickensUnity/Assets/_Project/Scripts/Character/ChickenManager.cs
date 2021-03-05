@@ -35,7 +35,6 @@ namespace PixelPeeps.HeadlessChickens.Network
             activeChicks.Remove(PhotonView.Find(chickenID).GetComponent<ChickenBehaviour>());
             Debug.Log("<color=green> Chicken removed from active</color>");
 
-            HUDManager.Instance.UpdateChickCounter();
             NewGameManager.Instance.CheckForFinish();
         }
 

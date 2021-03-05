@@ -258,7 +258,7 @@ namespace PixelPeeps.HeadlessChickens.Network
 
             if (!chickenManager.activeChicks.Any())
             {
-                // DetermineWinner();
+                DetermineWinner();
             }
         }
 
