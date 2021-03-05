@@ -139,6 +139,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         [PunRPC]
         public void MoveToSantuary(int chickID)
         {
+            HUDManager.Instance.UpdateChickCounter();
+
             if (photonView.ViewID == chickID)
             {
                 alreadyEscaped = true;
