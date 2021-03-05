@@ -111,8 +111,14 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             
             NewGameManager.Instance.CheckForFinish();
 
-            chickenManager.photonView.RPC("UpdateActiveList", RpcTarget.AllViaServer, photonView.ViewID);
-            chickenManager.photonView.RPC("UpdateEscapedList", RpcTarget.AllViaServer, photonView.ViewID);
+
+            chickenManager.UpdateActiveList(photonView.ViewID);
+            chickenManager.UpdateEscapedList(photonView.ViewID);
+
+            //chickenManager.photonView.RPC("UpdateActiveList", RpcTarget.AllViaServer, photonView.ViewID);
+            //chickenManager.photonView.RPC("UpdateEscapedList", RpcTarget.AllViaServer, photonView.ViewID);
+
+
 
             // Switch camera to an active chick in level
             //SwitchToObserverCam();
