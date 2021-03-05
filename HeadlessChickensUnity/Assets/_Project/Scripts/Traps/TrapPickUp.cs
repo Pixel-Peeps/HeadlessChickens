@@ -42,8 +42,6 @@ public class TrapPickUp : MonoBehaviourPunCallbacks
 
         if (!other.gameObject.GetComponent<CharacterBase>().isFox)
         {
-
-            Debug.Log("Trap: it's a chicken");
             int random = Random.Range(0, chickenTraps.Count + 1);
 
             if (random < 3)
@@ -51,7 +49,6 @@ public class TrapPickUp : MonoBehaviourPunCallbacks
                 //assigning random from egg shells & rotten egg
                 other.gameObject.GetComponent<ChickenBehaviour>().trapSlot = chickenTraps[random];
                 other.gameObject.GetComponent<ChickenBehaviour>().blueprintIndex = random;
-                Debug.Log("Assigning chick trap: " + chickenTraps[random].name);
             }
             /*else if (random == 3)
             {
@@ -86,7 +83,6 @@ public class TrapPickUp : MonoBehaviourPunCallbacks
             // else
             // {
                 //assigning the glue tub
-                Debug.Log("Oh lord he has the glue");
                 other.gameObject.GetComponent<FoxBehaviour>().hasTrap = true;
                 other.gameObject.GetComponent<FoxBehaviour>().trapSlot = tubGluePrefab;
 

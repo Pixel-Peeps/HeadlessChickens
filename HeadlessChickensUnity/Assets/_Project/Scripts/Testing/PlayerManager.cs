@@ -10,18 +10,16 @@ using UnityEngine.VFX;
 
 namespace com.pixelpeeps.headlesschickens
 {
-    public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
+    public class PlayerManager : MonoBehaviourPunCallbacks
     {
         public Camera _camera;
-        //private Rigidbody rB;
         private CharacterInput charController;
         private CharacterBlueprintToggle _characterBlueprintToggle;
         public GameObject vCam;
 
         [Tooltip("The current Health of our player")]
         public float Health = 10f;
-
-        //public Text healthDisplay;
+        
         
         [Tooltip("The local player instance. Use this to know if the local player is represented in the Scene")]
         public static GameObject LocalPlayerInstance;
@@ -87,34 +85,13 @@ namespace com.pixelpeeps.headlesschickens
             }
         }
 
-
 #if UNITY_5_4_OR_NEWER
         void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode loadingMode)
         {
             this.CalledOnLevelWasLoaded(scene.buildIndex);
         }
 #endif
-        #region IPunObservable implementation
-        
-        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-        {
-            if (stream.IsWriting)
-            {
-                // We own this player: send the others our data
-               //Debug.Log("running on local (health)");
-                stream.SendNext(Health);
-                //healthDisplay.text = this.Health.ToString("0");
-            }
-            else
-            {
-                // Network player, receive data
-                //Debug.Log("running on remote (health)");
-                this.Health = (float)stream.ReceiveNext();
-               // healthDisplay.text = this.Health.ToString("0");
-            }
-        }
-
-        #endregion
+       
         
 #if !UNITY_5_4_OR_NEWER
         /// <summary>See CalledOnLevelWasLoaded. Outdated in Unity 5.4.</summary>
@@ -132,30 +109,7 @@ namespace com.pixelpeeps.headlesschickens
                 transform.position = new Vector3(0f, 5f, 0f);
             }
         }
-        
-        void OnTriggerEnter(Collider other)
-        {
-            //Debug.Log("Trigger enter");
-            if (!photonView.IsMine)
-            {
-                return;
-            }
-            if (other.gameObject.CompareTag("Player"))
-            {
-                Health -= 1f;
-                Debug.Log(this.name + Health);
-            }
-            
-            //call the RPC, this one does nothing
-            photonView.RPC("RPC_ChangeHealth", RpcTarget.All);
-        }
 
-        [PunRPC]
-        void RPC_ChangeHealth()
-        {
-            //don't need this for health, just leaving as an RPC template
-        }
-        
 #if UNITY_5_4_OR_NEWER
         public override void OnDisable()
         {

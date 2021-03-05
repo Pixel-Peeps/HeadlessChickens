@@ -29,6 +29,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public bool hasDecoy;
         public GameObject trapSlot;
         public int blueprintIndex = 0;
+        public bool movementAffected;
 
 
         public enum EStates
