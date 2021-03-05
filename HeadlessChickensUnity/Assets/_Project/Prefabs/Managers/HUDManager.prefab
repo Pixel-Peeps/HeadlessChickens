@@ -43,6 +43,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8fc215eaed3ea246818e09f63cdf56a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leverCounter: {fileID: 0}
+  objectiveMessage: {fileID: 0}
+  objectiveMsgTweener: {fileID: 0}
+  interactButton: {fileID: 0}
+  itemButton: {fileID: 0}
   timerDisplay: {fileID: 0}
-  chickenCounter: {fileID: 0}
+  defaultTimerColour:
+    serializedVersion: 2
+    rgba: 2735020594
+  redTimerColour:
+    serializedVersion: 2
+    rgba: 3561901774
+  timerTween: {fileID: 0}
+  leverCounter: {fileID: 0}
+  chickCounter: {fileID: 0}
+  spectatorCanvas: {fileID: 0}
+  spectatingText: {fileID: 0}

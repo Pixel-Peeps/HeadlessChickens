@@ -27,13 +27,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 927507112963275997}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.7937003, y: 1.7937003, z: 1.7937003}
+  m_LocalScale: {x: 0.85534394, y: 0.85534394, z: 0.85534394}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -67,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e36704cc479c95541a5a464568205617, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0914b994c63446f449065514df44aecb, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -90,9 +90,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
-  defaultChick: {fileID: 21300000, guid: e36704cc479c95541a5a464568205617, type: 3}
-  deadChick: {fileID: 21300000, guid: ee53be0c5cfd2284e8687cb6a78650f9, type: 3}
-  escapedChick: {fileID: 21300000, guid: 49f4d2413a9925c42b61719412866e21, type: 3}
+  defaultChick: {fileID: 21300000, guid: 0914b994c63446f449065514df44aecb, type: 3}
+  deadChick: {fileID: 21300000, guid: 0469a072165750043b1f451b7f6f04fe, type: 3}
+  escapedChick: {fileID: 21300000, guid: fe33d3220a97d1b429ea6cb1a1d5a000, type: 3}
 --- !u!114 &116200702010078893
 MonoBehaviour:
   m_ObjectHideFlags: 0

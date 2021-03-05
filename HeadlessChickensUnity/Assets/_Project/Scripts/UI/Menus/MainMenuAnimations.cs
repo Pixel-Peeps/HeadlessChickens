@@ -56,14 +56,15 @@ namespace PixelPeeps.HeadlessChickens.UI
             howToPlayText.color = invisibleTextColour;
             joinGameText.color = invisibleTextColour;
             hostGameText.color = invisibleTextColour;
-            nameInputTitleText.color = invisibleTextColour;
-            inputAreaText.color = invisibleTextColour;
+
 
             Color inputTextColour = inputFieldText.color;
-            Color32 invisibleInputTextColour = new Color32((byte) inputTextColour.r, (byte) inputTextColour.g,
-                (byte) inputTextColour.b, 0);
+            Color32 invisibleInputTextColour = new Color(inputTextColour.r, inputTextColour.g,
+                inputTextColour.b, 0);
 
             inputFieldText.color = invisibleInputTextColour;
+            nameInputTitleText.color = invisibleInputTextColour;
+            inputAreaText.color = invisibleInputTextColour;
         }
 
         private void SetButtonsInvisible()
