@@ -165,17 +165,30 @@ namespace PixelPeeps.HeadlessChickens.Network
 
         private void SpawnTrapPickUps()
         {
+            //one for each player
+            maxNumberOfLevers = PhotonNetwork.CurrentRoom.PlayerCount;
+
+            List<Transform> tempPickupPos = trapSpawnPos;
+            //for (int i = 0; i < maxNumberOfLevers; i++)
             foreach (Transform t in trapSpawnPos)
             {
-                Debug.Log("Spawning trap pick ups!!");
                 PhotonNetwork.InstantiateRoomObject(trapPickUpPrefab.name, t.position,
                     Quaternion.identity);
-                Debug.Log("Spawned!?!");
             }
+            // {
+            //     int trapNumber = UnityEngine.Random.Range(0, trapSpawnPos.Count);
+            //     
+            //     Debug.Log("Spawning trap pick ups!!");
+            //     PhotonNetwork.InstantiateRoomObject(trapPickUpPrefab.name, trapSpawnPos[trapNumber].position,
+            //         Quaternion.identity);
+            //     Debug.Log("Spawned!?!");
+            //     tempPickupPos.RemoveAt(trapNumber);
+            // }
         }
         
         private void SpawnHidingSpots()
         {
+            
             foreach (Transform hidingSpawnPos in hidingSpotSpawnPos)
             {
                 PhotonNetwork.InstantiateRoomObject(hidingSpotPrefab.name, hidingSpawnPos.position,

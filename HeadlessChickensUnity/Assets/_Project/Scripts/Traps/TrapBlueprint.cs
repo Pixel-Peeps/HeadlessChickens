@@ -80,7 +80,6 @@ public class TrapBlueprint : MonoBehaviourPunCallbacks
     {
         if (photonView.IsMine)
         {
-            Debug.Log("Spawning trap prefab");
             gameObject.GetComponentInParent<CharacterBase>().hasTrap = false;
             gameObject.GetComponentInParent<CharacterBase>().isBlueprintActive= false;
             PhotonNetwork.Instantiate(actualTrapPrefab.name,
