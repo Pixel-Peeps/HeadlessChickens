@@ -102,7 +102,9 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public void ChickenEscaped()
         {
             if (!photonView.IsMine || alreadyEscaped || hasBeenCaught) return;
-            
+
+            alreadyEscaped = true;
+
             NewGameManager.Instance.chickensEscaped++;
             HUDManager.Instance.UpdateChickCounter();
             
@@ -115,7 +117,6 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             SwitchToObserverCam();
 
             photonView.RPC("UpdateAlreadyEscaped", RpcTarget.AllBufferedViaServer);
-            alreadyEscaped = true;
 
             chickenManager.photonView.RPC("UpdateEscapedChickCam", RpcTarget.AllViaServer, photonView.ViewID);
 
