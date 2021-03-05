@@ -66,7 +66,9 @@ public class TrapBlueprint : MonoBehaviourPunCallbacks
             
             
             photonView.RPC("RPC_SpawnTrap", RpcTarget.AllViaServer);
-            photonView.RPC("RPC_DestroySelf", RpcTarget.AllViaServer);
+            //photonView.RPC("RPC_DestroySelf", RpcTarget.AllViaServer);
+            _controls.Disable();
+            gameObject.GetComponentInParent<CharacterBase>().ToggleBP(false);
         }
     }
 
@@ -76,7 +78,7 @@ public class TrapBlueprint : MonoBehaviourPunCallbacks
         if (photonView.IsMine)
         {
             PhotonNetwork.Instantiate(actualTrapPrefab.name,
-                new Vector3(gameObject.transform.position.x, 0, gameObject.transform.position.z),
+                gameObject.transform.position,
                 gameObject.transform.rotation, 0);
         }
     }
@@ -88,7 +90,8 @@ public class TrapBlueprint : MonoBehaviourPunCallbacks
         {
             Debug.Log("destroying blueprint!");
             _controls.Disable();
-            PhotonNetwork.Destroy(gameObject);
+           // PhotonNetwork.Destroy(gameObject);
+           gameObject.GetComponentInParent<CharacterBase>().ToggleBP(false);
         }
     }
 }

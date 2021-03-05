@@ -50,6 +50,7 @@ public class TrapPickUp : MonoBehaviourPunCallbacks
             {
                 //assigning random from egg shells & rotten egg
                 other.gameObject.GetComponent<ChickenBehaviour>().trapSlot = chickenTraps[random];
+                other.gameObject.GetComponent<ChickenBehaviour>().blueprintIndex = random;
                 Debug.Log("Assigning chick trap: " + chickenTraps[random].name);
             }
             /*else if (random == 3)
