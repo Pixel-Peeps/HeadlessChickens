@@ -146,9 +146,10 @@ namespace PixelPeeps.HeadlessChickens.Network
 
         public void CheckForFinish()
         {
+            // Change to check the Active Chicks List
             if (chickensCaught + chickensEscaped == PhotonNetwork.CurrentRoom.PlayerCount - 1)
             {
-               DetermineWinner();
+               // DetermineWinner();
             }
         }
 
