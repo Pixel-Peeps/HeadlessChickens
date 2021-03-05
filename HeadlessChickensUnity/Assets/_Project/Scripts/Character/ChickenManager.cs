@@ -55,7 +55,7 @@ namespace PixelPeeps.HeadlessChickens.Network
             Debug.Log("<color=green> Chicken added to dead</color>");
         }
 
-        [PunRPC]
+        //[PunRPC]
         public void UpdateEscapedChickCam(int iD)
         {
             //int lastChickToEscapseID = escapedChicks[escapedChicks.Count - 1].photonView.ViewID;
@@ -64,7 +64,7 @@ namespace PixelPeeps.HeadlessChickens.Network
 
             if (!PhotonView.Find(iD).GetComponent<ChickenBehaviour>().alreadyEscaped) return;
 
-            foreach (var chicken in escapedChicks.Where(chicken => iD == chicken.chickToFollowID))
+            foreach (var chicken in escapedChicks.Where(chicken => iD == chicken.photonView.ViewID))
             {
                 int randomInt = UnityEngine.Random.Range(0, activeChicks.Count);
 

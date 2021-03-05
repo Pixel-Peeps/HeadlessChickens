@@ -148,7 +148,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 
                 photonView.RPC("MoveToSantuary", RpcTarget.AllBufferedViaServer, photonView.ViewID);
 
-                SwitchToObserverCam();
+                //SwitchToObserverCam();
                 chickenManager.UpdateEscapedChickCam(photonView.ViewID);
             }
         }
@@ -165,7 +165,9 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 // Disable rigidbody and player controls after escaping the level
                 _rigidbody.isKinematic = true;
                 _controller.enabled = false;
-
+                
+                
+                
                 // Place chick mesh in away from the game map after escape
                 transform.position = escapeLocation.position;
             }
@@ -182,7 +184,9 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             chickToFollowID = ID;
             chickToFollow = PhotonView.Find(chickToFollowID).GetComponent<ChickenBehaviour>();
             
-            Debug.Log("<color=lime>" + photonView.Owner.NickName + "s currentFollow is: " + currentFollow.photonView.Owner.NickName + "</color>");
+            if(chickToFollow != null)
+                Debug.Log("<color=lime>" + photonView.Owner.NickName + "s currentFollow is: " + currentFollow.photonView.Owner.NickName + "</color>");
+            
             Debug.Log("<color=cyan>" + photonView.Owner.NickName + "s Follow Changing to: " + chickToFollow.photonView.Owner.NickName + "</color>");
             
         }
@@ -225,7 +229,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         [PunRPC]
         public void RPC_CamSwitch(int pVid)
         {
-            if (!photonView.IsMine) return;
+            if (photonView.ViewID != pVid) return;
             
             // Turn of the cameras of all escaped chicks
             foreach(ChickenBehaviour chicken in chickenManager.escapedChicks)
