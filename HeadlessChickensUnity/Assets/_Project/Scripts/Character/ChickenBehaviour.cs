@@ -145,7 +145,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 // chickenManager.photonView.RPC("UpdateEscapedChickCam", RpcTarget.AllViaServer, photonView.ViewID);
 
                 // chickenMesh.enabled = false;
-                chickenManager.UpdateEscapedChickCam(photonView.ViewID);
+                // chickenManager.UpdateEscapedChickCam(photonView.ViewID);
 
                 photonView.RPC("MoveToSantuary", RpcTarget.AllBufferedViaServer, photonView.ViewID);
 
