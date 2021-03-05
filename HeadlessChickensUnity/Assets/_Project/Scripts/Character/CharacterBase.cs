@@ -16,6 +16,11 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public Rigidbody _rigidbody;
         public CinemachineFreeLook playerCam;
 
+        public bool cooldownRunning = false;
+        public bool hasBeenCaught = false;
+        public bool alreadyEscaped = false;
+        
+        [Header("Blueprints")] public CharacterBlueprintToggle blueprintScript;
         public bool isHiding;
         public bool hasTrap;
         public bool isBlueprintActive;
@@ -23,10 +28,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public bool hasLever;
         public bool hasDecoy;
         public GameObject trapSlot;
-        
-        public bool cooldownRunning = false;
-        public bool hasBeenCaught = false;
-        public bool alreadyEscaped = false;
+        public int blueprintIndex = 0;
+
 
         public enum EStates
         {
@@ -98,5 +101,19 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         {
            // throw new NotImplementedException();
         }
+        
+        public void ToggleBP(bool turnOn)
+        {
+            if (turnOn)
+            {
+                blueprintScript.turnOnBluePrint(blueprintIndex);
+            }
+            else if (!turnOn)
+            {
+                blueprintScript.turnOffBlueprint(blueprintIndex);
+            }
+        }
     }
+    
+    
 }

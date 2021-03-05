@@ -305,12 +305,14 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             {
                 if (_character.hasTrap && !_character.isBlueprintActive && !_character.isFox)
                 {
-                    photonView.RPC("RPC_SpawnBluePrint", RpcTarget.AllBufferedViaServer);
+                    //photonView.RPC("RPC_SpawnBluePrint", RpcTarget.AllBufferedViaServer);
+                    _character.ToggleBP(true);
                 }
 
                 if (_character.hasTrap && !_character.isBlueprintActive && _character.isFox && !_character.hasLever)
                 {
-                    photonView.RPC("RPC_SpawnBluePrint", RpcTarget.AllBufferedViaServer);
+                   // photonView.RPC("RPC_SpawnBluePrint", RpcTarget.AllBufferedViaServer);
+                   _character.ToggleBP(true);
                 }
 
                 if (_character.isFox && _character.hasLever && !_character.isBlueprintActive)
@@ -327,11 +329,14 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         {
             if (photonView.IsMine)
             {
-                _character.isBlueprintActive = true;
-                var blueprint = PhotonNetwork.Instantiate(_character.trapSlot.name,
-                    new Vector3(0, 0.1f, 0.4f),
-                    Quaternion.identity, 0);
-                blueprint.gameObject.transform.SetParent(_character.gameObject.transform, false);
+            //     _character.isBlueprintActive = true;
+            //     var blueprint = PhotonNetwork.Instantiate(_character.trapSlot.name,
+            //         new Vector3(0, 0.1f, 0.4f),
+            //         Quaternion.identity, 0);
+            //     blueprint.gameObject.transform.SetParent(_character.gameObject.transform, false);
+            
+            
+            
             }
         }
         
@@ -346,12 +351,14 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
                 if (!_character.isFox)
                 {
-                    ChickenBehaviour chicken = _character.GetComponent<ChickenBehaviour>();
-                    if (chicken.hasBeenCaught)
-                    {
+                   // ChickenBehaviour chicken = _character.GetComponent<ChickenBehaviour>();
+                   // if (chicken.hasBeenCaught)
+                  // {
                         Debug.Log("cancelling blueprint");
-                        photonView.RPC("RPC_DestroyBluePrint", RpcTarget.AllViaServer);
-                    }
+                        //photonView.RPC("RPC_DestroyBluePrint", RpcTarget.AllViaServer);
+                        _character.isBlueprintActive = false;
+                        _character.ToggleBP(false);
+                   // }
                 }
 
                 if (_character.isFox && _character.hasLever && _character.isBlueprintActive)
@@ -366,8 +373,9 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                     if (_character.gameObject.GetComponentInChildren<TrapBlueprint>().gameObject != null)
                     {
                         Debug.Log("cancelling blueprint");
-                        PhotonNetwork.Destroy(_character.gameObject.GetComponentInChildren<TrapBlueprint>().gameObject);
+                        //PhotonNetwork.Destroy(_character.gameObject.GetComponentInChildren<TrapBlueprint>().gameObject);
                         _character.isBlueprintActive = false;
+                        _character.ToggleBP(false);
                     }
                 }
             }

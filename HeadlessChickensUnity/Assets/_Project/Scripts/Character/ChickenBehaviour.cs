@@ -42,6 +42,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public InputControls controls;
 
         public bool spectating;
+
         
         private new void Awake()
         {
@@ -72,7 +73,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
             normalChick.SetActive(false);
             headlessChick.SetActive(true);
-            
+            ToggleBP(false);
             NewGameManager.Instance.chickensCaught++;
             HUDManager.Instance.UpdateChickCounter();
             
@@ -287,7 +288,6 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                         currentHidingSpot = hideSpot;
                         photonView.RPC("RPC_EnterHiding", RpcTarget.AllViaServer, currentHidingSpot.GetComponent<PhotonView>().ViewID);
                         // photonView.RPC("RPC_SetParent", RpcTarget.AllViaServer);
-
                         break;
                 }
             }
@@ -297,7 +297,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         private void RPC_EnterHiding(int hideViewID)
         {
             Debug.Log("hiding spot view id:: "+hideViewID);
-            
+            ToggleBP(false);
             // log position before entering hiding as a return position when leaving
             positionBeforeHiding = transform.position;
 

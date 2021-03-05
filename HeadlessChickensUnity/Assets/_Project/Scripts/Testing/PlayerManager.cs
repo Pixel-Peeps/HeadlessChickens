@@ -15,6 +15,7 @@ namespace com.pixelpeeps.headlesschickens
         public Camera _camera;
         //private Rigidbody rB;
         private CharacterInput charController;
+        private CharacterBlueprintToggle _characterBlueprintToggle;
         public GameObject vCam;
 
         [Tooltip("The current Health of our player")]
@@ -35,6 +36,7 @@ namespace com.pixelpeeps.headlesschickens
             }
 
             charController = gameObject.GetComponent<CharacterInput>();
+            _characterBlueprintToggle = gameObject.GetComponentInChildren<CharacterBlueprintToggle>();
             
             // #Critical
             // we flag as don't destroy on load so that instance survives level synchronization, thus giving a seamless experience when levels load.
@@ -55,6 +57,7 @@ namespace com.pixelpeeps.headlesschickens
                 //rB.useGravity = false;
                 
                 charController.enabled = true;
+                _characterBlueprintToggle.enabled = true;
                 vCam.SetActive(true);
 
                 photonView.RPC("RPC_ChangeHealth", RpcTarget.All);
