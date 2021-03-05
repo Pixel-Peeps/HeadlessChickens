@@ -140,7 +140,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 chickenManager.photonView.RPC("UpdateEscapedList", RpcTarget.AllViaServer, photonView.ViewID);
 
                 // Switch camera to an active chick in level
-                SwitchToObserverCam();
+                
                 chickenManager.UpdateEscapedChickCam(photonView.ViewID);
                 // chickenManager.photonView.RPC("UpdateEscapedChickCam", RpcTarget.AllViaServer, photonView.ViewID);
 
@@ -159,6 +159,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             {
                 alreadyEscaped = true;
 
+                SwitchToObserverCam();
                 // Disable rigidbody and player controls after escaping the level
                 _rigidbody.isKinematic = true;
                 _controller.enabled = false;
