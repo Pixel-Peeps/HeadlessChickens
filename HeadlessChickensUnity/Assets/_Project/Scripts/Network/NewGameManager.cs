@@ -114,8 +114,8 @@ namespace PixelPeeps.HeadlessChickens.Network
         
         public void Initialise()
         {
-            chickensCaught = 0;
-            chickensEscaped = 0;
+            //chickensCaught = 0;
+            //chickensEscaped = 0;
             
             foxWinScreen.SetActive(false);
             foxLossScreen.SetActive(false);
