@@ -27,9 +27,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 102765613244880809}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0302085, y: 1.0302085, z: 1.0302085}
+  m_LocalScale: {x: 0.9520568, y: 0.9520568, z: 0.9520568}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -67,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6522eca8b41b7744889451ba6ec41fef, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 27682282dc2b0134b9b82bfe9c5ebc90, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -90,8 +90,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
-  defaultLever: {fileID: 21300000, guid: 6522eca8b41b7744889451ba6ec41fef, type: 3}
-  activatedLever: {fileID: 21300000, guid: e7f97e7ab8e3c0348b9ec59562fe80dc, type: 3}
+  defaultLever: {fileID: 21300000, guid: 27682282dc2b0134b9b82bfe9c5ebc90, type: 3}
+  activatedLever: {fileID: 21300000, guid: 1be20d79c1c3bd1449673f5fa7feb685, type: 3}
 --- !u!114 &7332661434125133508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,6 +105,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentlyTweening: 0
+  targetPosition: {fileID: 0}
+  moveTime: 0.5
+  movementCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  imageToFade: {fileID: 0}
+  textToFade: {fileID: 0}
+  targetColour:
+    serializedVersion: 2
+    rgba: 0
+  fadeTime: 0.5
   scaleUpTo: {x: 2, y: 2, z: 2}
   scaleDownTo: {x: 1, y: 1, z: 1}
   scaleTime: 0.5

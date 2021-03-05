@@ -2,12 +2,18 @@
 using Photon.Realtime;
 using PixelPeeps.HeadlessChickens.GameState;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace PixelPeeps.HeadlessChickens.Network
 {
     public class QuickStartButton : MonoBehaviourPunCallbacks
     {
-        public void QuickStart()
+        public void Start()
+        {
+            this.GetComponent<Button>().onClick.AddListener(QuickStart);
+        }
+
+        private static void QuickStart()
         {
             const string roomName = "Quick Start Room";
             
