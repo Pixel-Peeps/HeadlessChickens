@@ -74,14 +74,16 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             normalChick.SetActive(false);
             headlessChick.SetActive(true);
             ToggleBP(false);
-            NewGameManager.Instance.chickensCaught++;
+            // NewGameManager.Instance.chickensCaught++;
             HUDManager.Instance.UpdateChickCounter();
             
             hasBeenCaught = true;
             _controller.SwapAnimator();
-            NewGameManager.Instance.CheckForFinish();
 
-            chickenManager.activeChicks.Remove(this);
+            // chickenManager.activeChicks.Remove(this);
+            chickenManager.photonView.RPC("UpdateDeadList", RpcTarget.AllViaServer, photonView.ViewID);
+            chickenManager.photonView.RPC("UpdateActiveList", RpcTarget.AllViaServer, photonView.ViewID);
+            // NewGameManager.Instance.CheckForFinish();
         }
 
         [PunRPC]
@@ -99,49 +101,55 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         
         #region CHICKEN ESCAPED / SPEC CAM
         
-        [PunRPC]
+        // [PunRPC]
         public void ChickenEscaped()
         {
-            if (!photonView.IsMine || alreadyEscaped || hasBeenCaught) return;
 
-            photonView.RPC("UpdateAlreadyEscaped", RpcTarget.AllBufferedViaServer);
-            // alreadyEscaped = true;
+            if (alreadyEscaped || hasBeenCaught) return;
 
-            NewGameManager.Instance.chickensEscaped++;
-            HUDManager.Instance.UpdateChickCounter();
+            // photonView.RPC("UpdateAlreadyEscaped", RpcTarget.AllBufferedViaServer);
             
-            NewGameManager.Instance.CheckForFinish();
 
-
-            chickenManager.UpdateActiveList(photonView.ViewID);
-            chickenManager.UpdateEscapedList(photonView.ViewID);
-
-            //chickenManager.photonView.RPC("UpdateActiveList", RpcTarget.AllViaServer, photonView.ViewID);
-            //chickenManager.photonView.RPC("UpdateEscapedList", RpcTarget.AllViaServer, photonView.ViewID);
-
-
-
-            // Switch camera to an active chick in level
-            //SwitchToObserverCam();
-
-            //chickenManager.photonView.RPC("UpdateEscapedChickCam", RpcTarget.AllViaServer, photonView.ViewID);
-
-            // chickenMesh.enabled = false;
+            // NewGameManager.Instance.chickensEscaped++;
             
-            // Disable rigidbody and player controls after escaping the level
-            _rigidbody.isKinematic = true;
-            _controller.enabled = false;
 
-            // Place chick mesh in away from the game map after escape
-            transform.position = escapeLocation.position;
+            // NewGameManager.Instance.CheckForFinish();
 
 
+            if (photonView.IsMine)
+            {
+                // alreadyEscaped = true;
+
+                // chickenManager.UpdateActiveList(photonView.ViewID);
+                // chickenManager.UpdateEscapedList(photonView.ViewID);
+
+                chickenManager.photonView.RPC("UpdateActiveList", RpcTarget.AllViaServer, photonView.ViewID);
+                chickenManager.photonView.RPC("UpdateEscapedList", RpcTarget.AllViaServer, photonView.ViewID);
+
+                // Switch camera to an active chick in level
+                //SwitchToObserverCam();
+                //chickenManager.photonView.RPC("UpdateEscapedChickCam", RpcTarget.AllViaServer, photonView.ViewID);
+
+                // chickenMesh.enabled = false;
+
+                photonView.RPC("MoveToSantuary", RpcTarget.AllBufferedViaServer, photonView.ViewID);
+            }
         }
 
         [PunRPC]
-        public void UpdateAlreadyEscaped()
+        public void MoveToSantuary(int chickID)
         {
-            alreadyEscaped = true;
+            if (photonView.ViewID == chickID)
+            {
+                alreadyEscaped = true;
+
+                // Disable rigidbody and player controls after escaping the level
+                _rigidbody.isKinematic = true;
+                _controller.enabled = false;
+
+                // Place chick mesh in away from the game map after escape
+                transform.position = escapeLocation.position;
+            }
         }
 
         [PunRPC]

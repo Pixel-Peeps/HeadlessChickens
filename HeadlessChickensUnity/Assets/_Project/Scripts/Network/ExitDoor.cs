@@ -44,8 +44,9 @@ namespace PixelPeeps.HeadlessChickens.Network
             {
                 if (other.gameObject.GetComponent<ChickenBehaviour>() == null) return;
 
-                other.gameObject.GetComponent<ChickenBehaviour>().photonView
-                                .RPC("ChickenEscaped", RpcTarget.AllBufferedViaServer);
+                other.gameObject.GetComponent<ChickenBehaviour>().ChickenEscaped();
+                //other.gameObject.GetComponent<ChickenBehaviour>().photonView
+                //                .RPC("ChickenEscaped", RpcTarget.AllBufferedViaServer);
             }
         }
 

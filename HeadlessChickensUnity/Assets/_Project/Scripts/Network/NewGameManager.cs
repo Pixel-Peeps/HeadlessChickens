@@ -28,9 +28,11 @@ namespace PixelPeeps.HeadlessChickens.Network
         private Transform spawnPos;
 
         [Header("Game State")]
-        public int chickensCaught = 0;
-        public int chickensEscaped = 0;
+        //public int chickensCaught = 0;
+        //public int chickensEscaped = 0;
         public int chickenEscapeThreshold = 2;
+
+        public ChickenManager chickenManager;
 
         [Header("Players and Controllers")] 
         public GameObject myController;
@@ -144,70 +146,6 @@ namespace PixelPeeps.HeadlessChickens.Network
             HUDManager.Instance.DisplayObjectiveMessage(myType, 3f, "Prevent their escape!", "Rush for the exit!");
         }
 
-        public void CheckForFinish()
-        {
-            // Change to check the Active Chicks List
-            if (chickensCaught + chickensEscaped == PhotonNetwork.CurrentRoom.PlayerCount - 1)
-            {
-               // DetermineWinner();
-            }
-        }
-
-        private void DetermineWinner()
-        {
-            if (chickensEscaped >= chickenEscapeThreshold)
-            {
-                photonView.RPC("ChickenWinRPC", RpcTarget.All);
-            }
-            else
-            {
-                photonView.RPC("FoxWinRPC", RpcTarget.All);
-            }
-        }
-
-        
-        // ReSharper disable once UnusedMember.Global
-        [PunRPC]
-        public void ChickenWinRPC()
-        {
-            switch (myType)
-            {
-                case PlayerType.Fox:
-                    foxLossScreen.SetActive(true);
-                    break;
-                
-                case PlayerType.Chick:
-                    chickenWinScreen.SetActive(true);
-                    break;
-                
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-            
-            EndGame();
-        }
-        
-        // ReSharper disable once UnusedMember.Global
-        [PunRPC]
-        public void FoxWinRPC()
-        {
-            switch (myType)
-            {
-                case PlayerType.Fox:
-                    foxWinScreen.SetActive(true);
-                    break;
-                
-                case PlayerType.Chick:
-                    chickenLossScreen.SetActive(true);
-                    break;
-                
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-            
-            EndGame();
-        }
-
         private void SpawnPlayers()
         {
             if (myController != null) return;
@@ -309,7 +247,76 @@ namespace PixelPeeps.HeadlessChickens.Network
             
             StartCoroutine(LobbyReturnCountdownCoroutine());
         }
-        
+
+        public void CheckForFinish()
+        {
+            // Change to check the Active Chicks List
+            //if (chickensCaught + chickensEscaped == PhotonNetwork.CurrentRoom.PlayerCount - 1)
+            //{
+            //    // DetermineWinner();
+            //}
+
+            if (!chickenManager.activeChicks.Any())
+            {
+                // DetermineWinner();
+            }
+        }
+
+        private void DetermineWinner()
+        {
+            if (chickenManager.escapedChicks.Count >= chickenEscapeThreshold)
+            {
+                photonView.RPC("ChickenWinRPC", RpcTarget.All);
+            }
+            else
+            {
+                photonView.RPC("FoxWinRPC", RpcTarget.All);
+            }
+        }
+
+
+        // ReSharper disable once UnusedMember.Global
+        [PunRPC]
+        public void ChickenWinRPC()
+        {
+            switch (myType)
+            {
+                case PlayerType.Fox:
+                    foxLossScreen.SetActive(true);
+                    break;
+
+                case PlayerType.Chick:
+                    chickenWinScreen.SetActive(true);
+                    break;
+
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            EndGame();
+        }
+
+        // ReSharper disable once UnusedMember.Global
+        [PunRPC]
+        public void FoxWinRPC()
+        {
+            switch (myType)
+            {
+                case PlayerType.Fox:
+                    foxWinScreen.SetActive(true);
+                    break;
+
+                case PlayerType.Chick:
+                    chickenLossScreen.SetActive(true);
+                    break;
+
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            EndGame();
+        }
+
         // ReSharper disable once UnusedMember.Global
         [PunRPC]
         public void EndGameRPC()

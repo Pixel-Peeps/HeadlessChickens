@@ -5,18 +5,21 @@ using UnityEngine;
 using Photon.Pun;
 using PixelPeeps.HeadlessChickens.Network;
 using PixelPeeps.HeadlessChickens.UI;
+using PixelPeeps.HeadlessChickens._Project.Scripts.Character;
 
-namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
+namespace PixelPeeps.HeadlessChickens.Network
 {
     public class ChickenManager : MonoBehaviourPunCallbacks
     {
         public List<ChickenBehaviour> activeChicks;
         public List<ChickenBehaviour> escapedChicks;
+        public List<ChickenBehaviour> deadChicks;
         
         // Start is called before the first frame update
         void Start()
         {
-
+            NewGameManager.Instance.chickenManager = this;
+            HUDManager.Instance.chickCounter.chickenManager = this;
         }
 
         // Update is called once per frame
@@ -31,6 +34,9 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         {
             activeChicks.Remove(PhotonView.Find(chickenID).GetComponent<ChickenBehaviour>());
             Debug.Log("<color=green> Chicken removed from active</color>");
+
+            HUDManager.Instance.UpdateChickCounter();
+            NewGameManager.Instance.CheckForFinish();
         }
 
 
@@ -39,6 +45,15 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         {
             escapedChicks.Add(PhotonView.Find(chickenID).GetComponent<ChickenBehaviour>());
             Debug.Log("<color=green> Chicken added to escaped</color>");
+            
+            NewGameManager.Instance.CheckForFinish();
+        }
+
+        [PunRPC]
+        public void UpdateDeadList(int chickenID)
+        {
+            deadChicks.Add(PhotonView.Find(chickenID).GetComponent<ChickenBehaviour>());
+            Debug.Log("<color=green> Chicken added to dead</color>");
         }
 
         [PunRPC]

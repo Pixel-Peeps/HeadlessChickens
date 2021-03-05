@@ -10,6 +10,7 @@ namespace PixelPeeps.HeadlessChickens.UI
     public class ChickCounter : MonoBehaviourPunCallbacks
     {
         public GameObject chickImagePrefab;
+        public ChickenManager chickenManager;
         
         private readonly List<ChickCounterImage> imagesInCounter = new List<ChickCounterImage>();
         
@@ -55,7 +56,7 @@ namespace PixelPeeps.HeadlessChickens.UI
         
         private void UpdateDeadChicks()
         {
-            int deadChickCount = NewGameManager.Instance.chickensCaught;
+            int deadChickCount = chickenManager.deadChicks.Count;
 
             for (int i = 0; i < deadChickCount; i++)
             {
@@ -76,7 +77,7 @@ namespace PixelPeeps.HeadlessChickens.UI
 
         private void UpdateEscapedChicks()
         {
-            int escapedChickCount = NewGameManager.Instance.chickensEscaped;
+            int escapedChickCount = chickenManager.escapedChicks.Count;
             int loopIncrement = 0;
             
             // Reverse for loop so that escaped chickens start counting from the opposite end
