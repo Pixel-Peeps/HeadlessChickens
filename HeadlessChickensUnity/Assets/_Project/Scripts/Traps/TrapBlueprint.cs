@@ -20,8 +20,9 @@ public class TrapBlueprint : MonoBehaviourPunCallbacks
     private InputControls _controls;
 
 
-    private void Awake()
+    public virtual void OnEnable()
     {
+        //base.OnEnable();
         _controls = new InputControls();
         _controls.Enable();
         _controls.Player.TrapInteract.performed += ctx => SetDown();
@@ -58,7 +59,8 @@ public class TrapBlueprint : MonoBehaviourPunCallbacks
 
     private void SetDown()
     {
-        if (gameObject != null)
+        //gameObject != null &&
+        if ( gameObject.transform.GetComponentInParent<CharacterBase>().isBlueprintActive)
         {
             gameObject.transform.GetComponentInParent<CharacterBase>().trapSlot = null;
             gameObject.transform.GetComponentInParent<CharacterBase>().hasTrap = false;
@@ -69,6 +71,7 @@ public class TrapBlueprint : MonoBehaviourPunCallbacks
             //photonView.RPC("RPC_DestroySelf", RpcTarget.AllViaServer);
             _controls.Disable();
             gameObject.GetComponentInParent<CharacterBase>().ToggleBP(false);
+            
         }
     }
 
@@ -77,6 +80,7 @@ public class TrapBlueprint : MonoBehaviourPunCallbacks
     {
         if (photonView.IsMine)
         {
+            Debug.Log("Spawning trap prefab");
             gameObject.GetComponentInParent<CharacterBase>().hasTrap = false;
             gameObject.GetComponentInParent<CharacterBase>().isBlueprintActive= false;
             PhotonNetwork.Instantiate(actualTrapPrefab.name,
@@ -96,5 +100,14 @@ public class TrapBlueprint : MonoBehaviourPunCallbacks
            gameObject.GetComponentInParent<CharacterBase>().ToggleBP(false);
            gameObject.GetComponentInParent<CharacterBase>().isBlueprintActive= false;
         }
+    }
+
+    public virtual void OnDisable()
+    {
+        Debug.Log("destroying blueprint!");
+        _controls.Disable();
+        // PhotonNetwork.Destroy(gameObject);
+        gameObject.GetComponentInParent<CharacterBase>().ToggleBP(false);
+        gameObject.GetComponentInParent<CharacterBase>().isBlueprintActive= false;
     }
 }

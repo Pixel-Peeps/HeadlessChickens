@@ -307,12 +307,14 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 {
                     //photonView.RPC("RPC_SpawnBluePrint", RpcTarget.AllBufferedViaServer);
                     _character.ToggleBP(true);
+                    _character.isBlueprintActive = true;
                 }
 
                 if (_character.hasTrap && !_character.isBlueprintActive && _character.isFox && !_character.hasLever)
                 {
                    // photonView.RPC("RPC_SpawnBluePrint", RpcTarget.AllBufferedViaServer);
                    _character.ToggleBP(true);
+                   _character.isBlueprintActive = true;
                 }
 
                 if (_character.isFox && _character.hasLever && !_character.isBlueprintActive)
