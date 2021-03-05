@@ -9,7 +9,7 @@ public class TrapBlueprint : MonoBehaviourPunCallbacks
     
     public GameObject actualTrapPrefab;
 
-    public Camera _cam;
+    //public Camera _cam;
     private RaycastHit _hit;
     private Vector3 _movePoint;
 
@@ -29,7 +29,7 @@ public class TrapBlueprint : MonoBehaviourPunCallbacks
 
     private void Start()
     {
-        _cam = Camera.main;
+       // _cam = Camera.main;
 
         /*if (!(_cam is null))
         {
@@ -65,7 +65,7 @@ public class TrapBlueprint : MonoBehaviourPunCallbacks
             gameObject.transform.GetComponentInParent<CharacterBase>().isBlueprintActive = false;
             
             
-            photonView.RPC("RPC_SpawnTrap", RpcTarget.AllViaServer);
+            photonView.RPC("RPC_SpawnTrap", RpcTarget.AllBufferedViaServer);
             //photonView.RPC("RPC_DestroySelf", RpcTarget.AllViaServer);
             _controls.Disable();
             gameObject.GetComponentInParent<CharacterBase>().ToggleBP(false);
@@ -77,6 +77,8 @@ public class TrapBlueprint : MonoBehaviourPunCallbacks
     {
         if (photonView.IsMine)
         {
+            gameObject.GetComponentInParent<CharacterBase>().hasTrap = false;
+            gameObject.GetComponentInParent<CharacterBase>().isBlueprintActive= false;
             PhotonNetwork.Instantiate(actualTrapPrefab.name,
                 gameObject.transform.position,
                 gameObject.transform.rotation, 0);
@@ -92,6 +94,7 @@ public class TrapBlueprint : MonoBehaviourPunCallbacks
             _controls.Disable();
            // PhotonNetwork.Destroy(gameObject);
            gameObject.GetComponentInParent<CharacterBase>().ToggleBP(false);
+           gameObject.GetComponentInParent<CharacterBase>().isBlueprintActive= false;
         }
     }
 }

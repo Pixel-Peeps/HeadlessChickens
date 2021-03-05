@@ -348,8 +348,14 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 {
                     _anim.SetTrigger("SwipeTrigger");
                 }
+                
+                if (_character.isFox && _character.isBlueprintActive)
+                {
+                    _character.isBlueprintActive = false;
+                    _character.ToggleBP(false);
+                }
 
-                if (!_character.isFox)
+                if (!_character.isFox && _character.isBlueprintActive)
                 {
                    // ChickenBehaviour chicken = _character.GetComponent<ChickenBehaviour>();
                    // if (chicken.hasBeenCaught)
@@ -381,17 +387,17 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             }
         }
 
-        [PunRPC]
-        public void RPC_DestroyBluePrint()
-        {
-            if (photonView.IsMine)
-            {
-                _character.gameObject.GetComponentInChildren<TrapBlueprint>().gameObject.GetPhotonView()
-                    .isRuntimeInstantiated = false;
-                PhotonNetwork.Destroy(_character.gameObject.GetComponentInChildren<TrapBlueprint>().gameObject);
-                _character.isBlueprintActive = false;
-            }
-        }
+        // [PunRPC]
+        // public void RPC_DestroyBluePrint()
+        // {
+        //     if (photonView.IsMine)
+        //     {
+        //         _character.gameObject.GetComponentInChildren<TrapBlueprint>().gameObject.GetPhotonView()
+        //             .isRuntimeInstantiated = false;
+        //         PhotonNetwork.Destroy(_character.gameObject.GetComponentInChildren<TrapBlueprint>().gameObject);
+        //         _character.isBlueprintActive = false;
+        //     }
+        // }
         #endregion
     }
 }
