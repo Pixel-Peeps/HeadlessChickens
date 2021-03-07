@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 4115804487316950780}
   - component: {fileID: 2180136657539811845}
   - component: {fileID: 5685957942337861641}
+  - component: {fileID: 6386598352201774549}
   m_Layer: 0
   m_Name: Book_set_2
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4115804487316950780
 Transform:
@@ -81,6 +82,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6386598352201774549
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389505247321037840}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 799029588623660795, guid: 08ff0e6651a9e4c01b2ab96d67b6c46f, type: 3}
 --- !u!1 &545228900884447576
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,7 +110,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8061264628992097829
 Transform:
@@ -126,12 +141,13 @@ GameObject:
   - component: {fileID: 9078967680105397470}
   - component: {fileID: 7227424657811741435}
   - component: {fileID: 4944374913720288958}
+  - component: {fileID: 5927235903123923193}
   m_Layer: 0
   m_Name: Single_book1
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &9078967680105397470
 Transform:
@@ -196,6 +212,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5927235903123923193
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664212426737504230}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1328219116832382016, guid: 08ff0e6651a9e4c01b2ab96d67b6c46f, type: 3}
 --- !u!1 &664650813092401537
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,12 +237,13 @@ GameObject:
   - component: {fileID: 7644199461983942643}
   - component: {fileID: 8724199605629545232}
   - component: {fileID: 7822366928809364724}
+  - component: {fileID: 6732150243766738783}
   m_Layer: 0
   m_Name: Book_Set_3
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7644199461983942643
 Transform:
@@ -277,6 +308,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6732150243766738783
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664650813092401537}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1368298879547048891, guid: 08ff0e6651a9e4c01b2ab96d67b6c46f, type: 3}
 --- !u!1 &1172089603392852496
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,12 +333,13 @@ GameObject:
   - component: {fileID: 8286479964543484447}
   - component: {fileID: 8648164385854472792}
   - component: {fileID: 8664204054795626085}
+  - component: {fileID: 2741625938525284978}
   m_Layer: 0
   m_Name: Book_set2
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8286479964543484447
 Transform:
@@ -358,6 +404,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2741625938525284978
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172089603392852496}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7248581214118208315, guid: 08ff0e6651a9e4c01b2ab96d67b6c46f, type: 3}
 --- !u!1 &1319448621162179330
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,12 +429,13 @@ GameObject:
   - component: {fileID: 473373343078854533}
   - component: {fileID: 4667637319550997780}
   - component: {fileID: 8412723680068515109}
+  - component: {fileID: 714497876259489497}
   m_Layer: 0
   m_Name: Book_set_6
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &473373343078854533
 Transform:
@@ -439,6 +500,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &714497876259489497
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319448621162179330}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7537850599063822956, guid: 08ff0e6651a9e4c01b2ab96d67b6c46f, type: 3}
 --- !u!1 &1794246123769066195
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,12 +525,13 @@ GameObject:
   - component: {fileID: 2050939050373029544}
   - component: {fileID: 8827895637090473839}
   - component: {fileID: 1817374920287991490}
+  - component: {fileID: 4051850856981389420}
   m_Layer: 0
   m_Name: Book_set_4
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2050939050373029544
 Transform:
@@ -520,6 +596,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4051850856981389420
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1794246123769066195}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3613240410943849943, guid: 08ff0e6651a9e4c01b2ab96d67b6c46f, type: 3}
 --- !u!1 &1825132984090558951
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,12 +621,13 @@ GameObject:
   - component: {fileID: 5015643922801358421}
   - component: {fileID: 7703483896577656211}
   - component: {fileID: 6878546453764314540}
+  - component: {fileID: 4617981729883917945}
   m_Layer: 0
   m_Name: Single_book3
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &5015643922801358421
 Transform:
@@ -601,6 +692,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4617981729883917945
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1825132984090558951}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4270273568048189008, guid: 08ff0e6651a9e4c01b2ab96d67b6c46f, type: 3}
 --- !u!1 &2906034996151768542
 GameObject:
   m_ObjectHideFlags: 0
@@ -615,7 +720,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &6944991592571444255
 Transform:
@@ -651,12 +756,13 @@ GameObject:
   - component: {fileID: 1118991821005163719}
   - component: {fileID: 4301037348261412517}
   - component: {fileID: 4893209952305492721}
+  - component: {fileID: 3733497868962939333}
   m_Layer: 0
   m_Name: Book_set_5
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1118991821005163719
 Transform:
@@ -721,6 +827,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3733497868962939333
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3460737446465499632}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2504729471614651389, guid: 08ff0e6651a9e4c01b2ab96d67b6c46f, type: 3}
 --- !u!1 &3769767435572081532
 GameObject:
   m_ObjectHideFlags: 0
@@ -732,12 +852,13 @@ GameObject:
   - component: {fileID: 3922368842367150495}
   - component: {fileID: 8719372296873405576}
   - component: {fileID: 4539264486456662399}
+  - component: {fileID: 899002840979523373}
   m_Layer: 0
   m_Name: Single_book2
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &3922368842367150495
 Transform:
@@ -802,6 +923,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &899002840979523373
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3769767435572081532}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4089631445823091905, guid: 08ff0e6651a9e4c01b2ab96d67b6c46f, type: 3}
 --- !u!1 &3770273040873280216
 GameObject:
   m_ObjectHideFlags: 0
@@ -813,12 +948,13 @@ GameObject:
   - component: {fileID: 4662917763719689241}
   - component: {fileID: 1354261488135144004}
   - component: {fileID: 3576985610313102028}
+  - component: {fileID: 1715699873397194039}
   m_Layer: 0
   m_Name: FancyBookShelf
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4662917763719689241
 Transform:
@@ -884,6 +1020,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1715699873397194039
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3770273040873280216}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7809164285685817847, guid: 08ff0e6651a9e4c01b2ab96d67b6c46f, type: 3}
 --- !u!1 &3917427514702760208
 GameObject:
   m_ObjectHideFlags: 0
@@ -895,12 +1045,13 @@ GameObject:
   - component: {fileID: 1371770358512854812}
   - component: {fileID: 6512065695163278901}
   - component: {fileID: 5662352751993564944}
+  - component: {fileID: 5833773806292565156}
   m_Layer: 0
   m_Name: Shelf2
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1371770358512854812
 Transform:
@@ -965,6 +1116,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5833773806292565156
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3917427514702760208}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1022578847338260974, guid: 08ff0e6651a9e4c01b2ab96d67b6c46f, type: 3}
 --- !u!1 &4373106508974731055
 GameObject:
   m_ObjectHideFlags: 0
@@ -976,12 +1141,13 @@ GameObject:
   - component: {fileID: 2775971156498852385}
   - component: {fileID: 7681690306432669849}
   - component: {fileID: 3399806403942301434}
+  - component: {fileID: 6748384471112943503}
   m_Layer: 0
   m_Name: Book_set_8
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2775971156498852385
 Transform:
@@ -1046,6 +1212,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6748384471112943503
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4373106508974731055}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4702793754172557790, guid: 08ff0e6651a9e4c01b2ab96d67b6c46f, type: 3}
 --- !u!1 &5125367917436338812
 GameObject:
   m_ObjectHideFlags: 0
@@ -1057,12 +1237,13 @@ GameObject:
   - component: {fileID: 8584085722876208517}
   - component: {fileID: 2416842970649826053}
   - component: {fileID: 591481578933134328}
+  - component: {fileID: 8113402809194477764}
   m_Layer: 0
   m_Name: Book_set
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8584085722876208517
 Transform:
@@ -1127,6 +1308,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8113402809194477764
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5125367917436338812}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3856164566271474997, guid: 08ff0e6651a9e4c01b2ab96d67b6c46f, type: 3}
 --- !u!1 &5665886405255296820
 GameObject:
   m_ObjectHideFlags: 0
@@ -1141,7 +1336,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &3692680097457576975
 Transform:
@@ -1170,12 +1365,13 @@ GameObject:
   - component: {fileID: 2856611965128783688}
   - component: {fileID: 4201126246556765483}
   - component: {fileID: 1685899234027367563}
+  - component: {fileID: 5760564356337404862}
   m_Layer: 0
   m_Name: Single_book4
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2856611965128783688
 Transform:
@@ -1240,6 +1436,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5760564356337404862
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5666755021294761543}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5007046608259543802, guid: 08ff0e6651a9e4c01b2ab96d67b6c46f, type: 3}
 --- !u!1 &5714249490060588338
 GameObject:
   m_ObjectHideFlags: 0
@@ -1254,7 +1464,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &943870852789426180
 Transform:
@@ -1284,12 +1494,13 @@ GameObject:
   - component: {fileID: 4397527599661687391}
   - component: {fileID: 2894350964993887327}
   - component: {fileID: 7515496946944342223}
+  - component: {fileID: 4054562665997159801}
   m_Layer: 0
   m_Name: Shelf1
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4397527599661687391
 Transform:
@@ -1354,6 +1565,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4054562665997159801
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5741997409738668286}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3895528892748612893, guid: 08ff0e6651a9e4c01b2ab96d67b6c46f, type: 3}
 --- !u!1 &7066400805274685117
 GameObject:
   m_ObjectHideFlags: 0
@@ -1365,12 +1590,13 @@ GameObject:
   - component: {fileID: 6168525942726224074}
   - component: {fileID: 4084846990657849626}
   - component: {fileID: 8962550799123793820}
+  - component: {fileID: 1558512271560835798}
   m_Layer: 0
   m_Name: inside
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &6168525942726224074
 Transform:
@@ -1435,6 +1661,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1558512271560835798
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7066400805274685117}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3354480299382239052, guid: 08ff0e6651a9e4c01b2ab96d67b6c46f, type: 3}
 --- !u!1 &8264608320029022378
 GameObject:
   m_ObjectHideFlags: 0
@@ -1446,12 +1686,13 @@ GameObject:
   - component: {fileID: 2684284149207094646}
   - component: {fileID: 6553688487162760383}
   - component: {fileID: 5673424916149912842}
+  - component: {fileID: 6390690386281992502}
   m_Layer: 0
   m_Name: Book_set_7
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2684284149207094646
 Transform:
@@ -1516,6 +1757,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6390690386281992502
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8264608320029022378}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3334934560525897798, guid: 08ff0e6651a9e4c01b2ab96d67b6c46f, type: 3}
 --- !u!1 &8777494337467363322
 GameObject:
   m_ObjectHideFlags: 0
@@ -1530,7 +1785,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8251786614910416192
 Transform:
@@ -1561,12 +1816,13 @@ GameObject:
   - component: {fileID: 344217187376534018}
   - component: {fileID: 9117224354944015894}
   - component: {fileID: 7436710451697896055}
+  - component: {fileID: 6721764611791595032}
   m_Layer: 0
   m_Name: Shelf_3
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &344217187376534018
 Transform:
@@ -1631,3 +1887,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6721764611791595032
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9030061195456853884}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 9119100047597413749, guid: 08ff0e6651a9e4c01b2ab96d67b6c46f, type: 3}

@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 6619866344668833349}
   - component: {fileID: 7814210209215392224}
   - component: {fileID: 5446348939984067882}
+  - component: {fileID: 5707114587149772838}
   m_Layer: 0
   m_Name: OpenBook
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &6619866344668833349
 Transform:
@@ -59,8 +60,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2754633952974397232, guid: 96242fdb3ebfb46afa7844d6cdf2fbda, type: 3}
-  - {fileID: -8649992195856677659, guid: 96242fdb3ebfb46afa7844d6cdf2fbda, type: 3}
+  - {fileID: 2100000, guid: 4ea93cdd79803954f908b4130b0c3cd6, type: 2}
+  - {fileID: 2100000, guid: d9e146a89a5554546a23ff07b7fd2e6b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -82,3 +83,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5707114587149772838
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5806738547113000191}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2778722790818455089, guid: 96242fdb3ebfb46afa7844d6cdf2fbda, type: 3}
