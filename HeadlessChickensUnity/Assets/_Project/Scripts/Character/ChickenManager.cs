@@ -64,7 +64,7 @@ namespace PixelPeeps.HeadlessChickens.Network
 
             if (!PhotonView.Find(iD).GetComponent<ChickenBehaviour>().alreadyEscaped) return;
 
-            foreach (var chicken in escapedChicks.Where(chicken => iD == chicken.photonView.ViewID))
+            foreach (var chicken in escapedChicks.Where(chicken => iD == chicken.chickToFollowID))
             {
                 int randomInt = UnityEngine.Random.Range(0, activeChicks.Count);
 
