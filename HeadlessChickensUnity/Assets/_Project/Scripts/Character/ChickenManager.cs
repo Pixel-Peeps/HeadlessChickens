@@ -63,7 +63,7 @@ namespace PixelPeeps.HeadlessChickens.Network
 
             Debug.Log("<color=cyan>"+ escapedChicks[escapedChicks.Count - 1].photonView.Owner.NickName + " called UpdateEscapedChickCam</color>");
 
-            if (!PhotonView.Find(iD).GetComponent<ChickenBehaviour>().alreadyEscaped) return;
+            // if (!PhotonView.Find(iD).GetComponent<ChickenBehaviour>().alreadyEscaped) return;
 
             Debug.Log("<color=pink>" + escapedChicks[escapedChicks.Count - 1].photonView.Owner.NickName + " got past the if statement</color>");
 
