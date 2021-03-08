@@ -36,6 +36,11 @@ namespace PixelPeeps.HeadlessChickens.Network
             Debug.Log("<color=green> Chicken removed from active</color>");
 
             NewGameManager.Instance.CheckForFinish();
+
+            if(activeChicks.Count == 1)
+            {
+                activeChicks[0].isLastChick = true;
+            }
         }
 
 
@@ -44,7 +49,8 @@ namespace PixelPeeps.HeadlessChickens.Network
         {
             escapedChicks.Add(PhotonView.Find(chickenID).GetComponent<ChickenBehaviour>());
             Debug.Log("<color=green> Chicken added to escaped</color>");
-            
+            escapedChicks[escapedChicks.Count - 1].alreadyEscaped = true;
+
             NewGameManager.Instance.CheckForFinish();
         }
 
@@ -55,23 +61,35 @@ namespace PixelPeeps.HeadlessChickens.Network
             Debug.Log("<color=green> Chicken added to dead</color>");
         }
 
-        //[PunRPC]
+        // [PunRPC]
         public void UpdateEscapedChickCam(int iD)
         {
             //int lastChickToEscapseID = escapedChicks[escapedChicks.Count - 1].photonView.ViewID;
 
             Debug.Log("<color=cyan>"+ escapedChicks[escapedChicks.Count - 1].photonView.Owner.NickName + " called UpdateEscapedChickCam</color>");
 
-            if (!PhotonView.Find(iD).GetComponent<ChickenBehaviour>().alreadyEscaped) return;
+            // if (!PhotonView.Find(iD).GetComponent<ChickenBehaviour>().alreadyEscaped) return;
 
-            foreach (var chicken in escapedChicks.Where(chicken => iD == chicken.photonView.ViewID))
+            Debug.Log("<color=pink>" + escapedChicks[escapedChicks.Count - 1].photonView.Owner.NickName + " got past the if statement</color>");
+
+            foreach (var chicken in escapedChicks.Where(chicken => iD == chicken.currentFollowID))
             {
-                int randomInt = UnityEngine.Random.Range(0, activeChicks.Count);
+                while (true)
+                {
+                    int randomInt = UnityEngine.Random.Range(0, activeChicks.Count);
+                    var chickToFollowID = activeChicks[randomInt].photonView.ViewID;
 
-                var chickToFollowID = activeChicks[randomInt].photonView.ViewID;
-                chicken.photonView.RPC("UpdateChickToFollow", RpcTarget.AllViaServer, chickToFollowID);
-                chicken.photonView.RPC("RPC_CamSwitch", RpcTarget.AllViaServer, chicken.photonView.ViewID);
-                Debug.Log("<color=green>" + chicken.photonView.Owner.NickName + "did the foreach loop</color>");
+                    if(chickToFollowID == iD)
+                    {
+                        continue;
+                    }
+
+                    chicken.photonView.RPC("UpdateChickToFollow", RpcTarget.AllViaServer, chickToFollowID);
+                    chicken.photonView.RPC("RPC_CamSwitch", RpcTarget.AllViaServer, chicken.photonView.ViewID);
+                    Debug.Log("<color=green>" + chicken.photonView.Owner.NickName + "did the foreach loop</color>");
+
+                    return;
+                }
             }
         }
     }

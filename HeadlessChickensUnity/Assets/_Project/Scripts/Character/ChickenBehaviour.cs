@@ -31,9 +31,9 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public Transform currentHidingSpot;
 
         [Header("Following")]
-        public ChickenBehaviour chickToFollow;
         public ChickenBehaviour currentFollow;
-        public int chickToFollowID;
+        public ChickenBehaviour chickWasFollowing;
+        public int currentFollowID;
         [FormerlySerializedAs("followIntID")] public int followInt;
 
         public Transform escapeLocation;
@@ -42,6 +42,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public InputControls controls;
 
         public bool spectating;
+        public bool isLastChick = false;
 
         
         private new void Awake()
@@ -141,15 +142,16 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
                 // Switch camera to an active chick in level
 
+                if(!isLastChick)
+                {
+                    SwitchToObserverCam();
+                    chickenManager.UpdateEscapedChickCam(photonView.ViewID);
+                }
 
-                chickenManager.photonView.RPC("UpdateEscapedChickCam", RpcTarget.AllViaServer, photonView.ViewID);
+                // chickenManager.photonView.RPC("UpdateEscapedChickCam", RpcTarget.AllViaServer, chickToFollowID);
 
                 // chickenMesh.enabled = false;
                 // chickenManager.UpdateEscapedChickCam(photonView.ViewID);
-
-                photonView.RPC("MoveToSantuary", RpcTarget.AllBufferedViaServer, photonView.ViewID);
-
-                //SwitchToObserverCam();
 
             }
         }
@@ -161,7 +163,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
             if (photonView.ViewID == chickID)
             {
-                alreadyEscaped = true;
+                // alreadyEscaped = true;
                 
                 // Disable rigidbody and player controls after escaping the level
                 _rigidbody.isKinematic = true;
@@ -178,17 +180,23 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public void UpdateChickToFollow(int ID)
         {
             // if you are currently following a chick, store that chicken before assigning a new one
-            currentFollow = 
-                chickToFollow != null ? chickToFollow : null;
+            chickWasFollowing = 
+                currentFollow != null ? currentFollow : null;
             
             // Assign the new chick that you are going to follow
-            chickToFollowID = ID;
-            chickToFollow = PhotonView.Find(chickToFollowID).GetComponent<ChickenBehaviour>();
+            currentFollowID = ID;
+            currentFollow = PhotonView.Find(currentFollowID).GetComponent<ChickenBehaviour>();
+
+            if (photonView.IsMine)
+            {
+                // Update HUD of chick that is being followed
+                HUDManager.Instance.UpdateSpectatorHUD(currentFollow.photonView.Owner.NickName);
+            }
             
-            if(chickToFollow != null)
-                Debug.Log("<color=lime>" + photonView.Owner.NickName + "s currentFollow is: " + currentFollow.photonView.Owner.NickName + "</color>");
+            if(chickWasFollowing != null)
+                Debug.Log("<color=lime>" + photonView.Owner.NickName + "s currentFollow is: " + chickWasFollowing.photonView.Owner.NickName + "</color>");
             
-            Debug.Log("<color=cyan>" + photonView.Owner.NickName + "s Follow Changing to: " + chickToFollow.photonView.Owner.NickName + "</color>");
+            Debug.Log("<color=cyan>" + photonView.Owner.NickName + "s Follow Changing to: " + currentFollow.photonView.Owner.NickName + "</color>");
             
         }
         
@@ -205,32 +213,30 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 
                 // Pick a random chick from the currently active chicks
                 followInt = UnityEngine.Random.Range(0, chickenManager.activeChicks.Count);
-                chickToFollowID = chickenManager.activeChicks[followInt].photonView.ViewID;
+                currentFollowID = chickenManager.activeChicks[followInt].photonView.ViewID;
                 
                 // if the found chick is yours find another - in case of list update delay.
-                if (chickToFollowID == photonView.ViewID)
+                if (currentFollowID == photonView.ViewID)
                 {
                     continue;
                 }
                 
                 // Update who you are currently following
-                photonView.RPC("UpdateChickToFollow", RpcTarget.AllViaServer, chickToFollowID);
-                Debug.Log("<color=cyan>Following " + chickToFollow.photonView.Owner.NickName + "</color>");
+                photonView.RPC("UpdateChickToFollow", RpcTarget.AllViaServer, currentFollowID);
                 
-                // Update HUD of chick that is being followed
-                HUDManager.Instance.UpdateSpectatorHUD(chickToFollow.photonView.Owner.NickName);
                 
                 // Switch your camera
                 photonView.RPC("RPC_CamSwitch", RpcTarget.AllViaServer, photonView.ViewID);
-                
-                break;
+
+                photonView.RPC("MoveToSantuary", RpcTarget.AllBufferedViaServer, photonView.ViewID);
+                return;
             }
         }
 
         [PunRPC]
         public void RPC_CamSwitch(int pVid)
         {
-            if (photonView.ViewID != pVid) return;
+            if (!photonView.IsMine) return;
             
             // Turn of the cameras of all escaped chicks
             foreach(ChickenBehaviour chicken in chickenManager.escapedChicks)
@@ -239,13 +245,13 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             }
             
             // If you are currently following someone turn of their camera before activating the camera of new follow target
-            if (currentFollow != null) currentFollow.playerCam.gameObject.SetActive(false);
+            if (chickWasFollowing != null) chickWasFollowing.playerCam.gameObject.SetActive(false);
             
             // Make sure your camera is turned off
-            if (!alreadyEscaped) playerCam.gameObject.SetActive(false);
+            if (alreadyEscaped) playerCam.gameObject.SetActive(false);
             
             // Activate camera of chick you are going to follow next
-            chickToFollow.playerCam.gameObject.SetActive(true);
+            currentFollow.playerCam.gameObject.SetActive(true);
         }
 
         public void NextSpecCam()
@@ -253,18 +259,18 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             if (!spectating) return;
             
             
-            if (followInt == chickenManager.activeChicks.Count - 1)
+            if (followInt >= chickenManager.activeChicks.Count - 1)
             {
-                followInt = - 1;
+                followInt = -1;
             }
 
             followInt++;
             
             // Chicken you are going to follow next
-            chickToFollowID = chickenManager.activeChicks[followInt].photonView.ViewID;
+            currentFollowID = chickenManager.activeChicks[followInt].photonView.ViewID;
             
             // Update who you are currently following
-            photonView.RPC("UpdateChickToFollow", RpcTarget.AllViaServer, chickToFollowID);
+            photonView.RPC("UpdateChickToFollow", RpcTarget.AllViaServer, currentFollowID);
             
             // Switch your camera
             photonView.RPC("RPC_CamSwitch", RpcTarget.AllViaServer, photonView.ViewID);
@@ -274,7 +280,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         {
             if (!spectating) return;
             
-            if (followInt == 0)
+            if (followInt <= 0)
             {
                 followInt = chickenManager.activeChicks.Count;
             }
@@ -282,10 +288,10 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             followInt--;
             
             // Chicken you are going to follow next
-            chickToFollowID = chickenManager.activeChicks[followInt].photonView.ViewID;
+            currentFollowID = chickenManager.activeChicks[followInt].photonView.ViewID;
             
             // Update who you are currently following
-            photonView.RPC("UpdateChickToFollow", RpcTarget.AllViaServer, chickToFollowID);
+            photonView.RPC("UpdateChickToFollow", RpcTarget.AllViaServer, currentFollowID);
             
             // Switch your camera
             photonView.RPC("RPC_CamSwitch", RpcTarget.AllViaServer, photonView.ViewID);
@@ -363,9 +369,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             if (photonView.IsMine)
             {
                 hidedSpot.EnableHidingCam();
+                playerCam.gameObject.SetActive(false);
             }
-
-            playerCam.gameObject.SetActive(false);
         }
 
         [PunRPC]
