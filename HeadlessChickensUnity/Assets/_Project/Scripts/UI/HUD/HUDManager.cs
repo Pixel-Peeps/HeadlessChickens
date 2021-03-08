@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using Photon.Pun;
 using PixelPeeps.HeadlessChickens.Network;
 using TMPro;
@@ -11,7 +12,6 @@ namespace PixelPeeps.HeadlessChickens.UI
 {
     public class HUDManager : MonoBehaviourPunCallbacks
     {
-        [field: Header("Singleton Instance")]
         public static HUDManager Instance { get; private set; }
 
         [Header("HUD Elements")] 
@@ -123,11 +123,7 @@ namespace PixelPeeps.HeadlessChickens.UI
                     break;
                 
                 case 1: // HIDE
-                    interactText.text = "HIDE";
-                    if ( NewGameManager.Instance.localChickBehaviour.isHiding )
-                    {
-                        interactText.text = "LEAVE";
-                    }
+                    HideInteraction();
                     break;
                 
                 case 2: // SHORTCUT
@@ -146,7 +142,7 @@ namespace PixelPeeps.HeadlessChickens.UI
             // } 
         }
         
-        public void UpdateInteractionText( )
+        public void UpdateInteractionText()
         {
             interactText.text = "";
         }
@@ -154,6 +150,43 @@ namespace PixelPeeps.HeadlessChickens.UI
         public void UpdateInteractionText( string newText )
         {
             interactText.text = newText;
+        }
+
+        private void HideInteraction()
+        {
+            switch ( NewGameManager.Instance.myType )
+            {
+                case PlayerType.Fox:
+                    
+                    interactText.text = "SEARCH";
+                    
+                    break;
+                
+                case PlayerType.Chick:
+
+                    if ( NewGameManager.Instance.localChickBehaviour.isHiding )
+                    {
+                        interactText.text = "LEAVE";
+                    }
+                    
+                    interactText.text = "HIDE";
+                    
+                    break;
+                
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        #endregion
+
+        #region Lever Interaction
+
+        //public LeverProgress leverProgressBar;
+        
+        public void DisplayLeverProgress()
+        {
+            
         }
 
         #endregion
