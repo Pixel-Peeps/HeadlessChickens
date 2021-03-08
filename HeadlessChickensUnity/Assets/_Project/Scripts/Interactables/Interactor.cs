@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using PixelPeeps.HeadlessChickens._Project.Scripts.Character;
+using PixelPeeps.HeadlessChickens.UI;
 
 /// <summary>
 /// Interacts with objects that implement the IInteractable interface
@@ -10,24 +12,28 @@ public class Interactor : MonoBehaviour
     /// <summary>
     /// Sends a callback when it is able to interact. When not able to interact it will send null.
     /// </summary>
-    public System.Action<Interactable> OnCanInteract = delegate { };
+    public Action<Interactable> OnCanInteract = delegate { };
 
-    [Header("Configuration")]
-    [Tooltip("When focussing objects, should we compare the look angle?")]
-    [SerializeField] private bool prioritizeWithAngle = true;
+/*
+    [field: Header("Configuration")]
+    [field: Tooltip("When focussing objects, should we compare the look angle?")]
+    [field: SerializeField]
+    public bool PrioritizeWithAngle { get; } = true;
+*/
+
     [Tooltip("0 means it will only focus on objects that are at least within 90 degrees of the forward vector." +
-        " 1 = exactly in front. -1 is exactly behind")]
-    [SerializeField] private float requiredDot = 0;
+             " 1 = exactly in front. -1 is exactly behind")]
+    [SerializeField] private float requiredDot;
 
     public enum eCharacterType { Fox, Chick }
     [SerializeField] public eCharacterType characterType;
 
-    CharacterBase characterBase;
+    private CharacterBase characterBase;
 
     // All interactable objects the interactor is currently within range of
     [SerializeField] private List<Interactable> interactableObjects = new List<Interactable>();
 
-    public Interactable activeInteractable { get; private set; }
+    private Interactable activeInteractable { get; set; }
 
     private void Awake()
     {
@@ -59,21 +65,25 @@ public class Interactor : MonoBehaviour
     {
         if (other.CompareTag("Interactable"))
         {
-            var go = other.gameObject;
-            var interactable = go.GetComponent<Interactable>();
+            GameObject go = other.gameObject;
+            Interactable interactable = go.GetComponent<Interactable>();
 
             switch (characterType)
             {
                 case eCharacterType.Chick when interactable.GetInteractionType() == 2:
                     break;
+                
                 // lock the interactables from a specific character
                 case eCharacterType.Fox when interactable.GetInteractionType() == 0:
                     break;
+                
                 case eCharacterType.Fox when interactable.GetInteractionType() == 2:
                     return;
                 
                 //0==lever
             }
+            
+            HUDManager.Instance.UpdateInteractionText( interactable );
 
             if (interactable != null)
             {
@@ -87,15 +97,18 @@ public class Interactor : MonoBehaviour
     {
         if (other.CompareTag("Interactable"))
         {
-            var go = other.gameObject;
-            var interactable = go.GetComponent<Interactable>();
+            
+            
+            GameObject go = other.gameObject;
+            Interactable interactable = go.GetComponent<Interactable>();
 
             // lock the interactables from a specific character
             if (characterType == eCharacterType.Fox &&
                 (interactable.GetInteractionType() == 0 || interactable.GetInteractionType() == 2)) return;
-
+            
             if (interactable != null)
             {
+                HUDManager.Instance.UpdateInteractionText();
                 interactableObjects.Remove(interactable);
                 UpdateInteractables();
             }
@@ -105,15 +118,15 @@ public class Interactor : MonoBehaviour
     private void Update()
     {
         // In case we move the object, we want to check if there have been any interaction changes.
-        if (transform.hasChanged)
-        {
-            UpdateInteractables();
-        }
+        // if (transform.hasChanged)
+        // {
+        //     UpdateInteractables();
+        // }
     }
 
     private void UpdateInteractables()
     {
-        var newInteractable = CalculateClosestInteractable();
+        Interactable newInteractable = CalculateClosestInteractable();
 
         if (newInteractable != activeInteractable)
         {
@@ -141,6 +154,7 @@ public class Interactor : MonoBehaviour
     /// Compares all interactables within range.
     /// </summary>
     /// <returns></returns>
+    // ReSharper disable once CognitiveComplexity
     private Interactable CalculateClosestInteractable()
     {
         if (interactableObjects.Count == 0)

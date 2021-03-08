@@ -30,7 +30,7 @@ namespace PixelPeeps.HeadlessChickens.UI
         [Header("Room List")]
         public RoomList roomList;
 
-        public void ActivateMenu(Menu menu)
+        public static void ActivateMenu(Menu menu)
         {
             if (menu == null)
             {

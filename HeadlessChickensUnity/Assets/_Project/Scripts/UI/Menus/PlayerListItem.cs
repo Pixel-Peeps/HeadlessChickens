@@ -1,6 +1,5 @@
 ﻿using Photon.Pun;
 using Photon.Realtime;
-using PixelPeeps.HeadlessChickens._Project.Scripts.UI;
 using TMPro;
 using UnityEngine;
 // ReSharper disable ConvertIfStatementToConditionalTernaryExpression

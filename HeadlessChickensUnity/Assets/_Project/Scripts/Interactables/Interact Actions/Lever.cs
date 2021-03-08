@@ -2,14 +2,17 @@
 using UnityEngine;
 using PixelPeeps.HeadlessChickens._Project.Scripts.Character;
 using PixelPeeps.HeadlessChickens.Network;
+using PixelPeeps.HeadlessChickens.UI;
+// ReSharper disable UnusedMember.Global
 
 public class Lever : MonoBehaviourPunCallbacks, IInteractable
 {
-    Interactable interactable;
+    private Interactable interactable;
     public LeverManager leverManager;
     public GameObject blueprintBits;
     public GameObject regularBits;
     public bool isFake = true;
+    public bool isActive;
     public bool isShowingBlueprints;
     public Animator animator;
 
@@ -103,6 +106,7 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
            leverManager.photonView.RPC("RPC_IncrementLeverCount", RpcTarget.AllBufferedViaServer);
            interactable.photonView.RPC("RPC_ToggleInteractAllowed", RpcTarget.AllBufferedViaServer);
            photonView.RPC("PlayLeverAnimation", RpcTarget.AllBufferedViaServer);
+           HUDManager.Instance.UpdateInteractionText();
            
        } else if (isFake && !characterBase.isFox)
        {
@@ -125,15 +129,10 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
 
     public void InteractionFocus(bool focussed)
     {
-        if (focussed && interactable.interactAllowed)
+        if ( !regularBits.activeInHierarchy )
         {
-            Debug.Log("InteractionFocus() true");
+            HUDManager.Instance.UpdateInteractionText();
         }
-        else
-        {
-            Debug.Log("InteractionFocus() false");
-        }
-        
     }
 
     [PunRPC]
@@ -142,8 +141,8 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
         animator.Play("LeverOn");
     }
 
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        
-    }
+    // public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    // {
+    //     
+    // }
 }

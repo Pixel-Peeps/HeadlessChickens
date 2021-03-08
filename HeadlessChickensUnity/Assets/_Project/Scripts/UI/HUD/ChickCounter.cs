@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using ExitGames.Client.Photon.Encryption;
 using Photon.Pun;
 using PixelPeeps.HeadlessChickens.Network;
 using UnityEngine;
@@ -79,7 +78,7 @@ namespace PixelPeeps.HeadlessChickens.UI
         {
             int escapedChickCount = chickenManager.escapedChicks.Count;
             int loopIncrement = 0;
-            
+
             // Reverse for loop so that escaped chickens start counting from the opposite end
             for (int i = imagesInCounter.Count - 1; i >= 0; i--)
             {
@@ -94,13 +93,18 @@ namespace PixelPeeps.HeadlessChickens.UI
                 if (imagesInCounter[i].currentState != ChickState.Dead)
                 {
                     // Tweening it if it hadn't already escaped
-                    if (imagesInCounter[i].currentState != ChickState.Escaped)
-                    {
-                        chickTween.ScaleUpAndDown();
-                    }
+                    TweenIcon(i, chickTween);
                     
                     imagesInCounter[i].ChangeState(ChickState.Escaped);
                 }
+            }
+        }
+
+        private void TweenIcon(int i, UITweener chickTween)
+        {
+            if (imagesInCounter[i].currentState != ChickState.Escaped)
+            {
+                chickTween.ScaleUpAndDown();
             }
         }
     }

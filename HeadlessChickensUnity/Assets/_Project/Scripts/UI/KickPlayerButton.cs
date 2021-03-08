@@ -3,7 +3,7 @@ using Photon.Realtime;
 using PixelPeeps.HeadlessChickens.Network;
 using UnityEngine.UI;
 
-namespace PixelPeeps.HeadlessChickens._Project.Scripts.UI
+namespace PixelPeeps.HeadlessChickens.UI
 {
     public class KickPlayerButton : MonoBehaviourPunCallbacks
     {

@@ -6,7 +6,7 @@ namespace PixelPeeps.HeadlessChickens.UI
 {
     public class MenuSceneFixer : MonoBehaviour
     {
-        void Start()
+        private void Start()
         {
             GameStateManager.Instance.SwitchGameState(new MainMenuState());
             NetworkManager.Instance.DisconnectFromMaster();

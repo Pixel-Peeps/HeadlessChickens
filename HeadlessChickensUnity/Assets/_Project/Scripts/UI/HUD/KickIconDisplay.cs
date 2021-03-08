@@ -1,6 +1,6 @@
 ﻿using Photon.Pun;
-using PixelPeeps.HeadlessChickens._Project.Scripts.UI;
 using UnityEngine;
+// ReSharper disable UnusedMember.Global
 
 namespace PixelPeeps.HeadlessChickens.UI
 {

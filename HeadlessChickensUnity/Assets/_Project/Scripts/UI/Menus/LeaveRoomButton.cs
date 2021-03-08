@@ -16,7 +16,7 @@ namespace PixelPeeps.HeadlessChickens.UI
             thisButton.onClick.AddListener(OnClick);
         }
 
-        public void OnClick()
+        private static void OnClick()
         {
             NetworkManager.Instance.LeaveRoom();
             GameStateManager.Instance.SwitchGameState(new MainMenuState());

@@ -57,7 +57,13 @@ namespace PixelPeeps.HeadlessChickens.Network
         
         private void ConnectToMaster()
         {
-            uiManager = GameObject.FindGameObjectWithTag("MenuManager").GetComponent<UIManager>();
+           GameObject uiManagerObj = GameObject.FindGameObjectWithTag("MenuManager");
+
+            if (uiManagerObj != null)
+            {
+                uiManager = uiManagerObj.GetComponent<UIManager>();
+            }
+            
             PhotonNetwork.ConnectUsingSettings();
             
             GameStateManager.Instance.ShowConnectingScreen();
@@ -170,7 +176,11 @@ namespace PixelPeeps.HeadlessChickens.Network
             
             Debug.Log("Left room: " + currentRoomName);
             GameStateManager.Instance.HideLoadingScreen();
-            GameStateManager.Instance.SwitchGameState(new MainMenuState());
+
+            if (GameStateManager.Instance != null)
+            {
+                GameStateManager.Instance.SwitchGameState(new MainMenuState());
+            }
         }
 
         public void JoinRoom(RoomInfo info)

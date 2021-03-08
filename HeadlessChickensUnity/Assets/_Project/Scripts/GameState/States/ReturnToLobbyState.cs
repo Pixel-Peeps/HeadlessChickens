@@ -36,7 +36,7 @@ namespace PixelPeeps.HeadlessChickens.GameState
         public override void StateExit()
         {
             Debug.Log("StateExit on ReturnToLobbyState");
-            StateManager.uiManager.ActivateMenu(waitingRoomMenu);
+            UIManager.ActivateMenu(waitingRoomMenu);
         }
     }
 }
