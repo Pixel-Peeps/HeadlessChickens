@@ -9,11 +9,6 @@ public class Shortcut : MonoBehaviourPunCallbacks, IInteractable
     [SerializeField] private Shortcut otherEnd;
     public float shortcutCooldown = 2f;
     private CharacterBase characterBase;
-
-    public void Start()
-    {
-        characterBase = NewGameManager.Instance.myController.GetComponent<CharacterBase>();
-    }
     
     public void Interact(CharacterBase _characterBase)
     {
