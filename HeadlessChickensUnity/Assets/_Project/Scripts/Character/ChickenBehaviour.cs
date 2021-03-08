@@ -187,7 +187,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             chickToFollowID = ID;
             chickToFollow = PhotonView.Find(chickToFollowID).GetComponent<ChickenBehaviour>();
             
-            if(chickToFollow != null)
+            if(currentFollow != null)
                 Debug.Log("<color=lime>" + photonView.Owner.NickName + "s currentFollow is: " + currentFollow.photonView.Owner.NickName + "</color>");
             
             Debug.Log("<color=cyan>" + photonView.Owner.NickName + "s Follow Changing to: " + chickToFollow.photonView.Owner.NickName + "</color>");
