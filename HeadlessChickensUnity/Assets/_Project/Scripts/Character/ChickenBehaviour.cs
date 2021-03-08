@@ -183,6 +183,12 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             // Assign the new chick that you are going to follow
             chickToFollowID = ID;
             chickToFollow = PhotonView.Find(chickToFollowID).GetComponent<ChickenBehaviour>();
+
+            if (photonView.IsMine)
+            {
+                // Update HUD of chick that is being followed
+                HUDManager.Instance.UpdateSpectatorHUD(chickToFollow.photonView.Owner.NickName);
+            }
             
             if(currentFollow != null)
                 Debug.Log("<color=lime>" + photonView.Owner.NickName + "s currentFollow is: " + currentFollow.photonView.Owner.NickName + "</color>");
@@ -215,8 +221,6 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 // Update who you are currently following
                 photonView.RPC("UpdateChickToFollow", RpcTarget.AllViaServer, chickToFollowID);
                 
-                // Update HUD of chick that is being followed
-                HUDManager.Instance.UpdateSpectatorHUD(chickToFollow.photonView.Owner.NickName);
                 
                 // Switch your camera
                 photonView.RPC("RPC_CamSwitch", RpcTarget.AllViaServer, photonView.ViewID);
