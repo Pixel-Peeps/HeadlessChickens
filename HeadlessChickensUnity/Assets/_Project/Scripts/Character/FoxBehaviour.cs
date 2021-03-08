@@ -44,7 +44,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
                                 hideSpot.GetComponent<HidingSpot>().photonView.RPC("RPC_ToggleAccess", RpcTarget.AllViaServer);
 
-                                chicken.photonView.RPC("ChickenCaptured", RpcTarget.AllBufferedViaServer);
+                                chicken.ChickenCaptured();
+                                // chicken.photonView.RPC("ChickenCaptured", RpcTarget.AllBufferedViaServer);
                             }
                             else
                             {
