@@ -91,8 +91,13 @@ namespace PixelPeeps.HeadlessChickens.GameState
                 HideLoadingScreen();
             }
 
-            uiManager = GameObject.FindGameObjectWithTag("MenuManager").GetComponent<UIManager>(); 
+            GameObject uiManagerObj = GameObject.FindGameObjectWithTag("MenuManager");
 
+            if (uiManagerObj != null)
+            {
+                uiManager = uiManagerObj.GetComponent<UIManager>();
+            }
+            
             currentState.OnSceneLoad();
             
             yield return null;

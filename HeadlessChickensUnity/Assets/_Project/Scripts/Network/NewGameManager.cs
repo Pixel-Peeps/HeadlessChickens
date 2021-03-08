@@ -156,10 +156,32 @@ namespace PixelPeeps.HeadlessChickens.Network
             }
             
             else
-            {    
+            {
+                if (playerPrefab == null)
+                {
+                    CheckPlayerPrefab();
+                }
+                
                 GameObject newController = PhotonNetwork.Instantiate(playerPrefab.name, spawnPos.position, Quaternion.identity);
                 myController = newController;
                 Debug.Log("<color=magenta> Spawned a player </color>");
+            }
+        }
+
+        private void CheckPlayerPrefab()
+        {
+            switch (myType)
+            {
+                case PlayerType.Fox:
+                    playerPrefab = foxPrefab;
+                    break;
+
+                case PlayerType.Chick:
+                    playerPrefab = chickPrefab;
+                    break;
+                
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
 

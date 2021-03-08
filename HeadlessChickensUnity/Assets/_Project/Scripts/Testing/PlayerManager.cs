@@ -58,7 +58,7 @@ namespace com.pixelpeeps.headlesschickens
                 _characterBlueprintToggle.enabled = true;
                 vCam.SetActive(true);
 
-                photonView.RPC("RPC_ChangeHealth", RpcTarget.All);
+                //photonView.RPC("RPC_ChangeHealth", RpcTarget.All);
                // healthDisplay.text = this.Health.ToString("0");
             }
         }
