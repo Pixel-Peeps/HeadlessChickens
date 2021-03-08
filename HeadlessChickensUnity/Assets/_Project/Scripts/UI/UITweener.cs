@@ -27,8 +27,10 @@ namespace PixelPeeps.HeadlessChickens.UI
         [Header("Scale Tween")] 
         public Vector3 scaleUpTo = new Vector3(2, 2, 2);
         public Vector3 scaleDownTo = new Vector3(1, 1, 1);
+        
         [Tooltip("Time it takes to reach max scale")]
         public float scaleTime = 0.5f;
+        
         [Tooltip("Time this object pauses for before beginning to scale down again")]
         public float holdTime = 0.2f;
         
