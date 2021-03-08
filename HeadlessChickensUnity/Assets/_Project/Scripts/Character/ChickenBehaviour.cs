@@ -367,9 +367,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             if (photonView.IsMine)
             {
                 hidedSpot.EnableHidingCam();
+                playerCam.gameObject.SetActive(false);
             }
-
-            playerCam.gameObject.SetActive(false);
         }
 
         [PunRPC]
