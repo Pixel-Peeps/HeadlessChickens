@@ -141,8 +141,9 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
                 // Switch camera to an active chick in level
 
-                chickenManager.UpdateEscapedChickCam(photonView.ViewID);
                 SwitchToObserverCam();
+                chickenManager.UpdateEscapedChickCam(photonView.ViewID);
+                
                 
 
                 // chickenManager.photonView.RPC("UpdateEscapedChickCam", RpcTarget.AllViaServer, chickToFollowID);
