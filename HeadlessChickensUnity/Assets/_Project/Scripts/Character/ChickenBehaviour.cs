@@ -141,17 +141,14 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
                 // Switch camera to an active chick in level
 
-                SwitchToObserverCam();
                 chickenManager.UpdateEscapedChickCam(photonView.ViewID);
+                SwitchToObserverCam();
+                
 
                 // chickenManager.photonView.RPC("UpdateEscapedChickCam", RpcTarget.AllViaServer, chickToFollowID);
 
                 // chickenMesh.enabled = false;
                 // chickenManager.UpdateEscapedChickCam(photonView.ViewID);
-
-                photonView.RPC("MoveToSantuary", RpcTarget.AllBufferedViaServer, photonView.ViewID);
-
-                //SwitchToObserverCam();
 
             }
         }
@@ -223,8 +220,9 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 
                 // Switch your camera
                 photonView.RPC("RPC_CamSwitch", RpcTarget.AllViaServer, photonView.ViewID);
-                
-                break;
+
+                photonView.RPC("MoveToSantuary", RpcTarget.AllBufferedViaServer, photonView.ViewID);
+                return;
             }
         }
 
