@@ -32,7 +32,7 @@ public class Interactable : MonoBehaviourPunCallbacks
         return (int)_interactionType;
     }
 
-    public void Focus(bool state)
+    public void Focus(bool state, CharacterBase character)
     {
         for (int i = interfaces.Count - 1; i >= 0; i--)
         {
@@ -41,7 +41,7 @@ public class Interactable : MonoBehaviourPunCallbacks
                 interfaces.RemoveAt(i);
             }
 
-            interfaces[i].InteractionFocus(state);
+            interfaces[i].InteractionFocus(state, character);
         }
     }
 

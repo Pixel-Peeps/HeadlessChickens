@@ -127,7 +127,7 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
        //interactable.interactAllowed = false;
     }
 
-    public void InteractionFocus(bool focussed)
+    public void InteractionFocus(bool focussed, CharacterBase character)
     {
         if ( !regularBits.activeInHierarchy )
         {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 using PixelPeeps.HeadlessChickens._Project.Scripts.Character;
 using PixelPeeps.HeadlessChickens.UI;
@@ -7,7 +8,7 @@ using PixelPeeps.HeadlessChickens.UI;
 /// <summary>
 /// Interacts with objects that implement the IInteractable interface
 /// </summary>
-public class Interactor : MonoBehaviour
+public class Interactor : MonoBehaviourPunCallbacks
 {
     /// <summary>
     /// Sends a callback when it is able to interact. When not able to interact it will send null.
@@ -126,6 +127,7 @@ public class Interactor : MonoBehaviour
 
     private void UpdateInteractables()
     {
+        if(!photonView.IsMine) return;
         Interactable newInteractable = CalculateClosestInteractable();
 
         if (newInteractable != activeInteractable)
@@ -133,13 +135,13 @@ public class Interactor : MonoBehaviour
             if (activeInteractable != null)
             {
                 // Notify the interfaces of the last active interactable that it is no longer being focused.
-                activeInteractable.Focus(false);
+                activeInteractable.Focus(false, characterBase);
             }
 
             if (newInteractable != null)
             {
                 // Notify the new interactable that it is being focussed.
-                newInteractable.Focus(true);
+                newInteractable.Focus(true, characterBase);
             }
 
             // We update the active interactable to the new interactable

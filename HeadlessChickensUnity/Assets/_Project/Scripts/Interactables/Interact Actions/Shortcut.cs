@@ -22,7 +22,7 @@ public class Shortcut : MonoBehaviourPunCallbacks, IInteractable
 
     }
 
-    public void InteractionFocus(bool focussed)
+    public void InteractionFocus(bool focussed, CharacterBase character)
     {
     }
 }

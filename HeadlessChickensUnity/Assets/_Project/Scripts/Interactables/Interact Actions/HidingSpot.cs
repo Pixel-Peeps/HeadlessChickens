@@ -91,12 +91,14 @@ public class HidingSpot : MonoBehaviourPunCallbacks, IInteractable
     }
 
 
-    public void InteractionFocus(bool focussed)
+    public void InteractionFocus(bool focussed, CharacterBase character)
     {
+        photonView.SetControllerInternal(character.photonView.Owner.ActorNumber);
         if (!photonView.IsMine) return;
         
         if (focussed)
         {
+            
             HUDManager.Instance.UpdateInteractionText(GetComponent<Interactable>());
             Debug.Log(focussed);
         }
