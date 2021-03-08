@@ -83,7 +83,7 @@ public class Interactor : MonoBehaviour
                 //0==lever
             }
             
-            HUDManager.Instance.UpdateInteractionText( interactable );
+            //HUDManager.Instance.UpdateInteractionText( interactable );
 
             if (interactable != null)
             {
@@ -108,7 +108,7 @@ public class Interactor : MonoBehaviour
             
             if (interactable != null)
             {
-                HUDManager.Instance.UpdateInteractionText();
+                //HUDManager.Instance.UpdateInteractionText();
                 interactableObjects.Remove(interactable);
                 UpdateInteractables();
             }

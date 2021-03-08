@@ -92,6 +92,20 @@ public class HidingSpot : MonoBehaviourPunCallbacks, IInteractable
 
 
     public void InteractionFocus(bool focussed)
-    {        
+    {
+        if (!photonView.IsMine) return;
+        
+        if (focussed)
+        {
+            HUDManager.Instance.UpdateInteractionText(GetComponent<Interactable>());
+            Debug.Log(focussed);
+        }
+
+        if (!focussed)
+        {
+            HUDManager.Instance.UpdateInteractionText();
+            Debug.Log(focussed);
+        }
+
     }
 }
