@@ -217,7 +217,6 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 
                 // Update who you are currently following
                 photonView.RPC("UpdateChickToFollow", RpcTarget.AllViaServer, chickToFollowID);
-                Debug.Log("<color=cyan>Following " + chickToFollow.photonView.Owner.NickName + "</color>");
                 
                 // Update HUD of chick that is being followed
                 HUDManager.Instance.UpdateSpectatorHUD(chickToFollow.photonView.Owner.NickName);
