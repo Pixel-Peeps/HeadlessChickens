@@ -10,7 +10,7 @@ using UnityEngine.VFX;
 
 namespace com.pixelpeeps.headlesschickens
 {
-    public class PlayerManager : MonoBehaviourPunCallbacks
+    public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     {
         public Camera _camera;
         private CharacterInput charController;
@@ -117,7 +117,12 @@ namespace com.pixelpeeps.headlesschickens
             base.OnDisable ();
             UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
         }
+
+        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        {
+            throw new System.NotImplementedException();
+        }
 #endif
-        
+
     }
 }
