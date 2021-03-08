@@ -67,7 +67,7 @@ namespace PixelPeeps.HeadlessChickens.Network
 
             Debug.Log("<color=pink>" + escapedChicks[escapedChicks.Count - 1].photonView.Owner.NickName + " got past the if statement</color>");
 
-            foreach (var chicken in escapedChicks.Where(chicken => iD == chicken.chickToFollowID))
+            foreach (var chicken in escapedChicks.Where(chicken => iD == chicken.currentFollowID))
             {
                 int randomInt = UnityEngine.Random.Range(0, activeChicks.Count);
 
