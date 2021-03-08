@@ -42,6 +42,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public InputControls controls;
 
         public bool spectating;
+        public bool isLastChick = false;
 
         
         private new void Awake()
@@ -141,10 +142,11 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
                 // Switch camera to an active chick in level
 
-                SwitchToObserverCam();
-                chickenManager.UpdateEscapedChickCam(photonView.ViewID);
-                
-                
+                if(!isLastChick)
+                {
+                    SwitchToObserverCam();
+                    chickenManager.UpdateEscapedChickCam(photonView.ViewID);
+                }
 
                 // chickenManager.photonView.RPC("UpdateEscapedChickCam", RpcTarget.AllViaServer, chickToFollowID);
 

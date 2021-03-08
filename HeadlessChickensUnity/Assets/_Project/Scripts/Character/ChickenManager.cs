@@ -36,6 +36,11 @@ namespace PixelPeeps.HeadlessChickens.Network
             Debug.Log("<color=green> Chicken removed from active</color>");
 
             NewGameManager.Instance.CheckForFinish();
+
+            if(activeChicks.Count == 1)
+            {
+                activeChicks[0].isLastChick = true;
+            }
         }
 
 
