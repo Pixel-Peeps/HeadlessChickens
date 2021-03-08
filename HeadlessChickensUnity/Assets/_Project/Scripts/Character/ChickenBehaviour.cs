@@ -234,7 +234,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         [PunRPC]
         public void RPC_CamSwitch(int pVid)
         {
-            if (photonView.ViewID != pVid) return;
+            if (!photonView.IsMine) return;
             
             // Turn of the cameras of all escaped chicks
             foreach(ChickenBehaviour chicken in chickenManager.escapedChicks)
