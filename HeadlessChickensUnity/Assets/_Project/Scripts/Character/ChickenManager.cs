@@ -55,7 +55,7 @@ namespace PixelPeeps.HeadlessChickens.Network
             Debug.Log("<color=green> Chicken added to dead</color>");
         }
 
-        [PunRPC]
+        // [PunRPC]
         public void UpdateEscapedChickCam(int iD)
         {
             //int lastChickToEscapseID = escapedChicks[escapedChicks.Count - 1].photonView.ViewID;
