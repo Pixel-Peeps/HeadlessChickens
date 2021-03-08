@@ -7,12 +7,11 @@ namespace PixelPeeps.HeadlessChickens.UI
 {
     public class UITweener : MonoBehaviour
     {
-        [HideInInspector] public bool currentlyTweening = false;
+        [HideInInspector] public bool currentlyTweening;
 
         [Header("Move Tween")] 
         public Transform targetPosition;
         public float moveTime = 0.5f;
-        public AnimationCurve movementCurve;
 
         [Header("Fade Image Tween")] 
         public Image imageToFade; 
@@ -35,10 +34,12 @@ namespace PixelPeeps.HeadlessChickens.UI
         public float holdTime = 0.2f;
         
         
+/*
         private void EnableObject()
         {
             gameObject.SetActive(true);
         }
+*/
         
         private void DisableObject()
         {
@@ -104,7 +105,7 @@ namespace PixelPeeps.HeadlessChickens.UI
             LeanTween.scale(gameObject, scaleUpTo, scaleTime);
         }
 
-        public void ScaleUpFromCurrent()
+        private void ScaleUpFromCurrent()
         {
             StartCoroutine(CurrentTweenCoroutine());
             

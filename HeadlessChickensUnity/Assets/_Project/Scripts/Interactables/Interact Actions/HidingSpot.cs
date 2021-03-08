@@ -1,8 +1,14 @@
-﻿using Photon.Pun;
-using Photon.Realtime;
+﻿using System;
+using Photon.Pun;
 using UnityEngine;
 using PixelPeeps.HeadlessChickens._Project.Scripts.Character;
 using Cinemachine;
+using JetBrains.Annotations;
+using PixelPeeps.HeadlessChickens.GameState;
+using PixelPeeps.HeadlessChickens.Network;
+using PixelPeeps.HeadlessChickens.UI;
+
+// ReSharper disable UnusedMember.Global
 
 public class HidingSpot : MonoBehaviourPunCallbacks, IInteractable
 {
@@ -10,14 +16,18 @@ public class HidingSpot : MonoBehaviourPunCallbacks, IInteractable
     public bool canAccessHiding = true;
 
     public CinemachineVirtualCamera hidingCam;
-    MainCam mainCam;
+    [UsedImplicitly] private MainCam mainCam;
 
     public GameObject hidingMesh;
 
     private void Awake()
     {
         hidingCam = GetComponentInChildren<CinemachineVirtualCamera>(true);
-        mainCam = Camera.main.GetComponent<MainCam>();
+        
+        if (Camera.main != null)
+        {
+            mainCam = Camera.main.GetComponent<MainCam>();
+        }
     }
 
     public void Interact(CharacterBase character)
@@ -32,10 +42,10 @@ public class HidingSpot : MonoBehaviourPunCallbacks, IInteractable
                 //character.photonView.GetComponent<CharacterBase>().currentHidingSpot = transform;
                 character.HidingInteraction(canAccessHiding, transform);
                 photonView.RPC("RPC_ToggleAccess", RpcTarget.AllViaServer);
-
+                
                 // mainCam.CullHidingSpots();
                 //EnableHidingCam();
-                Debug.Log("<color=cyan> Hiding spot DEactivated </color>");
+                Debug.Log("<color=cyan> Hiding spot Deactivated </color>");
             }
             else
             {
@@ -82,7 +92,6 @@ public class HidingSpot : MonoBehaviourPunCallbacks, IInteractable
 
 
     public void InteractionFocus(bool focussed)
-    {
-
+    {        
     }
 }

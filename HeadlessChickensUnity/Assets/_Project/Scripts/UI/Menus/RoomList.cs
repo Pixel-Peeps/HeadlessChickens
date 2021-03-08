@@ -8,7 +8,7 @@ namespace PixelPeeps.HeadlessChickens.UI
     {
         public GameObject listItemPrefab;
         private List<RoomInfo> serverRoomList = new List<RoomInfo>();
-        private List<RoomListItem> currentItems = new List<RoomListItem>();
+        private readonly List<RoomListItem> currentItems = new List<RoomListItem>();
 
         public void UpdateRoomList(List<RoomInfo> roomList)
         {
@@ -48,10 +48,6 @@ namespace PixelPeeps.HeadlessChickens.UI
             {
                 Destroy(currentItems[index].gameObject);
                 currentItems.RemoveAt(index);
-            }
-            else
-            {
-                return;
             }
         }
     }

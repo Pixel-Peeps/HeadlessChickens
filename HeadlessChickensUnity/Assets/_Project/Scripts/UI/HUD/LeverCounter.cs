@@ -9,7 +9,7 @@ namespace PixelPeeps.HeadlessChickens.UI
     {        
         public GameObject leverImagePrefab;
         
-        private List<LeverCounterImage> imagesInCounter = new List<LeverCounterImage>();
+        private readonly List<LeverCounterImage> imagesInCounter = new List<LeverCounterImage>();
         
         public void GenerateLeverIcons()
         {

@@ -20,7 +20,7 @@ namespace PixelPeeps.HeadlessChickens.GameState
                 return;
             }
             
-            StateManager.uiManager.ActivateMenu(menu);
+            UIManager.ActivateMenu(menu);
         }
         
         protected static void DeactivateMenu(Menu menu)

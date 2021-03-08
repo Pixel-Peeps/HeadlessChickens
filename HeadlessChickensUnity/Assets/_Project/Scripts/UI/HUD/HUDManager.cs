@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using Photon.Pun;
 using PixelPeeps.HeadlessChickens.Network;
 using TMPro;
@@ -19,6 +18,7 @@ namespace PixelPeeps.HeadlessChickens.UI
         public TextMeshProUGUI objectiveMessage;
         public UITweener objectiveMsgTweener;
         public Image interactButton;
+        public TextMeshProUGUI interactText;
         public Image itemButton;
         public Image dock;
         
@@ -28,6 +28,8 @@ namespace PixelPeeps.HeadlessChickens.UI
         public Sprite foxDock;
         public Color foxTimeTextColour;
         public Color foxLowTimeTextColour;
+
+        #region Initialisation
 
         public void Awake()
         {
@@ -55,11 +57,15 @@ namespace PixelPeeps.HeadlessChickens.UI
             
             GenerateChickIcons();
             GenerateLeverIcons();
-            
+
             InitialiseSpectatorHUD();
             InitialiseTimer();
             
+            dock.gameObject.SetActive(true);
+            
             interactButton.gameObject.SetActive(true);
+            UpdateInteractionText();
+            
             itemButton.gameObject.SetActive(true);
         }
 
@@ -72,6 +78,8 @@ namespace PixelPeeps.HeadlessChickens.UI
             redTimerColour = foxLowTimeTextColour;
             timerDisplay.color = foxTimeTextColour;
         }
+
+        #endregion
 
         #region Objective Message
         public void DisplayObjectiveMessage(PlayerType playerType, float lifetime, string foxText, string chickText)
@@ -98,6 +106,56 @@ namespace PixelPeeps.HeadlessChickens.UI
             yield return new WaitForSecondsRealtime(lifetime);
             objectiveMsgTweener.ScaleDown(true);
         }
+        #endregion
+
+        #region Interaction Text
+
+        public void UpdateInteractionText( Interactable interactable )
+        {
+            int interactType = interactable.GetInteractionType();
+
+            if ( !interactable.interactAllowed ) return;
+            
+            switch ( interactType )
+            {
+                case 0: // LEVER
+                    interactText.text = "ACTIVATE";
+                    break;
+                
+                case 1: // HIDE
+                    interactText.text = "HIDE";
+                    if ( NewGameManager.Instance.localChickBehaviour.isHiding )
+                    {
+                        interactText.text = "LEAVE";
+                    }
+                    break;
+                
+                case 2: // SHORTCUT
+                    interactText.text = "SHORTCUT";
+                    break;
+            }
+            
+            // interactText.text = newText;
+            // Color c = interactButton.color;
+            //
+            // interactButton.color = new Color(c.r, c.g, c.b, 1f);
+            //
+            // if ( newText == "" )
+            // {
+            //     interactButton.color = new Color(c.r, c.g, c.b, 0.5f);
+            // } 
+        }
+        
+        public void UpdateInteractionText( )
+        {
+            interactText.text = "";
+        }
+        
+        public void UpdateInteractionText( string newText )
+        {
+            interactText.text = newText;
+        }
+
         #endregion
         
         #region Timer

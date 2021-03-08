@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Photon.Pun;
 using Photon.Realtime;
+using PixelPeeps.HeadlessChickens._Project.Scripts.Character;
 using PixelPeeps.HeadlessChickens.GameState;
 using PixelPeeps.HeadlessChickens.UI;
 using UnityEngine;
@@ -36,6 +37,7 @@ namespace PixelPeeps.HeadlessChickens.Network
 
         [Header("Players and Controllers")] 
         public GameObject myController;
+        public ChickenBehaviour localChickBehaviour;
 
         [Header("Hiding Spot")]
         [SerializeField] public List<Transform> hidingSpotSpawnPos;
@@ -57,8 +59,8 @@ namespace PixelPeeps.HeadlessChickens.Network
         [Header("Trap Pick-Ups")]
         [SerializeField] public List<Transform> trapSpawnPos;
         public GameObject trapPickUpPrefab;
-        
-        void Awake()
+
+        private void Awake()
         {
             if (Instance != null && Instance != this)
             {
@@ -164,6 +166,7 @@ namespace PixelPeeps.HeadlessChickens.Network
                 
                 GameObject newController = PhotonNetwork.Instantiate(playerPrefab.name, spawnPos.position, Quaternion.identity);
                 myController = newController;
+                localChickBehaviour = newController.GetComponentInChildren<ChickenBehaviour>();
                 Debug.Log("<color=magenta> Spawned a player </color>");
             }
         }
@@ -233,7 +236,6 @@ namespace PixelPeeps.HeadlessChickens.Network
                 if(!room.leverPositions.Any())
                 {
                     tempRooms.Remove(room);
-                    continue;
                 }
             }
 
@@ -375,10 +377,12 @@ namespace PixelPeeps.HeadlessChickens.Network
             GameStateManager.Instance.SwitchGameState(new RestartGameState());  
         }
         
+/*
         private void ReturnToMenu()
         {
             GameStateManager.Instance.SwitchGameState(new MainMenuState());
         }
+*/
 
         #endregion
 

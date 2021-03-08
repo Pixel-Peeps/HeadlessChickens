@@ -27,7 +27,6 @@ namespace PixelPeeps.HeadlessChickens.UI
             if (roomNameEmpty)
             {
                 createRoomMenu.DisplayErrorMessage();
-                return;
             }
             else
             {

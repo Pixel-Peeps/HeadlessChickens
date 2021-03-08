@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
 
@@ -9,7 +8,7 @@ namespace PixelPeeps.HeadlessChickens.UI
     {
         public GameObject listItemPrefab;
         
-        public void GeneratePlayerList(Player[] playersInRoom)
+        public void GeneratePlayerList(IEnumerable<Player> playersInRoom)
         {
             DestroyCurrentList();
             
