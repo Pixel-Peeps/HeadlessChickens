@@ -44,7 +44,8 @@ namespace PixelPeeps.HeadlessChickens.Network
         {
             escapedChicks.Add(PhotonView.Find(chickenID).GetComponent<ChickenBehaviour>());
             Debug.Log("<color=green> Chicken added to escaped</color>");
-            
+            escapedChicks[escapedChicks.Count - 1].alreadyEscaped = true;
+
             NewGameManager.Instance.CheckForFinish();
         }
 
@@ -63,6 +64,8 @@ namespace PixelPeeps.HeadlessChickens.Network
             Debug.Log("<color=cyan>"+ escapedChicks[escapedChicks.Count - 1].photonView.Owner.NickName + " called UpdateEscapedChickCam</color>");
 
             if (!PhotonView.Find(iD).GetComponent<ChickenBehaviour>().alreadyEscaped) return;
+
+            Debug.Log("<color=pink>" + escapedChicks[escapedChicks.Count - 1].photonView.Owner.NickName + " got past the if statement</color>");
 
             foreach (var chicken in escapedChicks.Where(chicken => iD == chicken.chickToFollowID))
             {

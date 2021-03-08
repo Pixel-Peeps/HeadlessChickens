@@ -161,7 +161,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
             if (photonView.ViewID == chickID)
             {
-                alreadyEscaped = true;
+                // alreadyEscaped = true;
                 
                 // Disable rigidbody and player controls after escaping the level
                 _rigidbody.isKinematic = true;
@@ -246,7 +246,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             if (currentFollow != null) currentFollow.playerCam.gameObject.SetActive(false);
             
             // Make sure your camera is turned off
-            if (!alreadyEscaped) playerCam.gameObject.SetActive(false);
+            if (alreadyEscaped) playerCam.gameObject.SetActive(false);
             
             // Activate camera of chick you are going to follow next
             chickToFollow.playerCam.gameObject.SetActive(true);
