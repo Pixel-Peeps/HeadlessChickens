@@ -302,6 +302,10 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 }
                 else
                 {
+                    if (_character.isFox && _character.hasLever && _character.isBlueprintActive)
+                    {
+                        return;
+                    }
                     // Loop
                     Debug.Log("calling loop");
                     var interacted = _character.interactor.TryInteract(true);
