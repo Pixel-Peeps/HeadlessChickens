@@ -73,15 +73,17 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
             Debug.Log("<color=green>" + photonView.Owner.NickName + " called ChickenCaptured()</color>");
 
-            if (photonView.IsMine)
-            {
-                // chickenManager.activeChicks.Remove(this);
-                chickenManager.photonView.RPC("UpdateDeadList", RpcTarget.AllViaServer, photonView.ViewID);
-                chickenManager.photonView.RPC("UpdateActiveList", RpcTarget.AllViaServer, photonView.ViewID);
-                // NewGameManager.Instance.CheckForFinish();
+            // chickenManager.activeChicks.Remove(this);
+            chickenManager.photonView.RPC("UpdateDeadList", RpcTarget.AllViaServer, photonView.ViewID);
+            chickenManager.photonView.RPC("UpdateActiveList", RpcTarget.AllViaServer, photonView.ViewID);
+            // NewGameManager.Instance.CheckForFinish();
 
-                photonView.RPC("SwitchToHeadless", RpcTarget.AllBufferedViaServer, photonView.ViewID);
-            }
+            photonView.RPC("SwitchToHeadless", RpcTarget.AllBufferedViaServer, photonView.ViewID);
+
+            //if (photonView.IsMine)
+            //{
+
+            //}
         }
 
         [PunRPC]
