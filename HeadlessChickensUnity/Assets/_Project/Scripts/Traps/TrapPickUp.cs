@@ -70,22 +70,22 @@ public class TrapPickUp : MonoBehaviourPunCallbacks
         }
         else
         {
-            // Debug.Log("Assigning FOX trap");
-            // int random = Random.Range(0, 2);
-            //
-            // if (random == 0)
-            // {
-            //     //assigning the false lever
-            //     Debug.Log("Oh lord he has the lever");
-            //     other.gameObject.GetComponent<CharacterBase>().hasLever = true;
-            //     other.gameObject.GetComponent<CharacterBase>().hasTrap = true;
-            //
-            //     if (gameObject != null)
-            //     {
-            //         PhotonNetwork.Destroy(gameObject);
-            //     }
-            // }
-            // else
+            Debug.Log("Assigning FOX trap");
+            int random = Random.Range(0, 2);
+            
+            if (random == 0)
+            {
+                //assigning the false lever
+                Debug.Log("Oh lord he has the lever");
+                other.gameObject.GetComponent<CharacterBase>().hasLever = true;
+                other.gameObject.GetComponent<CharacterBase>().hasTrap = true;
+            
+                if (gameObject != null)
+                {
+                    PhotonNetwork.Destroy(gameObject);
+                }
+            }
+            else
             {
                 // assigning the glue tub
                 other.gameObject.GetComponent<FoxBehaviour>().hasTrap = true;
