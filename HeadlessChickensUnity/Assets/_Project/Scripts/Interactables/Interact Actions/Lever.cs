@@ -24,6 +24,9 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
     public float progressIncrement = 0.025f;
     public float timeNeededToTrigger;
 
+    private Coroutine progressRoutine;
+    private Coroutine resetRoutine;
+
 
     private void Awake()
     {
@@ -115,8 +118,9 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
         {
             // Chick pulling normal lever
 
-            StopCoroutine(ResetLoop());
-            StartCoroutine(ProgressLoop(characterBase));
+            
+            StopCoroutine(resetRoutine);
+            progressRoutine = StartCoroutine(ProgressLoop(characterBase));
 
         }
         else if (isFake && isShowingBlueprints && characterBase.isFox)
@@ -138,7 +142,7 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
             if (characterBase._controller.interactCanceled)
             {
                 characterBase._controller.interactCanceled = false;
-                StartCoroutine(ResetLoop());
+                resetRoutine = StartCoroutine(ResetLoop());
                 yield break;
             }
             leverProgress = tempProgress;
@@ -173,6 +177,8 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
 
     private void LeverActivated()
     {
+        StopCoroutine(progressRoutine);
+
         leverManager.photonView.RPC("RPC_IncrementLeverCount", RpcTarget.AllBufferedViaServer);
         interactable.photonView.RPC("RPC_ToggleInteractAllowed", RpcTarget.AllBufferedViaServer);
         photonView.RPC("PlayLeverAnimation", RpcTarget.AllBufferedViaServer);
@@ -181,6 +187,8 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
 
     private void TriggerFakeLever()
     {
+        StopCoroutine(progressRoutine);
+
         Debug.Log("wee woo wee woo FAKE LEVER");
         regularBits.gameObject.SetActive(false);
     }
