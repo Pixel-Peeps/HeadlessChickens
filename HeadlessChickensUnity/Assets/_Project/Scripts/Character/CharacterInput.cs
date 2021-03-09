@@ -297,11 +297,13 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
                 if ( !_character.isFox && (interactTypeNumber == 1 || interactTypeNumber == 2))
                 {
+                    Debug.Log("calling not loop");
                     var interacted = _character.interactor.TryInteract(false);
                 }
                 else
                 {
                     // Loop
+                    Debug.Log("calling loop");
                     var interacted = _character.interactor.TryInteract(true);
                 }
                 
@@ -334,6 +336,14 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                     Debug.Log("Showing false levers????");
                     LeverManager.Instance.IdentifyFakeLeverPositions();
                     _character.isBlueprintActive = true;
+                }
+                
+                if ( _character.isFox && _character.hasLever && _character.isBlueprintActive)
+                {
+                    Debug.Log("this thing is happening");
+                    var interacted = _character.interactor.TryInteract(true);
+                    //fox picks a fake lever
+                    //_character.isBlueprintActive = false;
                 }
             }
         }
