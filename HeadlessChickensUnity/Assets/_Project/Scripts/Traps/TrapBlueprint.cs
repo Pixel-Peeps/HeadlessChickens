@@ -83,8 +83,10 @@ public class TrapBlueprint : MonoBehaviourPunCallbacks
     {
         if (photonView.IsMine)
         {
+            Debug.Log("spawning trap");
             gameObject.GetComponentInParent<CharacterBase>().hasTrap = false;
             gameObject.GetComponentInParent<CharacterBase>().isBlueprintActive= false;
+            gameObject.GetComponentInParent<CharacterBase>().trapSlot = null;
             PhotonNetwork.Instantiate(actualTrapPrefab.name,
                 gameObject.transform.position,
                 gameObject.transform.rotation, 0);
@@ -110,6 +112,6 @@ public class TrapBlueprint : MonoBehaviourPunCallbacks
         _controls.Disable();
         // PhotonNetwork.Destroy(gameObject);
         gameObject.GetComponentInParent<CharacterBase>().ToggleBP(false);
-        gameObject.GetComponentInParent<CharacterBase>().isBlueprintActive= false;
+        gameObject.GetComponentInParent<CharacterBase>().isBlueprintActive = false;
     }
 }

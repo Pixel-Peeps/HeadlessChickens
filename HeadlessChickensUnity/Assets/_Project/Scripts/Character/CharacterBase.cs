@@ -111,10 +111,12 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         {
             if (turnOn)
             {
+                Debug.Log("turning blueprint on");
                 blueprintScript.turnOnBluePrint(blueprintIndex);
             }
             else if (!turnOn)
             {
+                Debug.Log("turning blueprint OFF");
                 blueprintScript.turnOffBlueprint(blueprintIndex);
             }
         }
