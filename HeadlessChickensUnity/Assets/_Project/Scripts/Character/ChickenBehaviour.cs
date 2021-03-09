@@ -69,21 +69,12 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         {
             if (hasBeenCaught || alreadyEscaped) return;
 
-            // chickenMesh.GetComponent<Renderer>().sharedMaterial = caughtMat;
-
             Debug.Log("<color=green>" + photonView.Owner.NickName + " called ChickenCaptured()</color>");
-
-            // chickenManager.activeChicks.Remove(this);
+            
             chickenManager.photonView.RPC("UpdateDeadList", RpcTarget.AllViaServer, photonView.ViewID);
             chickenManager.photonView.RPC("UpdateActiveList", RpcTarget.AllViaServer, photonView.ViewID);
-            // NewGameManager.Instance.CheckForFinish();
 
             photonView.RPC("SwitchToHeadless", RpcTarget.AllBufferedViaServer, photonView.ViewID);
-
-            //if (photonView.IsMine)
-            //{
-
-            //}
         }
 
         [PunRPC]
