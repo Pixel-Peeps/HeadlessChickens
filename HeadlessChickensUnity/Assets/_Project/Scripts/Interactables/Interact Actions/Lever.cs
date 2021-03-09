@@ -27,7 +27,6 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
     [Header("Coroutines")]
     public IEnumerator progressRoutine;
     public IEnumerator resetRoutine;
-    public bool coroutineRunning = true;
 
 
     private void Awake()
@@ -136,7 +135,6 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
     {
 
         // interactable.photonView.RPC("RPC_ToggleInteractAllowed", RpcTarget.AllBufferedViaServer);
-        coroutineRunning = true;
         
         for (var tempProgress = leverProgress; tempProgress < 1; tempProgress += progressIncrement)
         {
@@ -160,15 +158,13 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
         {
             LeverActivated();
         }
-
-        coroutineRunning = false;
+        
         progressRoutine = null;
     }
 
     IEnumerator ResetLoop()
     {
         // interactable.photonView.RPC("RPC_ToggleInteractAllowed", RpcTarget.AllBufferedViaServer);
-        coroutineRunning = true;
         
         for (var tempProgress = leverProgress; tempProgress > 0; tempProgress -= 0.025f)
         {
@@ -177,9 +173,7 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
             yield return new WaitForSeconds(0.1f);
         }
         leverProgress = 0;
-
-        Debug.Log("Are you the culprit?");
-        coroutineRunning = false;
+        
         resetRoutine = null;
     }
 
