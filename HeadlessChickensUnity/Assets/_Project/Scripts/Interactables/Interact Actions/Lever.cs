@@ -28,6 +28,8 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
     public IEnumerator progressRoutine;
     public IEnumerator resetRoutine;
 
+    public ProgressBar progressBar;
+
 
     private void Awake()
     {
@@ -36,6 +38,8 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
 
     private void Start()
     {
+        progressBar = GameObject.FindGameObjectWithTag( "ProgressBar" ).GetComponentInChildren<ProgressBar>();
+        
         interactable = GetComponent<Interactable>();
         leverManager = GameObject.FindWithTag("LeverManager").GetComponent<LeverManager>();
 
@@ -146,6 +150,8 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
                 yield break;
             }
             leverProgress = tempProgress;
+            progressBar.progress = Mathf.FloorToInt( leverProgress * 100 );
+            progressBar.GetCurrentFill();
             yield return new WaitForSeconds(timeIncrement);
         }
 
