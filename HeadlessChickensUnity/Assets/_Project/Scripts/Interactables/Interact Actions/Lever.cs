@@ -24,8 +24,9 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
     public float progressIncrement = 0.025f;
     public float timeNeededToTrigger;
 
-    private IEnumerator progressRoutine;
-    private IEnumerator resetRoutine;
+    [Header("Coroutines")]
+    public IEnumerator progressRoutine;
+    public IEnumerator resetRoutine;
     public bool coroutineRunning = true;
 
 
