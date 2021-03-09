@@ -40,11 +40,13 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                             {
                                 ChickenBehaviour chicken = chickenComponent;
 
+                                chicken.ChickenCaptured();
+
                                 chicken.photonView.RPC("RPC_LeaveHiding", RpcTarget.AllBufferedViaServer, chicken.positionBeforeHiding);
 
                                 hideSpot.GetComponent<HidingSpot>().photonView.RPC("RPC_ToggleAccess", RpcTarget.AllViaServer);
 
-                                chicken.ChickenCaptured();
+                                
                                 // chicken.photonView.RPC("ChickenCaptured", RpcTarget.AllBufferedViaServer);
                             }
                             else
