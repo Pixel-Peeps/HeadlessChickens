@@ -138,7 +138,7 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
             return;
         }
         
-        if (focussed)
+        if (focussed && NewGameManager.Instance.myType == PlayerType.Chick)
         {
             HUDManager.Instance.UpdateInteractionText("ACTIVATE");
         }

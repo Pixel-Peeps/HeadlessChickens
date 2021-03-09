@@ -98,8 +98,19 @@ public class HidingSpot : MonoBehaviourPunCallbacks, IInteractable
         
         if (focussed)
         {
-            
-            HUDManager.Instance.UpdateInteractionText("HIDE");
+            switch ( NewGameManager.Instance.myType )
+            {
+                case PlayerType.Fox:
+                    HUDManager.Instance.UpdateInteractionText("SEARCH");
+                    break;
+                
+                case PlayerType.Chick:
+                    HUDManager.Instance.UpdateInteractionText("HIDE");
+                    break;
+                
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }  
         }
 
         if (!focussed)
