@@ -26,9 +26,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         [SerializeField] Material caughtMat;
         [SerializeField] Material normalMat;
         
-        [Header("Hiding")]
-        public HidingSpot hidedSpot;
-        public Transform currentHidingSpot;
+        
+        
 
         [Header("Following")]
         public ChickenBehaviour currentFollow;
@@ -70,17 +69,12 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         {
             if (hasBeenCaught || alreadyEscaped) return;
 
-            // chickenMesh.GetComponent<Renderer>().sharedMaterial = caughtMat;
+            Debug.Log("<color=green>" + photonView.Owner.NickName + " called ChickenCaptured()</color>");
+            
+            chickenManager.photonView.RPC("UpdateDeadList", RpcTarget.AllViaServer, photonView.ViewID);
+            chickenManager.photonView.RPC("UpdateActiveList", RpcTarget.AllViaServer, photonView.ViewID);
 
-            if (photonView.IsMine)
-            {
-                // chickenManager.activeChicks.Remove(this);
-                chickenManager.photonView.RPC("UpdateDeadList", RpcTarget.AllViaServer, photonView.ViewID);
-                chickenManager.photonView.RPC("UpdateActiveList", RpcTarget.AllViaServer, photonView.ViewID);
-                // NewGameManager.Instance.CheckForFinish();
-
-                photonView.RPC("SwitchToHeadless", RpcTarget.AllBufferedViaServer, photonView.ViewID);
-            }
+            photonView.RPC("SwitchToHeadless", RpcTarget.AllBufferedViaServer, photonView.ViewID);
         }
 
         [PunRPC]
