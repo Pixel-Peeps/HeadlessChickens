@@ -11,12 +11,14 @@ GameObject:
   - component: {fileID: 8200534235038501300}
   - component: {fileID: 5071613817430558225}
   - component: {fileID: 7027034529914794715}
+  - component: {fileID: 8527205897323885283}
+  - component: {fileID: 4749660476649736533}
   m_Layer: 0
   m_Name: Ottoman
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8200534235038501300
 Transform:
@@ -60,7 +62,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 5efe6acb987396243ab11fa7569bed5c, type: 2}
-  - {fileID: -8649992195856677659, guid: 94203aedd593b4a5eb84a4d0bf64f79a, type: 3}
+  - {fileID: 2100000, guid: db0cf377b6e580e49975835db14d23e3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -82,3 +84,30 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8527205897323885283
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8828734072056845070}
+  m_Material: {fileID: 13400000, guid: 7947a28db962b2d4f9ba8bd1dad9647e, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2832499671217821201, guid: 94203aedd593b4a5eb84a4d0bf64f79a, type: 3}
+--- !u!65 &4749660476649736533
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8828734072056845070}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.6199563, y: 0.2931642, z: 0.81745946}
+  m_Center: {x: 0.002494216, y: 0.43890336, z: -0.001247108}

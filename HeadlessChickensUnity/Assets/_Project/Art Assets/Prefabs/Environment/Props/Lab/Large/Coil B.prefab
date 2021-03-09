@@ -75,12 +75,13 @@ GameObject:
   - component: {fileID: 987872488577136085}
   - component: {fileID: 5944987729612872684}
   - component: {fileID: 5000125825073163946}
+  - component: {fileID: 3722253364996816421}
   m_Layer: 0
   m_Name: Plain_Cylinder
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &987872488577136085
 Transform:
@@ -123,7 +124,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4973734387028869240, guid: d7b45f73a7ea946f78f74afc9ed85420, type: 3}
+  - {fileID: 2100000, guid: ec41029321fc61544851dc07c8117be9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -145,6 +146,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3722253364996816421
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5375194040681750185}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8172162086738532110, guid: d7b45f73a7ea946f78f74afc9ed85420, type: 3}
 --- !u!1 &6287379456995618481
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,12 +202,13 @@ GameObject:
   - component: {fileID: 7555409334361184191}
   - component: {fileID: 5483599566165800167}
   - component: {fileID: 1956532774276900130}
+  - component: {fileID: 2453351258108387658}
   m_Layer: 0
   m_Name: Intena_1
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7555409334361184191
 Transform:
@@ -235,7 +251,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4973734387028869240, guid: d7b45f73a7ea946f78f74afc9ed85420, type: 3}
+  - {fileID: 2100000, guid: 4d2bdaedac5de8447a9b06ee344e60a3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -257,6 +273,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2453351258108387658
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6314035469366546756}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4813241721281669806, guid: d7b45f73a7ea946f78f74afc9ed85420, type: 3}
 --- !u!1 &7103750583811736115
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,12 +298,13 @@ GameObject:
   - component: {fileID: 2428871636031658109}
   - component: {fileID: 8793663151474182241}
   - component: {fileID: 5126849079637037029}
+  - component: {fileID: 3557494538981712319}
   m_Layer: 0
   m_Name: Intena_3
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2428871636031658109
 Transform:
@@ -316,7 +347,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4973734387028869240, guid: d7b45f73a7ea946f78f74afc9ed85420, type: 3}
+  - {fileID: 2100000, guid: 4d2bdaedac5de8447a9b06ee344e60a3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -338,6 +369,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3557494538981712319
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7103750583811736115}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 564622560839051408, guid: d7b45f73a7ea946f78f74afc9ed85420, type: 3}
 --- !u!1 &7115821670799867514
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,12 +394,13 @@ GameObject:
   - component: {fileID: 8389108554093686623}
   - component: {fileID: 7987637577075391490}
   - component: {fileID: 8450208182169083254}
+  - component: {fileID: 3266226850627547701}
   m_Layer: 0
   m_Name: Intena_2
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8389108554093686623
 Transform:
@@ -397,7 +443,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4973734387028869240, guid: d7b45f73a7ea946f78f74afc9ed85420, type: 3}
+  - {fileID: 2100000, guid: 4d2bdaedac5de8447a9b06ee344e60a3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -419,6 +465,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3266226850627547701
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7115821670799867514}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7169371893899544749, guid: d7b45f73a7ea946f78f74afc9ed85420, type: 3}
 --- !u!1 &7766416291751129001
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,12 +490,13 @@ GameObject:
   - component: {fileID: 2576870290940426189}
   - component: {fileID: 56567927115065701}
   - component: {fileID: 5285510455853681951}
+  - component: {fileID: 8954523374745481463}
   m_Layer: 0
   m_Name: Middle_Bevelled
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2576870290940426189
 Transform:
@@ -478,7 +539,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4973734387028869240, guid: d7b45f73a7ea946f78f74afc9ed85420, type: 3}
+  - {fileID: 2100000, guid: 162643c26c608d2409a573e5e561d2b2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -500,6 +561,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8954523374745481463
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7766416291751129001}
+  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4912311678826772180, guid: d7b45f73a7ea946f78f74afc9ed85420, type: 3}
 --- !u!1 &8886722000396816538
 GameObject:
   m_ObjectHideFlags: 0
