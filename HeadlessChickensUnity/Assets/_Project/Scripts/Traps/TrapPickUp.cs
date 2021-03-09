@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Photon.Pun;
 using PixelPeeps.HeadlessChickens._Project.Scripts.Character;
+using PixelPeeps.HeadlessChickens.UI;
 using UnityEngine;
 
 
@@ -48,6 +49,8 @@ public class TrapPickUp : MonoBehaviourPunCallbacks
             {
                 //assigning random from egg shells & rotten egg
                 other.gameObject.GetComponent<ChickenBehaviour>().trapSlot = chickenTraps[random];
+                Sprite icon = chickenTraps[random].GetComponent<TrapBlueprint>().trapIcon;
+                HUDManager.Instance.ShowItemImage( icon );
                 other.gameObject.GetComponent<ChickenBehaviour>().blueprintIndex = random;
             }
 
@@ -86,6 +89,8 @@ public class TrapPickUp : MonoBehaviourPunCallbacks
                 // assigning the glue tub
                 other.gameObject.GetComponent<FoxBehaviour>().hasTrap = true;
                 other.gameObject.GetComponent<FoxBehaviour>().trapSlot = tubGluePrefab;
+                Sprite icon = tubGluePrefab.GetComponent<TrapBlueprint>().trapIcon;
+                HUDManager.Instance.ShowItemImage( icon );
 
                 if (gameObject != null)
                 {
