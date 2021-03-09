@@ -1543,7 +1543,7 @@ Transform:
   m_GameObject: {fileID: 5162064196285339575}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 12.957026, y: -0.04390049, z: 4.5462146}
-  m_LocalScale: {x: 0.92880005, y: 0.92880005, z: 0.92880005}
+  m_LocalScale: {x: 1.8576001, y: 1.8576001, z: 1.8576001}
   m_Children:
   - {fileID: 8320777779946357542}
   - {fileID: 969110057547833554}
@@ -1648,6 +1648,7 @@ MonoBehaviour:
   hasDecoy: 0
   trapSlot: {fileID: 0}
   blueprintIndex: 0
+  movementAffected: 0
   states: 0
 --- !u!136 &4792302746592479841
 CapsuleCollider:
@@ -7552,7 +7553,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 801398596417631414, guid: a50ecf0e11b73438c86fc7c7ccdb710d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6256204950482237938, guid: a50ecf0e11b73438c86fc7c7ccdb710d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7560,7 +7561,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6256204950482237938, guid: a50ecf0e11b73438c86fc7c7ccdb710d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.848
+      value: 0.759
       objectReference: {fileID: 0}
     - target: {fileID: 6256204950482237938, guid: a50ecf0e11b73438c86fc7c7ccdb710d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7596,6 +7597,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6256204950482237938, guid: a50ecf0e11b73438c86fc7c7ccdb710d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6256204950482237938, guid: a50ecf0e11b73438c86fc7c7ccdb710d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6256204950482237938, guid: a50ecf0e11b73438c86fc7c7ccdb710d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6256204950482237938, guid: a50ecf0e11b73438c86fc7c7ccdb710d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7298878937340387282, guid: a50ecf0e11b73438c86fc7c7ccdb710d, type: 3}
+      propertyPath: viewIdField
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
