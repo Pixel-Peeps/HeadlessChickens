@@ -19,6 +19,7 @@ namespace PixelPeeps.HeadlessChickens.UI
 
         public void OnClick()
         {
+            Debug.Log( roomInfo );
             NetworkManager.Instance.JoinRoom(roomInfo);
         }
     }
