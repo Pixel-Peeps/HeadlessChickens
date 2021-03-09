@@ -24,8 +24,8 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
     public float progressIncrement = 0.025f;
     public float timeNeededToTrigger;
 
-    private Coroutine progressRoutine;
-    private Coroutine resetRoutine;
+    private IEnumerator progressRoutine;
+    private IEnumerator resetRoutine;
     public bool coroutineRunning = true;
 
 
@@ -138,8 +138,8 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
                 progressRoutine = null;
             }
 
-            progressRoutine = StartCoroutine(ProgressLoop(characterBase));
-            
+            progressRoutine = ProgressLoop(characterBase);
+            StartCoroutine(progressRoutine);
 
         }
         else if (isFake && isShowingBlueprints && characterBase.isFox)
@@ -162,7 +162,8 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
             if (characterBase._controller.interactCanceled)
             {
                 characterBase._controller.interactCanceled = false;
-                resetRoutine = StartCoroutine(ResetLoop());
+                resetRoutine = ResetLoop();
+                StartCoroutine(resetRoutine);
                 yield break;
             }
             leverProgress = tempProgress;
@@ -180,6 +181,7 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
         }
 
         coroutineRunning = false;
+        yield return null;
     }
 
     IEnumerator ResetLoop()
@@ -197,6 +199,7 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
         leverProgress = 0;
 
         coroutineRunning = false;
+        yield return null;
     }
 
     private void LeverActivated()
