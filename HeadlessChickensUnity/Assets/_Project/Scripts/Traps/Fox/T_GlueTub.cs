@@ -33,8 +33,6 @@ public class T_GlueTub : MonoBehaviourPunCallbacks
             origChickenSpeed = victim.moveSpeed;
             victim.moveSpeed /= 2;
             StartCoroutine(GlueEffectCoolDown());
-            
-            
         }
     }
 
@@ -44,6 +42,7 @@ public class T_GlueTub : MonoBehaviourPunCallbacks
 
         victim.moveSpeed = origChickenSpeed;
         _character.movementAffected = false;
+        
         Debug.Log("ok, that's enough: "+victim.moveSpeed);
         
         photonView.RPC("RPC_DestroySelf", RpcTarget.AllBufferedViaServer);

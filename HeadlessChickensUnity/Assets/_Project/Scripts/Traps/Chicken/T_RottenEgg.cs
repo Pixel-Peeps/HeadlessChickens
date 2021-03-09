@@ -41,7 +41,7 @@ public class T_RottenEgg : MonoBehaviourPunCallbacks
 
             photonView.RPC("RPC_ToggleParticles", RpcTarget.AllViaServer, true);
             Debug.Log("phew smelly smelly");
-            gameObject.GetComponent<MeshRenderer>().enabled = false;
+           // gameObject.GetComponent<MeshRenderer>().enabled = false;
             StartCoroutine(RottenEggEffectCoolDown());
         }
     }
