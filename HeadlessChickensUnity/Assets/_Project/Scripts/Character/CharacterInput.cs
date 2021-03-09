@@ -41,7 +41,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         [Header("Jump")]
         public bool isGrounded = true;
         [Tooltip("Velocity multiplier applied in the jump direction")]
-        public float jumpForce = 1f;
+        public float jumpForce = 4.5f;
         private Vector3 _characterVelocity;
         [Tooltip("Effects how much gravity is applied on this object")]
         public float fallMultiplier = 2.5f;
@@ -49,12 +49,16 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public float lowJumpMultiplier = 2f;
         public bool jumpButtonPressed;
 
+        public float movingJumpForwardBoost = 1.2f;
+        public float movingJumpGeneralBoost = 0.8f;
+
         [Header("Animation")] 
         private Animator _anim;
         public float animSpeed;
         public float verticalForward;
         [SerializeField] float animAcceleration;
         [SerializeField] float animDeceleration;
+        public bool animAirborne = false;
 
         [Header("Interaction")]
         public bool interactCanceled = false;
@@ -120,6 +124,13 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             else
             {
                 // normal camera on
+            }
+
+            if(isGrounded && animAirborne)
+            {
+                //_anim.SetBool("Jump", false);
+                _anim.Play("JumpLanding");
+                animAirborne = false;
             }
         }
 
@@ -231,8 +242,12 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                     if (_movDirection.y < 0) jumpDirection = -transform.forward;
                 }
 
+                //_anim.SetBool("Jump", true);
+                _anim.SetTrigger("JumpTrigger");
+                animAirborne = true;
+
                 _rigidbody.velocity = _movDirection != Vector2.zero
-                    ? (jumpDirection + (Vector3.up * 0.62f)) * jumpForce * (moveSpeed * 0.8f)
+                    ? (jumpDirection + (Vector3.up * movingJumpForwardBoost)) * jumpForce * (moveSpeed * movingJumpGeneralBoost)
                     : Vector3.up * jumpForce;
                 isGrounded = false;
             }
