@@ -51,12 +51,12 @@ public class InteractablePlayer : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         { 
-            var interacted = interactor.TryInteract();
+            //var interacted = interactor.TryInteract();
 
-            if (interacted)
-            {
-                Debug.Log($"Interaction success!");
-            }
+            // if (interacted)
+            // {
+            //     Debug.Log($"Interaction success!");
+            // }
         }
     }
 }

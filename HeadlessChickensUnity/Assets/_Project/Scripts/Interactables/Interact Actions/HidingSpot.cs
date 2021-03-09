@@ -30,7 +30,7 @@ public class HidingSpot : MonoBehaviourPunCallbacks, IInteractable
         }
     }
 
-    public void Interact(CharacterBase character)
+    public void Interact(CharacterBase character, bool willLoop)
     {
         photonView.SetControllerInternal(character.photonView.Owner.ActorNumber);
         if (photonView.IsMine)

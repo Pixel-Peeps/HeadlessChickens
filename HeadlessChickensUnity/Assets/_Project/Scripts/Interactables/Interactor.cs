@@ -41,11 +41,12 @@ public class Interactor : MonoBehaviourPunCallbacks
         characterBase = GetComponent<CharacterBase>();
     }
 
-    public bool TryInteract()
+    public bool TryInteract(bool willLoop)
     {
         if (activeInteractable != null && activeInteractable.interactAllowed)
         {
-            activeInteractable.Interact(characterBase);
+            
+            activeInteractable.Interact(characterBase, willLoop);
             return true;
         }
         else

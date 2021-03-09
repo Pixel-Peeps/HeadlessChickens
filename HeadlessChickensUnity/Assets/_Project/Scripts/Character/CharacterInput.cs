@@ -292,9 +292,21 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 {
                     _character.HidingInteraction(true, transform);
                 }
-
-                var interacted = _character.interactor.TryInteract();
+                
                 int interactTypeNumber = _character.interactor.GetInteractType();
+
+                if ( !_character.isFox && (interactTypeNumber == 1 || interactTypeNumber == 2))
+                {
+                    var interacted = _character.interactor.TryInteract(false);
+                }
+                else
+                {
+                    // Loop
+                    var interacted = _character.interactor.TryInteract(true);
+                }
+                
+                
+                
             }
         }
         

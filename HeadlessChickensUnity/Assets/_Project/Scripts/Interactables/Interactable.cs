@@ -45,7 +45,7 @@ public class Interactable : MonoBehaviourPunCallbacks
         }
     }
 
-    public void Interact(CharacterBase character)
+    public void Interact(CharacterBase character, bool willLoop)
     {
         for (int i = interfaces.Count - 1; i >= 0; i--)
         {
@@ -54,7 +54,7 @@ public class Interactable : MonoBehaviourPunCallbacks
                 interfaces.RemoveAt(i);
             }
 
-            interfaces[i].Interact(character);
+            interfaces[i].Interact(character, willLoop);
         }
     }
 }

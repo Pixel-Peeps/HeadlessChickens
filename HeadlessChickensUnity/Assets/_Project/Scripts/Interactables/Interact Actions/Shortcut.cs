@@ -10,7 +10,7 @@ public class Shortcut : MonoBehaviourPunCallbacks, IInteractable
     public float shortcutCooldown = 2f;
     private CharacterBase characterBase;
     
-    public void Interact(CharacterBase _characterBase)
+    public void Interact(CharacterBase _characterBase, bool willLoop)
     {
         characterBase = _characterBase;
         

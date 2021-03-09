@@ -98,7 +98,7 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
         isShowingBlueprints = !isShowingBlueprints;
     }
 
-    public void Interact(CharacterBase characterBase)
+    public void Interact(CharacterBase characterBase, bool willLoop)
     {
        // PhotonView gameManagerPhotonView = NewGameManager.Instance.GetComponent<PhotonView>();
        if (!isFake && !characterBase.isFox)
