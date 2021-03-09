@@ -24,7 +24,7 @@ public class TrapPickUp : MonoBehaviourPunCallbacks
     [Header("Trap BLUEPRINTS")] public GameObject tubGluePrefab;
     public GameObject rottenEggPrefab;
     public GameObject eggShellPrefab;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,6 +53,7 @@ public class TrapPickUp : MonoBehaviourPunCallbacks
                 HUDManager.Instance.ShowItemImage( icon );
                 other.gameObject.GetComponent<ChickenBehaviour>().blueprintIndex = random;
             }
+
             /*else if (random == 3)
             {
                 //assigning decoy chicken (no blueprint)
@@ -69,23 +70,23 @@ public class TrapPickUp : MonoBehaviourPunCallbacks
         else
         {
             Debug.Log("Assigning FOX trap");
-            // int random = Random.Range(0, 2);
-            //
-            // if (random == 0)
-            // {
-            //     //assigning the false lever
-            //     Debug.Log("Oh lord he has the lever");
-            //     other.gameObject.GetComponent<CharacterBase>().hasLever = true;
-            //     other.gameObject.GetComponent<CharacterBase>().hasTrap = true;
-            //
-            //     if (gameObject != null)
-            //     {
-            //         PhotonNetwork.Destroy(gameObject);
-            //     }
-            // }
-            // else
-            // {
-                //assigning the glue tub
+            int random = Random.Range(0, 2);
+
+            if (random == 0)
+            {
+                //assigning the false lever
+                Debug.Log("Oh lord he has the lever");
+                other.gameObject.GetComponent<CharacterBase>().hasLever = true;
+                other.gameObject.GetComponent<CharacterBase>().hasTrap = true;
+
+                if (gameObject != null)
+                {
+                    PhotonNetwork.Destroy(gameObject);
+                }
+            }
+            else
+            {
+                // assigning the glue tub
                 other.gameObject.GetComponent<FoxBehaviour>().hasTrap = true;
                 other.gameObject.GetComponent<FoxBehaviour>().trapSlot = tubGluePrefab;
                 Sprite icon = tubGluePrefab.GetComponent<TrapBlueprint>().trapIcon;
@@ -95,7 +96,8 @@ public class TrapPickUp : MonoBehaviourPunCallbacks
                 {
                     PhotonNetwork.Destroy(gameObject);
                 }
-            //}
+            }
         }
     }
 }
+
