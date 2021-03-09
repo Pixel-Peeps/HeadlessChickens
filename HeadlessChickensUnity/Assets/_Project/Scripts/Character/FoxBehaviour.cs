@@ -39,6 +39,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             {
                 if (t.gameObject.TryGetComponent(out ChickenBehaviour chickenComponent))
                 {
+<<<<<<< HEAD
                     ChickenBehaviour chicken = chickenComponent;
  
                     chicken.photonView.RPC("RPC_LeaveHiding", RpcTarget.AllBufferedViaServer,
@@ -53,6 +54,38 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 {
                     Debug.Log("404 Chicken not found");
                     continue;
+=======
+                    case true:
+
+                        Debug.Log("Nothing here");
+                        break;
+
+                    case false:
+
+                        foreach (Transform t in hideSpot)
+                        {
+                            if(t.gameObject.TryGetComponent(out ChickenBehaviour chickenComponent) == true)
+                            {
+                                ChickenBehaviour chicken = chickenComponent;
+
+                                chicken.ChickenCaptured();
+
+                                chicken.photonView.RPC("RPC_LeaveHiding", RpcTarget.AllBufferedViaServer, chicken.positionBeforeHiding);
+
+                                hideSpot.GetComponent<HidingSpot>().photonView.RPC("RPC_ToggleAccess", RpcTarget.AllViaServer);
+
+                                
+                                // chicken.photonView.RPC("ChickenCaptured", RpcTarget.AllBufferedViaServer);
+                            }
+                            else
+                            {
+                                Debug.Log("404 Chicken not found");
+                                continue;
+                            }
+                        }
+                    
+                        break;
+>>>>>>> main
                 }
             }
         }
