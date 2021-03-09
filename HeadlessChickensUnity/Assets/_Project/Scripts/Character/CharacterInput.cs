@@ -56,6 +56,9 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         [SerializeField] float animAcceleration;
         [SerializeField] float animDeceleration;
 
+        [Header("Interaction")]
+        public bool interactCanceled = false;
+
         private void Awake()
         {
             _character = GetComponent<CharacterBase>();
@@ -81,7 +84,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             _controls.Player.Strafe.canceled += _ => _strafeActive = false;
             _controls.Player.Jump.started += ctx => jumpButtonPressed = true;
             _controls.Player.Jump.canceled += ctx => jumpButtonPressed = false;
-            _controls.Player.Interact.performed += InteractPressed;
+            _controls.Player.Interact.started += InteractPressed;
+            _controls.Player.Interact.canceled += ctx => interactCanceled = true;
             _controls.Player.TrapInteract.performed += TrapInteractPressed;
             _controls.Player.Attack.performed += MouseClicked;
 
