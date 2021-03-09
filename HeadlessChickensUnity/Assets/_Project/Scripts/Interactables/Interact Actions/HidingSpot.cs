@@ -7,6 +7,7 @@ using JetBrains.Annotations;
 using PixelPeeps.HeadlessChickens.GameState;
 using PixelPeeps.HeadlessChickens.Network;
 using PixelPeeps.HeadlessChickens.UI;
+using System.Collections;
 
 // ReSharper disable UnusedMember.Global
 
@@ -19,6 +20,9 @@ public class HidingSpot : MonoBehaviourPunCallbacks, IInteractable
     [UsedImplicitly] private MainCam mainCam;
 
     public GameObject hidingMesh;
+
+    public float searchProgress = 0;
+    private Coroutine searchRoutine;
 
     private void Awake()
     {
@@ -47,17 +51,14 @@ public class HidingSpot : MonoBehaviourPunCallbacks, IInteractable
                 //EnableHidingCam();
                 Debug.Log("<color=cyan> Hiding spot Deactivated </color>");
             }
+            else if (character.isFox)
+            {
+                searchRoutine = StartCoroutine(SearchLoop(character));
+            }
             else
             {
                 // character.currentHidingSpot.position = null;
-
-
-
                 character.HidingInteraction(canAccessHiding, transform);
-
-
-
-
                 // mainCam.SeeEverything();
             }
 
@@ -70,6 +71,30 @@ public class HidingSpot : MonoBehaviourPunCallbacks, IInteractable
         canAccessHiding = !canAccessHiding;
     }
 
+
+    IEnumerator SearchLoop(CharacterBase character)
+    {
+        // interactable.photonView.RPC("RPC_ToggleInteractAllowed", RpcTarget.AllBufferedViaServer);
+
+        for (var tempProgress = searchProgress; tempProgress < 1; tempProgress += 0.01f)
+        {
+            if (character._controller.interactCanceled)
+            {
+                character._controller.interactCanceled = false;
+                searchProgress = 0;
+                yield break;
+            }
+
+            searchProgress = tempProgress;
+            // Debug.Log("leverProgress is " + leverProgress);
+            yield return new WaitForSeconds(0.005f);
+        }
+        searchProgress = 0;
+
+        character.HidingInteraction(canAccessHiding, transform);
+
+        searchRoutine = null;
+    }
 
     public void EnableHidingCam()
     {
