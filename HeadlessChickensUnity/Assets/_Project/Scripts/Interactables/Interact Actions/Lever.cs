@@ -178,6 +178,7 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
         }
         leverProgress = 0;
 
+        Debug.Log("Are you the culprit?");
         coroutineRunning = false;
         resetRoutine = null;
     }

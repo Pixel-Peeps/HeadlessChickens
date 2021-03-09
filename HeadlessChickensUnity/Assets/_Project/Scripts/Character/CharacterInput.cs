@@ -288,6 +288,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         {
             if (photonView.IsMine)
             {
+                interactCanceled = false;
+                
                 // if caught, don't do anything
                 if (_character.hasBeenCaught) return;
 
