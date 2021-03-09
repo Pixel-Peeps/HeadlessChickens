@@ -19,7 +19,10 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
     public bool isShowingBlueprints;
     public bool interactCanceled;
     public float leverProgress = 0;
-    public float leverThreshold = 4;
+
+    public float timeIncrement = 0.1f;
+    public float progressIncrement = 0.025f;
+    public float timeNeededToTrigger;
 
 
     private void Awake()
@@ -41,6 +44,8 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
         {
             photonView.RPC("RPC_SetUp", RpcTarget.AllViaServer, true);
         }
+
+        timeNeededToTrigger = timeIncrement / progressIncrement;
     }
 
     [PunRPC]
@@ -125,20 +130,19 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
     IEnumerator ProgressLoop(CharacterBase characterBase)
     {
 
-        interactable.photonView.RPC("RPC_ToggleInteractAllowed", RpcTarget.AllBufferedViaServer);
+        // interactable.photonView.RPC("RPC_ToggleInteractAllowed", RpcTarget.AllBufferedViaServer);
         float tempProgress = leverProgress;
 
-        for (tempProgress = leverProgress; tempProgress < 1; tempProgress += 0.025f)
+        for (tempProgress = leverProgress; tempProgress < 1; tempProgress += progressIncrement)
         {
             if (characterBase._controller.interactCanceled)
             {
-                interactable.photonView.RPC("RPC_ToggleInteractAllowed", RpcTarget.AllBufferedViaServer);
                 characterBase._controller.interactCanceled = false;
                 StartCoroutine(ResetLoop());
                 yield break;
             }
             leverProgress = tempProgress;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(timeIncrement);
         }
 
         leverProgress = 1;
@@ -155,6 +159,8 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
 
     IEnumerator ResetLoop()
     {
+        // interactable.photonView.RPC("RPC_ToggleInteractAllowed", RpcTarget.AllBufferedViaServer);
+
         float tempProgress = leverProgress;
         for (tempProgress = leverProgress; tempProgress > 0; tempProgress -= 0.025f)
         {
