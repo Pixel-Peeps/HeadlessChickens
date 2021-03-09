@@ -52,14 +52,6 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
         timeNeededToTrigger = timeIncrement / progressIncrement;
     }
 
-    private void Update()
-    {
-        if (!coroutineRunning)
-        {
-            StopAllCoroutines();
-        }
-    }
-
     [PunRPC]
     public void RPC_SetUp()
     {
@@ -124,30 +116,19 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
     {
        // PhotonView gameManagerPhotonView = NewGameManager.Instance.GetComponent<PhotonView>();
        if (!characterBase.isFox)
-        {
-            // Chick pulling normal lever
-            
-            if(resetRoutine != null)
-            {
-                StopCoroutine(resetRoutine);
-            }
+       {
+           // Chick pulling normal lever
+           progressRoutine = ProgressLoop(characterBase);
+           StartCoroutine(progressRoutine);
 
-            if(progressRoutine != null)
-            {
-                StopCoroutine(progressRoutine);
-                progressRoutine = null;
-            }
+       }
+       else if (isFake && isShowingBlueprints && characterBase.isFox)
+       {
+           // Fox placing fake lever
+           PlaceFakeLever(characterBase);
+       }
 
-            progressRoutine = ProgressLoop(characterBase);
-            StartCoroutine(progressRoutine);
-
-        }
-        else if (isFake && isShowingBlueprints && characterBase.isFox)
-        {
-            // Fox placing fake lever
-            PlaceFakeLever(characterBase);
-        }
-        //interactable.interactAllowed = false;
+       //interactable.interactAllowed = false;
     }
 
     IEnumerator ProgressLoop(CharacterBase characterBase)
@@ -155,9 +136,8 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
 
         // interactable.photonView.RPC("RPC_ToggleInteractAllowed", RpcTarget.AllBufferedViaServer);
         coroutineRunning = true;
-        float tempProgress = leverProgress;
-
-        for (tempProgress = leverProgress; tempProgress < 1; tempProgress += progressIncrement)
+        
+        for (var tempProgress = leverProgress; tempProgress < 1; tempProgress += progressIncrement)
         {
             if (characterBase._controller.interactCanceled)
             {
@@ -181,16 +161,15 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
         }
 
         coroutineRunning = false;
-        yield return null;
+        progressRoutine = null;
     }
 
     IEnumerator ResetLoop()
     {
         // interactable.photonView.RPC("RPC_ToggleInteractAllowed", RpcTarget.AllBufferedViaServer);
         coroutineRunning = true;
-
-        float tempProgress = leverProgress;
-        for (tempProgress = leverProgress; tempProgress > 0; tempProgress -= 0.025f)
+        
+        for (var tempProgress = leverProgress; tempProgress > 0; tempProgress -= 0.025f)
         {
             leverProgress = tempProgress;
             // Debug.Log("leverProgress is " + leverProgress);
@@ -199,7 +178,7 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
         leverProgress = 0;
 
         coroutineRunning = false;
-        yield return null;
+        resetRoutine = null;
     }
 
     private void LeverActivated()
