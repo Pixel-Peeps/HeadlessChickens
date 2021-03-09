@@ -24,5 +24,24 @@ public class Shortcut : MonoBehaviourPunCallbacks, IInteractable
 
     public void InteractionFocus(bool focussed, CharacterBase character)
     {
+        photonView.SetControllerInternal(character.photonView.Owner.ActorNumber);
+        if (!photonView.IsMine) return;
+        
+        if ( character.cooldownRunning )
+        {
+            HUDManager.Instance.UpdateInteractionText();
+            return;
+        }
+        
+        if (focussed)
+        {
+            
+            HUDManager.Instance.UpdateInteractionText("SHORTCUT");
+        }
+
+        if (!focussed)
+        {
+            HUDManager.Instance.UpdateInteractionText();
+        }
     }
 }

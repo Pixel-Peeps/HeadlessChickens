@@ -128,8 +128,22 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
     }
 
     public void InteractionFocus(bool focussed, CharacterBase character)
-    {
+    {        
+        photonView.SetControllerInternal(character.photonView.Owner.ActorNumber);
+        if (!photonView.IsMine) return;
+        
         if ( !regularBits.activeInHierarchy )
+        {
+            HUDManager.Instance.UpdateInteractionText();
+            return;
+        }
+        
+        if (focussed)
+        {
+            HUDManager.Instance.UpdateInteractionText("ACTIVATE");
+        }
+
+        if (!focussed)
         {
             HUDManager.Instance.UpdateInteractionText();
         }

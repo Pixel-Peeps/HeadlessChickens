@@ -1,5 +1,6 @@
 ﻿using Photon.Pun;
 using PixelPeeps.HeadlessChickens._Project.Scripts.Character;
+using PixelPeeps.HeadlessChickens.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,7 +9,8 @@ public class TrapBlueprint : MonoBehaviourPunCallbacks
     //this script goes on the trap blueprint
     
     public GameObject actualTrapPrefab;
-
+    public Sprite trapIcon;
+    
     //public Camera _cam;
     private RaycastHit _hit;
     private Vector3 _movePoint;
@@ -68,6 +70,7 @@ public class TrapBlueprint : MonoBehaviourPunCallbacks
             
             
             photonView.RPC("RPC_SpawnTrap", RpcTarget.AllBufferedViaServer);
+            HUDManager.Instance.HideItemImage();
             //photonView.RPC("RPC_DestroySelf", RpcTarget.AllViaServer);
             _controls.Disable();
             gameObject.GetComponentInParent<CharacterBase>().ToggleBP(false);

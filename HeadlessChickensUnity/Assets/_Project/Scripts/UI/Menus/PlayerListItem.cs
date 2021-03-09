@@ -2,6 +2,8 @@
 using Photon.Realtime;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+
 // ReSharper disable ConvertIfStatementToConditionalTernaryExpression
 
 namespace PixelPeeps.HeadlessChickens.UI
@@ -10,6 +12,9 @@ namespace PixelPeeps.HeadlessChickens.UI
     {
         private Player player;
         public TextMeshProUGUI nameText;
+        public Color localPlayerTextColour;
+        public Sprite localPlayerSprite;
+        public Image playerBorderImage;
         public KickPlayerButton kickButton;
 
         public void SetUp(Player _player)
@@ -19,7 +24,8 @@ namespace PixelPeeps.HeadlessChickens.UI
 
             if (Equals(player, PhotonNetwork.LocalPlayer))
             {
-                nameText.color = Color.cyan;
+                nameText.color = localPlayerTextColour;
+                playerBorderImage.sprite = localPlayerSprite;
             }
             else
             {
