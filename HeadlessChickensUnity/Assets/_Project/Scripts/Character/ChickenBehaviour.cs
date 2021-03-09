@@ -26,9 +26,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         [SerializeField] Material caughtMat;
         [SerializeField] Material normalMat;
         
-        [Header("Hiding")]
-        public HidingSpot hidedSpot;
-        public Transform currentHidingSpot;
+        
+        
 
         [Header("Following")]
         public ChickenBehaviour currentFollow;

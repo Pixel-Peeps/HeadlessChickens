@@ -22,39 +22,37 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public override void HidingInteraction(bool canAccessHiding, Transform hideSpot)
         {
             Debug.Log("<color=magenta>I am searching</color>");
-
-            if (photonView.IsMine)
+ 
+            if (!photonView.IsMine) return;
+            if (!canAccessHiding)
             {
-                switch (canAccessHiding)
+                currentHidingSpot = hideSpot;
+                SearchHidingSpot();
+            }
+            else
+                Debug.Log("Nothing here");
+        }
+ 
+        private void SearchHidingSpot()
+        {
+            foreach (Transform t in currentHidingSpot)
+            {
+                if (t.gameObject.TryGetComponent(out ChickenBehaviour chickenComponent))
                 {
-                    case true:
-
-                        Debug.Log("Nothing here");
-                        break;
-
-                    case false:
-
-                        foreach (Transform t in hideSpot)
-                        {
-                            if(t.gameObject.TryGetComponent(out ChickenBehaviour chickenComponent) == true)
-                            {
-                                ChickenBehaviour chicken = chickenComponent;
-
-                                chicken.photonView.RPC("RPC_LeaveHiding", RpcTarget.AllBufferedViaServer, chicken.positionBeforeHiding);
-
-                                hideSpot.GetComponent<HidingSpot>().photonView.RPC("RPC_ToggleAccess", RpcTarget.AllViaServer);
-
-                                chicken.ChickenCaptured();
-                                // chicken.photonView.RPC("ChickenCaptured", RpcTarget.AllBufferedViaServer);
-                            }
-                            else
-                            {
-                                Debug.Log("404 Chicken not found");
-                                continue;
-                            }
-                        }
-                    
-                        break;
+                    ChickenBehaviour chicken = chickenComponent;
+ 
+                    chicken.photonView.RPC("RPC_LeaveHiding", RpcTarget.AllBufferedViaServer,
+                        chicken.positionBeforeHiding);
+ 
+                    currentHidingSpot.GetComponent<HidingSpot>().photonView
+                        .RPC("RPC_ToggleAccess", RpcTarget.AllViaServer);
+ 
+                    chicken.ChickenCaptured();
+                }
+                else
+                {
+                    Debug.Log("404 Chicken not found");
+                    continue;
                 }
             }
         }

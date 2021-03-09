@@ -30,6 +30,10 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public GameObject trapSlot;
         public int blueprintIndex = 0;
         public bool movementAffected;
+        
+        [Header("Hiding")]
+        public HidingSpot hidedSpot;
+        public Transform currentHidingSpot;
 
 
         public enum EStates
