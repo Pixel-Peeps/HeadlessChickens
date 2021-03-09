@@ -10,7 +10,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
     [RequireComponent(typeof(Interactor))]
     public class CharacterBase : MonoBehaviourPunCallbacks, IPunObservable
     {
-        protected CharacterInput _controller;
+        public CharacterInput _controller;
         public Interactor interactor;
         public PhotonView photonView;
         public Rigidbody _rigidbody;
