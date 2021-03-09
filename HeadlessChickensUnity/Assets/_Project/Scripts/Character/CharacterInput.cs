@@ -244,7 +244,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
                 //_anim.SetBool("Jump", true);
                 _anim.SetTrigger("JumpTrigger");
-                animAirborne = true;
+                // animAirborne = true;
 
                 _rigidbody.velocity = _movDirection != Vector2.zero
                     ? (jumpDirection + (Vector3.up * movingJumpForwardBoost)) * jumpForce * (moveSpeed * movingJumpGeneralBoost)
