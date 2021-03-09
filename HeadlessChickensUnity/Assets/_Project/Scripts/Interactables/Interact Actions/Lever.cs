@@ -117,9 +117,11 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
        if (!characterBase.isFox)
         {
             // Chick pulling normal lever
-
             
-            StopCoroutine(resetRoutine);
+            if(resetRoutine != null)
+            {
+                StopCoroutine(resetRoutine);
+            }
             progressRoutine = StartCoroutine(ProgressLoop(characterBase));
 
         }
