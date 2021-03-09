@@ -132,6 +132,12 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
                 StopCoroutine(resetRoutine);
             }
 
+            if(progressRoutine != null)
+            {
+                StopCoroutine(progressRoutine);
+                progressRoutine = null;
+            }
+
             progressRoutine = StartCoroutine(ProgressLoop(characterBase));
             
 
