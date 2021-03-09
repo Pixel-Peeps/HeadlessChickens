@@ -71,6 +71,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
             // chickenMesh.GetComponent<Renderer>().sharedMaterial = caughtMat;
 
+            Debug.Log("<color=green>" + photonView.Owner.NickName + " called ChickenCaptured()</color>");
+
             if (photonView.IsMine)
             {
                 // chickenManager.activeChicks.Remove(this);

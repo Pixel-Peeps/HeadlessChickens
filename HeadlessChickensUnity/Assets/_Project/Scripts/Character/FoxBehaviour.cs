@@ -46,8 +46,10 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
  
                     currentHidingSpot.GetComponent<HidingSpot>().photonView
                         .RPC("RPC_ToggleAccess", RpcTarget.AllViaServer);
- 
+
+                    Debug.Log("<color=green>Before chicken caught call</color>");
                     chicken.ChickenCaptured();
+                    Debug.Log("<color=green>After chicken caught call</color>");
                 }
                 else
                 {
