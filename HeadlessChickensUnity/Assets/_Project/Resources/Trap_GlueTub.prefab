@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 14479709444834907}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 2, y: 0.4, z: 2}
+  m_LocalScale: {x: 1.3611594, y: 0.27223188, z: 1.3611594}
   m_Children:
   - {fileID: 2023621152886274475}
   m_Father: {fileID: 0}
@@ -216,6 +216,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpiltGlue
       objectReference: {fileID: 0}
+    - target: {fileID: 6496925841394936622, guid: 3d98789d732ba42f195df1f5636e9b27, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2f539d7c70a4ff446be338799fae1625, type: 2}
+    - target: {fileID: 6757815318774346842, guid: 3d98789d732ba42f195df1f5636e9b27, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 76c95b76c30804b528c474046e948c2d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d98789d732ba42f195df1f5636e9b27, type: 3}
 --- !u!4 &2023621152886274475 stripped

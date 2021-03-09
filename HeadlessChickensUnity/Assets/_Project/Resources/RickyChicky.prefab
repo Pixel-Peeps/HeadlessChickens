@@ -1200,6 +1200,7 @@ MonoBehaviour:
   hasDecoy: 0
   trapSlot: {fileID: 3685449852532122639, guid: 77a645d81b946e9479078ac31b968101, type: 3}
   blueprintIndex: 0
+  movementAffected: 0
   states: 0
   chickenManager: {fileID: 0}
   positionBeforeHiding: {x: 0, y: 0, z: 0}
@@ -1300,7 +1301,6 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 4736984460096568293}
   - {fileID: 1436168677081998845}
-  - {fileID: 682641240311220080}
   - {fileID: 1245716088192190339}
   - {fileID: 4762295317589040886}
   - {fileID: 2584813041712323464}
@@ -2023,31 +2023,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6256204950482237938, guid: 6bcc9ffeb0bf74c9c8740cc2546a87fb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.012
       objectReference: {fileID: 0}
     - target: {fileID: 6256204950482237938, guid: 6bcc9ffeb0bf74c9c8740cc2546a87fb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.099321425
+      value: -0.045
       objectReference: {fileID: 0}
     - target: {fileID: 6256204950482237938, guid: 6bcc9ffeb0bf74c9c8740cc2546a87fb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.2321873
+      value: 3.462
       objectReference: {fileID: 0}
     - target: {fileID: 6256204950482237938, guid: 6bcc9ffeb0bf74c9c8740cc2546a87fb, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.117359735
+      value: -0.08232068
       objectReference: {fileID: 0}
     - target: {fileID: 6256204950482237938, guid: 6bcc9ffeb0bf74c9c8740cc2546a87fb, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0000000042718695
+      value: -0.7078044
       objectReference: {fileID: 0}
     - target: {fileID: 6256204950482237938, guid: 6bcc9ffeb0bf74c9c8740cc2546a87fb, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 5.0483423e-10
+      value: 0.08364577
       objectReference: {fileID: 0}
     - target: {fileID: 6256204950482237938, guid: 6bcc9ffeb0bf74c9c8740cc2546a87fb, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9930895
+      value: 0.6965916
       objectReference: {fileID: 0}
     - target: {fileID: 6256204950482237938, guid: 6bcc9ffeb0bf74c9c8740cc2546a87fb, type: 3}
       propertyPath: m_RootOrder
@@ -2055,15 +2055,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6256204950482237938, guid: 6bcc9ffeb0bf74c9c8740cc2546a87fb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 0.213
       objectReference: {fileID: 0}
     - target: {fileID: 6256204950482237938, guid: 6bcc9ffeb0bf74c9c8740cc2546a87fb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -90.89
       objectReference: {fileID: 0}
     - target: {fileID: 6256204950482237938, guid: 6bcc9ffeb0bf74c9c8740cc2546a87fb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 13.478
       objectReference: {fileID: 0}
     - target: {fileID: 6256204950482237938, guid: 6bcc9ffeb0bf74c9c8740cc2546a87fb, type: 3}
       propertyPath: m_LocalScale.y
