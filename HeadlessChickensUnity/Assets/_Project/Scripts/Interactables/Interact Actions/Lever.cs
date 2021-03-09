@@ -26,6 +26,7 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
 
     private Coroutine progressRoutine;
     private Coroutine resetRoutine;
+    public bool coroutineRunning = true;
 
 
     private void Awake()
@@ -49,6 +50,14 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
         }
 
         timeNeededToTrigger = timeIncrement / progressIncrement;
+    }
+
+    private void Update()
+    {
+        if (!coroutineRunning)
+        {
+            StopAllCoroutines();
+        }
     }
 
     [PunRPC]
@@ -122,7 +131,9 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
             {
                 StopCoroutine(resetRoutine);
             }
+
             progressRoutine = StartCoroutine(ProgressLoop(characterBase));
+            
 
         }
         else if (isFake && isShowingBlueprints && characterBase.isFox)
@@ -137,6 +148,7 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
     {
 
         // interactable.photonView.RPC("RPC_ToggleInteractAllowed", RpcTarget.AllBufferedViaServer);
+        coroutineRunning = true;
         float tempProgress = leverProgress;
 
         for (tempProgress = leverProgress; tempProgress < 1; tempProgress += progressIncrement)
@@ -152,7 +164,6 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
         }
 
         leverProgress = 1;
-
         if (isFake)
         {
             TriggerFakeLever();
@@ -161,11 +172,14 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
         {
             LeverActivated();
         }
+
+        coroutineRunning = false;
     }
 
     IEnumerator ResetLoop()
     {
         // interactable.photonView.RPC("RPC_ToggleInteractAllowed", RpcTarget.AllBufferedViaServer);
+        coroutineRunning = true;
 
         float tempProgress = leverProgress;
         for (tempProgress = leverProgress; tempProgress > 0; tempProgress -= 0.025f)
@@ -175,6 +189,8 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
             yield return new WaitForSeconds(0.1f);
         }
         leverProgress = 0;
+
+        coroutineRunning = false;
     }
 
     private void LeverActivated()
