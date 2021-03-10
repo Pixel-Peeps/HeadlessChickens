@@ -38,7 +38,7 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
 
     private void Start()
     {
-        progressBar = GameObject.FindGameObjectWithTag( "ProgressBar" ).GetComponentInChildren<ProgressBar>();
+        progressBar = transform.parent.GetComponentInChildren<ProgressBar>();
         
         interactable = GetComponent<Interactable>();
         leverManager = GameObject.FindWithTag("LeverManager").GetComponent<LeverManager>();
@@ -149,13 +149,24 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
                 StartCoroutine(resetRoutine);
                 yield break;
             }
+
             leverProgress = tempProgress;
-            progressBar.progress = Mathf.FloorToInt( leverProgress * 100 );
-            progressBar.GetCurrentFill();
+            
+            if ( leverProgress > 0 )
+            {
+                progressBar.gameObject.SetActive( true );
+                progressBar.progress = Mathf.FloorToInt( leverProgress * 100 );
+                progressBar.GetCurrentFill();
+            }
+
             yield return new WaitForSeconds(timeIncrement);
         }
 
         leverProgress = 1;
+        progressBar.progress = 100;
+        progressBar.GetCurrentFill();
+        progressBar.gameObject.SetActive( false );
+        
         if (isFake)
         {
             TriggerFakeLever();
@@ -177,8 +188,14 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
             leverProgress = tempProgress;
             // Debug.Log("leverProgress is " + leverProgress);
             yield return new WaitForSeconds(0.1f);
+            progressBar.gameObject.SetActive( true );
+            progressBar.progress = Mathf.FloorToInt( leverProgress * 100 );
+            progressBar.GetCurrentFill();
         }
+        
         leverProgress = 0;
+        progressBar.progress = 0;
+        progressBar.gameObject.SetActive( false );
         
         resetRoutine = null;
     }

@@ -21,8 +21,9 @@ namespace PixelPeeps.HeadlessChickens.UI
 
         public void GetCurrentFill()
         {
+            Debug.Log( "calling GetCurrentFill", this );
             float fillAmount = (float) progress / (float) MAXIMUM;
-                mask.fillAmount = fillAmount;
+            mask.fillAmount = fillAmount;
         }
     }
 }
