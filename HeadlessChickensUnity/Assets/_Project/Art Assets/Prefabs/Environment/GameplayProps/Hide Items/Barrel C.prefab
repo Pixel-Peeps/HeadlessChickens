@@ -1568,6 +1568,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ca7e2a97b0973a40ab7b5e0011d22e6, type: 3}
+--- !u!114 &1234390505650730766 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 382388804875785478, guid: 6ca7e2a97b0973a40ab7b5e0011d22e6, type: 3}
+  m_PrefabInstance: {fileID: 1472654024440816136}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5634272918185268343
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1575,6 +1586,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1269024398668533637}
     m_Modifications:
+    - target: {fileID: 814704326378878804, guid: b8e36aeea3fa2ee41b6e1f268bc3c454, type: 3}
+      propertyPath: hidingCam
+      value: 
+      objectReference: {fileID: 1234390505650730766}
+    - target: {fileID: 814704326378878804, guid: b8e36aeea3fa2ee41b6e1f268bc3c454, type: 3}
+      propertyPath: hidingMesh
+      value: 
+      objectReference: {fileID: 1299848936454750707}
     - target: {fileID: 5648197294204226693, guid: b8e36aeea3fa2ee41b6e1f268bc3c454, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
