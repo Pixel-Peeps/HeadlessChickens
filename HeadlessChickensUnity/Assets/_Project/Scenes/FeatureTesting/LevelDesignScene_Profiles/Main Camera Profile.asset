@@ -52,8 +52,8 @@ MonoBehaviour:
     overrideState: 0
     value: 1
   temperature:
-    overrideState: 0
-    value: -5
+    overrideState: 1
+    value: 5
   tint:
     overrideState: 0
     value: -3
@@ -949,6 +949,33 @@ MonoBehaviour:
           inWeight: 0
           outWeight: 0
         - serializedVersion: 3
+          time: 0.5272727
+          value: 0.5
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 0.6227273
+          value: 0.44
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 0.83181816
+          value: 0.5
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
           time: 0.9283582
           value: 0.5
           inSlope: 0
@@ -1041,45 +1068,45 @@ MonoBehaviour:
       - 0.5
       - 0.5
       - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
-      - 0.5
+      - 0.49969617
+      - 0.49748015
+      - 0.49344835
+      - 0.48799545
+      - 0.4815162
+      - 0.4744054
+      - 0.46705776
+      - 0.459868
+      - 0.45323092
+      - 0.44754118
+      - 0.44319355
+      - 0.4405828
+      - 0.4400211
+      - 0.4404053
+      - 0.4412436
+      - 0.44249845
+      - 0.44413227
+      - 0.44610754
+      - 0.44838667
+      - 0.45093212
+      - 0.45370635
+      - 0.45667177
+      - 0.45979083
+      - 0.463026
+      - 0.46633965
+      - 0.4696943
+      - 0.47305235
+      - 0.4763763
+      - 0.4796285
+      - 0.48277146
+      - 0.4857676
+      - 0.4885794
+      - 0.49116924
+      - 0.49349958
+      - 0.4955329
+      - 0.4972316
+      - 0.49855813
+      - 0.49947494
+      - 0.4999445
       - 0.5
       - 0.5
       - 0.5
@@ -1404,7 +1431,7 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 0.27
+    value: 0.23
   color:
     overrideState: 1
     value: {r: 0.007831969, g: 0.02592794, b: 0.1509434, a: 1}
@@ -1422,7 +1449,7 @@ MonoBehaviour:
     value: -12
   thicknessModifier:
     overrideState: 1
-    value: 2.91
+    value: 6
   directLightingStrength:
     overrideState: 0
     value: 0

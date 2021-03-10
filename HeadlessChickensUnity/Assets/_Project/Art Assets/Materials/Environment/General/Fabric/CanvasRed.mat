@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: CanvasRed
   m_Shader: {fileID: 4800000, guid: 128c5f1edaefa4c4fb3f9f7a4615edb2, type: 3}
-  m_ShaderKeywords: _NORMALMAP
+  m_ShaderKeywords: _NORMALMAP _SHNOVERLAP_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -77,9 +77,9 @@ Material:
     - _OtlWidth: 0.8
     - _Parallax: 0.02
     - _Segmented: 0
-    - _ShnIntense: 0
-    - _ShnOverlap: 0
-    - _ShnRange: 0.282
+    - _ShnIntense: 0.066
+    - _ShnOverlap: 1
+    - _ShnRange: 0.099
     - _ShnSmooth: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -92,5 +92,5 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _OtlColor: {r: 0, g: 0, b: 0, a: 1}
-    - _ShnColor: {r: 0.9811321, g: 0.49902406, b: 0.24528302, a: 1}
+    - _ShnColor: {r: 0.6886792, g: 0.07471521, b: 0.07471521, a: 1}
   m_BuildTextureStacks: []

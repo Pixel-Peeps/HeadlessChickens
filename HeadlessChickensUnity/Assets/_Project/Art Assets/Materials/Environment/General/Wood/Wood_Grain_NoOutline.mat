@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Wood_Grain_NoOutline
   m_Shader: {fileID: 4800000, guid: 7cd5de0b884b14f88ab763ef465e1799, type: 3}
-  m_ShaderKeywords: _CLIPPED_ON _NORMALMAP
+  m_ShaderKeywords: _NORMALMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -58,7 +58,7 @@ Material:
     m_Floats:
     - _AmbientCol: 1
     - _BumpScale: 1
-    - _Clipped: 1
+    - _Clipped: 0
     - _ColBright: 0
     - _ColIntense: 1
     - _Cutoff: 0.5
@@ -67,17 +67,17 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.026
     - _GlossyReflections: 1
-    - _Lumin: 0.41
-    - _MaxLight: 1
+    - _Lumin: 0.99
+    - _MaxLight: 0.967
     - _Metallic: 0
     - _MinLight: 0.093
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _Offset: 0
+    - _Offset: 0.39
     - _OtlWidth: 1.07
     - _Parallax: 0.02
     - _Segmented: 0
-    - _ShnIntense: 0.153
+    - _ShnIntense: 0.656
     - _ShnOverlap: 0
     - _ShnRange: 0.761
     - _ShnSmooth: 0.37

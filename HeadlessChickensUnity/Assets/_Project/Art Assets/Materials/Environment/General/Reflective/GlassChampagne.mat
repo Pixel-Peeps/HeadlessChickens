@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: GlassChampagne
   m_Shader: {fileID: 4800000, guid: 481153b840b6e408da95e6afbe176397, type: 3}
-  m_ShaderKeywords: _ALPHAPREMULTIPLY_ON _CLIPPED_ON
+  m_ShaderKeywords: _ALPHAPREMULTIPLY_ON _CLIPPED_ON _SHNOVERLAP_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -56,7 +56,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _AmbientCol: 0.033
+    - _AmbientCol: 0.066
     - _BumpScale: 1
     - _Clipped: 1
     - _ColBright: 0
@@ -77,9 +77,9 @@ Material:
     - _OtlWidth: 1
     - _Parallax: 0.02
     - _Segmented: 0
-    - _ShnIntense: 0
-    - _ShnOverlap: 0
-    - _ShnRange: 0.285
+    - _ShnIntense: 0.392
+    - _ShnOverlap: 1
+    - _ShnRange: 0.379
     - _ShnSmooth: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -89,7 +89,7 @@ Material:
     - _UVSec: 0
     - _ZWrite: 0
     m_Colors:
-    - _Color: {r: 0.9921569, g: 0.9803922, b: 0.7607844, a: 0.43137255}
+    - _Color: {r: 0.9921569, g: 0.9803922, b: 0.7607844, a: 0.5176471}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _OtlColor: {r: 0, g: 0, b: 0, a: 1}
     - _ShnColor: {r: 1, g: 0.9936826, b: 0.8820755, a: 1}
