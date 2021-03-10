@@ -5,6 +5,7 @@ using PixelPeeps.HeadlessChickens.Network;
 using PixelPeeps.HeadlessChickens.UI;
 using System.Collections;
 using UnityEngine.Rendering.PostProcessing;
+using System;
 
 // ReSharper disable UnusedMember.Global
 
@@ -20,6 +21,7 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
     public bool isActive;
     public bool isShowingBlueprints;
     public bool interactCanceled;
+    public bool hasBeenPulled = false; 
     public float leverProgress = 0;
 
     public float timeIncrement = 0.1f;
@@ -150,10 +152,8 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
             if (characterBase._controller.interactCanceled)
             {
                 characterBase._controller.interactCanceled = false;
-                resetRoutine = ResetLoop();
-                StartCoroutine(resetRoutine);
+                HaltProgression(characterBase);
 
-                characterBase._controller._anim.SetBool("LeverBool", false);
                 yield break;
             }
 
@@ -170,6 +170,8 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
 
         characterBase._controller._anim.SetBool("LeverBool", false);
         leverProgress = 1;
+        hasBeenPulled = true;
+
         progressBar.progress = 100;
         progressBar.GetCurrentFill();
         progressBar.BeginFadeOut();
@@ -185,6 +187,24 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
         
         progressRoutine = null;
     }
+
+    private void HaltProgression(CharacterBase characterBase)
+    {
+        Debug.Log("<color=cyan>HaltProgression called</color>");
+
+        resetRoutine = ResetLoop();
+        StartCoroutine(resetRoutine);
+
+        characterBase._controller._anim.SetBool("LeverBool", false);
+    }
+
+    //void OnTriggerExit(Collider other)
+    //{
+    //    if (other.gameObject.CompareTag("Player"))
+    //    {
+
+    //    }
+    //}
 
     IEnumerator ResetLoop()
     {
@@ -255,6 +275,11 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
         if (!focussed)
         {
             HUDManager.Instance.UpdateInteractionText();
+            if(leverProgress > 0 && !hasBeenPulled)
+            {
+                StopCoroutine(progressRoutine);
+                HaltProgression(character);
+            }
         }
     }
 
