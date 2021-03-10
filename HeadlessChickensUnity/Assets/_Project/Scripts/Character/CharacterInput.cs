@@ -129,8 +129,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             if(isGrounded && animAirborne)
             {
                 //_anim.SetBool("Jump", false);
+                photonView.RPC("AnimAirborneOff", Photon.Pun.RpcTarget.AllBufferedViaServer);
                 _anim.Play("JumpLanding");
-                photonView.RPC("AnimAirborneOn", Photon.Pun.RpcTarget.AllBufferedViaServer);
             }
         }
 
