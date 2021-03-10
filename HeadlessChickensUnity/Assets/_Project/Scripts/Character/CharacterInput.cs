@@ -53,7 +53,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public float movingJumpGeneralBoost = 0.8f;
 
         [Header("Animation")] 
-        private Animator _anim;
+        public Animator _anim;
         public float animSpeed;
         public float verticalForward;
         [SerializeField] float animAcceleration;
