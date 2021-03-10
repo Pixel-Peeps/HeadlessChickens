@@ -14,6 +14,7 @@ public class TrapPickUp : MonoBehaviourPunCallbacks
     public GameObject eggPart;
     private bool matChanged;
     private MeshRenderer mR;
+    private bool isOrigColour;
     
     [SerializeField] private List<GameObject> chickenTraps;
 
@@ -29,23 +30,34 @@ public class TrapPickUp : MonoBehaviourPunCallbacks
         
         mR = eggPart.GetComponent<MeshRenderer>();
         origMat = mR.material;
+        isOrigColour = true;
     }
 
     public IEnumerator BetterLuckNextTime()
     {
        // mR.material = invalidMat;
-        photonView.RPC("RPC_ChangeColour", RpcTarget.AllViaServer, invalidMat);
+       
+        photonView.RPC("RPC_ChangeColour", RpcTarget.AllViaServer);
         yield return new WaitForSeconds(0.7f);
        // mR.material = origMat;
-        photonView.RPC("RPC_ChangeColour", RpcTarget.AllViaServer, origMat);
+        photonView.RPC("RPC_ChangeColour", RpcTarget.AllViaServer);
         matChanged = false;
 
     }
 
     [PunRPC]
-    public void RPC_ChangeColour(Material changeTo)
+    public void RPC_ChangeColour()
     {
-        this.mR.material = changeTo;
+        if (isOrigColour)
+        {
+            this.mR.material = invalidMat;
+            isOrigColour = false;
+        }
+        else
+        {  
+            this.mR.material = origMat;
+            isOrigColour = true;
+        }
     }
 
     public void OnTriggerEnter(Collider other)
