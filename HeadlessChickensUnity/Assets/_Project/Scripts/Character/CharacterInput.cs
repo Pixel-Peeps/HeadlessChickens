@@ -130,7 +130,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             {
                 //_anim.SetBool("Jump", false);
                 animAirborne = false;
-                _anim.SetTrigger("Landed");
+                // _anim.SetTrigger("Landed");
+                _anim.SetBool("JumpBool", false);
                 // photonView.RPC("AnimAirborneOff", Photon.Pun.RpcTarget.AllBufferedViaServer);
             }
         }
@@ -258,7 +259,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 }
 
                 //_anim.SetBool("Jump", true);
-                _anim.SetTrigger("JumpTrigger");
+                // _anim.SetTrigger("JumpTrigger");
+                _anim.SetBool("JumpBool", true);
                 // animAirborne = true;
 
                 _rigidbody.velocity = _movDirection != Vector2.zero
