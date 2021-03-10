@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
@@ -7,7 +8,10 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 {
     public class FoxBehaviour : CharacterBase
     {
-        //public bool hasLever;
+        [Header("Rotten Egg Effect")]
+        public GameObject smokeImage;
+        public GameObject stinkParticles;
+        public float effectDuration = 4f;
 
         public void Start()
         {
@@ -22,7 +26,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public override void HidingInteraction(bool canAccessHiding, Transform hideSpot)
         {
             Debug.Log("<color=magenta>I am searching</color>");
- 
+
             if (!photonView.IsMine) return;
             if (!canAccessHiding)
             {
@@ -32,7 +36,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             else
                 Debug.Log("Nothing here");
         }
- 
+
         private void SearchHidingSpot()
         {
             foreach (Transform t in currentHidingSpot)
@@ -40,10 +44,10 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 if (t.gameObject.TryGetComponent(out ChickenBehaviour chickenComponent))
                 {
                     ChickenBehaviour chicken = chickenComponent;
- 
+
                     chicken.photonView.RPC("RPC_LeaveHiding", RpcTarget.AllBufferedViaServer,
                         chicken.positionBeforeHiding);
- 
+
                     currentHidingSpot.GetComponent<HidingSpot>().photonView
                         .RPC("RPC_ToggleAccess", RpcTarget.AllViaServer);
 
@@ -71,7 +75,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                         //    .RPC("ChickenCaptured", RpcTarget.AllBufferedViaServer);
                         chick.ChickenCaptured();
                     }
-                    
+
                     if (!chick.isHiding && chick.hasDecoy)
                     {
                         Debug.Log("DECOY DEPLOYED");
@@ -80,6 +84,52 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                     }
                 }
             }
+
         }
+        //rotten egg effect
+
+            public void StartRottenEggEffect()
+            {
+                smokeImage = GameObject.Find("RottenEggEffect");
+                //effect
+
+                if (photonView.IsMine)
+                {
+                    smokeImage.GetComponent<ToggleSmokeTrap>().EnableDisableSmoke(true);
+                }
+
+                photonView.RPC("RPC_ToggleParticles", RpcTarget.AllViaServer, true);
+                Debug.Log("phew smelly smelly");
+                // gameObject.GetComponent<MeshRenderer>().enabled = false;
+                StartCoroutine(RottenEggEffectCoolDown());
+            }
+
+            [PunRPC]
+            public void RPC_ToggleParticles(bool shouldPlay)
+            {
+                if (shouldPlay)
+                {
+                    stinkParticles.GetComponent<ParticleSystem>().Play();
+                }
+                else
+                {
+                    stinkParticles.GetComponent<ParticleSystem>().Stop();
+                }
+            }
+
+            public IEnumerator RottenEggEffectCoolDown()
+            {
+                yield return new WaitForSeconds(effectDuration);
+
+                smokeImage.GetComponent<ToggleSmokeTrap>().EnableDisableSmoke(false);
+                photonView.RPC("RPC_ToggleParticles", RpcTarget.AllViaServer, false);
+
+                Debug.Log("ok, that's enough: ");
+
+                //photonView.RPC("RPC_DestroySelf", RpcTarget.AllBufferedViaServer);
+            }
+
+           
+        
     }
 }

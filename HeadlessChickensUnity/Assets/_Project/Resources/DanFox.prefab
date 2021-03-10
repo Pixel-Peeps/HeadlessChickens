@@ -1616,7 +1616,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8881a544f3a0761428c7ea5510a1e06e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prioritizeWithAngle: 1
   requiredDot: 0
   characterType: 0
   interactableObjects: []
@@ -1649,7 +1648,12 @@ MonoBehaviour:
   trapSlot: {fileID: 0}
   blueprintIndex: 0
   movementAffected: 0
+  hidedSpot: {fileID: 0}
+  currentHidingSpot: {fileID: 0}
   states: 0
+  smokeImage: {fileID: 6941247828428098815}
+  stinkParticles: {fileID: 7506714451496794718}
+  effectDuration: 4
 --- !u!136 &4792302746592479841
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -8,17 +8,6 @@ using UnityEngine;
 
 public class TrapPickUp : MonoBehaviourPunCallbacks
 {
-
-    //not using these anymore, but keeping JIC
-    enum eTrapType
-    {
-        FalseLever,
-        TubOfGlue,
-        RottenEgg,
-        BrokenEggshells,
-        DecoyChick
-    }
-
     [SerializeField] private List<GameObject> chickenTraps;
 
     [Header("Trap BLUEPRINTS")] public GameObject tubGluePrefab;
@@ -36,9 +25,9 @@ public class TrapPickUp : MonoBehaviourPunCallbacks
     {
         photonView.SetControllerInternal(other.gameObject.GetComponent<PhotonView>().Owner.ActorNumber);
 
-        if (other.gameObject.GetComponent<CharacterBase>().hasTrap)
+        if (other.gameObject.GetComponent<CharacterBase>().hasTrap || other.gameObject.GetComponent<CharacterBase>().hasBeenCaught)
         {
-            Debug.Log("has trap already!");
+            Debug.Log("has trap already! or is caught!");
             return;
         }
 
@@ -90,7 +79,7 @@ public class TrapPickUp : MonoBehaviourPunCallbacks
                 // assigning the glue tub
                 other.gameObject.GetComponent<FoxBehaviour>().hasTrap = true;
                 other.gameObject.GetComponent<FoxBehaviour>().trapSlot = tubGluePrefab;
-                Sprite icon = tubGluePrefab.GetComponent<TrapBlueprint>().trapIcon;
+                Sprite icon = tubGluePrefab.GetComponent<TrapBlueprint>(). trapIcon;
                 HUDManager.Instance.ShowItemImage( icon );
 
                 if (gameObject != null)

@@ -43,6 +43,9 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public bool spectating;
         public bool isLastChick = false;
 
+        [Header("Glue Tub Effect")] private float origChickenSpeed;
+        public float effectDuration = 4;
+
         
         private new void Awake()
         {
@@ -87,6 +90,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 normalChick.SetActive(false);
                 headlessChick.SetActive(true);
                 ToggleBP(false);
+                hasTrap = false;
                 // NewGameManager.Instance.chickensCaught++;
 
                 hasBeenCaught = true;
@@ -430,5 +434,27 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             }
         }
         #endregion
+        
+        public void StartGlueTubEffect(){
+            if (photonView.IsMine)
+            {
+                //effect
+                var victim = gameObject.GetComponent<CharacterInput>();
+                movementAffected = true;
+                Debug.Log("Let's slow this baby down: " + victim.moveSpeed);
+                origChickenSpeed = victim.moveSpeed;
+                victim.moveSpeed /= 2;
+                StartCoroutine(GlueEffectCoolDown());
+            }
+        }
+
+        public IEnumerator GlueEffectCoolDown()
+        {
+            yield return new WaitForSeconds(effectDuration);
+            var victim = gameObject.GetComponent<CharacterInput>();
+            victim.moveSpeed = origChickenSpeed;
+            movementAffected = false;
+            Debug.Log("ok, that's enough: "+victim.moveSpeed);
+        }
     }
 }

@@ -26,27 +26,11 @@ public class T_GlueTub : MonoBehaviourPunCallbacks
 
         if (!_character.isFox && !_character.movementAffected)
         {
-            //effect
-            victim = other.gameObject.GetComponent<CharacterInput>();
-            _character.movementAffected = true;
-            Debug.Log("Let's slow this baby down: " + victim.moveSpeed);
-            origChickenSpeed = victim.moveSpeed;
-            victim.moveSpeed /= 2;
-            StartCoroutine(GlueEffectCoolDown());
+            _character.gameObject.GetComponent<ChickenBehaviour>().StartGlueTubEffect();
+            photonView.RPC("RPC_DestroySelf", RpcTarget.AllBufferedViaServer);
         }
     }
 
-    public IEnumerator GlueEffectCoolDown()
-    {
-        yield return new WaitForSeconds(effectDuration);
-
-        victim.moveSpeed = origChickenSpeed;
-        _character.movementAffected = false;
-        
-        Debug.Log("ok, that's enough: "+victim.moveSpeed);
-        
-        photonView.RPC("RPC_DestroySelf", RpcTarget.AllBufferedViaServer);
-    }
 
     [PunRPC]
     public void RPC_DestroySelf()
