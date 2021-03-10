@@ -131,7 +131,7 @@ MonoBehaviour:
     SynchronizeType: 2
     Name: Vertical_f
   - Type: 9
-    SynchronizeType: 1
+    SynchronizeType: 2
     Name: JumpTrigger
   m_SynchronizeLayers:
   - SynchronizeType: 2
@@ -1224,7 +1224,7 @@ MonoBehaviour:
   positionBeforeHiding: {x: 0, y: 0, z: 0}
   normalChick: {fileID: 1331843947343350537}
   headlessChick: {fileID: 5634391808046711595}
-  chickenMesh: {fileID: 1426164002682427600}
+  chickenMesh: {fileID: 7245135556390402821}
   caughtMat: {fileID: 2100000, guid: b67046d3144638c4c855fe1d6caf598f, type: 2}
   normalMat: {fileID: 2100000, guid: e339136860239dc449752edf8f5ee2fc, type: 2}
   currentFollow: {fileID: 0}
@@ -1325,7 +1325,7 @@ MonoBehaviour:
   - {fileID: 1245716088192190339}
   - {fileID: 4762295317589040886}
   - {fileID: 2584813041712323464}
-  viewIdField: 37
+  viewIdField: 1
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &682641240311220080
@@ -1521,7 +1521,7 @@ MonoBehaviour:
     SynchronizeType: 2
     Name: Vertical_f
   - Type: 9
-    SynchronizeType: 1
+    SynchronizeType: 2
     Name: JumpTrigger
   m_SynchronizeLayers:
   - SynchronizeType: 2
@@ -1957,9 +1957,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4ff269c29119b4f4ebd3a54fd51cf7be, type: 3}
   m_PrefabInstance: {fileID: 2214294176687371864}
   m_PrefabAsset: {fileID: 0}
---- !u!137 &1426164002682427600 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -8255097804125409656, guid: 4ff269c29119b4f4ebd3a54fd51cf7be, type: 3}
+--- !u!1 &7245135556390402821 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8804859104441470301, guid: 4ff269c29119b4f4ebd3a54fd51cf7be, type: 3}
   m_PrefabInstance: {fileID: 2214294176687371864}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1331843947343350537 stripped
@@ -2111,7 +2111,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7298878937340387282, guid: 6bcc9ffeb0bf74c9c8740cc2546a87fb, type: 3}
       propertyPath: viewIdField
-      value: 38
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bcc9ffeb0bf74c9c8740cc2546a87fb, type: 3}
@@ -2194,7 +2194,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7298878937340387282, guid: e8fcf5f19ec064a96a4b06be3368eb24, type: 3}
       propertyPath: viewIdField
-      value: 40
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8fcf5f19ec064a96a4b06be3368eb24, type: 3}
