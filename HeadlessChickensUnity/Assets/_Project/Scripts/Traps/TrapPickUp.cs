@@ -37,10 +37,10 @@ public class TrapPickUp : MonoBehaviourPunCallbacks
     {
        // mR.material = invalidMat;
        
-        photonView.RPC("RPC_ChangeColour", RpcTarget.AllViaServer);
+        photonView.RPC("RPC_ChangeColour", RpcTarget.AllBufferedViaServer);
         yield return new WaitForSeconds(0.7f);
        // mR.material = origMat;
-        photonView.RPC("RPC_ChangeColour", RpcTarget.AllViaServer);
+        photonView.RPC("RPC_ChangeColour", RpcTarget.AllBufferedViaServer);
         matChanged = false;
 
     }
