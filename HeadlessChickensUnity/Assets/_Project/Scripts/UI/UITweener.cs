@@ -14,7 +14,9 @@ namespace PixelPeeps.HeadlessChickens.UI
         public float moveTime = 0.5f;
 
         [Header("Fade Image Tween")] 
-        public Image imageToFade; 
+        public Image imageToFade;
+        public Color fadeInTarget;
+        public Color fadeOutTarget;
         
         [Header("Fade Text Tween")] 
         public TextMeshProUGUI textToFade;
@@ -59,15 +61,32 @@ namespace PixelPeeps.HeadlessChickens.UI
         
         public void FadeInImage()
         {
+            if ( imageToFade == null )
+            {
+                imageToFade = this.gameObject.GetComponent<Image>();
+            }
             
-            //LeanTween.alpha(imageToFade.rectTransform, 1, fadeTime);
-            //LeanTween.color(imageToFade.gameObject, targetColour, fadeTime);
-            
-            //imageToFade = this.gameObject.GetComponent<Image>();
+            Debug.Log( "fading in", this );
+
             initialColour = imageToFade.color;
             initialColour = new Color(initialColour.r, initialColour.g, initialColour.b, 0);
             
-            LeanTween.value(gameObject, initialColour, targetColour, fadeTime).setOnUpdate(SetImageColour);
+            LeanTween.value(gameObject, initialColour, fadeInTarget, fadeTime).setOnUpdate(SetImageColour);
+        }
+        
+        public void FadeOutImage()
+        {
+            if ( imageToFade == null )
+            {
+                imageToFade = this.gameObject.GetComponent<Image>();
+            }
+            
+            Debug.Log( "fading out", this );
+            
+            initialColour = imageToFade.color;
+            initialColour = new Color(initialColour.r, initialColour.g, initialColour.b, 1);
+            
+            LeanTween.value(gameObject, initialColour, fadeOutTarget, fadeTime).setOnUpdate(SetImageColour);
         }
         
         public void FadeInText()
