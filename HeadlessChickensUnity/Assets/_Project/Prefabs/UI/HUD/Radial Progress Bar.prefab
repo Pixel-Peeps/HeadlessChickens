@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4720520148101030355}
   - component: {fileID: 4611144558481586117}
   - component: {fileID: 6652886428229178069}
+  - component: {fileID: 654243232749805536}
   m_Layer: 5
   m_Name: Radial Progress Bar
   m_TagString: Untagged
@@ -94,6 +95,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   progress: 100
   mask: {fileID: 2764080170792782722}
+  imageTweens:
+  - {fileID: 4668349503701481387}
+  - {fileID: 2346741822785297813}
+  - {fileID: 2058558673044080162}
+  - {fileID: 8234307607163789260}
+  - {fileID: 654243232749805536}
+--- !u!114 &654243232749805536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4024224942280568373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83fbf47957a723144b6ff905f8e6e702, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentlyTweening: 0
+  targetPosition: {fileID: 0}
+  moveTime: 0.5
+  imageToFade: {fileID: 0}
+  textToFade: {fileID: 0}
+  targetColour:
+    serializedVersion: 2
+    rgba: 0
+  fadeTime: 0.8
+  scaleUpTo: {x: 2, y: 2, z: 2}
+  scaleDownTo: {x: 1, y: 1, z: 1}
+  scaleTime: 0.5
+  holdTime: 0.2
 --- !u!1 &4757922215934158301
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,6 +137,7 @@ GameObject:
   - component: {fileID: 673635469342361242}
   - component: {fileID: 1508922515032724806}
   - component: {fileID: 2764080170792782722}
+  - component: {fileID: 2346741822785297813}
   m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
@@ -169,6 +202,31 @@ MonoBehaviour:
   m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2346741822785297813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4757922215934158301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83fbf47957a723144b6ff905f8e6e702, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentlyTweening: 0
+  targetPosition: {fileID: 0}
+  moveTime: 0.5
+  imageToFade: {fileID: 0}
+  textToFade: {fileID: 0}
+  targetColour:
+    serializedVersion: 2
+    rgba: 0
+  fadeTime: 0.8
+  scaleUpTo: {x: 2, y: 2, z: 2}
+  scaleDownTo: {x: 1, y: 1, z: 1}
+  scaleTime: 0.5
+  holdTime: 0.2
 --- !u!1 &5292213388985913404
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,6 +238,7 @@ GameObject:
   - component: {fileID: 2845418310008518604}
   - component: {fileID: 5838464585789689143}
   - component: {fileID: 3830993821209718955}
+  - component: {fileID: 8234307607163789260}
   m_Layer: 5
   m_Name: InnerBorder
   m_TagString: Untagged
@@ -244,6 +303,31 @@ MonoBehaviour:
   m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8234307607163789260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5292213388985913404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83fbf47957a723144b6ff905f8e6e702, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentlyTweening: 0
+  targetPosition: {fileID: 0}
+  moveTime: 0.5
+  imageToFade: {fileID: 0}
+  textToFade: {fileID: 0}
+  targetColour:
+    serializedVersion: 2
+    rgba: 0
+  fadeTime: 0.8
+  scaleUpTo: {x: 2, y: 2, z: 2}
+  scaleDownTo: {x: 1, y: 1, z: 1}
+  scaleTime: 0.5
+  holdTime: 0.2
 --- !u!1 &6090096870816716389
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,6 +339,7 @@ GameObject:
   - component: {fileID: 2413912783442378069}
   - component: {fileID: 7016576979024956774}
   - component: {fileID: 2004477675345584681}
+  - component: {fileID: 2058558673044080162}
   m_Layer: 5
   m_Name: OuterBorder
   m_TagString: Untagged
@@ -319,6 +404,31 @@ MonoBehaviour:
   m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2058558673044080162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6090096870816716389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83fbf47957a723144b6ff905f8e6e702, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentlyTweening: 0
+  targetPosition: {fileID: 0}
+  moveTime: 0.5
+  imageToFade: {fileID: 0}
+  textToFade: {fileID: 0}
+  targetColour:
+    serializedVersion: 2
+    rgba: 0
+  fadeTime: 0.8
+  scaleUpTo: {x: 2, y: 2, z: 2}
+  scaleDownTo: {x: 1, y: 1, z: 1}
+  scaleTime: 0.5
+  holdTime: 0.2
 --- !u!1 &8228987629197706810
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,6 +440,7 @@ GameObject:
   - component: {fileID: 1269905995708644506}
   - component: {fileID: 4028449779836167531}
   - component: {fileID: 5167446633784618965}
+  - component: {fileID: 4668349503701481387}
   m_Layer: 5
   m_Name: BG
   m_TagString: Untagged
@@ -394,3 +505,28 @@ MonoBehaviour:
   m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4668349503701481387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8228987629197706810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83fbf47957a723144b6ff905f8e6e702, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentlyTweening: 0
+  targetPosition: {fileID: 0}
+  moveTime: 0.5
+  imageToFade: {fileID: 0}
+  textToFade: {fileID: 0}
+  targetColour:
+    serializedVersion: 2
+    rgba: 0
+  fadeTime: 0.8
+  scaleUpTo: {x: 2, y: 2, z: 2}
+  scaleDownTo: {x: 1, y: 1, z: 1}
+  scaleTime: 0.5
+  holdTime: 0.2

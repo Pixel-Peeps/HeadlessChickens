@@ -4,6 +4,8 @@ using PixelPeeps.HeadlessChickens._Project.Scripts.Character;
 using PixelPeeps.HeadlessChickens.Network;
 using PixelPeeps.HeadlessChickens.UI;
 using System.Collections;
+using UnityEngine.Rendering.PostProcessing;
+
 // ReSharper disable UnusedMember.Global
 
 public class Lever : MonoBehaviourPunCallbacks, IInteractable
@@ -138,6 +140,7 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
     IEnumerator ProgressLoop(CharacterBase characterBase)
     {
 
+        
         // interactable.photonView.RPC("RPC_ToggleInteractAllowed", RpcTarget.AllBufferedViaServer);
         
         for (var tempProgress = leverProgress; tempProgress < 1; tempProgress += progressIncrement)
@@ -154,7 +157,6 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
             
             if ( leverProgress > 0 )
             {
-                progressBar.gameObject.SetActive( true );
                 progressBar.progress = Mathf.FloorToInt( leverProgress * 100 );
                 progressBar.GetCurrentFill();
             }
@@ -165,7 +167,7 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
         leverProgress = 1;
         progressBar.progress = 100;
         progressBar.GetCurrentFill();
-        progressBar.gameObject.SetActive( false );
+        progressBar.BeginFadeOut();
         
         if (isFake)
         {
@@ -188,21 +190,21 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
             leverProgress = tempProgress;
             // Debug.Log("leverProgress is " + leverProgress);
             yield return new WaitForSeconds(0.1f);
-            progressBar.gameObject.SetActive( true );
             progressBar.progress = Mathf.FloorToInt( leverProgress * 100 );
             progressBar.GetCurrentFill();
         }
         
         leverProgress = 0;
         progressBar.progress = 0;
-        progressBar.gameObject.SetActive( false );
-        
+        progressBar.BeginFadeOut();
+
         resetRoutine = null;
     }
 
     private void LeverActivated()
     {
         StopCoroutine(progressRoutine);
+        progressBar.BeginFadeOut();
 
         leverManager.photonView.RPC("RPC_IncrementLeverCount", RpcTarget.AllBufferedViaServer);
         interactable.photonView.RPC("RPC_ToggleInteractAllowed", RpcTarget.AllBufferedViaServer);
