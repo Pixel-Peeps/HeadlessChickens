@@ -140,9 +140,11 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
     IEnumerator ProgressLoop(CharacterBase characterBase)
     {
 
-        
+
         // interactable.photonView.RPC("RPC_ToggleInteractAllowed", RpcTarget.AllBufferedViaServer);
-        
+
+        characterBase._controller._anim.SetBool("LeverBool", true);
+
         for (var tempProgress = leverProgress; tempProgress < 1; tempProgress += progressIncrement)
         {
             if (characterBase._controller.interactCanceled)
@@ -150,6 +152,8 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
                 characterBase._controller.interactCanceled = false;
                 resetRoutine = ResetLoop();
                 StartCoroutine(resetRoutine);
+
+                characterBase._controller._anim.SetBool("LeverBool", false);
                 yield break;
             }
 
@@ -164,6 +168,7 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
             yield return new WaitForSeconds(timeIncrement);
         }
 
+        characterBase._controller._anim.SetBool("LeverBool", false);
         leverProgress = 1;
         progressBar.progress = 100;
         progressBar.GetCurrentFill();
