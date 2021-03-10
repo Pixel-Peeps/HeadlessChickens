@@ -133,6 +133,9 @@ MonoBehaviour:
   - Type: 9
     SynchronizeType: 2
     Name: JumpTrigger
+  - Type: 4
+    SynchronizeType: 2
+    Name: Jump
   m_SynchronizeLayers:
   - SynchronizeType: 2
     LayerIndex: 0
@@ -1147,7 +1150,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4734016008921192831
 Transform:
   m_ObjectHideFlags: 0
@@ -1972,7 +1975,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4ff269c29119b4f4ebd3a54fd51cf7be, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1365608472986478643, guid: 4ff269c29119b4f4ebd3a54fd51cf7be, type: 3}
       propertyPath: m_IsActive
@@ -2088,7 +2091,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: da957a0d0430a0e48919dd3a072e8303, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2220904590520507102, guid: da957a0d0430a0e48919dd3a072e8303, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2187,14 +2190,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bcc9ffeb0bf74c9c8740cc2546a87fb, type: 3}
---- !u!4 &583197934490346886 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6256204950482237938, guid: 6bcc9ffeb0bf74c9c8740cc2546a87fb, type: 3}
-  m_PrefabInstance: {fileID: 6828985558195330164}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6186342697016060098 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 801398596417631414, guid: 6bcc9ffeb0bf74c9c8740cc2546a87fb, type: 3}
+  m_PrefabInstance: {fileID: 6828985558195330164}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &583197934490346886 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6256204950482237938, guid: 6bcc9ffeb0bf74c9c8740cc2546a87fb, type: 3}
   m_PrefabInstance: {fileID: 6828985558195330164}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8334122751847687676
