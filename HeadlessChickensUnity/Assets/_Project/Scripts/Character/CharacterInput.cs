@@ -129,7 +129,9 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             if(isGrounded && animAirborne)
             {
                 //_anim.SetBool("Jump", false);
-                photonView.RPC("AnimAirborneOff", Photon.Pun.RpcTarget.AllBufferedViaServer);
+                animAirborne = false;
+                _anim.SetTrigger("Landed");
+                // photonView.RPC("AnimAirborneOff", Photon.Pun.RpcTarget.AllBufferedViaServer);
             }
         }
 
@@ -224,18 +226,19 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             _anim = GetComponentInChildren<Animator>();
         }
 
-        [PunRPC]
-        public void AnimAirborneOn()
-        {
-            animAirborne = true;
-        }
+        //[PunRPC]
+        //public void AnimAirborneOn()
+        //{
+        //    animAirborne = true;
+        //}
 
-        [PunRPC]
-        public void AnimAirborneOff()
-        {
-            animAirborne = false;
-            _anim.Play("JumpLanding");
-        }
+        //[PunRPC]
+        //public void AnimAirborneOff()
+        //{
+        //    // try photonView.IsMine
+        //    animAirborne = false;
+        //    _anim.Play("JumpLanding");
+        //}
 
         private void Jump()
         {
