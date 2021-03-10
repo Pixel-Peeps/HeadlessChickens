@@ -21,4 +21,13 @@ public class T_RottenEgg : MonoBehaviourPunCallbacks
             photonView.RPC("RPC_DestroySelf", RpcTarget.AllBufferedViaServer);
         }
     }
+
+    [PunRPC]
+    public void RPC_DestroySelf()
+    {
+        if (gameObject.activeSelf)
+        {
+            PhotonNetwork.Destroy(gameObject);
+        }
+    }
 }

@@ -59,6 +59,7 @@ namespace PixelPeeps.HeadlessChickens.Network
         [Header("Trap Pick-Ups")]
         [SerializeField] public List<Transform> trapSpawnPos;
         public GameObject trapPickUpPrefab;
+        public bool canBeFakeLever;
 
         private void Awake()
         {
@@ -70,6 +71,8 @@ namespace PixelPeeps.HeadlessChickens.Network
             {
                 Instance = this;
             }
+
+            canBeFakeLever = true;
         }
 
         #region Initialisation 
@@ -400,17 +403,24 @@ namespace PixelPeeps.HeadlessChickens.Network
             totalGameTime = NetworkManager.Instance.gameTime;
             timeRemaining = totalGameTime;
             timerIsRunning = true;
+            canBeFakeLever = true;
         }
 
         private void Update()
         {
             if (timerIsRunning)
             {
+                if (timeRemaining < (totalGameTime *0.8))
+                {
+                    canBeFakeLever = false;
+                }
+                
                 if (timeRemaining >= 0)
                 {
                     timeRemaining -= Time.deltaTime;
                     HUDManager.Instance.UpdateTimeDisplay(timeRemaining);
                 }
+               
                 else
                 {
                     timerIsRunning = false;
