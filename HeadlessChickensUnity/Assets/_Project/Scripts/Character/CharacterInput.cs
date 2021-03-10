@@ -130,7 +130,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             {
                 //_anim.SetBool("Jump", false);
                 _anim.Play("JumpLanding");
-                animAirborne = false;
+                photonView.RPC("AnimAirborneOn", Photon.Pun.RpcTarget.AllBufferedViaServer);
             }
         }
 
@@ -223,6 +223,18 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public void SwapAnimator()
         {
             _anim = GetComponentInChildren<Animator>();
+        }
+
+        [PunRPC]
+        public void AnimAirborneOn()
+        {
+            animAirborne = true;
+        }
+
+        [PunRPC]
+        public void AnimAirborneOff()
+        {
+            animAirborne = false;
         }
 
         private void Jump()

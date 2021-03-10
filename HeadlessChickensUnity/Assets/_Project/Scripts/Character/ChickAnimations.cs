@@ -16,7 +16,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         void TakeoffComplete()
         {
-            characterInput.animAirborne = true;
+            characterInput.photonView.RPC("AnimAirborneOn", Photon.Pun.RpcTarget.AllBufferedViaServer);
         }
     }
 
