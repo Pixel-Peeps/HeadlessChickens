@@ -9,8 +9,13 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
     {
         //public bool hasLever;
 
+        Animator anim;
+        [SerializeField] GameObject fakeChickPrefab;
+        public GameObject fakeChickInstance;
+
         public void Start()
         {
+            anim = GetComponentInChildren<Animator>();
             isFox = true;
         }
 
@@ -39,17 +44,22 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             {
                 if (t.gameObject.TryGetComponent(out ChickenBehaviour chickenComponent))
                 {
-                    ChickenBehaviour chicken = chickenComponent;
+                    ChickenBehaviour chick = chickenComponent;
  
-                    chicken.photonView.RPC("RPC_LeaveHiding", RpcTarget.AllBufferedViaServer,
-                        chicken.positionBeforeHiding);
+                    chick.photonView.RPC("RPC_LeaveHiding", RpcTarget.AllBufferedViaServer,
+                        chick.positionBeforeHiding);
  
                     currentHidingSpot.GetComponent<HidingSpot>().photonView
                         .RPC("RPC_ToggleAccess", RpcTarget.AllViaServer);
 
-                    Debug.Log("<color=green>Before chicken caught call</color>");
-                    chicken.ChickenCaptured();
-                    Debug.Log("<color=green>After chicken caught call</color>");
+                    if (chick.hasDecoy)
+                    {
+                        FoundDecoy(chick);
+                    }
+                    else
+                    {
+                        chick.ChickenCaptured();
+                    }
                 }
                 else
                 {
@@ -74,11 +84,31 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                     
                     if (!chick.isHiding && chick.hasDecoy)
                     {
-                        Debug.Log("DECOY DEPLOYED");
-                        StartCoroutine(chick.DecoyCooldown());
-                        chick.hasTrap = false;
+                        FoundDecoy(chick);
                     }
                 }
+            }
+        }
+
+        private void FoundDecoy(ChickenBehaviour chick)
+        {
+            Debug.Log("DECOY DEPLOYED");
+            _controller.moveSpeed = 0;
+            anim.SetTrigger("DecoyTrigger");
+            photonView.RPC("SpawnFakeChick", RpcTarget.AllBufferedViaServer, chick.transform);
+
+            chick.photonView.RPC("RPC_ToggleDecoy", RpcTarget.AllViaServer, false);
+            // StartCoroutine(chick.DecoyCooldown());
+            chick.hasTrap = false;
+        }
+
+        // Trying to spawn an object over the network, be nice
+        [PunRPC]
+        public void SpawnFakeChick(Transform chickTransform)
+        {
+            if (photonView.IsMine)
+            {
+                GameObject fakeChickInstance = Instantiate(fakeChickPrefab, chickTransform.position, chickTransform.rotation);
             }
         }
     }

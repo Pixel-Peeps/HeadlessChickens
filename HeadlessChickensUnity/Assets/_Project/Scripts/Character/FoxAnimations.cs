@@ -2,38 +2,98 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FoxAnimations : MonoBehaviour
+namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 {
-    [SerializeField] private GameObject colliderHolder;
-
-    [SerializeField] private ParticleSystem[] trails;
-
-    void TurnColliderOn()
+    public class FoxAnimations : MonoBehaviour
     {
-        colliderHolder.SetActive(true);
-    }
+        [SerializeField] private GameObject colliderHolder;
+        CharacterInput characterInput;
+        FoxBehaviour foxBehaviour;
 
-    void TurnColliderOff()
-    {
-        colliderHolder.SetActive(false);
-    }
+        private float originalSpeed;
 
+        [SerializeField] ParticleSystem[] trails;
+        [SerializeField] ParticleSystem explosionEffect;
+        [SerializeField] ParticleSystem painEffect;
+        [SerializeField] GameObject stunnedEffect;
 
-    void TurnTrailsOn()
-    {
-        foreach (ParticleSystem trail in trails)
+        private void Start()
         {
-            var em = trail.emission;
-            em.enabled = true;
+            characterInput = GetComponentInParent<CharacterInput>();
+            foxBehaviour = GetComponentInParent<FoxBehaviour>();
+            originalSpeed = characterInput.moveSpeed;
         }
-    }
 
-    void TurnTrailsOff()
-    {
-        foreach (ParticleSystem trail in trails)
+
+        // Swipe
+        void TurnColliderOn()
         {
-            var em = trail.emission;
-            em.enabled = false;
+            colliderHolder.SetActive(true);
+        }
+
+        void TurnColliderOff()
+        {
+            colliderHolder.SetActive(false);
+        }
+        
+        
+        void TurnTrailsOn()
+        {
+            foreach (ParticleSystem trail in trails)
+            {
+                var em = trail.emission;
+                em.enabled = true;
+            }
+        }
+
+        void TurnTrailsOff()
+        {
+            foreach (ParticleSystem trail in trails)
+            {
+                var em = trail.emission;
+                em.enabled = false;
+            }
+        }
+
+
+        // Trap Aftermath
+        void DestroyDecoyChick()
+        {
+            if (foxBehaviour.fakeChickInstance == null) return;
+            
+            Destroy(foxBehaviour.fakeChickInstance);
+        }
+
+        void Explosion()
+        {
+            if (foxBehaviour.fakeChickInstance == null) return;
+
+            ParticleSystem explosionPrefab = Instantiate(explosionEffect, foxBehaviour.fakeChickInstance.transform.position, Quaternion.identity);
+            Destroy(explosionPrefab, 3f);
+        }
+
+
+
+        void ActivateStunnedEffect()
+        {
+            // stunnedEffect.SetActive(true);
+        }
+
+        void DeactivateStunnedEffect()
+        {
+            // stunnedEffect.SetActive(false);
+        }
+
+
+        void PainFlash()
+        {
+            painEffect.Play();
+        }
+
+        void RestoreSpeed()
+        {
+            characterInput.moveSpeed = originalSpeed;
         }
     }
 }
+
