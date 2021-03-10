@@ -128,7 +128,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
                 //photonView.RPC("RPC_DestroySelf", RpcTarget.AllBufferedViaServer);
             }
-
+ 
            
         
     }

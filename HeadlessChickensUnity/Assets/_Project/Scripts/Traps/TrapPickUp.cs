@@ -8,6 +8,12 @@ using UnityEngine;
 
 public class TrapPickUp : MonoBehaviourPunCallbacks
 {
+    private Material origMat;
+    public Material invalidMat;
+    public GameObject eggPart;
+    private bool matChanged;
+    private MeshRenderer mR;
+    
     [SerializeField] private List<GameObject> chickenTraps;
 
     [Header("Trap BLUEPRINTS")] public GameObject tubGluePrefab;
@@ -19,6 +25,18 @@ public class TrapPickUp : MonoBehaviourPunCallbacks
     {
         chickenTraps.Add(rottenEggPrefab);
         chickenTraps.Add(eggShellPrefab);
+        
+        mR = eggPart.GetComponent<MeshRenderer>();
+        origMat = mR.material;
+    }
+
+    public IEnumerator BetterLuckNextTime()
+    {
+        mR.material = invalidMat;
+        yield return new WaitForSeconds(0.7f);
+        mR.material = origMat;
+        matChanged = false;
+
     }
 
     public void OnTriggerEnter(Collider other)
@@ -28,6 +46,12 @@ public class TrapPickUp : MonoBehaviourPunCallbacks
         if (other.gameObject.GetComponent<CharacterBase>().hasTrap || other.gameObject.GetComponent<CharacterBase>().hasBeenCaught)
         {
             Debug.Log("has trap already! or is caught!");
+            if (!matChanged)
+            {
+                matChanged = true;
+                StartCoroutine(BetterLuckNextTime());
+            }
+
             return;
         }
 

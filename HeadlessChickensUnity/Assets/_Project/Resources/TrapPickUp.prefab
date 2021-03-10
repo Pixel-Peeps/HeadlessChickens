@@ -20,7 +20,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &213685057680608483
 Transform:
   m_ObjectHideFlags: 0
@@ -95,6 +95,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aefc64391b77a43bf8d2928212bf2213, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  invalidMat: {fileID: 2100000, guid: cd651ad7ec4324701970fa89d5739ec8, type: 2}
+  eggPart: {fileID: 2692750260404337703}
   chickenTraps: []
   tubGluePrefab: {fileID: 801398596417631414, guid: a50ecf0e11b73438c86fc7c7ccdb710d, type: 3}
   rottenEggPrefab: {fileID: 801398596417631414, guid: e8fcf5f19ec064a96a4b06be3368eb24, type: 3}
@@ -294,6 +296,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a888012b5f48fd44e9acb42d8934201c, type: 2}
+    - target: {fileID: 4744951564299042853, guid: a18cfd804ccbc46a9bdd771aeecd8211, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 76c95b76c30804b528c474046e948c2d, type: 2}
     - target: {fileID: 8347932461876201537, guid: a18cfd804ccbc46a9bdd771aeecd8211, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.12
