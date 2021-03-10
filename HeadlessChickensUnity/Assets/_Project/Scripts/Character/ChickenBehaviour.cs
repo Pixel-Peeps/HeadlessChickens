@@ -22,7 +22,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         [SerializeField] GameObject headlessChick;
 
         [Header("Mesh and Materials")]
-        [SerializeField] Renderer chickenMesh;
+        [SerializeField] GameObject chickenMesh;
         [SerializeField] Material caughtMat;
         [SerializeField] Material normalMat;
         
@@ -340,7 +340,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             positionBeforeHiding = transform.position;
 
             // Disable Mesh
-            chickenMesh.enabled = false;
+            chickenMesh.SetActive(false);
 
             // lock physics on entering hiding
             _rigidbody.isKinematic = true;
@@ -383,7 +383,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             _rigidbody.isKinematic = false;
 
             // Re-enable Mesh
-            chickenMesh.enabled = true;
+            chickenMesh.SetActive(true);
 
             if (photonView.IsMine)
             {
