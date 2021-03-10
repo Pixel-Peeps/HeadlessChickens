@@ -69,9 +69,8 @@ namespace PixelPeeps.HeadlessChickens.UI
             Debug.Log( "fading in", this );
 
             initialColour = imageToFade.color;
-            initialColour = new Color(initialColour.r, initialColour.g, initialColour.b, 0);
             
-            LeanTween.value(gameObject, initialColour, fadeInTarget, fadeTime).setOnUpdate(SetImageColour);
+            LeanTween.color(gameObject, fadeInTarget, fadeTime).setOnUpdate(SetImageColour);
         }
         
         public void FadeOutImage()
@@ -84,9 +83,8 @@ namespace PixelPeeps.HeadlessChickens.UI
             Debug.Log( "fading out", this );
             
             initialColour = imageToFade.color;
-            initialColour = new Color(initialColour.r, initialColour.g, initialColour.b, 1);
             
-            LeanTween.value(gameObject, initialColour, fadeOutTarget, fadeTime).setOnUpdate(SetImageColour);
+            LeanTween.color(gameObject, fadeOutTarget, fadeTime).setOnUpdate(SetImageColour);
         }
         
         public void FadeInText()
@@ -106,9 +104,9 @@ namespace PixelPeeps.HeadlessChickens.UI
             textToFade.color = new Color(initialColour.r, initialColour.g, initialColour.b, v);
         }
         
-        private void SetImageColour(float v)
+        private void SetImageColour(Color v)
         {
-            imageToFade.color = new Color(initialColour.r, initialColour.g, initialColour.b, v);
+            imageToFade.color = v;
         }
         
         #endregion

@@ -125,6 +125,7 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
        {
            // Chick pulling normal lever
            progressRoutine = ProgressLoop(characterBase);
+           progressBar.BeginFadeIn();
            StartCoroutine(progressRoutine);
 
        }
