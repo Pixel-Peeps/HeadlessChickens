@@ -90,7 +90,7 @@ public class HidingSpot : MonoBehaviourPunCallbacks, IInteractable
 
             searchProgress = tempProgress;
             // Debug.Log("leverProgress is " + leverProgress);
-            yield return new WaitForSeconds(0.005f);
+            yield return new WaitForSeconds(0.01f);
         }
         searchProgress = 0;
         character._controller._anim.SetBool("SearchBool", false);
