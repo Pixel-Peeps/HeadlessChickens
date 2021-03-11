@@ -256,7 +256,7 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
     [PunRPC]
     public void PlayFakeLeverSound()
     {
-        audioSource.PlayOneShot(falseLeverAlarm, 0.6f);
+        audioSource.PlayOneShot(falseLeverAlarm, 0.4f);
     }
 
     private void PlaceFakeLever(CharacterBase characterBase)
@@ -310,7 +310,7 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
     {
         if (audioSource != null)
         {
-            audioSource.PlayOneShot(leverActivated, 0.6f);
+            audioSource.PlayOneShot(leverActivated, 0.4f);
         }
     }
 
