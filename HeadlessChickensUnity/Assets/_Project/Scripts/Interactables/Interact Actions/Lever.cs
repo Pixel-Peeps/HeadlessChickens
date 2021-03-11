@@ -109,14 +109,16 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
        // PhotonView gameManagerPhotonView = NewGameManager.Instance.GetComponent<PhotonView>();
        if (!isFake && !characterBase.isFox)
        {
-           leverManager.photonView.RPC("RPC_IncrementLeverCount", RpcTarget.AllBufferedViaServer);
-           interactable.photonView.RPC("RPC_ToggleInteractAllowed", RpcTarget.AllBufferedViaServer);
-           photonView.RPC("PlayLeverAnimation", RpcTarget.AllBufferedViaServer);
            Debug.Log("audio source null?: "+audioSource.isActiveAndEnabled);
            if (audioSource != null)
            {
                audioSource.PlayOneShot(leverActivated);
            }
+           
+           leverManager.photonView.RPC("RPC_IncrementLeverCount", RpcTarget.AllBufferedViaServer);
+           interactable.photonView.RPC("RPC_ToggleInteractAllowed", RpcTarget.AllBufferedViaServer);
+           photonView.RPC("PlayLeverAnimation", RpcTarget.AllBufferedViaServer);
+        
 
            HUDManager.Instance.UpdateInteractionText();
            
