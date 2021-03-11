@@ -95,7 +95,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             Debug.Log("DECOY DEPLOYED");
             _controller.moveSpeed = 0;
             anim.SetTrigger("DecoyTrigger");
-            photonView.RPC("SpawnFakeChick", RpcTarget.AllBufferedViaServer, chick.photonView.ViewID);
+            // photonView.RPC("SpawnFakeChick", RpcTarget.AllBufferedViaServer, chick.photonView.ViewID);
+            SpawnFakeChick(chick.photonView.ViewID);
 
             chick.photonView.RPC("RPC_ToggleDecoy", RpcTarget.AllViaServer, false);
             // StartCoroutine(chick.DecoyCooldown());
@@ -103,13 +104,13 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         }
 
         // Trying to spawn an object over the network, be nice
-        [PunRPC]
+        // [PunRPC]
         public void SpawnFakeChick(int chickID)
         {
             if (photonView.IsMine)
             {
                 Transform chick = PhotonView.Find(chickID).transform;
-                GameObject fakeChickInstance = Instantiate(fakeChickPrefab, chick.position, chick.rotation);
+                GameObject fakeChickInstance = PhotonNetwork.Instantiate(fakeChickPrefab.name, chick.position, chick.rotation);
             }
         }
     }
