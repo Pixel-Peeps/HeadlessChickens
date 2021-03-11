@@ -106,14 +106,14 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             }
         }
 
-        [PunRPC]
-        public void RestoreHead()
-        {
-            normalChick.SetActive(true);
-            headlessChick.SetActive(false);
+        //[PunRPC]
+        //public void RestoreHead()
+        //{
+        //    normalChick.SetActive(true);
+        //    headlessChick.SetActive(false);
 
-            hasBeenCaught = false;
-        }
+        //    hasBeenCaught = false;
+        //}
 
         /*############################################
         *           CHICKEN ESCAPED / SPEC CAM       *
