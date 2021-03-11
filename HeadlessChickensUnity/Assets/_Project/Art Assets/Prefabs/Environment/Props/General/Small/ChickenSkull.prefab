@@ -74,9 +74,10 @@ GameObject:
   - component: {fileID: 8696560009827188076}
   - component: {fileID: 6653501191642760518}
   - component: {fileID: 4381890492580091176}
+  - component: {fileID: 3744588724913706099}
   m_Layer: 0
   m_Name: ChickenSkull
-  m_TagString: Wall
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -151,13 +152,26 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2012540315375181312}
-  m_Material: {fileID: 13400000, guid: d998c5b4cc942bd4580fd702b211dfca, type: 2}
+  m_Material: {fileID: 13400000, guid: 7947a28db962b2d4f9ba8bd1dad9647e, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7549536515295549370, guid: 6d09221903058459f90a131083b535ee, type: 3}
+--- !u!65 &3744588724913706099
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2012540315375181312}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6810503, y: 0.36353508, z: 0.45524788}
+  m_Center: {x: -0.04843092, y: 0.16708712, z: -0.047205925}
 --- !u!1 &2295345594156336963
 GameObject:
   m_ObjectHideFlags: 0

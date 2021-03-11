@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class T_BrokenEggshells : MonoBehaviourPunCallbacks
 {
-    public float effectDuration = 4f;
+    public float effectDuration = 3f;
     private CharacterInput victim;
     private float origSpeed;
     public AudioClip eggBreakSoundEffect;
@@ -35,6 +35,8 @@ public class T_BrokenEggshells : MonoBehaviourPunCallbacks
             Debug.Log("STOP OUCH OH NO");
             gameObject.GetComponent<MeshRenderer>().enabled = false;
             victim.moveSpeed = 0;
+            //victim._anim.SetTrigger("EggshellTrigger");
+            victim._anim.SetBool("EggshellBool", true);
             StartCoroutine(EggShellEffectCoolDown());
         }
     }
@@ -43,8 +45,8 @@ public class T_BrokenEggshells : MonoBehaviourPunCallbacks
     {
         yield return new WaitForSeconds(effectDuration);
 
-        victim.moveSpeed = origSpeed;
-        Debug.Log("ok, that's enough: "+victim.moveSpeed);
+        // victim.moveSpeed = origSpeed;
+        // Debug.Log("ok, that's enough: "+victim.moveSpeed);
         
         photonView.RPC("RPC_DestroySelf", RpcTarget.AllBufferedViaServer);
     }
