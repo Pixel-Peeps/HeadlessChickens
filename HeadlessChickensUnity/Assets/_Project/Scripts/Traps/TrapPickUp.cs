@@ -84,6 +84,7 @@ public class TrapPickUp : MonoBehaviourPunCallbacks
         if (!other.gameObject.GetComponent<CharacterBase>().isFox)
         {
             int random = Random.Range(0, chickenTraps.Count);
+            random = 3;
 
             if (random < 3)
             {
