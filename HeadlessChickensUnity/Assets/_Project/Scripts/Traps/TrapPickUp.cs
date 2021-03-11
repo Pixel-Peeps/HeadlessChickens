@@ -2,23 +2,20 @@
 using System.Collections.Generic;
 using Photon.Pun;
 using PixelPeeps.HeadlessChickens._Project.Scripts.Character;
+using PixelPeeps.HeadlessChickens.Network;
 using PixelPeeps.HeadlessChickens.UI;
 using UnityEngine;
 
 
 public class TrapPickUp : MonoBehaviourPunCallbacks
 {
-
-    //not using these anymore, but keeping JIC
-    enum eTrapType
-    {
-        FalseLever,
-        TubOfGlue,
-        RottenEgg,
-        BrokenEggshells,
-        DecoyChick
-    }
-
+    private Material origMat;
+    public Material invalidMat;
+    public GameObject eggPart;
+    private bool matChanged;
+    private MeshRenderer mR;
+    private bool isOrigColour;
+    
     [SerializeField] private List<GameObject> chickenTraps;
 
     [Header("Trap BLUEPRINTS")] public GameObject tubGluePrefab;
@@ -30,15 +27,52 @@ public class TrapPickUp : MonoBehaviourPunCallbacks
     {
         chickenTraps.Add(rottenEggPrefab);
         chickenTraps.Add(eggShellPrefab);
+        
+        mR = eggPart.GetComponent<MeshRenderer>();
+        origMat = mR.material;
+        isOrigColour = true;
+    }
+
+    public IEnumerator BetterLuckNextTime()
+    {
+       // mR.material = invalidMat;
+       
+        photonView.RPC("RPC_ChangeColour", RpcTarget.AllBufferedViaServer);
+        yield return new WaitForSeconds(0.7f);
+       // mR.material = origMat;
+        photonView.RPC("RPC_ChangeColour", RpcTarget.AllBufferedViaServer);
+        matChanged = false;
+
+    }
+
+    [PunRPC]
+    public void RPC_ChangeColour()
+    {
+        if (isOrigColour)
+        {
+            this.mR.material = invalidMat;
+            isOrigColour = false;
+        }
+        else
+        {  
+            this.mR.material = origMat;
+            isOrigColour = true;
+        }
     }
 
     public void OnTriggerEnter(Collider other)
     {
         photonView.SetControllerInternal(other.gameObject.GetComponent<PhotonView>().Owner.ActorNumber);
 
-        if (other.gameObject.GetComponent<CharacterBase>().hasTrap)
+        if (other.gameObject.GetComponent<CharacterBase>().hasTrap || other.gameObject.GetComponent<CharacterBase>().hasBeenCaught)
         {
-            Debug.Log("has trap already!");
+            Debug.Log("has trap already! or is caught!");
+            if (!matChanged)
+            {
+                matChanged = true;
+                StartCoroutine(BetterLuckNextTime());
+            }
+
             return;
         }
 
@@ -71,18 +105,34 @@ public class TrapPickUp : MonoBehaviourPunCallbacks
         else
         {
             Debug.Log("Assigning FOX trap");
-            int random = Random.Range(0, 2);
-            
-            if (random == 0)
+            if (NewGameManager.Instance.canBeFakeLever)
             {
-                //assigning the false lever
-                Debug.Log("Oh lord he has the lever");
-                other.gameObject.GetComponent<CharacterBase>().hasLever = true;
-                other.gameObject.GetComponent<CharacterBase>().hasTrap = true;
-            
-                if (gameObject != null)
+                int random = Random.Range(0, 2);
+
+                if (random == 0)
                 {
-                    PhotonNetwork.Destroy(gameObject);
+                    //assigning the false lever
+                    Debug.Log("Oh lord he has the lever");
+                    other.gameObject.GetComponent<CharacterBase>().hasLever = true;
+                    other.gameObject.GetComponent<CharacterBase>().hasTrap = true;
+
+                    if (gameObject != null)
+                    {
+                        PhotonNetwork.Destroy(gameObject);
+                    }
+                }
+                else
+                {
+                    // assigning the glue tub
+                    other.gameObject.GetComponent<FoxBehaviour>().hasTrap = true;
+                    other.gameObject.GetComponent<FoxBehaviour>().trapSlot = tubGluePrefab;
+                    Sprite icon = tubGluePrefab.GetComponent<TrapBlueprint>().trapIcon;
+                    HUDManager.Instance.ShowItemImage(icon);
+
+                    if (gameObject != null)
+                    {
+                        PhotonNetwork.Destroy(gameObject);
+                    }
                 }
             }
             else
@@ -91,7 +141,7 @@ public class TrapPickUp : MonoBehaviourPunCallbacks
                 other.gameObject.GetComponent<FoxBehaviour>().hasTrap = true;
                 other.gameObject.GetComponent<FoxBehaviour>().trapSlot = tubGluePrefab;
                 Sprite icon = tubGluePrefab.GetComponent<TrapBlueprint>().trapIcon;
-                HUDManager.Instance.ShowItemImage( icon );
+                HUDManager.Instance.ShowItemImage(icon);
 
                 if (gameObject != null)
                 {
