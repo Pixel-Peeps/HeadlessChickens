@@ -221,7 +221,6 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
         for (var tempProgress = leverProgress; tempProgress > 0; tempProgress -= 0.025f)
         {
             leverProgress = tempProgress;
-            // Debug.Log("leverProgress is " + leverProgress);
             yield return new WaitForSeconds(0.1f);
             progressBar.progress = Mathf.FloorToInt(leverProgress * 100);
             progressBar.GetCurrentFill();
@@ -250,10 +249,14 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
     {
         StopCoroutine(progressRoutine);
         progressBar.BeginFadeOut();
-        
-        audioSource.PlayOneShot(falseLeverAlarm);
-        Debug.Log("wee woo wee woo FAKE LEVER");
+        photonView.RPC("PlayFakeLeverSound", RpcTarget.AllViaServer);
         regularBits.gameObject.SetActive(false);
+    }
+
+    [PunRPC]
+    public void PlayFakeLeverSound()
+    {
+        audioSource.PlayOneShot(falseLeverAlarm);
     }
 
     private void PlaceFakeLever(CharacterBase characterBase)
@@ -299,22 +302,16 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
     public void PlayLeverAnimation()
     {
         animator.Play("LeverOn");
-        photonView.RPC("PlayLeverSound", RpcTarget.AllBuffered);
+        photonView.RPC("PlayLeverSound", RpcTarget.AllViaServer);
     }
 
     [PunRPC]
     public void PlayLeverSound()
     {
-        Debug.Log("lever sound to others RPC");
-        
         if (audioSource != null)
         {
             audioSource.PlayOneShot(leverActivated);
         }
     }
-    
-    // public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    // {
-    //     
-    // }
+
 }
