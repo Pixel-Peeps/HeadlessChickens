@@ -67,8 +67,6 @@ namespace PixelPeeps.HeadlessChickens.UI
             }
             
             Debug.Log( "fading in", this );
-
-            initialColour = imageToFade.color;
             
             LeanTween.color(gameObject, fadeInTarget, fadeTime).setOnUpdate(SetImageColour);
         }
@@ -81,8 +79,6 @@ namespace PixelPeeps.HeadlessChickens.UI
             }
             
             Debug.Log( "fading out", this );
-            
-            initialColour = imageToFade.color;
             
             LeanTween.color(gameObject, fadeOutTarget, fadeTime).setOnUpdate(SetImageColour);
         }

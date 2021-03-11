@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using PixelPeeps.HeadlessChickens.UI;
 
 namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 {
@@ -95,7 +96,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
                 if (photonView.IsMine)
                 {
-                    smokeImage.GetComponent<ToggleSmokeTrap>().EnableDisableSmoke(true);
+                    smokeImage.GetComponent<UITweener>().FadeInImage();
                 }
 
                 photonView.RPC("RPC_ToggleParticles", RpcTarget.AllViaServer, true);
@@ -121,7 +122,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             {
                 yield return new WaitForSeconds(effectDuration);
 
-                smokeImage.GetComponent<ToggleSmokeTrap>().EnableDisableSmoke(false);
+                smokeImage.GetComponent<UITweener>().FadeOutImage();
                 photonView.RPC("RPC_ToggleParticles", RpcTarget.AllViaServer, false);
 
                 Debug.Log("ok, that's enough: ");
