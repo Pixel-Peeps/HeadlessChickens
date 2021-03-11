@@ -99,7 +99,6 @@ public class TrapPickUp : MonoBehaviourPunCallbacks
                 // assigning decoy chicken (no blueprint)
                 ChickenBehaviour chick = other.gameObject.GetComponent<ChickenBehaviour>();
                 chick.photonView.RPC("RPC_ToggleDecoy", RpcTarget.AllBufferedViaServer, true);
-                
                 //other.gameObject.GetComponent<ChickenBehaviour>().hasDecoy = true;
             }
 
@@ -120,7 +119,6 @@ public class TrapPickUp : MonoBehaviourPunCallbacks
                 if (random == 0)
                 {
                     //assigning the false lever
-                    Debug.Log("Oh lord he has the lever");
                     other.gameObject.GetComponent<CharacterBase>().hasLever = true;
                     other.gameObject.GetComponent<CharacterBase>().hasTrap = true;
 

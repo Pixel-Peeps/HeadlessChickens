@@ -1,4 +1,5 @@
-﻿using Photon.Pun;
+﻿using System.Collections;
+using Photon.Pun;
 using System.Collections.Generic;
 using PixelPeeps.HeadlessChickens.UI;
 using UnityEngine;
@@ -69,6 +70,8 @@ namespace PixelPeeps.HeadlessChickens.Network
                 }
             }
         }
+
+        
 
         [PunRPC]
         public void RPC_AllLeversPulled()
