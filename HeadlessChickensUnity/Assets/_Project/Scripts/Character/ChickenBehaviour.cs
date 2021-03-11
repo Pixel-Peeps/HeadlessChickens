@@ -47,13 +47,14 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public float effectDuration = 4;
         
         [Header("Sound Effects")]
-        public AudioClip chickenEscapedSFX;
         private AudioSource _audioSource;
 
-       
-        
+        public AudioClip chickenEscapedSFX;
+        public AudioClip chickDeathSFX;
+        [Range(0, 1f)] public float chickDeathVolume = 0.5f;
 
-        
+
+
         private new void Awake()
         {
             _audioSource = Camera.main.GetComponent<AudioSource>();
@@ -92,6 +93,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         private void SwitchToHeadless(int chickID)
         {
             HUDManager.Instance.UpdateChickCounter();
+
+            _audioSource.PlayOneShot(chickDeathSFX, chickDeathVolume);
 
             if (photonView.ViewID == chickID)
             {
