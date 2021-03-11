@@ -24,6 +24,10 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         public Sprite falseLeverIcon;
 
+        private AudioSource _audioSource;
+        public AudioClip explosionSoundEffect;
+        [Range(0, 1f)] public float explosionVolume = 0.45f;
+
         public void Start()
         {
             anim = GetComponentInChildren<Animator>();
@@ -32,6 +36,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             smokeImage = HUDManager.Instance.smokeImage;
             smokeTween = smokeImage.GetComponent<UITweener>();
             Debug.Log( "<color=magenta> Got component: " + smokeTween + " on smokeImage </color>" );
+
+            _audioSource = Camera.main.GetComponent<AudioSource>();
         }
 
         protected override void Action()
@@ -120,6 +126,12 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             Debug.Log( "phew smelly smelly" );
             // gameObject.GetComponent<MeshRenderer>().enabled = false;
             StartCoroutine( RottenEggEffectCoolDown() );
+        }
+
+        [PunRPC]
+        public void PlayExplosionSoundEffect()
+        {
+            _audioSource.PlayOneShot(explosionSoundEffect, explosionVolume);
         }
 
         [PunRPC]
