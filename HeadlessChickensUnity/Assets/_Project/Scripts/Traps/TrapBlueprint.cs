@@ -10,6 +10,7 @@ public class TrapBlueprint : MonoBehaviourPunCallbacks
     
     public GameObject actualTrapPrefab;
     public Sprite trapIcon;
+    public AudioClip trapPlaceSoundEffect;
     
     //public Camera _cam;
     private RaycastHit _hit;
@@ -20,11 +21,13 @@ public class TrapBlueprint : MonoBehaviourPunCallbacks
     private Vector3 _newPosition;
     
     private InputControls _controls;
+    private AudioSource _audioSource;
 
 
     public virtual void OnEnable()
     {
         //base.OnEnable();
+        _audioSource = Camera.main.GetComponent<AudioSource>();
         _controls = new InputControls();
         _controls.Enable();
         _controls.Player.TrapInteract.performed += ctx => SetDown();
@@ -68,8 +71,9 @@ public class TrapBlueprint : MonoBehaviourPunCallbacks
             gameObject.transform.GetComponentInParent<CharacterBase>().hasTrap = false;
             gameObject.transform.GetComponentInParent<CharacterBase>().isBlueprintActive = false;
             
-            
+            _audioSource.PlayOneShot(trapPlaceSoundEffect);
             photonView.RPC("RPC_SpawnTrap", RpcTarget.AllBufferedViaServer);
+            //
             HUDManager.Instance.HideItemImage();
             //photonView.RPC("RPC_DestroySelf", RpcTarget.AllViaServer);
             _controls.Disable();

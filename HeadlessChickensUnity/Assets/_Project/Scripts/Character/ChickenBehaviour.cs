@@ -45,10 +45,18 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         [Header("Glue Tub Effect")] private float origChickenSpeed;
         public float effectDuration = 4;
+        
+        [Header("Sound Effects")]
+        public AudioClip chickenEscapedSFX;
+        private AudioSource _audioSource;
+
+       
+        
 
         
         private new void Awake()
         {
+            _audioSource = Camera.main.GetComponent<AudioSource>();
             base.Awake();
             controls = new InputControls();
             
@@ -142,8 +150,10 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
                 if(!isLastChick)
                 {
+                    _audioSource.PlayOneShot(chickenEscapedSFX);
                     SwitchToObserverCam();
                     chickenManager.UpdateEscapedChickCam(photonView.ViewID);
+                       
                 }
 
                 // chickenManager.photonView.RPC("UpdateEscapedChickCam", RpcTarget.AllViaServer, chickToFollowID);

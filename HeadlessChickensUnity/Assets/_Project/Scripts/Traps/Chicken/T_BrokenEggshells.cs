@@ -10,7 +10,13 @@ public class T_BrokenEggshells : MonoBehaviourPunCallbacks
     public float effectDuration = 4f;
     private CharacterInput victim;
     private float origSpeed;
+    public AudioClip eggBreakSoundEffect;
+    private AudioSource _audioSource;
 
+    private void Start()
+    {
+        _audioSource = Camera.main.GetComponent<AudioSource>();
+    }
     public void OnTriggerEnter(Collider other)
     {
         photonView.SetControllerInternal(other.gameObject.GetComponent<PhotonView>().Owner.ActorNumber);
@@ -23,6 +29,7 @@ public class T_BrokenEggshells : MonoBehaviourPunCallbacks
         if (_character.isFox)
         {
             //effect
+            _audioSource.PlayOneShot(eggBreakSoundEffect);
             victim = other.gameObject.GetComponent<CharacterInput>();
             origSpeed = victim.moveSpeed; 
             Debug.Log("STOP OUCH OH NO");
