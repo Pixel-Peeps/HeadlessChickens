@@ -90,16 +90,19 @@ public class TrapPickUp : MonoBehaviourPunCallbacks
                 //assigning random from egg shells & rotten egg
                 other.gameObject.GetComponent<ChickenBehaviour>().trapSlot = chickenTraps[random];
                 Sprite icon = chickenTraps[random].GetComponent<TrapBlueprint>().trapIcon;
-                HUDManager.Instance.ShowItemImage( icon );
+                HUDManager.Instance.ShowItemImage(icon);
                 other.gameObject.GetComponent<ChickenBehaviour>().blueprintIndex = random;
             }
-
-            /*else if (random == 3)
+            
+            if (random == 3)
             {
-                //assigning decoy chicken (no blueprint)
-                other.gameObject.GetComponent<ChickenBehaviour>().hasDecoy = true;
+                // assigning decoy chicken (no blueprint)
+                ChickenBehaviour chick = other.gameObject.GetComponent<ChickenBehaviour>();
+                chick.photonView.RPC("RPC_ToggleDecoy", RpcTarget.AllBufferedViaServer, true);
+                
+                //other.gameObject.GetComponent<ChickenBehaviour>().hasDecoy = true;
             }
-*/
+
             other.gameObject.GetComponent<ChickenBehaviour>().hasTrap = true;
 
             if (gameObject != null)

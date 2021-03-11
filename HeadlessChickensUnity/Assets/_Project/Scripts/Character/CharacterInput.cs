@@ -53,7 +53,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public float movingJumpGeneralBoost = 0.8f;
 
         [Header("Animation")] 
-        private Animator _anim;
+        public Animator _anim;
         public float animSpeed;
         public float verticalForward;
         [SerializeField] float animAcceleration;
@@ -288,8 +288,11 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
          ##################################*/
 
         #region INPUT CALLBACKS
+
+
         private void MoveStarted(InputAction.CallbackContext obj)
         {
+
             if (_character.State == CharacterBase.EStates.Hiding) return;
 
             _movDirection = obj.ReadValue<Vector2>();
@@ -407,7 +410,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             {
                 if (_character.isFox && !_character.isBlueprintActive)
                 {
-                    _anim.SetTrigger("SwipeTrigger");
+                    // _anim.SetTrigger("SwipeTrigger");
+                    _anim.SetBool("SwipeBool", true);
                 }
                 
                 if (_character.isFox && _character.isBlueprintActive)

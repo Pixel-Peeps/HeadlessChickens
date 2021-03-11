@@ -1,39 +1,137 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FoxAnimations : MonoBehaviour
+namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 {
-    [SerializeField] private GameObject colliderHolder;
-
-    [SerializeField] private ParticleSystem[] trails;
-
-    void TurnColliderOn()
+    public class FoxAnimations : MonoBehaviour
     {
-        colliderHolder.SetActive(true);
-    }
+        [SerializeField] private GameObject colliderHolder;
+        CharacterInput characterInput;
+        FoxBehaviour foxBehaviour;
 
-    void TurnColliderOff()
-    {
-        colliderHolder.SetActive(false);
-    }
+        public float originalSpeed;
+
+        [SerializeField] ParticleSystem[] trails;
+
+        [SerializeField] GameObject explosionEffect;
+        [SerializeField] GameObject stunnedEffect;
+
+        [SerializeField] ParticleSystem painEffectPrefab;
+        public ParticleSystem painEffect;
+        [SerializeField] GameObject leftFoot;
 
 
-    void TurnTrailsOn()
-    {
-        foreach (ParticleSystem trail in trails)
+        private void Start()
         {
-            var em = trail.emission;
-            em.enabled = true;
+            characterInput = GetComponentInParent<CharacterInput>();
+            foxBehaviour = GetComponentInParent<FoxBehaviour>();
+
+            originalSpeed = characterInput.moveSpeed;
+
+            // painEffect = Instantiate(painEffectPrefab, leftFoot.transform.position, Quaternion.identity, leftFoot.transform);
+            //painEffect.gameObject.transform.position = leftFoot.transform.position;
+            //painEffect.gameObject.transform.parent = leftFoot.transform;
         }
-    }
 
-    void TurnTrailsOff()
-    {
-        foreach (ParticleSystem trail in trails)
+
+        // Swipe
+        void TurnColliderOn()
         {
-            var em = trail.emission;
-            em.enabled = false;
+            colliderHolder.SetActive(true);
+        }
+
+        void TurnColliderOff()
+        {
+            colliderHolder.SetActive(false);
+        }
+        
+        
+        void TurnTrailsOn()
+        {
+            foreach (ParticleSystem trail in trails)
+            {
+                var em = trail.emission;
+                em.enabled = true;
+            }
+        }
+
+        void TurnTrailsOff()
+        {
+            foreach (ParticleSystem trail in trails)
+            {
+                var em = trail.emission;
+                em.enabled = false;
+            }
+        }
+
+        void ResetBool()
+        {
+            if (characterInput._anim.GetBool("SwipeBool") == true)
+            {
+                characterInput._anim.SetBool("SwipeBool", false);
+            }
+
+            if (characterInput._anim.GetBool("DecoyBool") == true)
+            {
+                characterInput._anim.SetBool("DecoyBool", false);
+            }
+
+            if (characterInput._anim.GetBool("EggshellBool") == true)
+            {
+                characterInput._anim.SetBool("EggshellBool", false);
+            }
+        }
+
+
+        // Trap Aftermath
+        void DestroyDecoyChick()
+        {
+            if (foxBehaviour.fakeChickInstance == null) return;
+
+            PhotonNetwork.Destroy(foxBehaviour.fakeChickInstance);
+            // Destroy(foxBehaviour.fakeChickInstance);
+        }
+
+        void Explosion()
+        {
+            if (foxBehaviour.fakeChickInstance == null) return;
+
+            StartCoroutine(ExplosionRoutine());
+            //GameObject explosionPrefab = Instantiate(explosionEffect, foxBehaviour.fakeChickInstance.transform.position, Quaternion.identity);
+            //Destroy(explosionPrefab, 3f);
+        }
+
+        IEnumerator ExplosionRoutine()
+        {
+            GameObject explosionParticle = PhotonNetwork.Instantiate(explosionEffect.name, foxBehaviour.fakeChickInstance.transform.position, Quaternion.identity);
+            yield return new WaitForSeconds(3f);
+            PhotonNetwork.Destroy(explosionEffect);
+        }
+
+
+        void ActivateStunnedEffect()
+        {
+            // stunnedEffect.SetActive(true);
+        }
+
+        void DeactivateStunnedEffect()
+        {
+            // stunnedEffect.SetActive(false);
+        }
+
+
+        void PainFlash()
+        {
+            painEffect.Play();
+        }
+
+        void RestoreSpeed()
+        {
+            Debug.Log("RestoreSpeed called");
+            characterInput.moveSpeed = originalSpeed;
         }
     }
 }
+
