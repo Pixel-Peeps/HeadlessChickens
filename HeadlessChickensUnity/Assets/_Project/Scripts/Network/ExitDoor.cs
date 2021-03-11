@@ -12,10 +12,14 @@ namespace PixelPeeps.HeadlessChickens.Network
         public bool exitActive = false;
         [SerializeField] private GameObject[] doorClosedMeshes;
 
+        private AudioSource _audioSource;
+        public AudioClip exitOpenSFX;
+        [Range(0, 1f)] public float exitOpenVolume;
+
         // Start is called before the first frame update
         void Start()
         {
-
+            _audioSource = Camera.main.GetComponent<AudioSource>();
         }
 
         // Update is called once per frame
@@ -30,7 +34,9 @@ namespace PixelPeeps.HeadlessChickens.Network
             NewGameManager.Instance.ExitDoorOpened();
             exitActive = true;
 
-            foreach(GameObject door in doorClosedMeshes)
+            _audioSource.PlayOneShot(exitOpenSFX, exitOpenVolume);
+
+            foreach (GameObject door in doorClosedMeshes)
             {
                 door.SetActive(false);
             }
