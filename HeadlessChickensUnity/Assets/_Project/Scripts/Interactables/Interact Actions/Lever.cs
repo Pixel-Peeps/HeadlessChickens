@@ -112,7 +112,12 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
            leverManager.photonView.RPC("RPC_IncrementLeverCount", RpcTarget.AllBufferedViaServer);
            interactable.photonView.RPC("RPC_ToggleInteractAllowed", RpcTarget.AllBufferedViaServer);
            photonView.RPC("PlayLeverAnimation", RpcTarget.AllBufferedViaServer);
-           audioSource.PlayOneShot(leverActivated);
+           Debug.Log("audio source null?: "+audioSource.isActiveAndEnabled);
+           if (audioSource != null)
+           {
+               audioSource.PlayOneShot(leverActivated);
+           }
+
            HUDManager.Instance.UpdateInteractionText();
            
        } else if (isFake && !characterBase.isFox)
@@ -161,12 +166,14 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
     public void PlayLeverAnimation()
     {
         animator.Play("LeverOn");
+        Debug.Log("about to play sound");
         photonView.RPC("PlayLeverSound", RpcTarget.Others);
     }
 
     [PunRPC]
     public void PlayLeverSound()
     {
+        Debug.Log("lever sound to others RPC");
         audioSource.PlayOneShot(leverActivated);
     }
 
