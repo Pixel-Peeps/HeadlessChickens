@@ -140,15 +140,18 @@ namespace PixelPeeps.HeadlessChickens.Network
 
             HUDManager.Instance.Initialise();
             Debug.Log("<color=magenta> initialised HUD</color>");
+
+            LockCursor();
             
             NetworkManager.Instance.GameSetupComplete();
             
             HUDManager.Instance.DisplayObjectiveMessage(myType, 3f, "Catch all the chicks!", "Find all the levers!");
         }
 
-        public void ExitDoorOpened()
+        private static void LockCursor()
         {
-            HUDManager.Instance.DisplayObjectiveMessage(myType, 3f, "Prevent their escape!", "Rush for the exit!");
+            Cursor.lockState = CursorLockMode.Locked;
+            //Cursor.visible = false;
         }
 
         private void SpawnPlayers()
@@ -276,6 +279,11 @@ namespace PixelPeeps.HeadlessChickens.Network
         [Header("Return to Lobby")]
         public float lobbyReturnCountdown;
 
+        public void ExitDoorOpened()
+        {
+            HUDManager.Instance.DisplayObjectiveMessage(myType, 3f, "Prevent their escape!", "Rush for the exit!");
+        }
+        
         public void EndGame()
         {
             if (!PhotonNetwork.IsMasterClient)
