@@ -53,7 +53,7 @@ namespace PixelPeeps.HeadlessChickens.Network
         {
             Debug.Log("Identifying fake lever positions, list count: "+leverPosList.Count);
             for (int i = 0; i < leverPosList.Count; i++)
-            {
+            {//
                 Debug.Log("inside loop");
                 RoomTile room = NewGameManager.Instance.inactiveLevers[i];
 
