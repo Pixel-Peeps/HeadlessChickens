@@ -299,7 +299,7 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
     public void PlayLeverAnimation()
     {
         animator.Play("LeverOn");
-        photonView.RPC("PlayLeverSound", RpcTarget.Others);
+        photonView.RPC("PlayLeverSound", RpcTarget.AllBuffered);
     }
 
     [PunRPC]
