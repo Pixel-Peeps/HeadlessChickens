@@ -48,6 +48,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         [Tooltip("Multiplier to give a minimum jump force when button is pressed and not held")]
         public float lowJumpMultiplier = 2f;
         public bool jumpButtonPressed;
+        public float jumpSpeed;
 
         public float movingJumpForwardBoost = 1.2f;
         public float movingJumpGeneralBoost = 0.8f;
@@ -259,7 +260,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 // animAirborne = true;
 
                 _rigidbody.velocity = _movDirection != Vector2.zero
-                    ? (jumpDirection + (Vector3.up * movingJumpForwardBoost)) * jumpForce * (moveSpeed * movingJumpGeneralBoost)
+                    ? (jumpDirection + (Vector3.up * movingJumpForwardBoost)) * jumpForce * (jumpSpeed)
                     : Vector3.up * jumpForce;
                 isGrounded = false;
             }
