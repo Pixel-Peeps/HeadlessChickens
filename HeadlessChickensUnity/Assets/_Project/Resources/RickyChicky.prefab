@@ -1233,6 +1233,7 @@ MonoBehaviour:
   chickenMesh: {fileID: 7245135556390402821}
   caughtMat: {fileID: 2100000, guid: b67046d3144638c4c855fe1d6caf598f, type: 2}
   normalMat: {fileID: 2100000, guid: e339136860239dc449752edf8f5ee2fc, type: 2}
+  decoyChickIcon: {fileID: 21300000, guid: 34641e00891bc6f4fa9a82e47f1b18d7, type: 3}
   currentFollow: {fileID: 0}
   chickWasFollowing: {fileID: 0}
   currentFollowID: 0
@@ -1335,7 +1336,7 @@ MonoBehaviour:
   - {fileID: 1245716088192190339}
   - {fileID: 4762295317589040886}
   - {fileID: 2584813041712323464}
-  viewIdField: 3
+  viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &682641240311220080
@@ -2193,7 +2194,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7298878937340387282, guid: 6bcc9ffeb0bf74c9c8740cc2546a87fb, type: 3}
       propertyPath: viewIdField
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bcc9ffeb0bf74c9c8740cc2546a87fb, type: 3}
@@ -2276,7 +2277,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7298878937340387282, guid: e8fcf5f19ec064a96a4b06be3368eb24, type: 3}
       propertyPath: viewIdField
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8fcf5f19ec064a96a4b06be3368eb24, type: 3}
