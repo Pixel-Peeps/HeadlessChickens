@@ -283,18 +283,6 @@ namespace PixelPeeps.HeadlessChickens.Network
         {
             HUDManager.Instance.DisplayObjectiveMessage(myType, 3f, "Prevent their escape!", "Rush for the exit!");
         }
-        
-        public void EndGame()
-        {
-            if (!PhotonNetwork.IsMasterClient)
-            {
-                return;
-            }
-            
-            photonView.RPC("EndGameRPC", RpcTarget.AllBuffered);
-            
-            StartCoroutine(LobbyReturnCountdownCoroutine());
-        }
 
         public void CheckForFinish()
         {
@@ -341,7 +329,7 @@ namespace PixelPeeps.HeadlessChickens.Network
                     throw new ArgumentOutOfRangeException();
             }
 
-            EndGame();
+            NetworkManager.Instance.EndGame();
         }
 
         // ReSharper disable once UnusedMember.Global
@@ -362,38 +350,8 @@ namespace PixelPeeps.HeadlessChickens.Network
                     throw new ArgumentOutOfRangeException();
             }
 
-            EndGame();
+            NetworkManager.Instance.EndGame();
         }
-
-        // ReSharper disable once UnusedMember.Global
-        [PunRPC]
-        public void EndGameRPC()
-        {
-            PhotonNetwork.Destroy(myController);
-            NetworkManager.Instance.gameIsRunning = false;
-        }
-        
-        private IEnumerator LobbyReturnCountdownCoroutine()
-        {            
-            yield return new WaitForSecondsRealtime(lobbyReturnCountdown);
-            photonView.RPC("RestartGameRPC", RpcTarget.All); 
-            //ReturnToMenu();
-            NetworkManager.Instance.MakeRoomPublic();
-        }
-        
-        // ReSharper disable once UnusedMember.Local
-        [PunRPC]
-        private void RestartGameRPC()
-        {
-            GameStateManager.Instance.SwitchGameState(new RestartGameState());  
-        }
-        
-/*
-        private void ReturnToMenu()
-        {
-            GameStateManager.Instance.SwitchGameState(new MainMenuState());
-        }
-*/
 
         #endregion
 

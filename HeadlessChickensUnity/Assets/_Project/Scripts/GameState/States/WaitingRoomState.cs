@@ -14,7 +14,6 @@ namespace PixelPeeps.HeadlessChickens.GameState
         
         public override void StateEnter()
         {
-            Debug.Log("StateEnter on WaitingRoomState");
             if (SceneManager.GetActiveScene().name != sceneName)
             {
                 StateManager.LoadNextScene(sceneName);
@@ -22,6 +21,7 @@ namespace PixelPeeps.HeadlessChickens.GameState
             
             else
             {
+                StateManager.uiManager = GameObject.FindGameObjectWithTag( "MenuManager" ).GetComponent<UIManager>();
                 ActivateMenu(menu); 
                 StateManager.uiManager.UpdateRoomInfo();
             }
@@ -36,7 +36,6 @@ namespace PixelPeeps.HeadlessChickens.GameState
 
         public override void StateExit()
         {
-            Debug.Log("StateExit on WaitingRoomState");
             DeactivateMenu(menu);
         }
     }
