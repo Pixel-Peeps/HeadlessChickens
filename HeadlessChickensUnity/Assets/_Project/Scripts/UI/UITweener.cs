@@ -75,7 +75,7 @@ namespace PixelPeeps.HeadlessChickens.UI
         
         public void FadeOutImage()
         {
-            if ( imageToFade == null )
+            if ( imageToFade == null && this != null )
             {
                 imageToFade = this.gameObject.GetComponent<Image>();
             }
