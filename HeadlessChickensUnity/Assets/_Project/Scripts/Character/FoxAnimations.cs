@@ -18,15 +18,22 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         [SerializeField] GameObject explosionEffect;
         [SerializeField] GameObject stunnedEffect;
 
+        private AudioSource _audioSource;
+        public AudioClip explosionSoundEffect;
+
         [SerializeField] ParticleSystem painEffectPrefab;
         public ParticleSystem painEffect;
         [SerializeField] GameObject leftFoot;
+
+
 
 
         private void Start()
         {
             characterInput = GetComponentInParent<CharacterInput>();
             foxBehaviour = GetComponentInParent<FoxBehaviour>();
+
+            _audioSource = Camera.main.GetComponent<AudioSource>();
 
             originalSpeed = characterInput.moveSpeed;
 
@@ -106,6 +113,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         IEnumerator ExplosionRoutine()
         {
             GameObject explosionParticle = PhotonNetwork.Instantiate(explosionEffect.name, foxBehaviour.fakeChickInstance.transform.position, Quaternion.identity);
+            _audioSource.PlayOneShot(explosionSoundEffect);
             yield return new WaitForSeconds(3f);
             PhotonNetwork.Destroy(explosionEffect);
         }
