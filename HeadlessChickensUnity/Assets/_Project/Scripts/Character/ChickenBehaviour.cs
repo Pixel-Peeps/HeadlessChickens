@@ -314,6 +314,12 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         /*########################
         *           HIDING       *
         * #######################*/
+
+        [PunRPC]
+        public void UpdateMyTrapHUD()
+        {
+            HUDManager.Instance.HideItemImage();
+        }
         
         #region HIDING
         
@@ -424,8 +430,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         [PunRPC]
         public void RPC_ToggleDecoy(bool newHasDecoy)
         {
-            hasDecoy = newHasDecoy;
-            
+            hasDecoy = newHasDecoy;            
         }
 
         [PunRPC]

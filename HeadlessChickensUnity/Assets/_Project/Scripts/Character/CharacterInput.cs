@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using Photon.Pun;
 using PixelPeeps.HeadlessChickens.Network;
+using PixelPeeps.HeadlessChickens.UI;
 
 namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 {
@@ -393,6 +394,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 {
                     Debug.Log("this thing is happening");
                     var interacted = _character.interactor.TryInteract(true);
+                    HUDManager.Instance.HideItemImage();
                     //fox picks a fake lever
                     //_character.isBlueprintActive = false;
                 }

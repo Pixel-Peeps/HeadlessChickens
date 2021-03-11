@@ -162,6 +162,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             StartCoroutine( DecoyToggleDelay( chick ) );
             // StartCoroutine(chick.DecoyCooldown());
             chick.hasTrap = false;
+            Player chickPlayer = chick.photonView.Controller;
+            chick.photonView.RPC( "UpdateMyTrapHUD", chickPlayer);
         }
 
         // Trying to spawn an object over the network, be nice
