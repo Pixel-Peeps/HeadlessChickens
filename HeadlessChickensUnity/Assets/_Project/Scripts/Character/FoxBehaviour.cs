@@ -5,6 +5,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using PixelPeeps.HeadlessChickens.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 {
@@ -18,7 +19,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public float effectDuration = 4f;
 
         Animator anim;
-        [SerializeField] GameObject fakeChickPrefab;
+        public List<GameObject> fakeChickPrefabs;
         public GameObject fakeChickInstance;
 
         public void Start()
@@ -169,7 +170,10 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             if ( photonView.IsMine )
             {
                 Transform chick = PhotonView.Find( chickID ).transform;
-                fakeChickInstance = PhotonNetwork.Instantiate( fakeChickPrefab.name, chick.position, chick.rotation );
+
+                int randomFakeChick = UnityEngine.Random.Range(0, fakeChickPrefabs.Count);
+
+                fakeChickInstance = PhotonNetwork.Instantiate( fakeChickPrefabs[randomFakeChick].name, chick.position, chick.rotation );
             }
         }
 

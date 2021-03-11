@@ -560,7 +560,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4736487094571944351}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.67, y: 0.118, z: 6.7539673}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 4732254436824099557}
@@ -632,12 +632,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0f92c4719cfde44ba85dadff0399b8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _controller: {fileID: 0}
   interactor: {fileID: 4736984460096568289}
+  photonView: {fileID: 0}
   _rigidbody: {fileID: 0}
-  _collider: {fileID: 0}
-  currentHidingSpot: {fileID: 0}
+  playerCam: {fileID: 0}
   cooldownRunning: 0
+  hasBeenCaught: 0
+  alreadyEscaped: 0
+  blueprintScript: {fileID: 0}
+  isHiding: 0
+  hasTrap: 0
+  isBlueprintActive: 0
+  isFox: 0
+  hasLever: 0
+  hasDecoy: 0
+  trapSlot: {fileID: 0}
+  blueprintIndex: 0
+  movementAffected: 0
+  hidedSpot: {fileID: 0}
+  currentHidingSpot: {fileID: 0}
   states: 0
+  chickenManager: {fileID: 0}
+  positionBeforeHiding: {x: 0, y: 0, z: 0}
+  normalChick: {fileID: 0}
+  headlessChick: {fileID: 0}
+  chickenMesh: {fileID: 0}
+  caughtMat: {fileID: 0}
+  normalMat: {fileID: 0}
+  currentFollow: {fileID: 0}
+  chickWasFollowing: {fileID: 0}
+  currentFollowID: 0
+  followInt: 0
+  escapeLocation: {fileID: 0}
+  decoyDuration: 4
+  spectating: 0
+  isLastChick: 0
+  effectDuration: 4
+  chickenEscapedSFX: {fileID: 0}
 --- !u!114 &4736984460096568292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -654,6 +686,7 @@ MonoBehaviour:
   moveSpeed: 1.2
   moveTime: 5
   stopDistance: 0.1
+  _movDirection: {x: 0, y: 0}
   sprintMultiplier: 1.5
   turnSpeed: 50
   turnSpeedLow: 5
@@ -663,6 +696,16 @@ MonoBehaviour:
   fallMultiplier: 5.5
   lowJumpMultiplier: 4
   jumpButtonPressed: 0
+  jumpSpeed: 0
+  movingJumpForwardBoost: 1.2
+  movingJumpGeneralBoost: 0.8
+  _anim: {fileID: 0}
+  animSpeed: 0
+  verticalForward: 0
+  animAcceleration: 0
+  animDeceleration: 0
+  animAirborne: 0
+  interactCanceled: 0
 --- !u!114 &4736984460096568289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -675,9 +718,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8881a544f3a0761428c7ea5510a1e06e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prioritizeWithAngle: 1
   requiredDot: 0
   characterType: 1
+  interactableObjects: []
 --- !u!114 &1436168677081998845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -713,6 +756,7 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   ObservedComponents:
+  - {fileID: 4736984460096568293}
   - {fileID: 1436168677081998845}
   - {fileID: 682641240311220080}
   viewIdField: 0
