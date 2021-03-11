@@ -83,10 +83,9 @@ public class TrapPickUp : MonoBehaviourPunCallbacks
 
         if (!other.gameObject.GetComponent<CharacterBase>().isFox)
         {
-            int random = Random.Range(0, chickenTraps.Count);
-            random = 3;
+            int random = Random.Range(0, 3);
 
-            if (random < 3)
+            if (random < 2)
             {
                 //assigning random from egg shells & rotten egg
                 other.gameObject.GetComponent<ChickenBehaviour>().trapSlot = chickenTraps[random];
@@ -94,7 +93,7 @@ public class TrapPickUp : MonoBehaviourPunCallbacks
                 HUDManager.Instance.ShowItemImage(icon);
                 other.gameObject.GetComponent<ChickenBehaviour>().blueprintIndex = random;
             }
-            else if (random == 3)
+            else if (random == 2)
             {
                 // assigning decoy chicken (no blueprint)
                 ChickenBehaviour chick = other.gameObject.GetComponent<ChickenBehaviour>();
