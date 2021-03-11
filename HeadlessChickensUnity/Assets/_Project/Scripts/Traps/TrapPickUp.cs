@@ -15,6 +15,8 @@ public class TrapPickUp : MonoBehaviourPunCallbacks
     private bool matChanged;
     private MeshRenderer mR;
     private bool isOrigColour;
+    private AudioSource _audioSource;
+    public AudioClip pickUpSoundEffect;
     
     [SerializeField] private List<GameObject> chickenTraps;
 
@@ -25,6 +27,7 @@ public class TrapPickUp : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
+        _audioSource = Camera.main.GetComponent<AudioSource>();
         chickenTraps.Add(rottenEggPrefab);
         chickenTraps.Add(eggShellPrefab);
         
@@ -75,6 +78,8 @@ public class TrapPickUp : MonoBehaviourPunCallbacks
 
             return;
         }
+        
+        _audioSource.PlayOneShot(pickUpSoundEffect);
 
         if (!other.gameObject.GetComponent<CharacterBase>().isFox)
         {

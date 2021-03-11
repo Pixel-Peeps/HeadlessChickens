@@ -9,12 +9,17 @@ public class Shortcut : MonoBehaviourPunCallbacks, IInteractable
     [SerializeField] private Shortcut otherEnd;
     public float shortcutCooldown = 2f;
     private CharacterBase characterBase;
+    private AudioSource _audioSource;
+    public AudioClip shortcutSoundEffect;
     
     public void Interact(CharacterBase _characterBase, bool willLoop)
     {
         characterBase = _characterBase;
         
         if (characterBase.cooldownRunning) return;
+
+        _audioSource = Camera.main.GetComponent<AudioSource>();
+        _audioSource.PlayOneShot(shortcutSoundEffect);
         
         characterBase.transform.position = otherEnd.transform.position;
 

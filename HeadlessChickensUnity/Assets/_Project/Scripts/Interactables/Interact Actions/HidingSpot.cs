@@ -23,7 +23,9 @@ public class HidingSpot : MonoBehaviourPunCallbacks, IInteractable
 
     public float searchProgress = 0;
     private Coroutine searchRoutine;
+    private AudioSource audioSource;
 
+    public AudioClip hidingSpotSoundEffect;
     private void Awake()
     {
         hidingCam = GetComponentInChildren<CinemachineVirtualCamera>(true);
@@ -31,6 +33,7 @@ public class HidingSpot : MonoBehaviourPunCallbacks, IInteractable
         if (Camera.main != null)
         {
             mainCam = Camera.main.GetComponent<MainCam>();
+            audioSource = Camera.main.GetComponent<AudioSource>();
         }
     }
 
@@ -39,12 +42,12 @@ public class HidingSpot : MonoBehaviourPunCallbacks, IInteractable
         photonView.SetControllerInternal(character.photonView.Owner.ActorNumber);
         if (photonView.IsMine)
         {
-
             if (canAccessHiding && character.GetComponent<Interactor>().characterType == Interactor.eCharacterType.Chick)
             {
                 Debug.Log("Interact() method called, inUse false");
                 //character.photonView.GetComponent<CharacterBase>().currentHidingSpot = transform;
                 character.HidingInteraction(canAccessHiding, transform);
+                
                 photonView.RPC("RPC_ToggleAccess", RpcTarget.AllViaServer);
                 
                 // mainCam.CullHidingSpots();
@@ -58,6 +61,7 @@ public class HidingSpot : MonoBehaviourPunCallbacks, IInteractable
             else
             {
                 // character.currentHidingSpot.position = null;
+                
                 character.HidingInteraction(canAccessHiding, transform);
                 // mainCam.SeeEverything();
             }
@@ -100,6 +104,12 @@ public class HidingSpot : MonoBehaviourPunCallbacks, IInteractable
     {
         if (photonView.IsMine)
         {
+            
+                audioSource.loop = true;
+                audioSource.clip = hidingSpotSoundEffect;
+                audioSource.volume = 0.4f;
+                audioSource.Play();
+            
             hidingMesh.SetActive(false);
             hidingCam.gameObject.SetActive(true);
         }
@@ -109,6 +119,7 @@ public class HidingSpot : MonoBehaviourPunCallbacks, IInteractable
     {
         if (photonView.IsMine)
         {
+            audioSource.Stop();
             hidingCam.gameObject.SetActive(false);
             hidingMesh.SetActive(true);
             Debug.Log("<color=yellow> Hiding spot REactivated </color>");
