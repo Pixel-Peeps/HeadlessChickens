@@ -3,7 +3,17 @@ guid: 1215486699529438ba2b4b151bfbb309
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: glue_bottle
+    second: {fileID: 2100000, guid: f2cdb53ab128d447cbe32d177ffc026d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 4ea93cdd79803954f908b4130b0c3cd6, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
