@@ -78,6 +78,7 @@ namespace PixelPeeps.HeadlessChickens.UI
                 imageToFade = this.gameObject.GetComponent<Image>();
             }
             
+            Debug.Log( "fading out", this );
             
             LeanTween.color(gameObject, fadeOutTarget, fadeTime).setOnUpdate(SetImageColour);
         }

@@ -130,7 +130,7 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
         }
     }
 
-    public void ShowBlueprints() 
+    public void ShowBlueprints()
     {
         if (!isShowingBlueprints) blueprintBits.gameObject.SetActive(true);
         else if (isShowingBlueprints) blueprintBits.gameObject.SetActive(false);
