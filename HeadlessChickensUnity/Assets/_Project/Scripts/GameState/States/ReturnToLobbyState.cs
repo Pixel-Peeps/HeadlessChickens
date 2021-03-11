@@ -18,25 +18,16 @@ namespace PixelPeeps.HeadlessChickens.GameState
         
         public override void StateEnter()
         {
-            GameStateManager.Instance.HideLoadingScreen();
-            
-            Debug.Log("StateEnter on ReturnToLobbyState");
-
-            NetworkManager.Instance.gameIsRunning = false;
             StateManager.LoadNextScene(sceneName);
         }
 
         public override void OnSceneLoad()
         {
-            StateManager.uiManager.UpdateRoomInfo();
-            Debug.Log("OnSceneLoad");
             GameStateManager.Instance.SwitchGameState(new WaitingRoomState());
         }
 
         public override void StateExit()
         {
-            Debug.Log("StateExit on ReturnToLobbyState");
-            UIManager.ActivateMenu(waitingRoomMenu);
         }
     }
 }

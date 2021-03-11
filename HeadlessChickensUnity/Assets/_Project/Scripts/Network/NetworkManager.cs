@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using Photon.Pun;
 using Photon.Realtime;
 using PixelPeeps.HeadlessChickens.GameState;
@@ -90,6 +91,50 @@ namespace PixelPeeps.HeadlessChickens.Network
             PhotonNetwork.LeaveRoom();
             GameStateManager.Instance.SwitchGameState(new MainMenuState());
         }
+
+        #region Ending Game
+
+        public float lobbyReturnCountdown = 5f;
+
+        public void EndGame()
+        {
+            if (!PhotonNetwork.IsMasterClient)
+            {
+                return;
+            }
+            
+            photonView.RPC("EndGameRPC", RpcTarget.AllViaServer);
+            
+            StartCoroutine(LobbyReturnCountdownCoroutine());
+        }
+        
+        [PunRPC]
+        public void EndGameRPC()
+        {
+            Cursor.lockState = CursorLockMode.None;
+            
+            PhotonNetwork.Destroy(NewGameManager.Instance.myController);
+            gameIsRunning = false;
+        }
+        
+        private IEnumerator LobbyReturnCountdownCoroutine()
+        {
+            yield return new WaitForSecondsRealtime(lobbyReturnCountdown);
+            //photonView.RPC("RestartGameRPC", RpcTarget.All); 
+            //ReturnToMenu();
+            
+            photonView.RPC("ReturnToLobbyRPC", RpcTarget.AllViaServer); 
+            
+            MakeRoomPublic();
+        }
+
+        [PunRPC]
+        public void ReturnToLobbyRPC()
+        {
+            GameStateManager.Instance.SwitchGameState( new ReturnToMenuState() );
+        }
+
+        #endregion
 
         #region Photon Callback Methods
         public override void OnConnectedToMaster()

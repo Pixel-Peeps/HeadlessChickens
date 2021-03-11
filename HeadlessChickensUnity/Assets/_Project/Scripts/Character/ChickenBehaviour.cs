@@ -25,9 +25,9 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         [SerializeField] GameObject chickenMesh;
         [SerializeField] Material caughtMat;
         [SerializeField] Material normalMat;
-        
-        
-        
+
+
+        public Sprite decoyChickIcon;
 
         [Header("Following")]
         public ChickenBehaviour currentFollow;

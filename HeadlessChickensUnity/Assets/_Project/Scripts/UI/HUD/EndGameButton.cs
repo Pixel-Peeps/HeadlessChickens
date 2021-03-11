@@ -15,9 +15,9 @@ namespace PixelPeeps.HeadlessChickens.UI
             thisButton.onClick.AddListener(OnClick);
         }
 
-        private void OnClick()
+        private static void OnClick()
         {
-            NewGameManager.Instance.EndGame();
+            NetworkManager.Instance.EndGame();
         }
     }
 }
