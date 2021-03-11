@@ -30,7 +30,7 @@ namespace PixelPeeps.HeadlessChickens.GameState
             gameObject.GetComponent<Button>().onClick.AddListener(OnButtonClick);
         }
 
-        private void OnButtonClick()
+        public void OnButtonClick()
         {
             switch (stateToChangeTo)
             {
