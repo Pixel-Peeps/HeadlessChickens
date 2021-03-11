@@ -79,6 +79,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                     {
                         //chick.photonView
                         //    .RPC("ChickenCaptured", RpcTarget.AllBufferedViaServer);
+                        Debug.Log("Surprise!");
                         chick.ChickenCaptured();
                     }
                     
