@@ -3,8 +3,12 @@ using UnityEngine;
 using PixelPeeps.HeadlessChickens._Project.Scripts.Character;
 using PixelPeeps.HeadlessChickens.Network;
 using PixelPeeps.HeadlessChickens.UI;
-// ReSharper disable UnusedMember.Global
-
+using System.Collections;
+using UnityEngine.Rendering.PostProcessing;
+using System;
+
+// ReSharper disable UnusedMember.Global
+
 public class Lever : MonoBehaviourPunCallbacks, IInteractable
 {
     private Interactable interactable;
@@ -14,6 +18,9 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
     public bool isFake = true;
     public bool isActive;
     public bool isShowingBlueprints;
+    public bool interactCanceled;
+    public bool hasBeenPulled = false; 
+    public float leverProgress = 0;
     public Animator animator;
 
     [Header("Sounds")] public AudioSource audioSource;
@@ -146,6 +153,123 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
        //interactable.interactAllowed = false;
     }
 
+    IEnumerator ProgressLoop(CharacterBase characterBase)
+    {
+
+
+        // interactable.photonView.RPC("RPC_ToggleInteractAllowed", RpcTarget.AllBufferedViaServer);
+
+        characterBase._controller._anim.SetBool("LeverBool", true);
+
+        for (var tempProgress = leverProgress; tempProgress < 1; tempProgress += progressIncrement)
+        {
+            if (characterBase._controller.interactCanceled)
+            {
+                characterBase._controller.interactCanceled = false;
+                HaltProgression(characterBase);
+
+                yield break;
+            }
+
+            leverProgress = tempProgress;
+            
+            if ( leverProgress > 0 )
+            {
+                progressBar.progress = Mathf.FloorToInt( leverProgress * 100 );
+                progressBar.GetCurrentFill();
+            }
+
+            yield return new WaitForSeconds(timeIncrement);
+        }
+
+        characterBase._controller._anim.SetBool("LeverBool", false);
+        leverProgress = 1;
+        hasBeenPulled = true;
+
+        progressBar.progress = 100;
+        progressBar.GetCurrentFill();
+        progressBar.BeginFadeOut();
+        
+        if (isFake)
+        {
+            TriggerFakeLever();
+        }
+        else
+        {
+            LeverActivated();
+        }
+        
+        progressRoutine = null;
+    }
+
+    private void HaltProgression(CharacterBase characterBase)
+    {
+        Debug.Log("<color=cyan>HaltProgression called</color>");
+
+        resetRoutine = ResetLoop();
+        StartCoroutine(resetRoutine);
+
+        characterBase._controller._anim.SetBool("LeverBool", false);
+    }
+
+    //void OnTriggerExit(Collider other)
+    //{
+    //    if (other.gameObject.CompareTag("Player"))
+    //    {
+
+    //    }
+    //}
+
+    IEnumerator ResetLoop()
+    {
+        // interactable.photonView.RPC("RPC_ToggleInteractAllowed", RpcTarget.AllBufferedViaServer);
+        
+        for (var tempProgress = leverProgress; tempProgress > 0; tempProgress -= 0.025f)
+        {
+            leverProgress = tempProgress;
+            // Debug.Log("leverProgress is " + leverProgress);
+            yield return new WaitForSeconds(0.1f);
+            progressBar.progress = Mathf.FloorToInt( leverProgress * 100 );
+            progressBar.GetCurrentFill();
+        }
+        
+        leverProgress = 0;
+        progressBar.progress = 0;
+        progressBar.BeginFadeOut();
+
+        resetRoutine = null;
+    }
+
+    private void LeverActivated()
+    {
+        StopCoroutine(progressRoutine);
+        progressBar.BeginFadeOut();
+
+        leverManager.photonView.RPC("RPC_IncrementLeverCount", RpcTarget.AllBufferedViaServer);
+        interactable.photonView.RPC("RPC_ToggleInteractAllowed", RpcTarget.AllBufferedViaServer);
+        photonView.RPC("PlayLeverAnimation", RpcTarget.AllBufferedViaServer);
+        HUDManager.Instance.UpdateInteractionText();
+    }
+
+    private void TriggerFakeLever()
+    {
+        StopCoroutine(progressRoutine);
+
+        Debug.Log("wee woo wee woo FAKE LEVER");
+        regularBits.gameObject.SetActive(false);
+    }
+
+    private void PlaceFakeLever(CharacterBase characterBase)
+    {
+        Debug.Log(" fake lever is READY AND GOGOGO");
+        //regularBits.gameObject.SetActive(true);
+        //blueprintBits.gameObject.SetActive(false);
+        characterBase.hasTrap = false;
+        characterBase.isBlueprintActive = false;
+        characterBase.hasLever = false;
+        photonView.RPC("RPC_SetUpFake", RpcTarget.AllViaServer);
+    }
+
     public void InteractionFocus(bool focussed, CharacterBase character)
     {        
         photonView.SetControllerInternal(character.photonView.Owner.ActorNumber);
@@ -165,6 +289,11 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
         if (!focussed)
         {
             HUDManager.Instance.UpdateInteractionText();
+            if(leverProgress > 0 && !hasBeenPulled)
+            {
+                StopCoroutine(progressRoutine);
+                HaltProgression(character);
+            }
         }
     }
 

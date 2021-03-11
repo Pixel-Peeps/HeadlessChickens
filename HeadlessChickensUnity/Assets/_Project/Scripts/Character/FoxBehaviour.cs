@@ -4,6 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using PixelPeeps.HeadlessChickens.UI;
+using System.Collections;
 
 namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 {
@@ -14,8 +15,13 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public GameObject stinkParticles;
         public float effectDuration = 4f;
 
+        Animator anim;
+        [SerializeField] GameObject fakeChickPrefab;
+        public GameObject fakeChickInstance;
+
         public void Start()
         {
+            anim = GetComponentInChildren<Animator>();
             isFox = true;
         }
 
@@ -44,17 +50,22 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             {
                 if (t.gameObject.TryGetComponent(out ChickenBehaviour chickenComponent))
                 {
-                    ChickenBehaviour chicken = chickenComponent;
-
-                    chicken.photonView.RPC("RPC_LeaveHiding", RpcTarget.AllBufferedViaServer,
-                        chicken.positionBeforeHiding);
-
+                    ChickenBehaviour chick = chickenComponent;
+ 
+                    chick.photonView.RPC("RPC_LeaveHiding", RpcTarget.AllBufferedViaServer,
+                        chick.positionBeforeHiding);
+ 
                     currentHidingSpot.GetComponent<HidingSpot>().photonView
                         .RPC("RPC_ToggleAccess", RpcTarget.AllViaServer);
 
-                    Debug.Log("<color=green>Before chicken caught call</color>");
-                    chicken.ChickenCaptured();
-                    Debug.Log("<color=green>After chicken caught call</color>");
+                    if (chick.hasDecoy)
+                    {
+                        FoundDecoy(chick);
+                    }
+                    else
+                    {
+                        chick.ChickenCaptured();
+                    }
                 }
                 else
                 {
@@ -74,14 +85,13 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                     {
                         //chick.photonView
                         //    .RPC("ChickenCaptured", RpcTarget.AllBufferedViaServer);
+                        Debug.Log("Surprise!");
                         chick.ChickenCaptured();
                     }
 
                     if (!chick.isHiding && chick.hasDecoy)
                     {
-                        Debug.Log("DECOY DEPLOYED");
-                        StartCoroutine(chick.DecoyCooldown());
-                        chick.hasTrap = false;
+                        FoundDecoy(chick);
                     }
                 }
             }
@@ -132,5 +142,40 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
  
            
         
+
+        private void FoundDecoy(ChickenBehaviour chick)
+        {
+            Debug.Log("DECOY DEPLOYED");
+            _controller.moveSpeed = 0;
+            // anim.SetTrigger("DecoyTrigger");
+            anim.SetBool("SwipeBool", false);
+            anim.SetBool("DecoyBool", true);
+            // anim.Play("DecoyFound");
+            // photonView.RPC("SpawnFakeChick", RpcTarget.AllBufferedViaServer, chick.photonView.ViewID);
+            SpawnFakeChick(chick.photonView.ViewID);
+
+            StartCoroutine(DecoyToggleDelay(chick));
+            // StartCoroutine(chick.DecoyCooldown());
+            chick.hasTrap = false;
+        }
+
+        // Trying to spawn an object over the network, be nice
+        // [PunRPC]
+        public void SpawnFakeChick(int chickID)
+        {
+            Debug.Log("SpawnFakeChick called");
+            if (photonView.IsMine)
+            {
+                Transform chick = PhotonView.Find(chickID).transform;
+                fakeChickInstance = PhotonNetwork.Instantiate(fakeChickPrefab.name, chick.position, chick.rotation);
+            }
+        }
+
+        IEnumerator DecoyToggleDelay(ChickenBehaviour chick)
+        {
+            yield return new WaitForSeconds(1f);
+            anim.SetBool("DecoyBool", false);
+            chick.photonView.RPC("RPC_ToggleDecoy", RpcTarget.AllViaServer, false);
+        }
     }
 }
