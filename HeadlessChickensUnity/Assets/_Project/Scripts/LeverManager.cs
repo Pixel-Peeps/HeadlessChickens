@@ -55,7 +55,7 @@ namespace PixelPeeps.HeadlessChickens.Network
             for (int i = 0; i < leverPosList.Count; i++)
             {
                 Debug.Log("inside loop");
-                RoomTile room = leverPosList[i];
+                RoomTile room = NewGameManager.Instance.inactiveLevers[i];
 
                 foreach (var leverPos in room.leverPositions)
                 {
