@@ -1,5 +1,4 @@
-﻿using System.Runtime.Remoting;
-using Photon.Pun;
+﻿using Photon.Pun;
 using UnityEngine;
 using PixelPeeps.HeadlessChickens._Project.Scripts.Character;
 using PixelPeeps.HeadlessChickens.Network;
