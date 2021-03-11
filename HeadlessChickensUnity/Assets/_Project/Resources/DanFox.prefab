@@ -11063,6 +11063,7 @@ MonoBehaviour:
   currentHidingSpot: {fileID: 0}
   states: 0
   smokeImage: {fileID: 0}
+  smokeTween: {fileID: 0}
   stinkParticles: {fileID: 0}
   effectDuration: 4
   fakeChickPrefab: {fileID: 8903227564098418549, guid: 529dfb7a0f4a211478f065e85ddb8471, type: 3}
@@ -11109,7 +11110,7 @@ MonoBehaviour:
   - {fileID: 2643710746644981386}
   - {fileID: 7299128703624785}
   - {fileID: 1915313897014507479}
-  viewIdField: 2
+  viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &4979095357912769126
@@ -17128,7 +17129,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7298878937340387282, guid: a50ecf0e11b73438c86fc7c7ccdb710d, type: 3}
       propertyPath: viewIdField
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a50ecf0e11b73438c86fc7c7ccdb710d, type: 3}
