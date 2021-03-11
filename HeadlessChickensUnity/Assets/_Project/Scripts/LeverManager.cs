@@ -45,7 +45,7 @@ namespace PixelPeeps.HeadlessChickens.Network
         public void SetLeverPosList(List<RoomTile> roomsWLevers)
         {
             leverPosList = roomsWLevers;
-            Debug.Log("I'm sending the lever pos list to lever mamanger");
+            Debug.Log("I'm sending the lever pos list to lever mamanger: "+leverPosList.Count);
         }
         
         public void IdentifyFakeLeverPositions()
