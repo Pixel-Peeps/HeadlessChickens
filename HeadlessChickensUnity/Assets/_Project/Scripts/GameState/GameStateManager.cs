@@ -88,9 +88,10 @@ namespace PixelPeeps.HeadlessChickens.GameState
             {
                 ShowLoadingScreen();
                 yield return new WaitForSecondsRealtime(0.2f);
-                HideLoadingScreen();
             }
 
+            HideLoadingScreen();            
+            
             GameObject uiManagerObj = GameObject.FindGameObjectWithTag("MenuManager");
 
             if (uiManagerObj != null)
