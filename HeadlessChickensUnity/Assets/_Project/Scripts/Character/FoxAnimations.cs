@@ -20,6 +20,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         private AudioSource _audioSource;
         public AudioClip explosionSoundEffect;
+        [Range(0, 1f)] public float explosionVolume;
 
         [SerializeField] ParticleSystem painEffectPrefab;
         public ParticleSystem painEffect;
@@ -113,7 +114,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         IEnumerator ExplosionRoutine()
         {
             GameObject explosionParticle = PhotonNetwork.Instantiate(explosionEffect.name, foxBehaviour.fakeChickInstance.transform.position, Quaternion.identity);
-            _audioSource.PlayOneShot(explosionSoundEffect);
+            _audioSource.PlayOneShot(explosionSoundEffect, explosionVolume);
             yield return new WaitForSeconds(3f);
             PhotonNetwork.Destroy(explosionEffect);
         }
