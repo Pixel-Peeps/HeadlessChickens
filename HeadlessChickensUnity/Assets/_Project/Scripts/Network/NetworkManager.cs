@@ -16,8 +16,8 @@ namespace PixelPeeps.HeadlessChickens.Network
 
         public bool gameIsRunning;
 
-        public const int MIN_PLAYERS = 3;
-        public const int MAX_PLAYERS = 5;
+        public const int MIN_PLAYERS = 2;
+        private const int MAX_PLAYERS = 5;
 
         private string currentRoomName;
 

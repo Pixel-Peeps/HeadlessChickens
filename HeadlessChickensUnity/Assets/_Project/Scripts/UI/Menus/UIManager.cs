@@ -73,7 +73,7 @@ namespace PixelPeeps.HeadlessChickens.UI
             
             // Start game button
             startGameButton.SetActive(PhotonNetwork.IsMasterClient);
-            startGameButton.GetComponent<Button>().enabled = (playerCount >= NetworkManager.MIN_PLAYERS);
+            startGameButton.GetComponent<Button>().gameObject.SetActive( playerCount >= NetworkManager.MIN_PLAYERS );
             
             gameSettings.UpdateSettingsScreen();
         }
