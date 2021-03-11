@@ -77,16 +77,16 @@ public class HidingSpot : MonoBehaviourPunCallbacks, IInteractable
 
 
     IEnumerator SearchLoop(CharacterBase character)
-    {
-        // interactable.photonView.RPC("RPC_ToggleInteractAllowed", RpcTarget.AllBufferedViaServer);
-
-        character._controller._anim.SetBool("SearchBool", true);
-
+    {
+        // interactable.photonView.RPC("RPC_ToggleInteractAllowed", RpcTarget.AllBufferedViaServer);
+
+        character._controller._anim.SetBool("SearchBool", true);
+
         for (var tempProgress = searchProgress; tempProgress < 1; tempProgress += 0.01f)
         {
             if (character._controller.interactCanceled)
-            {
-                character._controller._anim.SetBool("SearchBool", false);
+            {
+                character._controller._anim.SetBool("SearchBool", false);
                 character._controller.interactCanceled = false;
                 searchProgress = 0;
                 yield break;
@@ -96,11 +96,11 @@ public class HidingSpot : MonoBehaviourPunCallbacks, IInteractable
             // Debug.Log("leverProgress is " + leverProgress);
             yield return new WaitForSeconds(0.01f);
         }
-        searchProgress = 0;
-        character._controller._anim.SetBool("SearchBool", false);
-
-        character.HidingInteraction(canAccessHiding, transform);
-
+        searchProgress = 0;
+        character._controller._anim.SetBool("SearchBool", false);
+
+        character.HidingInteraction(canAccessHiding, transform);
+
         searchRoutine = null;
     }
 

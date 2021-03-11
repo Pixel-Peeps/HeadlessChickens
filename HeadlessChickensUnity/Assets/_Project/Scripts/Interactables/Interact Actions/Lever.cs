@@ -5,10 +5,10 @@ using PixelPeeps.HeadlessChickens.Network;
 using PixelPeeps.HeadlessChickens.UI;
 using System.Collections;
 using UnityEngine.Rendering.PostProcessing;
-using System;
-
-// ReSharper disable UnusedMember.Global
-
+using System;
+
+// ReSharper disable UnusedMember.Global
+
 public class Lever : MonoBehaviourPunCallbacks, IInteractable
 {
     private Interactable interactable;
@@ -18,10 +18,10 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
     public bool isFake = true;
     public bool isActive;
     public bool isShowingBlueprints;
-    public Animator animator;
     public bool interactCanceled;
     public bool hasBeenPulled = false; 
     public float leverProgress = 0;
+    public Animator animator;
 
     [Header("Sounds")] public AudioSource audioSource;
     public AudioClip falseLeverAlarm;
@@ -154,19 +154,19 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
     }
 
     IEnumerator ProgressLoop(CharacterBase characterBase)
-    {
-
-
-        // interactable.photonView.RPC("RPC_ToggleInteractAllowed", RpcTarget.AllBufferedViaServer);
-
+    {
+
+
+        // interactable.photonView.RPC("RPC_ToggleInteractAllowed", RpcTarget.AllBufferedViaServer);
+
         characterBase._controller._anim.SetBool("LeverBool", true);
 
         for (var tempProgress = leverProgress; tempProgress < 1; tempProgress += progressIncrement)
         {
             if (characterBase._controller.interactCanceled)
-            {
-                characterBase._controller.interactCanceled = false;
-                HaltProgression(characterBase);
+            {
+                characterBase._controller.interactCanceled = false;
+                HaltProgression(characterBase);
 
                 yield break;
             }
@@ -200,26 +200,26 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
         }
         
         progressRoutine = null;
-    }
-
-    private void HaltProgression(CharacterBase characterBase)
-    {
-        Debug.Log("<color=cyan>HaltProgression called</color>");
-
-        resetRoutine = ResetLoop();
-        StartCoroutine(resetRoutine);
-
-        characterBase._controller._anim.SetBool("LeverBool", false);
-    }
-
-    //void OnTriggerExit(Collider other)
-    //{
-    //    if (other.gameObject.CompareTag("Player"))
-    //    {
-
-    //    }
-    //}
-
+    }
+
+    private void HaltProgression(CharacterBase characterBase)
+    {
+        Debug.Log("<color=cyan>HaltProgression called</color>");
+
+        resetRoutine = ResetLoop();
+        StartCoroutine(resetRoutine);
+
+        characterBase._controller._anim.SetBool("LeverBool", false);
+    }
+
+    //void OnTriggerExit(Collider other)
+    //{
+    //    if (other.gameObject.CompareTag("Player"))
+    //    {
+
+    //    }
+    //}
+
     IEnumerator ResetLoop()
     {
         // interactable.photonView.RPC("RPC_ToggleInteractAllowed", RpcTarget.AllBufferedViaServer);
@@ -289,10 +289,10 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
         if (!focussed)
         {
             HUDManager.Instance.UpdateInteractionText();
-            if(leverProgress > 0 && !hasBeenPulled)
-            {
-                StopCoroutine(progressRoutine);
-                HaltProgression(character);
+            if(leverProgress > 0 && !hasBeenPulled)
+            {
+                StopCoroutine(progressRoutine);
+                HaltProgression(character);
             }
         }
     }
