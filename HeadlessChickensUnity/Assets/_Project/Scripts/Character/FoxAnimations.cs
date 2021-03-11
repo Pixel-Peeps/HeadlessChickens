@@ -20,8 +20,6 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         [SerializeField] GameObject stunnedEffect;
 
         private AudioSource _audioSource;
-        public AudioClip explosionSoundEffect;
-        [Range(0, 1f)] public float explosionVolume;
 
         public AudioClip swipeSoundEffect;
         [Range(0, 1f)] public float swipeVolume;
@@ -119,7 +117,9 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         IEnumerator ExplosionRoutine()
         {
             GameObject explosionParticle = PhotonNetwork.Instantiate(explosionEffect.name, foxBehaviour.fakeChickInstance.transform.position, Quaternion.identity);
-            _audioSource.PlayOneShot(explosionSoundEffect, explosionVolume);
+
+            foxBehaviour.photonView.RPC("PlayExplosionSoundEffect", RpcTarget.AllViaServer);
+
             yield return new WaitForSeconds(3f);
             PhotonNetwork.Destroy(explosionEffect);
         }
