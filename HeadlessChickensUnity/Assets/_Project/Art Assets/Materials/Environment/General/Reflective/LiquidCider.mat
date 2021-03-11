@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: LiquidCider
   m_Shader: {fileID: 4800000, guid: 7cd5de0b884b14f88ab763ef465e1799, type: 3}
-  m_ShaderKeywords: _ALPHAPREMULTIPLY_ON _CLIPPED_ON
+  m_ShaderKeywords: _ALPHAPREMULTIPLY_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -58,7 +58,7 @@ Material:
     m_Floats:
     - _AmbientCol: 0.007
     - _BumpScale: 1
-    - _Clipped: 1
+    - _Clipped: 0
     - _ColBright: 0
     - _ColIntense: 1
     - _Cutoff: 0.5
@@ -73,7 +73,7 @@ Material:
     - _MinLight: 0.192
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _Offset: 0.27
+    - _Offset: 0.86
     - _Parallax: 0.02
     - _Segmented: 0
     - _ShnIntense: 0
