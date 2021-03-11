@@ -13,15 +13,25 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         private float originalSpeed;
 
         [SerializeField] ParticleSystem[] trails;
+
         [SerializeField] ParticleSystem explosionEffect;
-        [SerializeField] ParticleSystem painEffect;
         [SerializeField] GameObject stunnedEffect;
+
+        [SerializeField] ParticleSystem painEffectPrefab;
+        public ParticleSystem painEffect;
+        [SerializeField] GameObject leftFoot;
+
 
         private void Start()
         {
             characterInput = GetComponentInParent<CharacterInput>();
             foxBehaviour = GetComponentInParent<FoxBehaviour>();
+
             originalSpeed = characterInput.moveSpeed;
+
+            // painEffect = Instantiate(painEffectPrefab, leftFoot.transform.position, Quaternion.identity, leftFoot.transform);
+            //painEffect.gameObject.transform.position = leftFoot.transform.position;
+            //painEffect.gameObject.transform.parent = leftFoot.transform;
         }
 
 
