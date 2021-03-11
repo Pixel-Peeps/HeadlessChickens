@@ -846,7 +846,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 633827197}
-  viewIdField: 2
+  viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &633827197
@@ -919,11 +919,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colliderHolder: {fileID: 1582729409}
+  originalSpeed: 0
   trails:
   - {fileID: 8574671709103199348}
   - {fileID: 51979233387440747}
   - {fileID: 3183648685468491351}
-  explosionEffect: {fileID: 9160235400065666279, guid: a4921d8749e374c3486d2312aff94231, type: 3}
+  explosionEffect: {fileID: 9068787401753453251, guid: a4921d8749e374c3486d2312aff94231, type: 3}
   stunnedEffect: {fileID: 0}
   painEffectPrefab: {fileID: 9067533728345381003, guid: 6c5c537396022484f9d80de09d670cbf, type: 3}
   painEffect: {fileID: 1115671323656639196}
@@ -11023,7 +11024,7 @@ MonoBehaviour:
   - {fileID: 8045161509034829110}
   - {fileID: 4979095357912769126}
   - {fileID: 6485128396210751623}
-  viewIdField: 3
+  viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &4979095357912769126
@@ -16960,7 +16961,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7298878937340387282, guid: a50ecf0e11b73438c86fc7c7ccdb710d, type: 3}
       propertyPath: viewIdField
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a50ecf0e11b73438c86fc7c7ccdb710d, type: 3}

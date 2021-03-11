@@ -112,11 +112,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             Debug.Log("SpawnFakeChick called");
             if (photonView.IsMine)
             {
-                Debug.Log("Before assignment");
                 Transform chick = PhotonView.Find(chickID).transform;
-                Debug.Log("Before instantiated");
-                GameObject fakeChickInstance = PhotonNetwork.Instantiate(fakeChickPrefab.name, chick.position, chick.rotation);
-                Debug.Log("After instantiation");
+                fakeChickInstance = PhotonNetwork.Instantiate(fakeChickPrefab.name, chick.position, chick.rotation);
             }
         }
 

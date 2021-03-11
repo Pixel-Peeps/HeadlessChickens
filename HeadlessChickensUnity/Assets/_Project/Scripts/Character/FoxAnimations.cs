@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,11 +11,11 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         CharacterInput characterInput;
         FoxBehaviour foxBehaviour;
 
-        private float originalSpeed;
+        public float originalSpeed;
 
         [SerializeField] ParticleSystem[] trails;
 
-        [SerializeField] ParticleSystem explosionEffect;
+        [SerializeField] GameObject explosionEffect;
         [SerializeField] GameObject stunnedEffect;
 
         [SerializeField] ParticleSystem painEffectPrefab;
@@ -70,18 +71,26 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         void DestroyDecoyChick()
         {
             if (foxBehaviour.fakeChickInstance == null) return;
-            
-            Destroy(foxBehaviour.fakeChickInstance);
+
+            PhotonNetwork.Destroy(foxBehaviour.fakeChickInstance);
+            // Destroy(foxBehaviour.fakeChickInstance);
         }
 
         void Explosion()
         {
             if (foxBehaviour.fakeChickInstance == null) return;
 
-            ParticleSystem explosionPrefab = Instantiate(explosionEffect, foxBehaviour.fakeChickInstance.transform.position, Quaternion.identity);
-            Destroy(explosionPrefab, 3f);
+            StartCoroutine(ExplosionRoutine());
+            //GameObject explosionPrefab = Instantiate(explosionEffect, foxBehaviour.fakeChickInstance.transform.position, Quaternion.identity);
+            //Destroy(explosionPrefab, 3f);
         }
 
+        IEnumerator ExplosionRoutine()
+        {
+            GameObject explosionParticle = PhotonNetwork.Instantiate(explosionEffect.name, foxBehaviour.fakeChickInstance.transform.position, Quaternion.identity);
+            yield return new WaitForSeconds(3f);
+            PhotonNetwork.Destroy(explosionEffect);
+        }
 
 
         void ActivateStunnedEffect()
