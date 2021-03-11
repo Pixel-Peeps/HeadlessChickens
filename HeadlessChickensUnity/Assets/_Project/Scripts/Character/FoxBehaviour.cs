@@ -2,6 +2,7 @@
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using System.Collections;
 
 namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 {
@@ -99,7 +100,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             // photonView.RPC("SpawnFakeChick", RpcTarget.AllBufferedViaServer, chick.photonView.ViewID);
             SpawnFakeChick(chick.photonView.ViewID);
 
-            chick.photonView.RPC("RPC_ToggleDecoy", RpcTarget.AllViaServer, false);
+            StartCoroutine(DecoyToggleDelay(chick));
             // StartCoroutine(chick.DecoyCooldown());
             chick.hasTrap = false;
         }
@@ -117,6 +118,12 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 GameObject fakeChickInstance = PhotonNetwork.Instantiate(fakeChickPrefab.name, chick.position, chick.rotation);
                 Debug.Log("After instantiation");
             }
+        }
+
+        IEnumerator DecoyToggleDelay(ChickenBehaviour chick)
+        {
+            yield return new WaitForSeconds(1f);
+            chick.photonView.RPC("RPC_ToggleDecoy", RpcTarget.AllViaServer, false);
         }
     }
 }
