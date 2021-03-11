@@ -154,6 +154,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 if(!isLastChick)
                 {
                     _audioSource.PlayOneShot(chickenEscapedSFX);
+                    photonView.RPC("PlayChickEscapedSFX", RpcTarget.Others);
+
                     SwitchToObserverCam();
                     chickenManager.UpdateEscapedChickCam(photonView.ViewID);
                        
@@ -165,6 +167,12 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 // chickenManager.UpdateEscapedChickCam(photonView.ViewID);
 
             }
+        }
+
+        [PunRPC]
+        public void PlayChickEscapedSFX()
+        {
+            _audioSource.PlayOneShot(chickenEscapedSFX);
         }
 
         [PunRPC]

@@ -128,8 +128,13 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             StartCoroutine( RottenEggEffectCoolDown() );
         }
 
-        [PunRPC]
         public void PlayExplosionSoundEffect()
+        {
+            _audioSource.PlayOneShot(explosionSoundEffect, explosionVolume);
+        }
+
+        [PunRPC]
+        public void RPC_PlayExplosionSoundEffect()
         {
             _audioSource.PlayOneShot(explosionSoundEffect, explosionVolume);
         }

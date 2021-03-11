@@ -118,7 +118,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         {
             GameObject explosionParticle = PhotonNetwork.Instantiate(explosionEffect.name, foxBehaviour.fakeChickInstance.transform.position, Quaternion.identity);
 
-            foxBehaviour.photonView.RPC("PlayExplosionSoundEffect", RpcTarget.AllViaServer);
+            foxBehaviour.PlayExplosionSoundEffect();
+            foxBehaviour.photonView.RPC("RPC_PlayExplosionSoundEffect", RpcTarget.Others);
 
             yield return new WaitForSeconds(3f);
             PhotonNetwork.Destroy(explosionEffect);
