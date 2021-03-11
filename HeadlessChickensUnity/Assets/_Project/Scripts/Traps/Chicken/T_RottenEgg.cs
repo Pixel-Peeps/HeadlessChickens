@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class T_RottenEgg : MonoBehaviourPunCallbacks
 {
+    public AudioClip eggBreakSoundEffect;
     public void OnTriggerEnter(Collider other)
     {
         photonView.SetControllerInternal(other.gameObject.GetComponent<PhotonView>().Owner.ActorNumber);
@@ -17,7 +18,10 @@ public class T_RottenEgg : MonoBehaviourPunCallbacks
         }
 
         if (_character.isFox)
-        { _character.gameObject.GetComponent<FoxBehaviour>().StartRottenEggEffect();
+        {
+            var _audioSource = Camera.main.GetComponent<AudioSource>();
+            _audioSource.PlayOneShot(eggBreakSoundEffect);
+            _character.gameObject.GetComponent<FoxBehaviour>().StartRottenEggEffect();
             photonView.RPC("RPC_DestroySelf", RpcTarget.AllBufferedViaServer);
         }
     }
