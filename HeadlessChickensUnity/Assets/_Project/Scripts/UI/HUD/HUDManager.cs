@@ -29,6 +29,7 @@ namespace PixelPeeps.HeadlessChickens.UI
         public Sprite foxDock;
         public Color foxTimeTextColour;
         public Color foxLowTimeTextColour;
+        public GameObject smokeImage;
 
         #region Initialisation
 
