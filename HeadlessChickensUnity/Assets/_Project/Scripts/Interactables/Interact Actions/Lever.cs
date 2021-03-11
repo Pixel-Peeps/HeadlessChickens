@@ -1,36 +1,26 @@
-﻿using Photon.Pun;
+﻿using System.Runtime.Remoting;
+using Photon.Pun;
 using UnityEngine;
 using PixelPeeps.HeadlessChickens._Project.Scripts.Character;
 using PixelPeeps.HeadlessChickens.Network;
 using PixelPeeps.HeadlessChickens.UI;
-using System.Collections;
-using UnityEngine.Rendering.PostProcessing;
-
 // ReSharper disable UnusedMember.Global
 
 public class Lever : MonoBehaviourPunCallbacks, IInteractable
 {
     private Interactable interactable;
-    private InputControls _controls;
     public LeverManager leverManager;
     public GameObject blueprintBits;
     public GameObject regularBits;
-    public Animator animator;
     public bool isFake = true;
     public bool isActive;
     public bool isShowingBlueprints;
-    public bool interactCanceled;
-    public float leverProgress = 0;
+    public Animator animator;
 
-    public float timeIncrement = 0.1f;
-    public float progressIncrement = 0.025f;
-    public float timeNeededToTrigger;
-
-    [Header("Coroutines")]
-    public IEnumerator progressRoutine;
-    public IEnumerator resetRoutine;
-
-    public ProgressBar progressBar;
+    [Header("Sounds")] public AudioSource audioSource;
+    public AudioClip falseLeverAlarm;
+    public AudioClip leverActivated;
+    
 
 
     private void Awake()
@@ -40,8 +30,6 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
 
     private void Start()
     {
-        progressBar = transform.parent.GetComponentInChildren<ProgressBar>();
-        
         interactable = GetComponent<Interactable>();
         leverManager = GameObject.FindWithTag("LeverManager").GetComponent<LeverManager>();
 
@@ -54,8 +42,6 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
         {
             photonView.RPC("RPC_SetUp", RpcTarget.AllViaServer, true);
         }
-
-        timeNeededToTrigger = timeIncrement / progressIncrement;
     }
 
     [PunRPC]
@@ -121,115 +107,31 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
     public void Interact(CharacterBase characterBase, bool willLoop)
     {
        // PhotonView gameManagerPhotonView = NewGameManager.Instance.GetComponent<PhotonView>();
-       if (!characterBase.isFox)
+       if (!isFake && !characterBase.isFox)
        {
-           // Chick pulling normal lever
-           progressRoutine = ProgressLoop(characterBase);
-           progressBar.BeginFadeIn();
-           StartCoroutine(progressRoutine);
-
+           leverManager.photonView.RPC("RPC_IncrementLeverCount", RpcTarget.AllBufferedViaServer);
+           interactable.photonView.RPC("RPC_ToggleInteractAllowed", RpcTarget.AllBufferedViaServer);
+           photonView.RPC("PlayLeverAnimation", RpcTarget.AllBufferedViaServer);
+           HUDManager.Instance.UpdateInteractionText();
+           
+       } else if (isFake && !characterBase.isFox)
+       {
+           Debug.Log("wee woo wee woo FAKE LEVER");
+           audioSource.PlayOneShot(falseLeverAlarm);
+           regularBits.gameObject.SetActive(false);
        }
        else if (isFake && isShowingBlueprints && characterBase.isFox)
        {
-           // Fox placing fake lever
-           PlaceFakeLever(characterBase);
-       }
+           Debug.Log(" fake lever is READY AND GOGOGO");
+           //regularBits.gameObject.SetActive(true);
+           //blueprintBits.gameObject.SetActive(false);
+           characterBase.hasTrap = false;
+           characterBase.isBlueprintActive = false;
+           characterBase.hasLever = false;
+           photonView.RPC("RPC_SetUpFake", RpcTarget.AllViaServer);
 
+       } 
        //interactable.interactAllowed = false;
-    }
-
-    IEnumerator ProgressLoop(CharacterBase characterBase)
-    {
-
-        
-        // interactable.photonView.RPC("RPC_ToggleInteractAllowed", RpcTarget.AllBufferedViaServer);
-        
-        for (var tempProgress = leverProgress; tempProgress < 1; tempProgress += progressIncrement)
-        {
-            if (characterBase._controller.interactCanceled)
-            {
-                characterBase._controller.interactCanceled = false;
-                resetRoutine = ResetLoop();
-                StartCoroutine(resetRoutine);
-                yield break;
-            }
-
-            leverProgress = tempProgress;
-            
-            if ( leverProgress > 0 )
-            {
-                progressBar.progress = Mathf.FloorToInt( leverProgress * 100 );
-                progressBar.GetCurrentFill();
-            }
-
-            yield return new WaitForSeconds(timeIncrement);
-        }
-
-        leverProgress = 1;
-        progressBar.progress = 100;
-        progressBar.GetCurrentFill();
-        progressBar.BeginFadeOut();
-        
-        if (isFake)
-        {
-            TriggerFakeLever();
-        }
-        else
-        {
-            LeverActivated();
-        }
-        
-        progressRoutine = null;
-    }
-
-    IEnumerator ResetLoop()
-    {
-        // interactable.photonView.RPC("RPC_ToggleInteractAllowed", RpcTarget.AllBufferedViaServer);
-        
-        for (var tempProgress = leverProgress; tempProgress > 0; tempProgress -= 0.025f)
-        {
-            leverProgress = tempProgress;
-            // Debug.Log("leverProgress is " + leverProgress);
-            yield return new WaitForSeconds(0.1f);
-            progressBar.progress = Mathf.FloorToInt( leverProgress * 100 );
-            progressBar.GetCurrentFill();
-        }
-        
-        leverProgress = 0;
-        progressBar.progress = 0;
-        progressBar.BeginFadeOut();
-
-        resetRoutine = null;
-    }
-
-    private void LeverActivated()
-    {
-        StopCoroutine(progressRoutine);
-        progressBar.BeginFadeOut();
-
-        leverManager.photonView.RPC("RPC_IncrementLeverCount", RpcTarget.AllBufferedViaServer);
-        interactable.photonView.RPC("RPC_ToggleInteractAllowed", RpcTarget.AllBufferedViaServer);
-        photonView.RPC("PlayLeverAnimation", RpcTarget.AllBufferedViaServer);
-        HUDManager.Instance.UpdateInteractionText();
-    }
-
-    private void TriggerFakeLever()
-    {
-        StopCoroutine(progressRoutine);
-
-        Debug.Log("wee woo wee woo FAKE LEVER");
-        regularBits.gameObject.SetActive(false);
-    }
-
-    private void PlaceFakeLever(CharacterBase characterBase)
-    {
-        Debug.Log(" fake lever is READY AND GOGOGO");
-        //regularBits.gameObject.SetActive(true);
-        //blueprintBits.gameObject.SetActive(false);
-        characterBase.hasTrap = false;
-        characterBase.isBlueprintActive = false;
-        characterBase.hasLever = false;
-        photonView.RPC("RPC_SetUpFake", RpcTarget.AllViaServer);
     }
 
     public void InteractionFocus(bool focussed, CharacterBase character)
@@ -258,6 +160,7 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
     public void PlayLeverAnimation()
     {
         animator.Play("LeverOn");
+        audioSource.PlayOneShot(leverActivated);
     }
 
     // public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
