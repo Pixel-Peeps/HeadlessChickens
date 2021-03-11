@@ -27,7 +27,6 @@ namespace PixelPeeps.HeadlessChickens.UI
         public void Start()
         {
             SubscribeFadeEvents();
-            BeginFadeOut();
         }
         
         public void OnValidate()

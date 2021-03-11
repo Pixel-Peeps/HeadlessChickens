@@ -33,6 +33,11 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
     public IEnumerator resetRoutine;
 
     public ProgressBar progressBar;
+    
+    [Header("Sounds")] 
+    public AudioSource audioSource;
+    public AudioClip falseLeverAlarm;
+    public AudioClip leverActivated;
 
 
     private void Awake()
@@ -42,11 +47,17 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
 
     private void Start()
     {
+        if (Camera.main != null)
+        {
+            audioSource = Camera.main.GetComponent<AudioSource>();
+        }
+        
         progressBar = transform.parent.GetComponentInChildren<ProgressBar>();
 
         interactable = GetComponent<Interactable>();
         leverManager = GameObject.FindWithTag("LeverManager").GetComponent<LeverManager>();
 
+        // TODO: BEKAH HELP
         if (!isFake)
         {
             photonView.RPC("RPC_SetUp", RpcTarget.AllViaServer);
@@ -64,13 +75,14 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
     public void RPC_SetUp()
     {
         Debug.Log("Setting up lever. fake? : " + isFake);
+        
         if (isFake)
         {
             //if fake then
             blueprintBits.gameObject.SetActive(false);
             regularBits.gameObject.SetActive(false);
-
         }
+        
         else if (!isFake)
         {
             regularBits.gameObject.SetActive(true);
@@ -84,11 +96,13 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
         Debug.Log("hello this is the second rpc");
         isFake = changeIfFake;
         Debug.Log("Setting up lever. fake? : " + isFake);
+        
         if (isFake)
         {
             blueprintBits.gameObject.SetActive(false);
             regularBits.gameObject.SetActive(false);
         }
+        
         else if (!isFake)
         {
             regularBits.gameObject.SetActive(true);
@@ -131,8 +145,9 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
             // Chick pulling normal lever
             progressRoutine = ProgressLoop(characterBase);
             StartCoroutine(progressRoutine);
-
+            progressBar.BeginFadeIn();
         }
+        
         else if (isFake && isShowingBlueprints && characterBase.isFox)
         {
             // Fox placing fake lever
@@ -144,8 +159,6 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
 
     IEnumerator ProgressLoop(CharacterBase characterBase)
     {
-
-
         // interactable.photonView.RPC("RPC_ToggleInteractAllowed", RpcTarget.AllBufferedViaServer);
 
         characterBase._controller._anim.SetBool("LeverBool", true);
@@ -177,7 +190,7 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
 
         progressBar.progress = 100;
         progressBar.GetCurrentFill();
-        progressBar.BeginFadeOut();
+        
 
         if (isFake)
         {
@@ -201,7 +214,7 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
         characterBase._controller._anim.SetBool("LeverBool", false);
     }
 
-    IEnumerator ResetLoop()
+    private IEnumerator ResetLoop()
     {
         // interactable.photonView.RPC("RPC_ToggleInteractAllowed", RpcTarget.AllBufferedViaServer);
 
@@ -225,17 +238,20 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
     {
         StopCoroutine(progressRoutine);
         progressBar.BeginFadeOut();
-
+        
         leverManager.photonView.RPC("RPC_IncrementLeverCount", RpcTarget.AllBufferedViaServer);
         interactable.photonView.RPC("RPC_ToggleInteractAllowed", RpcTarget.AllBufferedViaServer);
         photonView.RPC("PlayLeverAnimation", RpcTarget.AllBufferedViaServer);
+        
         HUDManager.Instance.UpdateInteractionText();
     }
 
     private void TriggerFakeLever()
     {
         StopCoroutine(progressRoutine);
-
+        progressBar.BeginFadeOut();
+        
+        audioSource.PlayOneShot(falseLeverAlarm);
         Debug.Log("wee woo wee woo FAKE LEVER");
         regularBits.gameObject.SetActive(false);
     }
@@ -270,6 +286,7 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
         if (!focussed)
         {
             HUDManager.Instance.UpdateInteractionText();
+            
             if (leverProgress > 0 && !hasBeenPulled)
             {
                 StopCoroutine(progressRoutine);
@@ -282,8 +299,20 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
     public void PlayLeverAnimation()
     {
         animator.Play("LeverOn");
+        photonView.RPC("PlayLeverSound", RpcTarget.Others);
     }
 
+    [PunRPC]
+    public void PlayLeverSound()
+    {
+        Debug.Log("lever sound to others RPC");
+        
+        if (audioSource != null)
+        {
+            audioSource.PlayOneShot(leverActivated);
+        }
+    }
+    
     // public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     // {
     //     
