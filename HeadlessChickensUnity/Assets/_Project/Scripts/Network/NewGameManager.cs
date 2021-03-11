@@ -247,6 +247,7 @@ namespace PixelPeeps.HeadlessChickens.Network
 
             //send this to lever manager for later
             LeverManager.Instance.SetLeverPosList(tempRooms);
+            inactiveLevers = tempRooms;
             
 
             for (int i = 0; i < maxNumberOfLevers; i++)
