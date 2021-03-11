@@ -22,6 +22,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public List<GameObject> fakeChickPrefabs;
         public GameObject fakeChickInstance;
 
+        public Sprite falseLeverIcon;
+
         public void Start()
         {
             anim = GetComponentInChildren<Animator>();
