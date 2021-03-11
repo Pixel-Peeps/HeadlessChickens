@@ -113,12 +113,12 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         void ActivateStunnedEffect()
         {
-            // stunnedEffect.SetActive(true);
+            stunnedEffect.SetActive(true);
         }
 
         void DeactivateStunnedEffect()
         {
-            // stunnedEffect.SetActive(false);
+            stunnedEffect.SetActive(false);
         }
 
 
