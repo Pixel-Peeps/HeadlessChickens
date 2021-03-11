@@ -96,8 +96,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         {
             Debug.Log("DECOY DEPLOYED");
             _controller.moveSpeed = 0;
-            // anim.SetTrigger("DecoyTrigger");
-            anim.Play("DecoyFound");
+            anim.SetTrigger("DecoyTrigger");
+            // anim.Play("DecoyFound");
             // photonView.RPC("SpawnFakeChick", RpcTarget.AllBufferedViaServer, chick.photonView.ViewID);
             SpawnFakeChick(chick.photonView.ViewID);
 
