@@ -30,6 +30,11 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
 
     private void Start()
     {
+        if (Camera.main != null)
+        {
+            audioSource = Camera.main.GetComponent<AudioSource>();
+        }
+
         interactable = GetComponent<Interactable>();
         leverManager = GameObject.FindWithTag("LeverManager").GetComponent<LeverManager>();
 
@@ -109,9 +114,17 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
        // PhotonView gameManagerPhotonView = NewGameManager.Instance.GetComponent<PhotonView>();
        if (!isFake && !characterBase.isFox)
        {
+           Debug.Log("audio source null?: "+audioSource.isActiveAndEnabled);
+           if (audioSource != null)
+           {
+               audioSource.PlayOneShot(leverActivated);
+           }
+           
            leverManager.photonView.RPC("RPC_IncrementLeverCount", RpcTarget.AllBufferedViaServer);
            interactable.photonView.RPC("RPC_ToggleInteractAllowed", RpcTarget.AllBufferedViaServer);
            photonView.RPC("PlayLeverAnimation", RpcTarget.AllBufferedViaServer);
+        
+
            HUDManager.Instance.UpdateInteractionText();
            
        } else if (isFake && !characterBase.isFox)
@@ -160,6 +173,14 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
     public void PlayLeverAnimation()
     {
         animator.Play("LeverOn");
+        Debug.Log("about to play sound");
+        photonView.RPC("PlayLeverSound", RpcTarget.Others);
+    }
+
+    [PunRPC]
+    public void PlayLeverSound()
+    {
+        Debug.Log("lever sound to others RPC");
         audioSource.PlayOneShot(leverActivated);
     }
 
