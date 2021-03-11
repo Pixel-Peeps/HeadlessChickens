@@ -30,6 +30,11 @@ public class Lever : MonoBehaviourPunCallbacks, IInteractable
 
     private void Start()
     {
+        if (Camera.main != null)
+        {
+            audioSource = Camera.main.GetComponent<AudioSource>();
+        }
+
         interactable = GetComponent<Interactable>();
         leverManager = GameObject.FindWithTag("LeverManager").GetComponent<LeverManager>();
 
