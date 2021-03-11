@@ -71,7 +71,7 @@ public class TrapBlueprint : MonoBehaviourPunCallbacks
             gameObject.transform.GetComponentInParent<CharacterBase>().hasTrap = false;
             gameObject.transform.GetComponentInParent<CharacterBase>().isBlueprintActive = false;
             
-            _audioSource.PlayOneShot(trapPlaceSoundEffect);
+            _audioSource.PlayOneShot(trapPlaceSoundEffect, 0.5f);
             photonView.RPC("RPC_SpawnTrap", RpcTarget.AllBufferedViaServer);
             //
             HUDManager.Instance.HideItemImage();
@@ -102,7 +102,6 @@ public class TrapBlueprint : MonoBehaviourPunCallbacks
     {
         if (gameObject != null)
         {
-            Debug.Log("destroying blueprint!");
             _controls.Disable();
            // PhotonNetwork.Destroy(gameObject);
            gameObject.GetComponentInParent<CharacterBase>().ToggleBP(false);
