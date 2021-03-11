@@ -826,29 +826,6 @@ MonoBehaviour:
   PlayerIndex: -1
   XYAxis: {fileID: -8137929664386619112, guid: 39468619ac7297a4ca35ee727930de78, type: 3}
   ZAxis: {fileID: 0}
---- !u!114 &633827196
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 197791861110522839}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  observableSearch: 2
-  Synchronization: 3
-  OwnershipTransfer: 0
-  ObservedComponents:
-  - {fileID: 633827197}
-  viewIdField: 0
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
 --- !u!114 &633827197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11024,7 +11001,8 @@ MonoBehaviour:
   - {fileID: 8045161509034829110}
   - {fileID: 4979095357912769126}
   - {fileID: 6485128396210751623}
-  viewIdField: 0
+  - {fileID: 633827197}
+  viewIdField: 3
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &4979095357912769126
@@ -16961,7 +16939,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7298878937340387282, guid: a50ecf0e11b73438c86fc7c7ccdb710d, type: 3}
       propertyPath: viewIdField
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a50ecf0e11b73438c86fc7c7ccdb710d, type: 3}

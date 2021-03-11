@@ -111,6 +111,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         void RestoreSpeed()
         {
+            Debug.Log("RestoreSpeed called");
             characterInput.moveSpeed = originalSpeed;
         }
     }
