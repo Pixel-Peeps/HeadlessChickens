@@ -22,6 +22,8 @@ namespace PixelPeeps.HeadlessChickens.GameState
 
         public override void OnSceneLoad()
         {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             StateManager.uiManager = GameObject.FindGameObjectWithTag("MenuManager").GetComponent<UIManager>();
             ActivateMenu(menu);
         }

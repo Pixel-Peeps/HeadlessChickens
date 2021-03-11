@@ -1,4 +1,5 @@
-﻿using Photon.Pun;
+﻿using System.Collections;
+using Photon.Pun;
 using System.Collections.Generic;
 using PixelPeeps.HeadlessChickens.UI;
 using UnityEngine;
@@ -52,9 +53,9 @@ namespace PixelPeeps.HeadlessChickens.Network
         {
             Debug.Log("Identifying fake lever positions, list count: "+leverPosList.Count);
             for (int i = 0; i < leverPosList.Count; i++)
-            {
+            {//
                 Debug.Log("inside loop");
-                RoomTile room = leverPosList[i];
+                RoomTile room = NewGameManager.Instance.inactiveLevers[i];
 
                 foreach (var leverPos in room.leverPositions)
                 {
@@ -69,6 +70,8 @@ namespace PixelPeeps.HeadlessChickens.Network
                 }
             }
         }
+
+        
 
         [PunRPC]
         public void RPC_AllLeversPulled()

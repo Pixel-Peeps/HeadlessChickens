@@ -14,6 +14,8 @@ public class T_GlueTub : MonoBehaviourPunCallbacks
     public float origChickenSpeed;
     private CharacterInput victim;
     private CharacterBase _character;
+    private AudioSource _audioSource;
+    public AudioClip glueSoundEffect;
  
     public void OnTriggerEnter(Collider other)
     {
@@ -26,6 +28,8 @@ public class T_GlueTub : MonoBehaviourPunCallbacks
 
         if (!_character.isFox && !_character.movementAffected)
         {
+            _audioSource = Camera.main.GetComponent<AudioSource>();
+            _audioSource.PlayOneShot(glueSoundEffect, 0.8f);
             _character.gameObject.GetComponent<ChickenBehaviour>().StartGlueTubEffect();
             photonView.RPC("RPC_DestroySelf", RpcTarget.AllBufferedViaServer);
         }

@@ -12,6 +12,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         FoxBehaviour foxBehaviour;
 
         public float originalSpeed;
+        
 
         [SerializeField] ParticleSystem[] trails;
 
@@ -22,10 +23,13 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public AudioClip explosionSoundEffect;
         [Range(0, 1f)] public float explosionVolume;
 
+        public AudioClip swipeSoundEffect;
+        [Range(0, 1f)] public float swipeVolume;
+
         [SerializeField] ParticleSystem painEffectPrefab;
         public ParticleSystem painEffect;
         [SerializeField] GameObject leftFoot;
-
+        
 
 
 
@@ -72,6 +76,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 var em = trail.emission;
                 em.enabled = false;
             }
+            _audioSource.PlayOneShot(swipeSoundEffect, swipeVolume);
         }
 
         void ResetBool()

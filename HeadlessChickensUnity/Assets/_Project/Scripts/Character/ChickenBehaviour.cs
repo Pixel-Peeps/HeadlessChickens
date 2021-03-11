@@ -25,9 +25,9 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         [SerializeField] GameObject chickenMesh;
         [SerializeField] Material caughtMat;
         [SerializeField] Material normalMat;
-        
-        
-        
+
+
+        public Sprite decoyChickIcon;
 
         [Header("Following")]
         public ChickenBehaviour currentFollow;
@@ -106,14 +106,14 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             }
         }
 
-        [PunRPC]
-        public void RestoreHead()
-        {
-            normalChick.SetActive(true);
-            headlessChick.SetActive(false);
+        //[PunRPC]
+        //public void RestoreHead()
+        //{
+        //    normalChick.SetActive(true);
+        //    headlessChick.SetActive(false);
 
-            hasBeenCaught = false;
-        }
+        //    hasBeenCaught = false;
+        //}
 
         /*############################################
         *           CHICKEN ESCAPED / SPEC CAM       *

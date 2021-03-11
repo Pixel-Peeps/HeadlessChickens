@@ -2,6 +2,7 @@
 using UnityEngine.InputSystem;
 using Cinemachine;
 using System;
+using System.Collections;
 using Photon.Pun;
 using PixelPeeps.HeadlessChickens.Network;
 
@@ -240,7 +241,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         private void Jump()
         {
-            if (photonView.IsMine)
+            if (photonView.IsMine && !_character.isFox)
             {
                 // lock jump if not grounded, set jump direction based on forward direction
                 // If character is not moving jump up, if is moving jump based on forward facing direction
@@ -263,6 +264,14 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                     ? (jumpDirection + (Vector3.up * movingJumpForwardBoost)) * jumpForce * (jumpSpeed)
                     : Vector3.up * jumpForce;
                 isGrounded = false;
+            }
+
+            if(photonView.IsMine && _character.isFox)
+            {
+                if (!_character.isBlueprintActive)
+                {
+                    _anim.SetBool("SwipeBool", true);
+                }
             }
         }
 
@@ -377,6 +386,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                     Debug.Log("Showing false levers????");
                     LeverManager.Instance.IdentifyFakeLeverPositions();
                     _character.isBlueprintActive = true;
+                    StartCoroutine(FakeLeverBlueprintCoolDown());
                 }
                 
                 if ( _character.isFox && _character.hasLever && _character.isBlueprintActive)
@@ -386,6 +396,18 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                     //fox picks a fake lever
                     //_character.isBlueprintActive = false;
                 }
+            }
+        }
+        
+        public IEnumerator FakeLeverBlueprintCoolDown()
+        {
+            
+            yield return new WaitForSeconds(5f);
+
+            if (_character.isBlueprintActive)
+            {
+                LeverManager.Instance.IdentifyFakeLeverPositions();
+                _character.isBlueprintActive = false;
             }
         }
 
