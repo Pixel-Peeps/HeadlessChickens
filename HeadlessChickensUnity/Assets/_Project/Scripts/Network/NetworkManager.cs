@@ -16,7 +16,8 @@ namespace PixelPeeps.HeadlessChickens.Network
 
         public bool gameIsRunning;
 
-        public const int minPlayersPerRoom = 1;
+        public const int MIN_PLAYERS = 3;
+        public const int MAX_PLAYERS = 5;
 
         private string currentRoomName;
 
@@ -132,7 +133,7 @@ namespace PixelPeeps.HeadlessChickens.Network
                 Debug.Log("<color=red> CreateRoom() ROOM INPUT IS NOT EMPTY </color>");
                 RoomOptions options = new RoomOptions
                 {
-                    MaxPlayers = 6, 
+                    MaxPlayers = MAX_PLAYERS, 
                     EmptyRoomTtl = 0
                 };
                 Debug.Log("<color=red> CreateRoom() GENERATED ROOM OPTIONS </color>");
