@@ -2,6 +2,7 @@
 using UnityEngine.InputSystem;
 using Cinemachine;
 using System;
+using System.Collections;
 using Photon.Pun;
 using PixelPeeps.HeadlessChickens.Network;
 
@@ -377,6 +378,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                     Debug.Log("Showing false levers????");
                     LeverManager.Instance.IdentifyFakeLeverPositions();
                     _character.isBlueprintActive = true;
+                    StartCoroutine(FakeLeverBlueprintCoolDown());
                 }
                 
                 if ( _character.isFox && _character.hasLever && _character.isBlueprintActive)
@@ -386,6 +388,18 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                     //fox picks a fake lever
                     //_character.isBlueprintActive = false;
                 }
+            }
+        }
+        
+        public IEnumerator FakeLeverBlueprintCoolDown()
+        {
+            
+            yield return new WaitForSeconds(5f);
+
+            if (_character.isBlueprintActive)
+            {
+                LeverManager.Instance.IdentifyFakeLeverPositions();
+                _character.isBlueprintActive = false;
             }
         }
 
