@@ -288,8 +288,11 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
          ##################################*/
 
         #region INPUT CALLBACKS
+
+
         private void MoveStarted(InputAction.CallbackContext obj)
         {
+
             if (_character.State == CharacterBase.EStates.Hiding) return;
 
             _movDirection = obj.ReadValue<Vector2>();
