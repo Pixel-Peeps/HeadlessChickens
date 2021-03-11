@@ -96,7 +96,9 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         {
             Debug.Log("DECOY DEPLOYED");
             _controller.moveSpeed = 0;
-            anim.SetTrigger("DecoyTrigger");
+            // anim.SetTrigger("DecoyTrigger");
+            anim.SetBool("SwipeBool", false);
+            anim.SetBool("DecoyBool", true);
             // anim.Play("DecoyFound");
             // photonView.RPC("SpawnFakeChick", RpcTarget.AllBufferedViaServer, chick.photonView.ViewID);
             SpawnFakeChick(chick.photonView.ViewID);
@@ -121,6 +123,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         IEnumerator DecoyToggleDelay(ChickenBehaviour chick)
         {
             yield return new WaitForSeconds(1f);
+            anim.SetBool("DecoyBool", false);
             chick.photonView.RPC("RPC_ToggleDecoy", RpcTarget.AllViaServer, false);
         }
     }

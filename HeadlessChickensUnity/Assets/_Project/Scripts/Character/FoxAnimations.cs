@@ -66,6 +66,24 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             }
         }
 
+        void ResetBool()
+        {
+            if (characterInput._anim.GetBool("SwipeBool") == true)
+            {
+                characterInput._anim.SetBool("SwipeBool", false);
+            }
+
+            if (characterInput._anim.GetBool("DecoyBool") == true)
+            {
+                characterInput._anim.SetBool("DecoyBool", false);
+            }
+
+            if (characterInput._anim.GetBool("EggshellBool") == true)
+            {
+                characterInput._anim.SetBool("EggshellBool", false);
+            }
+        }
+
 
         // Trap Aftermath
         void DestroyDecoyChick()

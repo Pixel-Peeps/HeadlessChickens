@@ -407,7 +407,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             {
                 if (_character.isFox && !_character.isBlueprintActive)
                 {
-                    _anim.SetTrigger("SwipeTrigger");
+                    // _anim.SetTrigger("SwipeTrigger");
+                    _anim.SetBool("SwipeBool", true);
                 }
                 
                 if (_character.isFox && _character.isBlueprintActive)

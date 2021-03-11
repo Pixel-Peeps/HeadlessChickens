@@ -28,7 +28,8 @@ public class T_BrokenEggshells : MonoBehaviourPunCallbacks
             Debug.Log("STOP OUCH OH NO");
             gameObject.GetComponent<MeshRenderer>().enabled = false;
             victim.moveSpeed = 0;
-            victim._anim.SetTrigger("EggshellTrigger");
+            //victim._anim.SetTrigger("EggshellTrigger");
+            victim._anim.SetBool("EggshellBool", true);
             StartCoroutine(EggShellEffectCoolDown());
         }
     }
