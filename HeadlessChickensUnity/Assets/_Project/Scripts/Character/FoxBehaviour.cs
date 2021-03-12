@@ -143,10 +143,18 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
             _audioSource.PlayOneShot(explosionSoundEffect, explosionVolume);
         }
 
-        [PunRPC]
-        public void RPC_PlaySwipeEffect()
+
+
+
+        public void PlaySwipeEffect()
         {
-            if (photonView.IsMine)
+            _audioSource.PlayOneShot(swipeSoundEffect, swipeVolume);
+        }
+
+        [PunRPC]
+        public void RPC_PlaySwipeEffect(int iD)
+        {
+            if (photonView.ViewID == iD)
             {
                 _audioSource.PlayOneShot(swipeSoundEffect, swipeVolume);
             }
