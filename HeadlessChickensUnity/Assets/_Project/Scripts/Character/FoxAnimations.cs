@@ -21,8 +21,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
 
         private AudioSource _audioSource;
 
-        public AudioClip swipeSoundEffect;
-        [Range(0, 1f)] public float swipeVolume;
+
 
         [SerializeField] ParticleSystem painEffectPrefab;
         public ParticleSystem painEffect;
@@ -74,7 +73,8 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 var em = trail.emission;
                 em.enabled = false;
             }
-            _audioSource.PlayOneShot(swipeSoundEffect, swipeVolume);
+
+            foxBehaviour.photonView.RPC("RPC_PlaySwipeEffect", RpcTarget.AllViaServer);
         }
 
         void ResetBool()

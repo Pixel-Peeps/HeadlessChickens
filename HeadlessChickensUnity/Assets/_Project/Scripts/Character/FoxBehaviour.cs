@@ -28,6 +28,10 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         public AudioClip explosionSoundEffect;
         [Range(0, 1f)] public float explosionVolume = 0.45f;
 
+        public AudioClip swipeSoundEffect;
+        [Range(0, 1f)] public float swipeVolume;
+        
+
         public void Start()
         {
             anim = GetComponentInChildren<Animator>();
@@ -138,6 +142,16 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
         {
             _audioSource.PlayOneShot(explosionSoundEffect, explosionVolume);
         }
+
+        [PunRPC]
+        public void RPC_PlaySwipeEffect()
+        {
+            if (photonView.IsMine)
+            {
+                _audioSource.PlayOneShot(swipeSoundEffect, swipeVolume);
+            }
+        }
+
 
         [PunRPC]
         public void RPC_ToggleParticles( bool shouldPlay )
