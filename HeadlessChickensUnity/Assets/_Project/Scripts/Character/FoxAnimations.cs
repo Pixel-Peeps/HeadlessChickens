@@ -74,7 +74,7 @@ namespace PixelPeeps.HeadlessChickens._Project.Scripts.Character
                 em.enabled = false;
             }
 
-            foxBehaviour.photonView.RPC("RPC_PlaySwipeEffect", RpcTarget.AllViaServer, foxBehaviour.photonView.ViewID);
+            // foxBehaviour.photonView.RPC("RPC_PlaySwipeEffect", RpcTarget.AllViaServer, foxBehaviour.photonView.ViewID);
             // foxBehaviour.PlaySwipeEffect();
         }
 
